@@ -14,11 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loreRoom: 0
   difficulty: 0
+  level: 0
+  roomID: 0
   rarity: 0
   roomName: 
+  roomTypeID: 0
   roomType: 
-  roomExits: []
-  hasEntry: 1
+  roomSize: {x: 0, y: 0}
+  roomObject: {fileID: 3914665629991197110, guid: 622844541041c934ea19563bd9541178, type: 3}
+  roomDoors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  roomDoorsDirection:
+  - {x: 0, y: 1}
+  - {x: 1, y: 0}
+  - {x: 0, y: -1}
+  - {x: -1, y: 0}
+  isStartingRoom: 0
   exitCount: 0
-  roomEntry: {x: 0, y: 0}
-  level: {fileID: 0}
+  roomExit: {x: 0, y: 0}
+  roomExitDirection: {x: 0, y: 0}

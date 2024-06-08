@@ -18,6 +18,7 @@ public class LevelObject : ScriptableObject
     public string roomType;
 
     public Vector2Int roomSize;
+    public GameObject roomObject;
 
     public List<GameObject> roomDoors;
     public List<Vector2Int> roomDoorsDirection;
@@ -26,7 +27,7 @@ public class LevelObject : ScriptableObject
     public Vector2 roomExit;
     public Vector2Int roomExitDirection;
 
-    public GameObject roomObject;
+    
 }
 /*
 #if UNITY_EDITOR

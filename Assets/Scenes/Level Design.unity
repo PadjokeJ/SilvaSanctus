@@ -496,6 +496,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2411631723302431713, guid: 622844541041c934ea19563bd9541178, type: 3}
+      propertyPath: m_TagString
+      value: Level
+      objectReference: {fileID: 0}
     - target: {fileID: 3914665629991197110, guid: 622844541041c934ea19563bd9541178, type: 3}
       propertyPath: m_Name
       value: Combat2
@@ -587,6 +591,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1702780789221533884, guid: 7e1c8250c3bcb5343ab9096bdba8c6f6, type: 3}
+      propertyPath: m_TagString
+      value: Level
+      objectReference: {fileID: 0}
     - target: {fileID: 4250979970361771404, guid: 7e1c8250c3bcb5343ab9096bdba8c6f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

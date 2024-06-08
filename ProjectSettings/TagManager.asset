@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Door
+  - Weapon
+  - Enemy
+  - Level
   layers:
   - Default
   - TransparentFX

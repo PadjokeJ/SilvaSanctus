@@ -17,9 +17,11 @@ public class PlayerAttack : MonoBehaviour
     public List<GameObject> targets;
     Vector2 mousePos;
     Vector2 playerPos, weapPos;
+    GenericWeaponManager gWP;
     void Awake()
     {
         mainCam = Camera.main;
+        gWP = GetComponentInChildren<GenericWeaponManager>();
     }
 
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
         deltaToReload++;
         if(canAttack && isAttacking)
         {
+            targets = gWP.targets;
             deltaToReload = 0;
             if(targets != null)
             {

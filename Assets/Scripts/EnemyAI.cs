@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,15 +14,24 @@ public class EnemyAI : MonoBehaviour
     Vector2 deltaPos;
     Rigidbody2D rg;
 
+    GenericWeaponManager gWP;
+    float timeSinceLastAttack;
+    float attackSpeed;
+    UnityEvent attackEvent;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        gWP = GetComponentInChildren<GenericWeaponManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastAttack += Time.deltaTime;
+
         LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
         dist = Vector2.Distance(player.transform.position, transform.position);
         if (LOS && dist > minDist && dist < maxDist)
@@ -38,7 +48,19 @@ public class EnemyAI : MonoBehaviour
         }
         if(dist <= attackDist)
         {
-            //attack the player
+            attackSpeed = gWP.reloadTime;
+            attackEvent = gWP.attackEvent;
+
+            if (attackSpeed < timeSinceLastAttack)
+            {
+                timeSinceLastAttack = 0f;
+                attackEvent.Invoke();
+                Debug.Log("ENEMY ATTACKS!!!!");
+                foreach (GameObject item in gWP.targets)
+                {
+                    item.GetComponent<Health>().takeDamage(gWP.weaponDamage);
+                }
+            }
         }
     }
     public void Die()

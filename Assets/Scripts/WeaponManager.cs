@@ -12,17 +12,20 @@ public class WeaponManager : MonoBehaviour
 
     Collider2D c2d;
     PlayerAttack pA;
+    GenericWeaponManager gWP;
     List<GameObject> targets = new List<GameObject>();
     void Start()
     {
         c2d = GetComponent<Collider2D>();
         pA = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
+        gWP = GetComponent<GenericWeaponManager>();
         pA.GetWeapon(this.gameObject);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        gWP.targets = targets;
         pA.targets = targets;
     }
     private void OnTriggerEnter2D(Collider2D collision)

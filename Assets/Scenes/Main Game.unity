@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 271968680}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -504,9 +504,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1034074316}
+  - component: {fileID: 1034074317}
+  - component: {fileID: 1034074318}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: Weapon
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,6 +528,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 271968676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1034074317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034074315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497ae8bdc879cb940a03bbda62ad9f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 4
+  friendlyFire: 0
+  damage: 5
+  reloadSpeed: 1
+  attackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1034074317}
+        m_TargetAssemblyTypeName: SlashAttack, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1034074318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034074315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cb971c782c39e459144c72db0dcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  weaponDamage: 0
+  reloadTime: 0
+  isAttacking: 0
+  attackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1197300719
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,9 +741,10 @@ GameObject:
   - component: {fileID: 1232298462}
   - component: {fileID: 1232298464}
   - component: {fileID: 1232298463}
+  - component: {fileID: 1232298465}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5668,6 +5733,25 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1232298465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232298457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cb971c782c39e459144c72db0dcdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  weaponDamage: 0
+  reloadTime: 0
+  isAttacking: 0
+  attackEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1686435604
 GameObject:
   m_ObjectHideFlags: 0

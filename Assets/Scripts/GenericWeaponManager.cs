@@ -12,5 +12,6 @@ public class GenericWeaponManager : MonoBehaviour
     public bool isAttacking;
     
     public UnityEvent attackEvent;
+
   
 }

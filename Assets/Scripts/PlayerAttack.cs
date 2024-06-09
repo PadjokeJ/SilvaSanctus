@@ -18,10 +18,14 @@ public class PlayerAttack : MonoBehaviour
     Vector2 mousePos;
     Vector2 playerPos, weapPos;
     GenericWeaponManager gWP;
+
+    Animation attackAnimation;
     void Awake()
     {
         mainCam = Camera.main;
         gWP = GetComponentInChildren<GenericWeaponManager>();
+
+        attackAnimation = GetComponentInChildren<Animation>();
     }
 
     // Update is called once per frame
@@ -30,11 +34,11 @@ public class PlayerAttack : MonoBehaviour
         playerPos = transform.position;
         Vector2 playerScreenPos = mainCam.WorldToScreenPoint(playerPos);
         Vector2 mouseWorldPos = mainCam.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2) + mousePos - playerScreenPos);
-        weapon.transform.position = playerPos + mouseWorldPos.normalized * weaponDistance;
+        if (!attackAnimation.isPlaying) weapon.transform.position = playerPos + mouseWorldPos.normalized * weaponDistance;
         Vector3 mousePosV3 = mainCam.ScreenToWorldPoint(mousePos);
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
         mousePosV3.z = 0;
-        weapon.transform.right = mousePosV3 - weapon.transform.position;
+        if(!attackAnimation.isPlaying) weapon.transform.right = mousePosV3 - weapon.transform.position;
         if(weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
         if(weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
 
@@ -42,6 +46,8 @@ public class PlayerAttack : MonoBehaviour
         deltaToReload++;
         if(canAttack && isAttacking)
         {
+            attackAnimation.Play();
+
             targets = gWP.targets;
             deltaToReload = 0;
             if(targets != null)

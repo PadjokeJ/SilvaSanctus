@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class WeaponManager : MonoBehaviour
     PlayerAttack pA;
     GenericWeaponManager gWP;
     List<GameObject> targets = new List<GameObject>();
+
+    Animation attackAnimation;
+
+    public UnityEvent attackEvent;
     void Start()
     {
         c2d = GetComponent<Collider2D>();
         pA = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         gWP = GetComponent<GenericWeaponManager>();
         pA.GetWeapon(this.gameObject);
+        gWP.attackEvent = attackEvent;
+
     }
 
     // Update is called once per frame
@@ -35,5 +42,9 @@ public class WeaponManager : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(!collision.gameObject.CompareTag("Player")) targets.Remove(collision.gameObject);
+    }
+    void Attack()
+    {
+        attackAnimation.Play();
     }
 }

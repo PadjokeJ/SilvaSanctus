@@ -13,6 +13,7 @@ public class SlashAttack : MonoBehaviour
     public float damage, reloadSpeed;
 
     public UnityEvent attackEvent;
+    Animation attackAnimation;
     void Start()
     {
         gwp = GetComponent<GenericWeaponManager>();
@@ -24,6 +25,8 @@ public class SlashAttack : MonoBehaviour
 
         gwp.attackEvent = attackEvent;
         targets = new List<GameObject>();
+
+        attackAnimation = GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,8 @@ public class SlashAttack : MonoBehaviour
 
         }
         gwp.targets = targets;
+
+        if (attackAnimation != null) attackAnimation.Play();
     }
 
     

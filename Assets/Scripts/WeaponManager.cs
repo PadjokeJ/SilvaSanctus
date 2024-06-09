@@ -43,7 +43,7 @@ public class WeaponManager : MonoBehaviour
     {
         if(!collision.gameObject.CompareTag("Player")) targets.Remove(collision.gameObject);
     }
-    void Attack()
+    public void Attack()
     {
         attackAnimation.Play();
     }

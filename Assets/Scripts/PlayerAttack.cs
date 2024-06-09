@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     Vector2 mousePos;
     Vector2 playerPos, weapPos;
     GenericWeaponManager gWP;
+    SpriteRenderer sr;
+    TrailRenderer tr;
 
     Animation attackAnimation;
     void Awake()
@@ -26,6 +28,8 @@ public class PlayerAttack : MonoBehaviour
         gWP = GetComponentInChildren<GenericWeaponManager>();
 
         attackAnimation = GetComponentInChildren<Animation>();
+        sr = weapon.GetComponent<SpriteRenderer>();
+        tr = weapon.GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -38,9 +42,11 @@ public class PlayerAttack : MonoBehaviour
         Vector3 mousePosV3 = mainCam.ScreenToWorldPoint(mousePos);
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
         mousePosV3.z = 0;
+
         if(!attackAnimation.isPlaying) weapon.transform.right = mousePosV3 - weapon.transform.position;
         if(weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
         if(weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
+        
 
         canAttack = reloadTime - deltaToReload < 0;
         deltaToReload++;
@@ -67,6 +73,19 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+
+        if (!attackAnimation.isPlaying)
+        {
+            sr.enabled = false;
+            tr.enabled = true;
+        }
+        else
+        {
+            sr.enabled = true;
+            tr.enabled = false;
+        }
+             
+
     }
     public void Attack(InputAction.CallbackContext context)
     {

@@ -38,12 +38,12 @@ public class PlayerAttack : MonoBehaviour
         playerPos = transform.position;
         Vector2 playerScreenPos = mainCam.WorldToScreenPoint(playerPos);
         Vector2 mouseWorldPos = mainCam.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2) + mousePos - playerScreenPos);
-        if (!attackAnimation.isPlaying) weapon.transform.position = playerPos + mouseWorldPos.normalized * weaponDistance;
+        if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + mouseWorldPos.normalized * weaponDistance, 0.5f);
         Vector3 mousePosV3 = mainCam.ScreenToWorldPoint(mousePos);
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
         mousePosV3.z = 0;
 
-        if(!attackAnimation.isPlaying) weapon.transform.right = mousePosV3 - weapon.transform.position;
+        if (!attackAnimation.isPlaying) weapon.transform.right = weapon.transform.position - transform.position;
         if(weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
         if(weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
         
@@ -74,15 +74,15 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (!attackAnimation.isPlaying)
+        if (attackAnimation.isPlaying)
         {
-            sr.enabled = false;
-            tr.enabled = true;
+            //sr.enabled = false;
+            tr.emitting = true;
         }
         else
         {
-            sr.enabled = true;
-            tr.enabled = false;
+            //sr.enabled = true;
+            tr.emitting = false;
         }
              
 

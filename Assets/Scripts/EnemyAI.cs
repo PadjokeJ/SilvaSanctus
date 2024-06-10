@@ -9,8 +9,8 @@ public class EnemyAI : MonoBehaviour
     public bool losesInterestIfNoLOS, fleeIfTooClose;
     public float speed;
     public float maxDist, minDist, minRange, fleeSpeedMultiplier, attackDist, reactionTime;
-    float dist;
-    bool LOS;
+    float dist, timeSinceReached;
+    public bool LOS, attacking = false;
     Vector2 deltaPos;
     Rigidbody2D rg;
 
@@ -41,13 +41,13 @@ public class EnemyAI : MonoBehaviour
 
         LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
         dist = Vector2.Distance(player.transform.position, transform.position);
-        if (LOS && dist > minDist && dist < maxDist)
+        if (LOS && dist > minDist && dist < maxDist && !attacking) //move towards player
         {
             Vector2 dir = player.transform.position - transform.position;
             deltaPos = dir.normalized * speed * Time.deltaTime;
             rg.velocity += deltaPos;
         }
-        if(LOS && dist < minDist + minRange && fleeIfTooClose)
+        if(LOS && dist < minDist + minRange && fleeIfTooClose) //flee
         {
             Vector2 dir = player.transform.position - transform.position;
             deltaPos = dir.normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
@@ -60,6 +60,17 @@ public class EnemyAI : MonoBehaviour
 
             if (attackSpeed < timeSinceLastAttack)
             {
+                timeSinceLastAttack = 0f;
+                attacking = true;
+            }
+            
+        }
+        if(attacking)
+        {
+            timeSinceReached += Time.deltaTime;
+            if(timeSinceReached >= reactionTime)
+            {
+                timeSinceReached = 0f;
                 weaponAnimation.Play();
                 timeSinceLastAttack = 0f;
                 attackEvent.Invoke();
@@ -69,6 +80,8 @@ public class EnemyAI : MonoBehaviour
                     Debug.Log(item);
                     item.GetComponent<Health>().takeDamage(gWP.weaponDamage);
                 }
+
+                attacking = false;
             }
         }
     }

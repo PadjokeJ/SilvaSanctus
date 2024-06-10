@@ -289,6 +289,7 @@ MonoBehaviour:
   minRange: 2
   fleeSpeedMultiplier: 0.5
   attackDist: 2
+  reactionTime: 2
 --- !u!50 &271968678
 Rigidbody2D:
   serializedVersion: 4
@@ -881,14 +882,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 0.9988493
-    height: 0.99795496
+    y: 0.0020533882
+    width: 0.9988439
+    height: 0.99383986
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.625
+  orthographic size: 7.5625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

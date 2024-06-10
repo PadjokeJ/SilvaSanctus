@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
                 for(int k = 0; k < tempExits.Count; k++)
                 {
                     tempExits[k] = tempExits[k] + exit - entryCoords;
-                    Debug.Log(tempExits[k]);
+                    
                 }
                 tempDir = new List<Vector2Int>(roomObject.roomDoorsDirection);
                 if (tempDir.IndexOf(roomObject.roomDoorsDirection[entryDirToPick]) != -1)
@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour
             if (roomsGenerated.Count >= roomAmmount) break;
             exits = new List<Vector2>(newExits);
             exitDir = new List<Vector2Int>(newExitDir);
-            Debug.Log(exits.Count);
+            
 
             if(crashPrevention > 500)
             {

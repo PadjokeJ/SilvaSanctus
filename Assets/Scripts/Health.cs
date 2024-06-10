@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float health;
+    public float maxHealth;
     string entityType;
     void Awake()
     {
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
         {
             entityType = "Enemy";
         }
+        maxHealth = health;
     }
     public void takeDamage(float val)
     {

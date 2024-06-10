@@ -44,7 +44,7 @@ public class SlashAttack : MonoBehaviour
         {
             if (item.CompareTag("Enemy") && friendlyFire)
                 targets.Add(item.gameObject);
-            else if (!item.CompareTag("Enemy") && !item.CompareTag("Level"))
+            else if (!item.CompareTag("Enemy") && !item.CompareTag("Level") && !item.CompareTag("Weapon"))
                 targets.Add(item.gameObject);
 
         }

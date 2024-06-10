@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     GameObject player;
     public bool losesInterestIfNoLOS, fleeIfTooClose;
     public float speed;
-    public float maxDist, minDist, minRange, fleeSpeedMultiplier, attackDist;
+    public float maxDist, minDist, minRange, fleeSpeedMultiplier, attackDist, reactionTime;
     float dist;
     bool LOS;
     Vector2 deltaPos;
@@ -19,12 +19,19 @@ public class EnemyAI : MonoBehaviour
     float attackSpeed;
     UnityEvent attackEvent;
 
+    Animation weaponAnimation;
+
+    EnemyHealthBar ehb;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gWP = GetComponentInChildren<GenericWeaponManager>();
 
+        weaponAnimation = GetComponentInChildren<Animation>();
+
+        ehb = FindObjectOfType<EnemyHealthBar>();
     }
 
     // Update is called once per frame
@@ -53,11 +60,13 @@ public class EnemyAI : MonoBehaviour
 
             if (attackSpeed < timeSinceLastAttack)
             {
+                weaponAnimation.Play();
                 timeSinceLastAttack = 0f;
                 attackEvent.Invoke();
                 Debug.Log("ENEMY ATTACKS!!!!");
                 foreach (GameObject item in gWP.targets)
                 {
+                    Debug.Log(item);
                     item.GetComponent<Health>().takeDamage(gWP.weaponDamage);
                 }
             }
@@ -66,6 +75,9 @@ public class EnemyAI : MonoBehaviour
     public void Die()
     {
         Destroy(this.gameObject);
+        ehb.SpawnHealthBars();
+        
+        
     }
     public void takeKB(Transform playerTransform, float KnockBackStrength)
     {

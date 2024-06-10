@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2335987836436174061}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.722, y: 0.019, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2335987836436174061}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -5105,9 +5105,18 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.44827566
-        inSlope: 0
-        outSlope: 0
+        value: 0.17337331
+        inSlope: 10.192981
+        outSlope: 10.192981
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.22567488
+      - serializedVersion: 3
+        time: 0.07358004
+        value: 0.4391052
+        inSlope: -0.33094442
+        outSlope: -0.33094442
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
@@ -5164,7 +5173,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &6591750553741887751
 GameObject:

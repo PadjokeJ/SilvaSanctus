@@ -35,18 +35,20 @@ public class EnemyAI : MonoBehaviour
 
         ehb = FindObjectOfType<EnemyHealthBar>();
         Vector3 po = CalculateDirectionVector();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
+        
 
         LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
         dist = Vector2.Distance(player.transform.position, transform.position);
         if (LOS && dist > minDist && dist < maxDist && !attacking) //move towards player
         {
-            Vector2 dir = player.transform.position - transform.position;
+            Vector2 dir = CalculateDirectionVector();
             deltaPos = dir.normalized * speed * Time.deltaTime;
             rg.velocity += deltaPos;
         }
@@ -81,7 +83,8 @@ public class EnemyAI : MonoBehaviour
                 foreach (GameObject item in gWP.targets)
                 {
                     Debug.Log(item);
-                    item.GetComponent<Health>().takeDamage(gWP.weaponDamage);
+                    if(item.TryGetComponent<Health>(out Health damageTarget))
+                        damageTarget.takeDamage(gWP.weaponDamage);
                 }
 
                 attacking = false;
@@ -104,25 +107,67 @@ public class EnemyAI : MonoBehaviour
     Vector3 CalculateDirectionVector()
     {
         Vector3 dir = new Vector3();
-        
 
+        desirableDir.Clear();
         float angle = 0f;
         //launch 8 different linecasts to get where it can move
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 32; i++)
         {
-            angle = i * 45f;
+            angle = i * 11.25f;
             desirableDir.Add(new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0));
-            Debug.Log(desirableDir[i]);
+            
+        }
+
+        int iteration = 0;
+        List<Vector3> tempDir = new List<Vector3>(desirableDir);
+
+        //get dir to player
+        dir = player.transform.position - transform.position;
+
+        int j = 0;
+        float dotProd = 0;
+        foreach (Vector3 direction in tempDir)
+        {
+            dotProd = (Vector3.Dot(direction.normalized, dir.normalized) + 1f);
+            desirableDir[j] = desirableDir[j] * dotProd * 0.5f;
+            j++;
+        }
+
+
+        foreach (Vector3 direction in tempDir)
+        {
+            RaycastHit2D[] tempResults = Physics2D.LinecastAll(transform.position, transform.position + direction * 2f);
+            List<RaycastHit2D> results = new List<RaycastHit2D>();
+            foreach (RaycastHit2D result in tempResults)
+            {
+                if (!result.collider.gameObject.CompareTag("Enemy") && !result.collider.gameObject.CompareTag("Weapon") && !result.collider.gameObject.CompareTag("Player")) results.Add(result);
+            }
+            if (results.Count > 0) desirableDir[iteration] = Vector3.zero;
+            iteration++;
+        }
+
+        float maxDesirability = 0f, previousMax = 0f;
+
+        foreach(Vector3 direction in desirableDir)
+        {
+            maxDesirability = Mathf.Max(maxDesirability, direction.magnitude);
+            if (previousMax < maxDesirability) dir = direction;
+
+            previousMax = maxDesirability;
         }
 
         return dir.normalized;
     }
 
     void OnDrawGizmosSelected()
-    { 
+    {
         // Draws a blue line from this transform to the target
+        Debug.Log("Drawing gizmos");
         Gizmos.color = Color.blue;
         foreach (Vector3 dir in desirableDir)
-            Gizmos.DrawLine(transform.position, transform.position + dir);
+        {
+            Gizmos.DrawLine(transform.position, transform.position + dir * 2f);
+            Debug.Log(dir);
+        }
     }
 }

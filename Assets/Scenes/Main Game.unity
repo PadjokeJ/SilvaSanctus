@@ -290,6 +290,8 @@ MonoBehaviour:
   fleeSpeedMultiplier: 0.5
   attackDist: 2
   reactionTime: 2
+  LOS: 0
+  attacking: 0
 --- !u!50 &271968678
 Rigidbody2D:
   serializedVersion: 4

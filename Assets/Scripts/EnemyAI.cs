@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour
 
     EnemyHealthBar ehb;
 
+    List<Vector3> desirableDir = new List<Vector3>();
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -32,6 +34,7 @@ public class EnemyAI : MonoBehaviour
         weaponAnimation = GetComponentInChildren<Animation>();
 
         ehb = FindObjectOfType<EnemyHealthBar>();
+        Vector3 po = CalculateDirectionVector();
     }
 
     // Update is called once per frame
@@ -97,5 +100,29 @@ public class EnemyAI : MonoBehaviour
         Vector3 kbDir = playerTransform.position - transform.position;
         Vector2 kbForce = kbDir.normalized * -KnockBackStrength;
         rg.AddForce(kbForce, ForceMode2D.Impulse);
+    }
+    Vector3 CalculateDirectionVector()
+    {
+        Vector3 dir = new Vector3();
+        
+
+        float angle = 0f;
+        //launch 8 different linecasts to get where it can move
+        for (int i = 0; i < 8; i++)
+        {
+            angle = i * 45f;
+            desirableDir.Add(new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0));
+            Debug.Log(desirableDir[i]);
+        }
+
+        return dir.normalized;
+    }
+
+    void OnDrawGizmosSelected()
+    { 
+        // Draws a blue line from this transform to the target
+        Gizmos.color = Color.blue;
+        foreach (Vector3 dir in desirableDir)
+            Gizmos.DrawLine(transform.position, transform.position + dir);
     }
 }

@@ -27,6 +27,10 @@ public class EnemyAI : MonoBehaviour
 
     public float off;
 
+    GameObject healthBar;
+
+    Health healthScript;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -37,6 +41,10 @@ public class EnemyAI : MonoBehaviour
 
         ehb = FindObjectOfType<EnemyHealthBar>();
         Vector3 po = CalculateDirectionVector();
+
+        healthBar = ehb.newHealthBar(this);
+
+        healthScript = GetComponent<Health>();
 
     }
 
@@ -92,13 +100,13 @@ public class EnemyAI : MonoBehaviour
                 attacking = false;
             }
         }
+        Debug.Log(healthScript.health);
+        ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
     }
     public void Die()
     {
+        Destroy(healthBar);
         Destroy(this.gameObject);
-        ehb.SpawnHealthBars();
-        
-        
     }
     public void takeKB(Transform playerTransform, float KnockBackStrength)
     {

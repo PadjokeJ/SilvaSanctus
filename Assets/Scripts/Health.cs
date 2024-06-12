@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     public void takeDamage(float val)
     {
         health -= val;
-        if(health < 0)
+        if(health <= 0)
         {
             if(entityType == "Player") GetComponent<PlayerManager>().Die();
             if(entityType == "Enemy") GetComponent<EnemyAI>().Die();

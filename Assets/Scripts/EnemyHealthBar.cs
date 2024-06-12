@@ -31,62 +31,8 @@ public class EnemyHealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        for(int i = 0; i < positions.Count; i++)
-        {
-            healthBars[i].value = enemies[i].GetComponent<Health>().health;
-            positions[i] = enemies[i].transform.position + new Vector3(0f, 1f, 0f);
-            healthBarsObjects[i].transform.position = positions[i];
-        }
-        */
+        //
     }
-    
-    /*public List<GameObject> UpdateEnemyList() //also takes care of the HEALTH, POSITIONS
-    {
-        List<GameObject> listOfEnemies = new List<GameObject>();
-        positions.Clear();
-        health.Clear();
-        maxHealth.Clear();
-        foreach(GameObject gO in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            Debug.Log("Indexed an enemy");
-            listOfEnemies.Add(gO);
-            positions.Add(gO.transform.position + new Vector3(0f, 1f, 0f));
-            health.Add(gO.GetComponent<Health>().health);
-            maxHealth.Add(gO.GetComponent<Health>().maxHealth);
-        }
-        return listOfEnemies;
-    }
-    
-    public void SpawnHealthBars()
-    {
-        ClearHealthBars();
-        enemies = UpdateEnemyList();
-        Debug.Log(enemies.Count);
-        foreach(GameObject enemy in enemies)
-        {
-            healthBarsObjects.Add(Instantiate<GameObject>(SliderPrefab, this.gameObject.transform));
-        }
-        int i = 0;
-        Slider healthBarSlider;
-        foreach(GameObject healthBar in healthBarsObjects)
-        {
-            healthBarSlider = healthBar.GetComponent<Slider>();
-            healthBars.Add(healthBarSlider);
-            healthBars[i].maxValue = enemies[i].GetComponent<Health>().health;
-            i++;
-        }
-    }
-
-    void ClearHealthBars()
-    {
-        healthBars.Clear();
-        foreach (GameObject sliderObject in healthBarsObjects)
-        {
-            Destroy(sliderObject.transform);
-        }
-        healthBarsObjects.Clear();
-    }*/
 
     public GameObject newHealthBar(EnemyAI enemy)
     {
@@ -102,5 +48,7 @@ public class EnemyHealthBar : MonoBehaviour
         healthBar.GetComponent<RectTransform>().position = enemyPos + new Vector3 (0, 1.5f, 0);
         
         healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = enemyHealth / enemyMaxHealth;
+
+        healthBar.transform.GetChild(0).GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, enemyHealth / enemyMaxHealth);
     }
 }

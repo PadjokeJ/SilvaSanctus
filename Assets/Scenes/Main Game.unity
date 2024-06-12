@@ -292,6 +292,7 @@ MonoBehaviour:
   reactionTime: 0.5
   LOS: 0
   attacking: 0
+  off: 45
 --- !u!50 &271968678
 Rigidbody2D:
   serializedVersion: 4
@@ -766,8 +767,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.8205128
       - serializedVersion: 3
-        time: 0.071955726
-        value: 0.47011954
+        time: 0.15497407
+        value: 0.4422326
         inSlope: 0
         outSlope: 0
         tangentMode: 0

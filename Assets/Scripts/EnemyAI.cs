@@ -25,6 +25,8 @@ public class EnemyAI : MonoBehaviour
 
     List<Vector3> desirableDir = new List<Vector3>();
 
+    public float off;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -111,9 +113,9 @@ public class EnemyAI : MonoBehaviour
         desirableDir.Clear();
         float angle = 0f;
         //launch 8 different linecasts to get where it can move
-        for (int i = 0; i < 32; i++)
+        for (int i = 0; i < 16; i++)
         {
-            angle = i * 11.25f;
+            angle = i * 22.5f;
             desirableDir.Add(new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0));
             
         }
@@ -136,13 +138,20 @@ public class EnemyAI : MonoBehaviour
 
         foreach (Vector3 direction in tempDir)
         {
-            RaycastHit2D[] tempResults = Physics2D.LinecastAll(transform.position, transform.position + direction * 2f);
-            List<RaycastHit2D> results = new List<RaycastHit2D>();
-            foreach (RaycastHit2D result in tempResults)
+            Vector3 offsetDirection;
+            float angleOffset = off * -1f;
+            for (int i = 0; i < 3; i++)
             {
-                if (!result.collider.gameObject.CompareTag("Enemy") && !result.collider.gameObject.CompareTag("Weapon") && !result.collider.gameObject.CompareTag("Player")) results.Add(result);
+                offsetDirection = Quaternion.Euler(0, 0, angleOffset) * desirableDir[iteration];
+                RaycastHit2D[] tempResults = Physics2D.LinecastAll(transform.position, transform.position + offsetDirection * 1.5f);
+                List<RaycastHit2D> results = new List<RaycastHit2D>();
+                foreach (RaycastHit2D result in tempResults)
+                {
+                    if (!result.collider.gameObject.CompareTag("Enemy") && !result.collider.gameObject.CompareTag("Weapon") && !result.collider.gameObject.CompareTag("Player")) results.Add(result);
+                }
+                if (results.Count > 0) desirableDir[iteration] = Vector3.zero;
+                angleOffset += off;
             }
-            if (results.Count > 0) desirableDir[iteration] = Vector3.zero;
             iteration++;
         }
 
@@ -166,7 +175,7 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.blue;
         foreach (Vector3 dir in desirableDir)
         {
-            Gizmos.DrawLine(transform.position, transform.position + dir * 2f);
+            Gizmos.DrawLine(transform.position, transform.position + dir * 1.5f);
             Debug.Log(dir);
         }
     }

@@ -155,7 +155,7 @@ public class EnemyAI : MonoBehaviour
                 List<RaycastHit2D> results = new List<RaycastHit2D>();
                 foreach (RaycastHit2D result in tempResults)
                 {
-                    if (!result.collider.gameObject.CompareTag("Enemy") && !result.collider.gameObject.CompareTag("Weapon") && !result.collider.gameObject.CompareTag("Player")) results.Add(result);
+                    if (result.collider.gameObject != this.gameObject && !result.collider.gameObject.CompareTag("Weapon") && !result.collider.gameObject.CompareTag("Player")) results.Add(result);
                 }
                 if (results.Count > 0) desirableDir[iteration] = Vector3.zero;
                 angleOffset += off;

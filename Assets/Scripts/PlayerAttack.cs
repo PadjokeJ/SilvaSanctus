@@ -21,6 +21,8 @@ public class PlayerAttack : MonoBehaviour
     SpriteRenderer sr;
     TrailRenderer tr;
 
+
+
     Animation attackAnimation;
     void Awake()
     {
@@ -33,15 +35,21 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         playerPos = transform.position;
         Vector2 playerScreenPos = mainCam.WorldToScreenPoint(playerPos);
-        Vector2 mouseWorldPos = mainCam.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2) + mousePos - playerScreenPos);
-        if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + mouseWorldPos.normalized * weaponDistance, 0.5f);
-        Vector3 mousePosV3 = mainCam.ScreenToWorldPoint(mousePos);
+
+        Vector3 worldMousePos = mainCam.ScreenToWorldPoint(mousePos);
+        worldMousePos = new Vector3(worldMousePos.x, worldMousePos.y, 0f);
+
+        Vector3 weaponDir = worldMousePos - transform.position;
+        weaponDir = weaponDir.normalized;
+
+        if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, 0.5f);
+
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
-        mousePosV3.z = 0;
+
 
         if (!attackAnimation.isPlaying) weapon.transform.right = weapon.transform.position - transform.position;
         if(weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);

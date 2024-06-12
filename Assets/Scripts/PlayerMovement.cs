@@ -14,10 +14,13 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     //settings
     public bool toggleSprint;
+
+    GameObject mainCam;
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        mainCam = Camera.main.gameObject;
     }
 
     // Update is called once per frame
@@ -33,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         }
         /*if (rb.velocity.normalized.x > 0.1f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         if (rb.velocity.normalized.x < -0.1f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);*/
+
+        mainCam.transform.position = transform.position + new Vector3(0, 0, -10f);
     }
     public void onMoveUpdate(InputAction.CallbackContext context)
     {

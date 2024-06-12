@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 769859699921658975, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 769859699921658975, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -562,6 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SliderPrefab: {fileID: 5356092981196291015, guid: 5fa5f494b0cc1234ea2db7dbf25afb08, type: 3}
+  barPrefab: {fileID: 3856462377662402095, guid: 70bafeb0af8dfc44a9d8549c08d7eaad, type: 3}
 --- !u!1 &548057559
 GameObject:
   m_ObjectHideFlags: 0

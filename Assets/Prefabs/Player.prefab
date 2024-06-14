@@ -5467,6 +5467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 2335987836436174061}
   targets: []
+  lerpTime: 0.2
 --- !u!114 &7781752577232314290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5492,6 +5493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  maxHealth: 0
 --- !u!61 &6186771929776705322
 BoxCollider2D:
   m_ObjectHideFlags: 0

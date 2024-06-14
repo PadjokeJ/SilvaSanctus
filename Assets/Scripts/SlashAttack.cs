@@ -14,7 +14,9 @@ public class SlashAttack : MonoBehaviour
 
     public UnityEvent attackEvent;
     Animation attackAnimation;
-    void Start()
+
+    TrailRenderer tr;
+    void Awake()
     {
         gwp = GetComponent<GenericWeaponManager>();
         gwp.reloadTime = reloadSpeed;
@@ -26,13 +28,17 @@ public class SlashAttack : MonoBehaviour
         gwp.attackEvent = attackEvent;
         targets = new List<GameObject>();
 
-        attackAnimation = GetComponent<Animation>();
+        attackAnimation = transform.parent.GetComponent<Animation>();
+        tr = GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (attackAnimation.isPlaying)
+            tr.emitting = true;
+        else
+            tr.emitting = false;
     }
 
     public void Attack()

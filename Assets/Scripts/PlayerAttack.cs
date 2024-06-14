@@ -21,6 +21,8 @@ public class PlayerAttack : MonoBehaviour
     SpriteRenderer sr;
     TrailRenderer tr;
 
+    public float lerpTime;
+
 
 
     Animation attackAnimation;
@@ -43,10 +45,12 @@ public class PlayerAttack : MonoBehaviour
         Vector3 worldMousePos = mainCam.ScreenToWorldPoint(mousePos);
         worldMousePos = new Vector3(worldMousePos.x, worldMousePos.y, 0f);
 
+        weapon.transform.parent.rotation = Quaternion.identity;
+
         Vector3 weaponDir = worldMousePos - transform.position;
         weaponDir = weaponDir.normalized;
 
-        if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, 0.5f);
+        if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, lerpTime);
 
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
 

@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     Animation weaponAnimation;
 
     EnemyHealthBar ehb;
+    GameObject weapon;
 
     List<Vector3> desirableDir = new List<Vector3>();
 
@@ -36,6 +37,7 @@ public class EnemyAI : MonoBehaviour
         rg = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gWP = GetComponentInChildren<GenericWeaponManager>();
+        weapon = gWP.gameObject;
 
         weaponAnimation = GetComponentInChildren<Animation>();
 
@@ -52,20 +54,19 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        
+
+        //weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
 
         LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
         dist = Vector2.Distance(player.transform.position, transform.position);
         if (LOS && dist > minDist && dist < maxDist && !attacking) //move towards player
         {
-            Vector2 dir = CalculateDirectionVector();
-            deltaPos = dir.normalized * speed * Time.deltaTime;
+            deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
             rg.velocity += deltaPos;
         }
         if(LOS && dist < minDist + minRange && fleeIfTooClose) //flee
         {
-            Vector2 dir = player.transform.position - transform.position;
-            deltaPos = dir.normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
+            deltaPos =  -CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
             rg.velocity -= deltaPos;
         }
         if(dist <= attackDist)
@@ -88,6 +89,13 @@ public class EnemyAI : MonoBehaviour
                 timeSinceReached = 0f;
                 weaponAnimation.Play();
                 timeSinceLastAttack = 0f;
+
+                weapon.transform.parent.rotation = Quaternion.identity;
+                Vector3 weaponDir = player.transform.position - transform.position;
+                weaponDir = weaponDir.normalized;
+                weapon.transform.position = transform.position + weaponDir.normalized * 1.2f;
+
+
                 attackEvent.Invoke();
                 Debug.Log("ENEMY ATTACKS!!!!");
                 foreach (GameObject item in gWP.targets)

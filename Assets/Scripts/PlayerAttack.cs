@@ -40,18 +40,13 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         playerPos = transform.position;
-        Vector2 playerScreenPos = mainCam.WorldToScreenPoint(playerPos);
+        
+        //weapon.transform.parent.rotation = Quaternion.identity;
 
-        Vector3 worldMousePos = mainCam.ScreenToWorldPoint(mousePos);
-        worldMousePos = new Vector3(worldMousePos.x, worldMousePos.y, 0f);
+        Vector3 weaponDir = CalculateWeaponDirection();
 
-        weapon.transform.parent.rotation = Quaternion.identity;
-
-        Vector3 weaponDir = worldMousePos - transform.position;
-        weaponDir = weaponDir.normalized;
-
+        if (!attackAnimation.isPlaying && !canAttack) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, 0.05f);
         if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, lerpTime);
-
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
 
 
@@ -64,6 +59,11 @@ public class PlayerAttack : MonoBehaviour
         deltaToReload++;
         if(canAttack && isAttacking)
         {
+            Debug.Log(deltaToReload);
+            weapon.transform.parent.rotation = Quaternion.identity;
+            weaponDir = CalculateWeaponDirection();
+            weapon.transform.position = transform.position + new Vector3(weaponDir.x, weaponDir.y);
+
             attackAnimation.Play();
 
             targets = gWP.targets;
@@ -116,5 +116,13 @@ public class PlayerAttack : MonoBehaviour
     public void GetMouseCoords(InputAction.CallbackContext context)
     {
         mousePos = context.ReadValue<Vector2>();
+    }
+
+    Vector2 CalculateWeaponDirection()
+    {
+        Vector3 worldMousePos = mainCam.ScreenToWorldPoint(mousePos);
+        worldMousePos = new Vector3(worldMousePos.x, worldMousePos.y, 0f);
+        Vector2 weaponDir = worldMousePos - transform.position;
+        return weaponDir.normalized;
     }
 }

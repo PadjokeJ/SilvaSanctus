@@ -108,7 +108,7 @@ public class EnemyAI : MonoBehaviour
                 attacking = false;
             }
         }
-        Debug.Log(healthScript.health);
+       
         ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
     }
     public void Die()

@@ -53,68 +53,29 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerPos = transform.position;
-        weaponDistance = gWP.weaponDistance;
+        if(!attackAnimation.isPlaying)
+            deltaToReload += Time.deltaTime;
+        canAttack = reloadTime - deltaToReload < 0;
 
         Vector3 weaponDir = CalculateWeaponDirection();
-
-        if (!attackAnimation.isPlaying && !canAttack) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, 0.05f);
-        if (!attackAnimation.isPlaying) weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * weaponDistance, lerpTime);
+        if (!canAttack)
+        {
+            gWP.isAttacking = false;
+            weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.05f);
+            weapon.transform.right = weaponDir;
+        }
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
+        if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
+        if (weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
 
-
-        if (!attackAnimation.isPlaying) weapon.transform.right = weapon.transform.position - transform.position;
-        if(weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
-        if(weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
-        
-
-        canAttack = reloadTime - deltaToReload < 0;
-        deltaToReload += Time.deltaTime;
         if(canAttack && isAttacking)
         {
-            Debug.Log(deltaToReload);
-            weaponAnimator.transform.rotation = Quaternion.identity;
-            weaponDir = CalculateWeaponDirection();
-            weapon.transform.position = transform.position + new Vector3(weaponDir.x, weaponDir.y);
+            canAttack = false;
+            deltaToReload = 0f;
 
-            attackAnimation.Play();
-
-            targets = gWP.targets;
-            deltaToReload = 0;
-            if(targets != null)
-            {
-                foreach (GameObject item in targets)
-                {
-                    Debug.Log(item);
-
-                    //ps.Play();
-                    if (item.TryGetComponent<Health>(out Health health))
-                    {
-                        health.takeDamage(gWP.weaponDamage);
-                    }
-                    if (item.TryGetComponent<EnemyAI>(out EnemyAI eAI))
-                    {
-                        eAI.takeKB(transform, gWP.knockback);
-                    }
-                }
-            }
+            gWP.Attack();
+            gWP.isAttacking = true;
         }
-
-        if (weaponHasTrail)
-        {
-            if (attackAnimation.isPlaying)
-            {
-                //sr.enabled = false;
-                tr.emitting = true;
-            }
-            else
-            {
-                //sr.enabled = true;
-                tr.emitting = false;
-            }
-        }
-             
-
     }
     public void Attack(InputAction.CallbackContext context)
     {

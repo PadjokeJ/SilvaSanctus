@@ -116,9 +116,9 @@ public class EnemyAI : MonoBehaviour
         Destroy(healthBar);
         Destroy(this.gameObject);
     }
-    public void takeKB(Transform playerTransform, float KnockBackStrength)
+    public void takeKB(Vector3 damageOrigin, float KnockBackStrength)
     {
-        Vector3 kbDir = playerTransform.position - transform.position;
+        Vector3 kbDir = damageOrigin - transform.position;
         Vector2 kbForce = kbDir.normalized * -KnockBackStrength;
         rg.AddForce(kbForce, ForceMode2D.Impulse);
     }

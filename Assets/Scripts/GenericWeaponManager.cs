@@ -19,4 +19,11 @@ public class GenericWeaponManager : MonoBehaviour
     public string weaponName;
     public string weaponDescription;
   
+    public void Attack()
+    {
+        if (attackEvent != null)
+            attackEvent.Invoke();
+        else
+            Debug.LogError("YOUR WEAPON " + this.gameObject.name + "HAS NO ATTACK EVENT");
+    }
 }

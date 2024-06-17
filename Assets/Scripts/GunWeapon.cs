@@ -34,6 +34,10 @@ public class GunWeapon : Weapon
         {
             targets.Add(hit.collider.gameObject);
         }
+        foreach(GameObject target in targets)
+        {
+            target.GetComponent<Health>().takeDamage(weaponDamage);
+        }
 
         attackAnimation.Play();
         gWP.targets = targets;

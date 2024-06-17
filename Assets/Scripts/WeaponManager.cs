@@ -5,12 +5,15 @@ using UnityEngine.Events;
 
 public class WeaponManager : MonoBehaviour
 {
+    GameObject player;
     public float damage;
     public float reloadTime;
     public float distFromPlayer;
     public bool isMelee;
     public float knockBack;
     public ParticleSystem particle;
+
+    TrailRenderer tr;
 
     Collider2D c2d;
     PlayerAttack pA;
@@ -31,24 +34,35 @@ public class WeaponManager : MonoBehaviour
         gWP.knockback = knockBack;
         gWP.weaponDistance = distFromPlayer;
 
+        player = FindObjectOfType<PlayerAttack>().gameObject;
+        tr = GetComponentInChildren<TrailRenderer>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        gWP.targets = targets;
-        pA.targets = targets;
+        tr.emitting = gWP.isAttacking;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Player")) targets.Add(collision.gameObject);
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(!collision.gameObject.CompareTag("Player")) targets.Remove(collision.gameObject);
-    }
+    
     public void Attack()
     {
-        attackAnimation.Play();
+        targets.Clear();
+        Collider2D[] hit;
+        hit = Physics2D.OverlapCircleAll(transform.position, 1f);
+        foreach (Collider2D item in hit)
+        {
+            if (item.CompareTag("Enemy"))
+                targets.Add(item.gameObject);
+
+        }
+        gWP.targets = targets;
+
+        foreach(GameObject target in targets)
+        {
+            target.GetComponent<Health>().takeDamage(damage);
+            target.GetComponent<EnemyAI>().takeKB(player.transform.position, knockBack);
+        }
+
+        if (attackAnimation != null) attackAnimation.Play();
     }
 }

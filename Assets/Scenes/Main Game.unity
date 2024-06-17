@@ -235,10 +235,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6959253977817736391, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 592180011}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
 --- !u!1 &338902282
 GameObject:
@@ -424,26 +421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SliderPrefab: {fileID: 5356092981196291015, guid: 5fa5f494b0cc1234ea2db7dbf25afb08, type: 3}
   barPrefab: {fileID: 3856462377662402095, guid: 70bafeb0af8dfc44a9d8549c08d7eaad, type: 3}
---- !u!1 &592180001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6959253977817736391, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-  m_PrefabInstance: {fileID: 197409294}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &592180011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592180001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc75b7ac0baaf74499aa121b84f249f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1663250982915941183, guid: 7b7a0952d3ad13a49abcd63c22f3ea32, type: 3}
-  selectedWeapon: {fileID: 0}
 --- !u!1 &1197300719
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,10 +476,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0011547344
-    y: 0.0020533882
-    width: 0.9976905
-    height: 0.99383986
+    x: 0
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

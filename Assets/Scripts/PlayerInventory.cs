@@ -25,7 +25,6 @@ public class PlayerInventory : MonoBehaviour
     public void InstantiateWeapon(int index)
     {
         selectedWeapon = Instantiate<GameObject>(weapons[index], this.transform);
-        selectedWeapon.transform.position = Vector3.zero;
-        selectedWeapon.transform.rotation = Quaternion.identity;
-    }
+
+    }    
 }

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject weapon;
+    GameObject weapon;
     Camera mainCam;
     float damage;
     float weaponDistance, kb;
@@ -23,12 +23,20 @@ public class PlayerAttack : MonoBehaviour
 
     public float lerpTime;
 
+    PlayerInventory playerInventory;
 
 
     Animation attackAnimation;
     void Awake()
     {
         mainCam = Camera.main;
+
+        playerInventory = GetComponent<PlayerInventory>();
+        playerInventory.InstantiateWeapon(0);
+
+        weapon = playerInventory.GetComponentInChildren<GenericWeaponManager>().gameObject;
+
+
         gWP = GetComponentInChildren<GenericWeaponManager>();
 
         attackAnimation = GetComponentInChildren<Animation>();

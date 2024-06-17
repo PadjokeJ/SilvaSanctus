@@ -12,8 +12,8 @@ public class PlayerAttack : MonoBehaviour
     ParticleSystem ps;
     float reloadTime;
     float deltaToReload;
-    bool canAttack;
-    bool isAttacking;
+    public bool canAttack;
+    public bool isAttacking;
     public List<GameObject> targets;
     Vector2 mousePos;
     Vector2 playerPos, weapPos;
@@ -55,15 +55,15 @@ public class PlayerAttack : MonoBehaviour
     {
         if(!attackAnimation.isPlaying)
             deltaToReload += Time.deltaTime;
-        canAttack = reloadTime - deltaToReload < 0;
+        canAttack = gWP.reloadTime - deltaToReload < 0;
 
         Vector3 weaponDir = CalculateWeaponDirection();
-        if (!canAttack)
-        {
-            gWP.isAttacking = false;
-            weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.05f);
-            weapon.transform.right = weaponDir;
-        }
+        playerPos = transform.position;
+
+        gWP.isAttacking = attackAnimation.isPlaying;
+        weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.05f);
+        weapon.transform.right = weaponDir;
+        
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
         if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
         if (weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);

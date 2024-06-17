@@ -36,6 +36,7 @@ public class WeaponManager : MonoBehaviour
 
         player = FindObjectOfType<PlayerAttack>().gameObject;
         tr = GetComponentInChildren<TrailRenderer>();
+        attackAnimation = GetComponentInChildren<Animation>();
     }
 
     // Update is called once per frame

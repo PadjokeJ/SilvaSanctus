@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  reloadTime: 30
+  reloadTime: 0.5
   distFromPlayer: 1
   isMelee: 1
   knockBack: 20
@@ -5207,7 +5207,7 @@ Transform:
   m_Children:
   - {fileID: 850604822760402306}
   m_Father: {fileID: 769859699921658975}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -34.844994}
 --- !u!111 &3324907413785200735
 Animation:
   m_ObjectHideFlags: 0

@@ -228,17 +228,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2456708634449605763, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -34.844994
-      objectReference: {fileID: 0}
     - target: {fileID: 3496544728200360264, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: reloadTime
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050728532954845542, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-      propertyPath: isAttacking
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6959253977817736391, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: m_Name
@@ -488,10 +480,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0011547344
-    y: 0.0020533882
-    width: 0.9976905
-    height: 0.99383986
+    x: 0
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

@@ -10,8 +10,8 @@ public class PlayerAttack : MonoBehaviour
     float damage;
     float weaponDistance, kb;
     ParticleSystem ps;
-    int reloadTime;
-    int deltaToReload;
+    float reloadTime;
+    float deltaToReload;
     bool canAttack;
     bool isAttacking;
     public List<GameObject> targets;
@@ -56,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
         
 
         canAttack = reloadTime - deltaToReload < 0;
-        deltaToReload++;
+        deltaToReload += Time.deltaTime;
         if(canAttack && isAttacking)
         {
             Debug.Log(deltaToReload);

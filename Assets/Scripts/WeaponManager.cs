@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class WeaponManager : MonoBehaviour
 {
     public float damage;
-    public int reloadTime;
+    public float reloadTime;
     public float distFromPlayer;
     public bool isMelee;
     public float knockBack;

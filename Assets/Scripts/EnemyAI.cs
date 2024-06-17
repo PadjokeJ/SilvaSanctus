@@ -192,7 +192,7 @@ public class EnemyAI : MonoBehaviour
         foreach (Vector3 dir in desirableDir)
         {
             Gizmos.DrawLine(transform.position, transform.position + dir * 1.5f);
-            Debug.Log(dir);
+            
         }
     }
 }

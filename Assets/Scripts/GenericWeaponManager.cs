@@ -8,6 +8,9 @@ public class GenericWeaponManager : MonoBehaviour
     public List<GameObject> targets;
     public float weaponDamage;
     public float reloadTime;
+    public float weaponDistance;
+    public float knockback;
+    public ParticleSystem particle;
 
     public bool isAttacking;
     

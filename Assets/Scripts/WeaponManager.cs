@@ -10,6 +10,7 @@ public class WeaponManager : MonoBehaviour
     public float distFromPlayer;
     public bool isMelee;
     public float knockBack;
+    public ParticleSystem particle;
 
     Collider2D c2d;
     PlayerAttack pA;
@@ -24,8 +25,11 @@ public class WeaponManager : MonoBehaviour
         c2d = GetComponent<Collider2D>();
         pA = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         gWP = GetComponent<GenericWeaponManager>();
-        pA.GetWeapon(this.gameObject);
         gWP.attackEvent = attackEvent;
+        gWP.reloadTime = reloadTime;
+        gWP.weaponDamage = damage;
+        gWP.knockback = knockBack;
+        gWP.weaponDistance = distFromPlayer;
 
     }
 

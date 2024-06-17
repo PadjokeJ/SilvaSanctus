@@ -146,9 +146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   reloadTime: 0.5
-  distFromPlayer: 1
+  distFromPlayer: 0.8
   isMelee: 1
-  knockBack: 20
+  knockBack: 1
+  particle: {fileID: 0}
   attackEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5086,6 +5087,9 @@ MonoBehaviour:
   targets: []
   weaponDamage: 0
   reloadTime: 0
+  weaponDistance: 0
+  knockback: 0
+  particle: {fileID: 0}
   isAttacking: 0
   attackEvent:
     m_PersistentCalls:

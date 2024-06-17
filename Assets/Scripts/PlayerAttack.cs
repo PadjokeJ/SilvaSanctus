@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    GameObject weapon;
+    GameObject weapon, weaponAnimator;
     Camera mainCam;
-    float damage;
+    public float damage;
     float weaponDistance, kb;
     ParticleSystem ps;
     float reloadTime;
@@ -17,13 +17,15 @@ public class PlayerAttack : MonoBehaviour
     public List<GameObject> targets;
     Vector2 mousePos;
     Vector2 playerPos, weapPos;
-    GenericWeaponManager gWP;
+    public GenericWeaponManager gWP;
     SpriteRenderer sr;
     TrailRenderer tr;
 
     public float lerpTime;
 
     PlayerInventory playerInventory;
+
+    bool weaponHasTrail = false;
 
 
     Animation attackAnimation;
@@ -39,7 +41,11 @@ public class PlayerAttack : MonoBehaviour
 
         gWP = GetComponentInChildren<GenericWeaponManager>();
 
+        
+
         attackAnimation = GetComponentInChildren<Animation>();
+        weaponAnimator = attackAnimation.gameObject;
+
         sr = weapon.GetComponent<SpriteRenderer>();
         tr = weapon.GetComponent<TrailRenderer>();
     }
@@ -48,8 +54,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         playerPos = transform.position;
-        
-        //weapon.transform.parent.rotation = Quaternion.identity;
+        weaponDistance = gWP.weaponDistance;
 
         Vector3 weaponDir = CalculateWeaponDirection();
 
@@ -68,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
         if(canAttack && isAttacking)
         {
             Debug.Log(deltaToReload);
-            weapon.transform.parent.rotation = Quaternion.identity;
+            weaponAnimator.transform.rotation = Quaternion.identity;
             weaponDir = CalculateWeaponDirection();
             weapon.transform.position = transform.position + new Vector3(weaponDir.x, weaponDir.y);
 
@@ -81,28 +86,32 @@ public class PlayerAttack : MonoBehaviour
                 foreach (GameObject item in targets)
                 {
                     Debug.Log(item);
-                    ps.Play();
+
+                    //ps.Play();
                     if (item.TryGetComponent<Health>(out Health health))
                     {
-                        health.takeDamage(damage);
+                        health.takeDamage(gWP.weaponDamage);
                     }
                     if (item.TryGetComponent<EnemyAI>(out EnemyAI eAI))
                     {
-                        eAI.takeKB(transform, kb);
+                        eAI.takeKB(transform, gWP.knockback);
                     }
                 }
             }
         }
 
-        if (attackAnimation.isPlaying)
+        if (weaponHasTrail)
         {
-            //sr.enabled = false;
-            tr.emitting = true;
-        }
-        else
-        {
-            //sr.enabled = true;
-            tr.emitting = false;
+            if (attackAnimation.isPlaying)
+            {
+                //sr.enabled = false;
+                tr.emitting = true;
+            }
+            else
+            {
+                //sr.enabled = true;
+                tr.emitting = false;
+            }
         }
              
 

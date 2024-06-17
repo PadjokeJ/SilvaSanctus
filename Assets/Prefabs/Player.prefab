@@ -5053,6 +5053,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  weaponName: 
+  weaponDescription: 
 --- !u!96 &8213471094225881789
 TrailRenderer:
   serializedVersion: 3
@@ -5467,7 +5469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 2335987836436174061}
   targets: []
-  lerpTime: 0.2
+  lerpTime: 0.1
 --- !u!114 &7781752577232314290
 MonoBehaviour:
   m_ObjectHideFlags: 0

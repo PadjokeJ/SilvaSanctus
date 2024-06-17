@@ -344,6 +344,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  weaponName: 
+  weaponDescription: 
 --- !u!96 &316848894644111002
 TrailRenderer:
   serializedVersion: 3

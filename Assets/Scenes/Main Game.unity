@@ -228,10 +228,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3496544728200360264, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-      propertyPath: reloadTime
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6959253977817736391, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -480,10 +476,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0011547344
+    y: 0.0020533882
+    width: 0.9976905
+    height: 0.99383986
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -794,10 +790,6 @@ PrefabInstance:
     - target: {fileID: 105768394930308794, guid: 9bd07e46ccc123a419e5c7948aea276b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 316848894644111002, guid: 9bd07e46ccc123a419e5c7948aea276b, type: 3}
-      propertyPath: m_Emitting
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1989758858887937333, guid: 9bd07e46ccc123a419e5c7948aea276b, type: 3}
       propertyPath: m_Name

@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class GunWeapon : Weapon
 {
-
-
+    LineRenderer lr;
+    float fadeTime = 0.1f;
     void Awake()
     {
         gWP = GetComponent<GenericWeaponManager>();
@@ -22,6 +22,13 @@ public class GunWeapon : Weapon
         targets = new List<GameObject>();
 
         attackAnimation = transform.GetChild(0).GetComponent<Animation>();
+
+        lr = GetComponentInChildren<LineRenderer>();
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     public void Attack()
@@ -36,7 +43,8 @@ public class GunWeapon : Weapon
         }
         foreach(GameObject target in targets)
         {
-            target.GetComponent<Health>().takeDamage(weaponDamage);
+            if(target.TryGetComponent<Health>(out Health healthScript))
+                healthScript.takeDamage(weaponDamage);
         }
 
         attackAnimation.Play();

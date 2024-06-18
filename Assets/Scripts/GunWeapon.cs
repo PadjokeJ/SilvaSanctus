@@ -6,7 +6,12 @@ using UnityEngine.Events;
 public class GunWeapon : Weapon
 {
     LineRenderer lr;
-    float fadeTime = 0.1f;
+    float fadeTime = 0.5f;
+    float timeSinceShot = 0f;
+
+    float hitDistance = 0f;
+
+    
     void Awake()
     {
         gWP = GetComponent<GenericWeaponManager>();
@@ -24,21 +29,25 @@ public class GunWeapon : Weapon
         attackAnimation = transform.GetChild(0).GetComponent<Animation>();
 
         lr = GetComponentInChildren<LineRenderer>();
+        particle = GetComponentInChildren<ParticleSystem>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        
+        lr.SetPosition(0, Vector3.Lerp(lr.GetPosition(0), lr.GetPosition(1), 0.1f / hitDistance));
     }
 
     public void Attack()
     {
         targets.Clear();
+        hitDistance = 20f; // in case we dont get a hit, so we dont mess up the graphics
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 1f, transform.right);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.5f, transform.right);
 
         if(hit.collider != null)
         {
+            hitDistance = hit.distance;
+
             targets.Add(hit.collider.gameObject);
         }
         foreach(GameObject target in targets)
@@ -47,7 +56,14 @@ public class GunWeapon : Weapon
                 healthScript.takeDamage(weaponDamage);
         }
 
+        // graphics:
         attackAnimation.Play();
+        timeSinceShot = 0f;
+        lr.SetPosition(0, transform.position + transform.right * 0.5f);
+        lr.SetPosition(1, lr.GetPosition(0) + transform.right * hitDistance * 1.1f);
+        particle.Play();
+
+
         gWP.targets = targets;
     }
 }

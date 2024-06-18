@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         /*if (rb.velocity.normalized.x > 0.1f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         if (rb.velocity.normalized.x < -0.1f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);*/
 
-        mainCam.transform.position = transform.position + new Vector3(0, 0, -10f);
+        //mainCam.transform.position = transform.position + new Vector3(0, 0, -10f);
     }
     public void onMoveUpdate(InputAction.CallbackContext context)
     {

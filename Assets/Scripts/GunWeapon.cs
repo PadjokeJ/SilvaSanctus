@@ -11,6 +11,8 @@ public class GunWeapon : Weapon
 
     float hitDistance = 0f;
 
+    CameraManager cm;
+
     
     void Awake()
     {
@@ -30,6 +32,8 @@ public class GunWeapon : Weapon
 
         lr = GetComponentInChildren<LineRenderer>();
         particle = GetComponentInChildren<ParticleSystem>();
+
+        cm = FindObjectOfType<CameraManager>();
     }
 
     void Update()
@@ -63,6 +67,7 @@ public class GunWeapon : Weapon
         lr.SetPosition(1, lr.GetPosition(0) + transform.right * hitDistance * 1.1f);
         particle.Play();
 
+        cm.CameraShake(5f, 20f, 0.5f);
 
         gWP.targets = targets;
     }

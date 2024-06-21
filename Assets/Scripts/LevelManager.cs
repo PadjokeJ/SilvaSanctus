@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
             {
                 //pick a random room
                 randomRoom =
-                    allRooms.Levels[Random.Range(0, allRooms.Levels.Length - 1)];
+                    allRooms.Levels[Random.Range(0, allRooms.Levels.Length)];
                 Instantiate<GameObject>(randomRoom.roomObject, new Vector3(roomX, roomY), Quaternion.identity);
 
                 roomX += 2f // To give some space between rooms

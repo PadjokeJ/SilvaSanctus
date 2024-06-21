@@ -932,6 +932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4250979970361771404}
+  - component: {fileID: 3323459217666559850}
   m_Layer: 0
   m_Name: Combat1
   m_TagString: Untagged
@@ -961,6 +962,23 @@ Transform:
   - {fileID: 821824108666867483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3323459217666559850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7092011625930928162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba61c223ab3fa7b4581d6839ae6c415c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors:
+  - {fileID: 7473413795223081180}
+  - {fileID: 677990732004824443}
+  - {fileID: 2313532747016934643}
+  - {fileID: 2095021176185128949}
 --- !u!1 &7473413795223081180
 GameObject:
   m_ObjectHideFlags: 0

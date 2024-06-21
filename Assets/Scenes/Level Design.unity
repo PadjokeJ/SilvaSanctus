@@ -866,6 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4519982620830560595}
+  - component: {fileID: 7363197391101494526}
   m_Layer: 0
   m_Name: Default room
   m_TagString: Untagged
@@ -873,6 +874,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &7363197391101494526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7363197391101494525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba61c223ab3fa7b4581d6839ae6c415c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors:
+  - {fileID: 7201908624077825027}
+  - {fileID: 949136949113397668}
+  - {fileID: 2621066648610676780}
+  - {fileID: 1826127549161419562}
 --- !u!1839735485 &7936739167094050211
 Tilemap:
   m_ObjectHideFlags: 0

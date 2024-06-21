@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
 
     Health healthScript;
 
+    public float experienceGiven;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -113,6 +115,8 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
+        FindObjectOfType<PlayerLevelling>().gainExperience(experienceGiven);
+
         Destroy(healthBar);
         Destroy(this.gameObject);
     }

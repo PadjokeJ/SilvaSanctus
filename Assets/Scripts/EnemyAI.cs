@@ -112,6 +112,11 @@ public class EnemyAI : MonoBehaviour
         }
        
         ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
+
+
+        
+
+
     }
     public void Die()
     {
@@ -188,15 +193,21 @@ public class EnemyAI : MonoBehaviour
         return dir.normalized;
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         // Draws a blue line from this transform to the target
-        Debug.Log("Drawing gizmos");
+        //Debug.Log("Drawing gizmos");
         Gizmos.color = Color.blue;
         foreach (Vector3 dir in desirableDir)
         {
             Gizmos.DrawLine(transform.position, transform.position + dir * 1.5f);
-            
         }
+
+        // Range
+        if (dist < maxDist) Gizmos.color = Color.green;
+        else Gizmos.color = Color.red;
+
+        if (dist < 2 * maxDist)
+            Gizmos.DrawWireSphere(transform.position, maxDist);
     }
 }

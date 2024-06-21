@@ -225,7 +225,7 @@ MonoBehaviour:
   losesInterestIfNoLOS: 0
   fleeIfTooClose: 0
   speed: 50
-  maxDist: 20
+  maxDist: 10
   minDist: 1.5
   minRange: 2
   fleeSpeedMultiplier: 0.5
@@ -234,6 +234,7 @@ MonoBehaviour:
   LOS: 0
   attacking: 0
   off: 45
+  experienceGiven: 0
 --- !u!114 &1148357061521857519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +329,9 @@ MonoBehaviour:
   targets: []
   weaponDamage: 0
   reloadTime: 0
+  weaponDistance: 0
+  knockback: 0
+  particle: {fileID: 0}
   isAttacking: 0
   attackEvent:
     m_PersistentCalls:

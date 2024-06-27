@@ -7,10 +7,15 @@ using UnityEngine.Tilemaps;
 public class LevelManager : MonoBehaviour
 {
     public AllLevelsSO allRooms;
+    public bool generate;
+    public bool destroy;
+
+    List<GameObject> rooms = new List<GameObject>();
 
     List<Vector3> corridorsStartPos = new List<Vector3>();
     List<Vector3> corridorsEndPos = new List<Vector3>();
     List<Vector3> corridorsVector = new List<Vector3>();
+
     void Awake()
     {
         GenerateLevel(25, new Vector2(100f, 100f), 5f);
@@ -28,11 +33,11 @@ public class LevelManager : MonoBehaviour
     }
     void GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing, float loreRoomProbability, int maxloreRoomAmmount)
     {
+        float timeToGenerate = Time.realtimeSinceStartup;
         //place rooms in a grid
-
-        List<GameObject> rooms = new List<GameObject>();
-
-        
+        corridorsStartPos.Clear();
+        corridorsEndPos.Clear();
+        DestroyDungeon();
 
         //calculate grid dimensions (prioritise squares)
         int gridSize = Mathf.FloorToInt(Mathf.Sqrt(roomAmmount));
@@ -88,6 +93,9 @@ public class LevelManager : MonoBehaviour
 
             
         }
+
+        timeToGenerate = Time.realtimeSinceStartup - timeToGenerate;
+        Debug.Log("Dungeon took " + timeToGenerate.ToString() + " seconds to generate");
     }
     
     private void OnDrawGizmos()
@@ -98,6 +106,33 @@ public class LevelManager : MonoBehaviour
         {
             Gizmos.DrawLine(corridorsStartPos[i], corridorsEndPos[i]);
         }
+    }
+
+    void DestroyDungeon()
+    {
+        foreach(GameObject room in rooms)
+        {
+            Destroy(room);
+        }
+        rooms.Clear();
+    }
+
+    [ExecuteInEditMode]
+
+    private void OnValidate()
+    {
+        if(generate)
+        {
+            GenerateLevel(25, new Vector2(100f, 100f), 5f);
+        }
+        if (destroy)
+        {
+            DestroyDungeon();
+            corridorsEndPos.Clear();
+            corridorsStartPos.Clear();
+        }
+        generate = false;
+        destroy = false;
     }
 
 

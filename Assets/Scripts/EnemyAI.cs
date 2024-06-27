@@ -210,4 +210,9 @@ public class EnemyAI : MonoBehaviour
         if (dist < 2 * maxDist)
             Gizmos.DrawWireSphere(transform.position, maxDist);
     }
+    private void OnDestroy()
+    {
+        if (healthBar != null)
+            Destroy(healthBar);
+    }
 }

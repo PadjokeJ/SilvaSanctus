@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 155976117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4944143, y: -1.2609776, z: -0.032249045}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -662,8 +662,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.7407408
-    height: 0.98765427
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -952,6 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allRooms: {fileID: 11400000, guid: 42474c36bdc34894fa785063b04be02a, type: 2}
+  generate: 0
+  destroy: 0
 --- !u!4 &1735482022
 Transform:
   m_ObjectHideFlags: 0

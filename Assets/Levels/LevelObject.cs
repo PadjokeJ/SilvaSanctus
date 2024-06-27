@@ -20,12 +20,9 @@ public class LevelObject : ScriptableObject
     public Vector2Int roomSize;
     public GameObject roomObject;
 
-    public List<GameObject> roomDoors;
     public List<Vector2Int> roomDoorsDirection;
     public bool isStartingRoom = false;
-    public int exitCount = 4;
-    public Vector2 roomExit;
-    public Vector2Int roomExitDirection;
+
 
     
 }

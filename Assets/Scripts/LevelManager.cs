@@ -37,8 +37,6 @@ public class LevelManager : MonoBehaviour
     {
         float timeToGenerate = Time.realtimeSinceStartup;
         //place rooms in a grid
-        corridorsRightPos.Clear();
-        corridorsLeftPos.Clear();
         DestroyDungeon();
 
         //calculate grid dimensions (prioritise squares)
@@ -154,6 +152,10 @@ public class LevelManager : MonoBehaviour
             Destroy(room);
         }
         rooms.Clear();
+        corridorsRightPos.Clear();
+        corridorsLeftPos.Clear();
+        corridorsUpPos.Clear();
+        corridorsDownPos.Clear();
     }
 
     [ExecuteInEditMode]
@@ -167,8 +169,6 @@ public class LevelManager : MonoBehaviour
         if (destroy)
         {
             DestroyDungeon();
-            corridorsLeftPos.Clear();
-            corridorsRightPos.Clear();
         }
         generate = false;
         destroy = false;

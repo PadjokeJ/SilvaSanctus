@@ -660,15 +660,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0013386881
-    y: 0
-    width: 0.9959839
-    height: 1
+    x: 0.0010604454
+    y: 0.0018867925
+    width: 0.9968187
+    height: 0.99622643
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.5625
+  orthographic size: 8.25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 1735482022}
   - component: {fileID: 1735482021}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GenerationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 1944656372}
   - component: {fileID: 1944656371}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: LevellingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

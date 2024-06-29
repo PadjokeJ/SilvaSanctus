@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     List<Vector3> corridorsDownPos = new List<Vector3>();
     List<Vector3> corridorsVector = new List<Vector3>();
 
+    GameObject tilemapObject;
+
     void Awake()
     {
         GenerateLevel(25, new Vector2(100f, 100f), 5f);
@@ -50,7 +52,7 @@ public class LevelManager : MonoBehaviour
         maxHeight = Mathf.FloorToInt(roomAmmount / gridSize);
 
         LevelObject randomRoom;
-        GameObject generatedRoom;
+        GameObject generatedRoom = new GameObject();
         while(roomsGenerated < roomAmmount)
         {
             float roomX = 0;
@@ -106,8 +108,47 @@ public class LevelManager : MonoBehaviour
             
         }
 
+
+        //time to generate corridors!
+        tilemapObject = new GameObject();
+        tilemapObject.AddComponent<Tilemap>();
+        tilemapObject.AddComponent<TilemapRenderer>();
+        tilemapObject.AddComponent<Grid>();
+        tilemapObject.AddComponent<TilemapCollider2D>();
+
+        tilemapObject = Instantiate<GameObject>(tilemapObject, Vector3.zero, Quaternion.identity);
+        tilemapObject.name = "Corridor tilemap";
+
+        Tile wallTile = new Tile();
+        Tilemap tilemap = generatedRoom.GetComponentInChildren<Tilemap>();
+
+
+        // get the type of tile to use for walls
+        foreach (var position in tilemap.cellBounds.allPositionsWithin)
+        {
+            if (tilemap.HasTile(position))
+            {
+                wallTile = tilemap.GetTile<Tile>(position);
+                break;
+            }
+        }
+
+        tilemap = tilemapObject.GetComponent<Tilemap>();
+
+        foreach(Vector3 position in corridorsRightPos)
+        {
+            tilemap.SetTile(Vector3Int.FloorToInt(position) + new Vector3Int(0, 1), wallTile);
+            tilemap.SetTile(Vector3Int.FloorToInt(position) + new Vector3Int(0, -2), wallTile);
+        }
+        foreach (Vector3 position in corridorsLeftPos)
+        {
+            tilemap.SetTile(Vector3Int.FloorToInt(position) + new Vector3Int(-1, 1), wallTile);
+            tilemap.SetTile(Vector3Int.FloorToInt(position) + new Vector3Int(-1, -2), wallTile);
+        }
+
         timeToGenerate = Time.realtimeSinceStartup - timeToGenerate;
         Debug.Log("Dungeon took " + timeToGenerate.ToString() + " seconds to generate");
+
     }
     
     private void OnDrawGizmos()
@@ -156,6 +197,8 @@ public class LevelManager : MonoBehaviour
         corridorsLeftPos.Clear();
         corridorsUpPos.Clear();
         corridorsDownPos.Clear();
+
+        Destroy(tilemapObject);
     }
 
     [ExecuteInEditMode]

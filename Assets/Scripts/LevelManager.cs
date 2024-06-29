@@ -153,14 +153,14 @@ public class LevelManager : MonoBehaviour
         {
             endPos = corridorsLeftPos[i];
             startPos = corridorsRightPos[i];
-            midPos1 = (endPos - startPos) / 2 + startPos;
+            midPos1 = Vector3Int.FloorToInt((endPos - startPos) / 2) + startPos;
             midPos1 = new Vector3(midPos1.x, startPos.y);
 
-            midPos2 = (startPos - endPos) / 2 + endPos;
+            midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
             midPos2 = new Vector3(midPos2.x, endPos.y);
 
             SetTiles(wallTile, tilemap, startPos, midPos1, 1);
-            SetTiles(wallTile, tilemap, midPos1, midPos2, 2);
+            SetTiles(wallTile, tilemap, midPos1, midPos2, 1);
             SetTiles(wallTile, tilemap, midPos2, endPos, 1);
 
             SetTiles(wallTile, tilemap, startPos, midPos1 , -2);
@@ -195,12 +195,12 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < corridorsRightPos.Count; i++)
         {
             Vector3 inBetweenRight;
-            inBetweenRight = (corridorsRightPos[i] - corridorsLeftPos[i]) / 2 + corridorsLeftPos[i];
+            inBetweenRight = Vector3Int.FloorToInt((corridorsRightPos[i] - corridorsLeftPos[i]) / 2) + corridorsLeftPos[i];
             inBetweenRight = new Vector3(inBetweenRight.x, corridorsLeftPos[i].y);
             Gizmos.DrawLine(corridorsLeftPos[i], inBetweenRight);
 
             Vector3 inBetweenLeft;
-            inBetweenLeft = (corridorsLeftPos[i] - corridorsRightPos[i]) / 2 + corridorsRightPos[i];
+            inBetweenLeft = Vector3Int.FloorToInt((corridorsLeftPos[i] - corridorsRightPos[i]) / 2) + corridorsRightPos[i];
             inBetweenLeft = new Vector3(inBetweenLeft.x, corridorsRightPos[i].y);
             Gizmos.DrawLine(corridorsRightPos[i], inBetweenLeft);
 
@@ -210,12 +210,12 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < corridorsDownPos.Count; i++)
         {
             Vector3 inBetweenUp;
-            inBetweenUp = (corridorsUpPos[i] - corridorsDownPos[i]) / 2 + corridorsDownPos[i];
+            inBetweenUp = Vector3Int.FloorToInt((corridorsUpPos[i] - corridorsDownPos[i]) / 2) + corridorsDownPos[i];
             inBetweenUp = new Vector3(corridorsDownPos[i].x, inBetweenUp.y);
             Gizmos.DrawLine(corridorsDownPos[i], inBetweenUp);
 
             Vector3 inBetweenDown;
-            inBetweenDown = (corridorsDownPos[i] - corridorsUpPos[i]) / 2 + corridorsUpPos[i];
+            inBetweenDown = Vector3Int.FloorToInt((corridorsDownPos[i] - corridorsUpPos[i]) / 2) + corridorsUpPos[i];
             inBetweenDown = new Vector3(corridorsUpPos[i].x, inBetweenDown.y);
             Gizmos.DrawLine(corridorsUpPos[i], inBetweenDown);
 

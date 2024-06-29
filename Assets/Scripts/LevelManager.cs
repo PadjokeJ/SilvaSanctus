@@ -167,7 +167,26 @@ public class LevelManager : MonoBehaviour
             SetTiles(wallTile, tilemap, midPos1, midPos2, -2);
             SetTiles(wallTile, tilemap, midPos2, endPos, -2);
         }
-        
+
+        for (int i = 0; i < corridorsDownPos.Count; i++)
+        {
+            endPos = corridorsDownPos[i];
+            startPos = corridorsUpPos[i];
+            midPos1 = Vector3Int.FloorToInt((endPos - startPos) / 2) + startPos;
+            midPos1 = new Vector3(midPos1.x, startPos.y);
+
+            midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
+            midPos2 = new Vector3(midPos2.x, endPos.y);
+
+            SetTiles(wallTile, tilemap, startPos, midPos1, 1);
+            SetTiles(wallTile, tilemap, midPos1, midPos2, 1);
+            SetTiles(wallTile, tilemap, midPos2, endPos, 1);
+
+            SetTiles(wallTile, tilemap, startPos, midPos1, -2);
+            SetTiles(wallTile, tilemap, midPos1, midPos2, -2);
+            SetTiles(wallTile, tilemap, midPos2, endPos, -2);
+        }
+
 
         return obj;
 

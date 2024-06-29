@@ -159,16 +159,20 @@ public class LevelManager : MonoBehaviour
             midPos2 = (startPos - endPos) / 2 + endPos;
             midPos2 = new Vector3(midPos2.x, endPos.y);
 
-            SetTiles(wallTile, tilemap, startPos, midPos1);
-            SetTiles(wallTile, tilemap, midPos1, midPos2);
-            SetTiles(wallTile, tilemap, midPos2, endPos);
+            SetTiles(wallTile, tilemap, startPos, midPos1, 1);
+            SetTiles(wallTile, tilemap, midPos1, midPos2, 2);
+            SetTiles(wallTile, tilemap, midPos2, endPos, 1);
+
+            SetTiles(wallTile, tilemap, startPos, midPos1 , -2);
+            SetTiles(wallTile, tilemap, midPos1, midPos2, -2);
+            SetTiles(wallTile, tilemap, midPos2, endPos, -2);
         }
         
 
-        return tilemapObject;
+        return obj;
 
     }
-    void SetTiles(Tile wallTile, Tilemap tilemap, Vector3 startPos, Vector3 endPos)
+    void SetTiles(Tile wallTile, Tilemap tilemap, Vector3 startPos, Vector3 endPos, float displacementMult)
     {
         Vector3 segment;
         segment = endPos - startPos;
@@ -176,6 +180,7 @@ public class LevelManager : MonoBehaviour
         Vector3 displacement;
         displacement = new Vector3(segment.y, segment.x);
         displacement.Normalize();
+        displacement = displacement * displacementMult;
 
         for (int j = 0; j < Mathf.CeilToInt(segment.magnitude); j++)
         {

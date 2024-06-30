@@ -159,13 +159,13 @@ public class LevelManager : MonoBehaviour
             midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
             midPos2 = new Vector3(midPos2.x, endPos.y);
 
-            SetTiles(wallTile, tilemap, startPos, midPos1, 1);
-            SetTiles(wallTile, tilemap, midPos1, midPos2, 1);
-            SetTiles(wallTile, tilemap, midPos2, endPos, 1);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1, 4);
+            SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
+            SetSquareTiles(wallTile, tilemap, midPos2, endPos, 4);
 
-            SetTiles(wallTile, tilemap, startPos, midPos1 , -2);
-            SetTiles(wallTile, tilemap, midPos1, midPos2, -2);
-            SetTiles(wallTile, tilemap, midPos2, endPos, -2);
+            SetSquareTiles(null, tilemap, startPos, midPos1, 2);
+            SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
+            SetSquareTiles(null, tilemap, midPos2, endPos, 2);
         }
 
         for (int i = 0; i < corridorsDownPos.Count; i++)
@@ -178,32 +178,38 @@ public class LevelManager : MonoBehaviour
             midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
             midPos2 = new Vector3(midPos2.x, endPos.y);
 
-            SetTiles(wallTile, tilemap, startPos, midPos1, 1);
-            SetTiles(wallTile, tilemap, midPos1, midPos2, 1);
-            SetTiles(wallTile, tilemap, midPos2, endPos, 1);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1, 4);
+            SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
+            SetSquareTiles(wallTile, tilemap, midPos2, endPos, 4);
 
-            SetTiles(wallTile, tilemap, startPos, midPos1, -2);
-            SetTiles(wallTile, tilemap, midPos1, midPos2, -2);
-            SetTiles(wallTile, tilemap, midPos2, endPos, -2);
+            SetSquareTiles(null, tilemap, startPos, midPos1, 2);
+            SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
+            SetSquareTiles(null, tilemap, midPos2, endPos, 2);
+
         }
 
 
         return obj;
 
     }
-    void SetTiles(Tile wallTile, Tilemap tilemap, Vector3 startPos, Vector3 endPos, float displacementMult)
+
+    void SetSquareTiles(Tile wallTile, Tilemap tm, Vector3 startPos, Vector3 endpos, int thickness)
+    {
+        for(int i = 0; i < thickness; i++)
+            SetTiles(wallTile, tm, startPos, endpos, i - Mathf.FloorToInt(thickness/2));
+    }
+    void SetTiles(Tile wallTile, Tilemap tilemap, Vector3 startPos, Vector3 endPos, int displaceMult)
     {
         Vector3 segment;
         segment = endPos - startPos;
 
         Vector3 displacement;
-        displacement = new Vector3(segment.y, segment.x);
-        displacement.Normalize();
-        displacement = displacement * displacementMult;
+        displacement = new Vector3(segment.normalized.y * displaceMult, segment.normalized.x * displaceMult);
+
 
         for (int j = 0; j < Mathf.CeilToInt(segment.magnitude); j++)
         {
-            tilemap.SetTile(Vector3Int.FloorToInt(startPos + segment.normalized * j + displacement), wallTile);
+            tilemap.SetTile(Vector3Int.FloorToInt(displacement + startPos + segment.normalized * j), wallTile);
         }
     }
 

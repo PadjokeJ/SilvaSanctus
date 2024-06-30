@@ -111,11 +111,11 @@ public class LevelManager : MonoBehaviour
         Destroy(dupeObj);
 
         //time to generate corridors!
+        Debug.Log("Rooms took " + (Time.realtimeSinceStartup - timeToGenerate).ToString() + " seconds to generate");
 
         tilemapObject = GenerateCorridors(generatedRoom);
 
-        timeToGenerate = Time.realtimeSinceStartup - timeToGenerate;
-        Debug.Log("Dungeon took " + timeToGenerate.ToString() + " seconds to generate");
+        Debug.Log("Corridors took " + (Time.realtimeSinceStartup - timeToGenerate).ToString() + " seconds to generate");
 
     }
 
@@ -159,28 +159,29 @@ public class LevelManager : MonoBehaviour
             midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
             midPos2 = new Vector3(midPos2.x, endPos.y);
 
-            SetSquareTiles(wallTile, tilemap, startPos, midPos1, 4);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(2, 0), 4);
             SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
-            SetSquareTiles(wallTile, tilemap, midPos2, endPos, 4);
+            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(2, 0), endPos, 4);
 
-            SetSquareTiles(null, tilemap, startPos, midPos1, 2);
+            SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(1, 0), 2);
             SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
-            SetSquareTiles(null, tilemap, midPos2, endPos, 2);
+            SetSquareTiles(null, tilemap, midPos2 - new Vector3(1, 0), endPos, 2);
         }
 
         for (int i = 0; i < corridorsDownPos.Count; i++)
         {
             endPos = corridorsDownPos[i];
             startPos = corridorsUpPos[i];
+
             midPos1 = Vector3Int.FloorToInt((endPos - startPos) / 2) + startPos;
-            midPos1 = new Vector3(midPos1.x, startPos.y);
+            midPos1 = new Vector3(startPos.x, midPos1.y);
 
             midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
-            midPos2 = new Vector3(midPos2.x, endPos.y);
+            midPos2 = new Vector3(endPos.x, midPos2.y);
 
-            SetSquareTiles(wallTile, tilemap, startPos, midPos1, 4);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(0, 3), 4);
             SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
-            SetSquareTiles(wallTile, tilemap, midPos2, endPos, 4);
+            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 1), endPos, 4);
 
             SetSquareTiles(null, tilemap, startPos, midPos1, 2);
             SetSquareTiles(null, tilemap, midPos1, midPos2, 2);

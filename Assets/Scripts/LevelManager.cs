@@ -53,6 +53,7 @@ public class LevelManager : MonoBehaviour
 
         LevelObject randomRoom;
         GameObject generatedRoom = new GameObject();
+        GameObject dupeObj = generatedRoom;
         while(roomsGenerated < roomAmmount)
         {
             float roomX = 0;
@@ -107,7 +108,7 @@ public class LevelManager : MonoBehaviour
 
             
         }
-
+        Destroy(dupeObj);
 
         //time to generate corridors!
 
@@ -126,7 +127,6 @@ public class LevelManager : MonoBehaviour
         obj.AddComponent<Grid>();
         obj.AddComponent<TilemapCollider2D>();
 
-        obj = Instantiate<GameObject>(obj, Vector3.zero, Quaternion.identity);
         obj.name = "Corridor tilemap";
 
         Tile wallTile = new Tile();

@@ -55,9 +55,21 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeSinceLastAttack += Time.deltaTime;
+        if (!attacking)
+        {
+            Vector3 weaponDir = player.transform.position - transform.position;
+            weaponDir = weaponDir.normalized;
 
-        //weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
+
+            weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
+            weapon.transform.right = weaponDir;
+
+            Vector3 weapRot = weapon.transform.rotation.eulerAngles;
+            if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
+            if (weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        timeSinceLastAttack += Time.deltaTime;
 
         LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
         dist = Vector2.Distance(player.transform.position, transform.position);
@@ -92,10 +104,9 @@ public class EnemyAI : MonoBehaviour
                 weaponAnimation.Play();
                 timeSinceLastAttack = 0f;
 
-                weapon.transform.parent.rotation = Quaternion.identity;
-                Vector3 weaponDir = player.transform.position - transform.position;
-                weaponDir = weaponDir.normalized;
-                weapon.transform.position = transform.position + weaponDir.normalized * 1.2f;
+                //weapon.transform.parent.rotation = Quaternion.identity;
+                
+                //weapon.transform.position = transform.position + weaponDir.normalized * 1.2f;
 
 
                 attackEvent.Invoke();

@@ -34,6 +34,9 @@ public class EnemyAI : MonoBehaviour
 
     public float experienceGiven;
 
+    public GameObject warnObject;
+    Animator warnAnimator;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -50,16 +53,19 @@ public class EnemyAI : MonoBehaviour
 
         healthScript = GetComponent<Health>();
 
+        warnObject = Instantiate<GameObject>(warnObject, transform);
+        warnAnimator = warnObject.GetComponent<Animator>();
+        warnObject.transform.position = transform.position + new Vector3(0, 1);
+        warnObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        warnAnimator.SetBool("Attacking", attacking);
         if (!attacking)
         {
             Vector3 weaponDir = player.transform.position - transform.position;
             weaponDir = weaponDir.normalized;
-
 
             weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
             weapon.transform.right = weaponDir;
@@ -83,6 +89,7 @@ public class EnemyAI : MonoBehaviour
             deltaPos =  -CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
             rg.velocity -= deltaPos;
         }
+
         if(dist <= attackDist)
         {
             attackSpeed = gWP.reloadTime;
@@ -93,21 +100,17 @@ public class EnemyAI : MonoBehaviour
                 timeSinceLastAttack = 0f;
                 attacking = true;
             }
-            
         }
         if(attacking)
         {
+            WarnAnimation();
+
             timeSinceReached += Time.deltaTime;
             if(timeSinceReached >= reactionTime)
             {
                 timeSinceReached = 0f;
                 weaponAnimation.Play();
                 timeSinceLastAttack = 0f;
-
-                //weapon.transform.parent.rotation = Quaternion.identity;
-                
-                //weapon.transform.position = transform.position + weaponDir.normalized * 1.2f;
-
 
                 attackEvent.Invoke();
                 Debug.Log("ENEMY ATTACKS!!!!");
@@ -121,13 +124,13 @@ public class EnemyAI : MonoBehaviour
                 attacking = false;
             }
         }
-       
-        ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
-
-
         
-
-
+        ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
+    }
+    void WarnAnimation()
+    {
+        warnObject.SetActive(true);
+        warnAnimator.SetTrigger("Warn");
     }
     public void Die()
     {
@@ -153,7 +156,6 @@ public class EnemyAI : MonoBehaviour
         {
             angle = i * 22.5f;
             desirableDir.Add(new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0));
-            
         }
 
         int iteration = 0;
@@ -170,7 +172,6 @@ public class EnemyAI : MonoBehaviour
             desirableDir[j] = desirableDir[j] * dotProd * 0.5f;
             j++;
         }
-
 
         foreach (Vector3 direction in tempDir)
         {

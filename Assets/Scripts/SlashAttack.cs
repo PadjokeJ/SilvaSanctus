@@ -28,8 +28,8 @@ public class SlashAttack : MonoBehaviour
         gwp.attackEvent = attackEvent;
         targets = new List<GameObject>();
 
-        attackAnimation = transform.parent.GetComponent<Animation>();
-        tr = GetComponent<TrailRenderer>();
+        attackAnimation = GetComponentInChildren<Animation>();
+        tr = GetComponentInChildren<TrailRenderer>();
     }
 
     // Update is called once per frame

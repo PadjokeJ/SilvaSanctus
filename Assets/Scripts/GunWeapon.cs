@@ -11,7 +11,11 @@ public class GunWeapon : Weapon
 
     float hitDistance = 0f;
 
+    public float offsetAngle = 0f, multiplierOvertime = 0f, maxAngle = 0f;
+
     CameraManager cm;
+
+    public float shakeAmplitude = 5f, shakeFrequency = 20f, shakeTime = 0.5f;
 
     
     void Awake()
@@ -47,6 +51,7 @@ public class GunWeapon : Weapon
         hitDistance = 20f; // in case we dont get a hit, so we dont mess up the graphics
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.5f, transform.right);
+        Debug.Log(transform.right);
 
         if(hit.collider != null)
         {
@@ -67,7 +72,7 @@ public class GunWeapon : Weapon
         lr.SetPosition(1, lr.GetPosition(0) + transform.right * hitDistance * 1.1f);
         particle.Play();
 
-        cm.CameraShake(5f, 20f, 0.5f);
+        cm.CameraShake(shakeAmplitude, shakeFrequency, shakeTime);
 
         gWP.targets = targets;
     }

@@ -285,8 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 2
-  reloadTime: 0.2
+  weaponDamage: 4
+  reloadTime: 0.5
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 0}
@@ -308,6 +308,9 @@ MonoBehaviour:
         m_CallState: 2
   attackAnimation: {fileID: 1410948014069912853}
   gWP: {fileID: 9027143748301131542}
+  offsetAngle: 0
+  multiplierOvertime: 0
+  maxAngle: 0
   shakeAmplitude: 2
   shakeFrequency: 20
   shakeTime: 0.5

@@ -78,7 +78,7 @@ public class EnemyAI : MonoBehaviour
         }
         if(LOS && dist < minDist + minRange && fleeIfTooClose) //flee
         {
-            deltaPos =  -CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
+            deltaPos =  CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
             rg.velocity -= deltaPos;
         }
 

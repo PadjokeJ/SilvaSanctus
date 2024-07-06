@@ -12,10 +12,12 @@ public class GunWeapon : Weapon
     float hitDistance = 0f;
 
     public float offsetAngle = 0f, multiplierOvertime = 0f, maxAngle = 0f;
+    float time;
 
     CameraManager cm;
 
     public float shakeAmplitude = 5f, shakeFrequency = 20f, shakeTime = 0.5f;
+
 
     
     void Awake()
@@ -43,6 +45,13 @@ public class GunWeapon : Weapon
     void Update()
     {
         lr.SetPosition(0, Vector3.Lerp(lr.GetPosition(0), lr.GetPosition(1), 0.1f / hitDistance));
+        
+    }
+
+    private void FixedUpdate()
+    {
+        time *= 0.8f;
+        time = Mathf.Max(time, 0f);
     }
 
     public void Attack()
@@ -50,10 +59,21 @@ public class GunWeapon : Weapon
         targets.Clear();
         hitDistance = 20f; // in case we dont get a hit, so we dont mess up the graphics
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.5f, transform.right);
-        Debug.Log(transform.right);
+        time += 1f;
+        time *= time;
+        
+        float angle = Mathf.Min(offsetAngle * multiplierOvertime * time * Random.Range(-1f, 1f), maxAngle);
+        angle += transform.rotation.eulerAngles.z; // in degrees
+        Debug.Log(angle);
+        angle = Mathf.Deg2Rad * angle;
+        
 
-        if(hit.collider != null)
+        Vector3 shootDir = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
+        shootDir.Normalize();
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.5f, shootDir);
+
+        if (hit.collider != null)
         {
             hitDistance = hit.distance;
 
@@ -69,7 +89,7 @@ public class GunWeapon : Weapon
         attackAnimation.Play();
         timeSinceShot = 0f;
         lr.SetPosition(0, transform.position + transform.right * 0.5f);
-        lr.SetPosition(1, lr.GetPosition(0) + transform.right * hitDistance * 1.1f);
+        lr.SetPosition(1, lr.GetPosition(0) + shootDir * hitDistance * 1.1f);
         particle.Play();
 
         cm.CameraShake(shakeAmplitude, shakeFrequency, shakeTime);

@@ -206,18 +206,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6514524537981665721, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: weapons.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6514524537981665721, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
+      objectReference: {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
     - target: {fileID: 6514524537981665721, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: weapons.Array.data[1]
       value: 
-      objectReference: {fileID: 5092907722837666214, guid: 1179d555ff088ec46adfdef5d1e10a3d, type: 3}
+      objectReference: {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
     - target: {fileID: 6514524537981665721, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 5092907722837666214, guid: 1179d555ff088ec46adfdef5d1e10a3d, type: 3}
+    - target: {fileID: 6514524537981665721, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: weapons.Array.data[3]
       value: 
       objectReference: {fileID: 1663250982915941183, guid: 7b7a0952d3ad13a49abcd63c22f3ea32, type: 3}
     - target: {fileID: 6959253977817736391, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
@@ -564,6 +568,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5691138737778831221, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211245394786642468, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_AmplitudeGain
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

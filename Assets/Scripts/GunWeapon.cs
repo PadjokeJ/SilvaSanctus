@@ -50,8 +50,8 @@ public class GunWeapon : Weapon
 
     private void FixedUpdate()
     {
-        time *= 0.8f;
-        time = Mathf.Max(time, 0f);
+        time -= reloadTime * 4f;
+        time = Mathf.Clamp(time, 0f, 20f);
     }
 
     public void Attack()
@@ -60,13 +60,13 @@ public class GunWeapon : Weapon
         hitDistance = 20f; // in case we dont get a hit, so we dont mess up the graphics
 
         time += 1f;
-        time *= time;
         
-        float angle = Mathf.Min(offsetAngle * multiplierOvertime * time * Random.Range(-1f, 1f), maxAngle);
-        angle += transform.rotation.eulerAngles.z; // in degrees
+        float angle = Mathf.Clamp(offsetAngle * multiplierOvertime * Mathf.Max(0f, Mathf.Log10(time) + 1f) * Random.Range(-1f, 1f), 0f, maxAngle);
         Debug.Log(angle);
-        angle = Mathf.Deg2Rad * angle;
+        Debug.Log(time);
+        angle += transform.rotation.eulerAngles.z; // in degrees
         
+        angle = Mathf.Deg2Rad * angle;
 
         Vector3 shootDir;
         if (!float.IsInfinity(angle))

@@ -68,8 +68,14 @@ public class GunWeapon : Weapon
         angle = Mathf.Deg2Rad * angle;
         
 
-        Vector3 shootDir = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
-        shootDir.Normalize();
+        Vector3 shootDir;
+        if (!float.IsInfinity(angle))
+        {
+            shootDir = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
+            shootDir.Normalize();
+        }
+        else
+            shootDir = transform.right;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.5f, shootDir);
 

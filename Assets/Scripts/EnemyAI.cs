@@ -64,15 +64,7 @@ public class EnemyAI : MonoBehaviour
         warnAnimator.SetBool("Attacking", attacking);
         if (!attacking)
         {
-            Vector3 weaponDir = player.transform.position - transform.position;
-            weaponDir = weaponDir.normalized;
-
-            weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
-            weapon.transform.right = weaponDir;
-
-            Vector3 weapRot = weapon.transform.rotation.eulerAngles;
-            if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
-            if (weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
+            SetWeaponDirection();
         }
 
         timeSinceLastAttack += Time.deltaTime;
@@ -108,24 +100,39 @@ public class EnemyAI : MonoBehaviour
             timeSinceReached += Time.deltaTime;
             if(timeSinceReached >= reactionTime)
             {
-                timeSinceReached = 0f;
-                weaponAnimation.Play();
-                timeSinceLastAttack = 0f;
-
-                attackEvent.Invoke();
-                Debug.Log("ENEMY ATTACKS!!!!");
-                foreach (GameObject item in gWP.targets)
-                {
-                    Debug.Log(item);
-                    if(item.TryGetComponent<Health>(out Health damageTarget))
-                        damageTarget.takeDamage(gWP.weaponDamage);
-                }
+                Attack();
 
                 attacking = false;
             }
         }
         
         ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
+    }
+    void Attack()
+    {
+        timeSinceReached = 0f;
+        weaponAnimation.Play();
+        timeSinceLastAttack = 0f;
+
+        attackEvent.Invoke();
+        foreach (GameObject item in gWP.targets)
+        {
+            Debug.Log(item);
+            if (item.TryGetComponent<Health>(out Health damageTarget))
+                damageTarget.takeDamage(gWP.weaponDamage);
+        }
+    }
+    void SetWeaponDirection()
+    {
+        Vector3 weaponDir = player.transform.position - transform.position;
+        weaponDir = weaponDir.normalized;
+
+        weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
+        weapon.transform.right = weaponDir;
+
+        Vector3 weapRot = weapon.transform.rotation.eulerAngles;
+        if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
+        if (weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
     }
     void WarnAnimation()
     {

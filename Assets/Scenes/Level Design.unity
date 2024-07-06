@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allRooms: {fileID: 11400000, guid: 42474c36bdc34894fa785063b04be02a, type: 2}
+  generate: 0
+  destroy: 0
 --- !u!1 &1352672514
 GameObject:
   m_ObjectHideFlags: 0

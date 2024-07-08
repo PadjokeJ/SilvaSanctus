@@ -7,11 +7,14 @@ public class Health : MonoBehaviour
     public float health;
     public float maxHealth;
     string entityType;
+
+    PlayerHurtAnimation pHA;
     void Awake()
     {
         if (GameObject.FindGameObjectWithTag("Player") == this.gameObject)
         {
             entityType = "Player";
+            pHA = FindObjectOfType<PlayerHurtAnimation>();
         }
         else if(this.gameObject.CompareTag("Enemy"))
         {
@@ -26,7 +29,9 @@ public class Health : MonoBehaviour
     public void takeDamage(float val)
     {
         health -= val;
-        if(health <= 0)
+        if (entityType == "Player")
+            pHA.HurtScreen();
+        if (health <= 0)
         {
             if(entityType == "Player") GetComponent<PlayerManager>().Die();
             if(entityType == "Enemy") GetComponent<EnemyAI>().Die();

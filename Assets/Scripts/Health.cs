@@ -13,9 +13,13 @@ public class Health : MonoBehaviour
         {
             entityType = "Player";
         }
-        else
+        else if(this.gameObject.CompareTag("Enemy"))
         {
             entityType = "Enemy";
+        }
+        else if (this.gameObject.CompareTag("Chest"))
+        {
+            entityType = "Chest";
         }
         maxHealth = health;
     }
@@ -26,6 +30,7 @@ public class Health : MonoBehaviour
         {
             if(entityType == "Player") GetComponent<PlayerManager>().Die();
             if(entityType == "Enemy") GetComponent<EnemyAI>().Die();
+            if (entityType == "Chest") GetComponent<Chest>().GiveRewards();
         }
     }
     public void heal(float val)

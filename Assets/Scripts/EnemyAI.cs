@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     float timeSinceLastAttack;
     float attackSpeed;
     UnityEvent attackEvent;
+    float attackTime;
 
     Animation weaponAnimation;
 
@@ -36,6 +37,8 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject warnObject;
     Animator warnAnimator;
+
+    string state;
 
     void Start()
     {
@@ -57,30 +60,49 @@ public class EnemyAI : MonoBehaviour
         warnAnimator = warnObject.GetComponent<Animator>();
         warnObject.transform.position = transform.position + new Vector3(0, 1);
         warnObject.SetActive(false);
+
+        attackTime = weaponAnimation.clip.length;
     }
 
     void Update()
     {
         warnAnimator.SetBool("Attacking", attacking);
-        if (!attacking)
-        {
-            SetWeaponDirection();
-        }
-
         timeSinceLastAttack += Time.deltaTime;
 
-        LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
-        dist = Vector2.Distance(player.transform.position, transform.position);
-        if (LOS && dist > minDist && dist < maxDist && !attacking) //move towards player
+        if (state == "moving")
         {
-            deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
-            rg.velocity += deltaPos;
+            LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
+            dist = Vector2.Distance(player.transform.position, transform.position);
+            if (LOS && dist > minDist && dist < maxDist) //move towards player
+            {
+                deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
+                rg.velocity += deltaPos;
+            }
+            if (LOS && dist < minDist + minRange && fleeIfTooClose) //flee
+            {
+                deltaPos = CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
+                rg.velocity -= deltaPos;
+            }
+
+            SetWeaponDirection();
         }
-        if(LOS && dist < minDist + minRange && fleeIfTooClose) //flee
+        if (state == "attacking")
         {
-            deltaPos =  CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
-            rg.velocity -= deltaPos;
+            WarnAnimation();
+
+            timeSinceReached += Time.deltaTime;
+            if (timeSinceReached >= reactionTime)
+            {
+                StartCoroutine(Attack());
+
+                attacking = false;
+            }
         }
+        
+
+        
+
+        
 
         if(dist <= attackDist)
         {
@@ -91,24 +113,14 @@ public class EnemyAI : MonoBehaviour
             {
                 timeSinceLastAttack = 0f;
                 attacking = true;
+
+                state = "attacking";
             }
         }
-        if(attacking)
-        {
-            WarnAnimation();
 
-            timeSinceReached += Time.deltaTime;
-            if(timeSinceReached >= reactionTime)
-            {
-                Attack();
-
-                attacking = false;
-            }
-        }
-        
         ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
     }
-    void Attack()
+    void deprecatedAttack()
     {
         timeSinceReached = 0f;
         weaponAnimation.Play();
@@ -121,6 +133,25 @@ public class EnemyAI : MonoBehaviour
             if (item.TryGetComponent<Health>(out Health damageTarget))
                 damageTarget.takeDamage(gWP.weaponDamage);
         }
+    }
+
+    public IEnumerator Attack()
+    {
+        timeSinceReached = 0f;
+        weaponAnimation.Play();
+        timeSinceLastAttack = 0f;
+
+        attackEvent.Invoke();
+        foreach (GameObject item in gWP.targets)
+        {
+            Debug.Log(item);
+            if (item.TryGetComponent<Health>(out Health damageTarget))
+                damageTarget.takeDamage(gWP.weaponDamage);
+        }
+
+        yield return new WaitForSeconds(attackTime);
+
+        state = "moving";
     }
     void SetWeaponDirection()
     {

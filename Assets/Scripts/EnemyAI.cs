@@ -41,6 +41,7 @@ public class EnemyAI : MonoBehaviour
 
     public bool multipleAttacks;
     public int maxRepeatedAttacks;
+    public float repeatedAccuracy;
 
     void Start()
     {
@@ -89,7 +90,7 @@ public class EnemyAI : MonoBehaviour
                 rg.velocity -= deltaPos;
             }
 
-            SetWeaponDirection();
+            SetWeaponDirection(1f);
         }
         if (state == "attacking")
         {
@@ -160,19 +161,20 @@ public class EnemyAI : MonoBehaviour
             }
 
             yield return new WaitForSeconds(attackTime);
+            SetWeaponDirection(repeatedAccuracy);
         }
         state = "moving";
         timeSinceLastAttack = 0f;
         timeSinceReached = 0f;
         attacking = false;
     }
-    void SetWeaponDirection()
+    void SetWeaponDirection(float lerp)
     {
         Vector3 weaponDir = player.transform.position - transform.position;
         weaponDir = weaponDir.normalized;
 
-        weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, 1f);
-        weapon.transform.right = weaponDir;
+        weapon.transform.position = Vector3.Lerp(weapon.transform.position, transform.position + weaponDir, lerp);
+        weapon.transform.right = Vector3.Lerp(weapon.transform.right, weaponDir, lerp);
 
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
         if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);

@@ -93,16 +93,14 @@ public class EnemyAI : MonoBehaviour
         }
         if (state == "attacking")
         {
-            WarnAnimation();
 
             timeSinceReached += Time.deltaTime;
-            if (timeSinceReached >= reactionTime && !attacking)
+            if (!attacking)
             {
                 if (!multipleAttacks)
                     StartCoroutine(Attack());
                 else
                     StartCoroutine(MultipleAttacks());
-
             }
         }
 
@@ -113,7 +111,6 @@ public class EnemyAI : MonoBehaviour
 
             if (attackSpeed < timeSinceLastAttack)
             { 
-
                 state = "attacking";
             }
         }
@@ -124,6 +121,8 @@ public class EnemyAI : MonoBehaviour
     public IEnumerator Attack()
     {
         attacking = true;
+        WarnAnimation();
+        yield return new WaitForSeconds(reactionTime);
 
         weaponAnimation.Play();
 
@@ -145,6 +144,8 @@ public class EnemyAI : MonoBehaviour
     public IEnumerator MultipleAttacks()
     {
         attacking = true;
+        WarnAnimation();
+        yield return new WaitForSeconds(reactionTime);
 
         for (int i = 0; i < maxRepeatedAttacks; i++)
         {

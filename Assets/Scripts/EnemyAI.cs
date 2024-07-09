@@ -39,6 +39,9 @@ public class EnemyAI : MonoBehaviour
 
     string state = "moving";
 
+    public bool multipleAttacks;
+    public int maxRepeatedAttacks;
+
     void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -60,10 +63,10 @@ public class EnemyAI : MonoBehaviour
         warnObject.transform.position = transform.position + new Vector3(0, 1);
         warnObject.SetActive(false);
 
-        if (weaponAnimation.clip != null)
+        /*if (weaponAnimation.clip != null)
             attackTime = weaponAnimation.clip.length;
-        else
-            attackTime = attackSpeed;
+        else*/
+            attackTime = gWP.reloadTime;
     }
 
     void Update()
@@ -93,11 +96,13 @@ public class EnemyAI : MonoBehaviour
             WarnAnimation();
 
             timeSinceReached += Time.deltaTime;
-            if (timeSinceReached >= reactionTime)
+            if (timeSinceReached >= reactionTime && !attacking)
             {
-                StartCoroutine(Attack());
+                if (!multipleAttacks)
+                    StartCoroutine(Attack());
+                else
+                    StartCoroutine(MultipleAttacks());
 
-                attacking = false;
             }
         }
 
@@ -107,9 +112,7 @@ public class EnemyAI : MonoBehaviour
             attackEvent = gWP.attackEvent;
 
             if (attackSpeed < timeSinceLastAttack)
-            {
-                timeSinceLastAttack = 0f;
-                attacking = true;
+            { 
 
                 state = "attacking";
             }
@@ -120,9 +123,9 @@ public class EnemyAI : MonoBehaviour
 
     public IEnumerator Attack()
     {
-        timeSinceReached = 0f;
+        attacking = true;
+
         weaponAnimation.Play();
-        timeSinceLastAttack = 0f;
 
         attackEvent.Invoke();
         foreach (GameObject item in gWP.targets)
@@ -133,8 +136,34 @@ public class EnemyAI : MonoBehaviour
         }
 
         yield return new WaitForSeconds(attackTime);
+        timeSinceLastAttack = 0f;
+        timeSinceReached = 0f;
 
         state = "moving";
+        attacking = false;
+    }
+    public IEnumerator MultipleAttacks()
+    {
+        attacking = true;
+
+        for (int i = 0; i < maxRepeatedAttacks; i++)
+        {
+            weaponAnimation.Play();
+
+            attackEvent.Invoke();
+            foreach (GameObject item in gWP.targets)
+            {
+                Debug.Log(item);
+                if (item.TryGetComponent<Health>(out Health damageTarget))
+                    damageTarget.takeDamage(gWP.weaponDamage);
+            }
+
+            yield return new WaitForSeconds(attackTime);
+        }
+        state = "moving";
+        timeSinceLastAttack = 0f;
+        timeSinceReached = 0f;
+        attacking = false;
     }
     void SetWeaponDirection()
     {

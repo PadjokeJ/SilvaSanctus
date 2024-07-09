@@ -420,6 +420,8 @@ MonoBehaviour:
   allRooms: {fileID: 11400000, guid: 42474c36bdc34894fa785063b04be02a, type: 2}
   generate: 0
   destroy: 0
+  roomsAmmount: 25
+  spacingBetweenRooms: 10
 --- !u!4 &1735482022
 Transform:
   m_ObjectHideFlags: 0

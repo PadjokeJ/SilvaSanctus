@@ -21,9 +21,12 @@ public class LevelManager : MonoBehaviour
 
     GameObject tilemapObject;
 
+    public int roomsAmmount = 25;
+    public float spacingBetweenRooms = 10;
+
     void Awake()
     {
-        GenerateLevel(25, new Vector2(100f, 100f), 5f);
+        GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms);
 
     }
     // Update is called once per frame
@@ -300,7 +303,7 @@ public class LevelManager : MonoBehaviour
     {
         if(generate)
         {
-            GenerateLevel(25, new Vector2(100f, 100f), 5f);
+            GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms);
         }
         if (destroy)
         {

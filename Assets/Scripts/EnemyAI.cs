@@ -30,7 +30,6 @@ public class EnemyAI : MonoBehaviour
     public float off;
 
     GameObject healthBar;
-
     Health healthScript;
 
     public float experienceGiven;
@@ -38,7 +37,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject warnObject;
     Animator warnAnimator;
 
-    string state;
+    string state = "moving";
 
     void Start()
     {
@@ -119,20 +118,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
-    }
-    void deprecatedAttack()
-    {
-        timeSinceReached = 0f;
-        weaponAnimation.Play();
-        timeSinceLastAttack = 0f;
-
-        attackEvent.Invoke();
-        foreach (GameObject item in gWP.targets)
-        {
-            Debug.Log(item);
-            if (item.TryGetComponent<Health>(out Health damageTarget))
-                damageTarget.takeDamage(gWP.weaponDamage);
-        }
     }
 
     public IEnumerator Attack()

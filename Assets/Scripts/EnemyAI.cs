@@ -60,7 +60,10 @@ public class EnemyAI : MonoBehaviour
         warnObject.transform.position = transform.position + new Vector3(0, 1);
         warnObject.SetActive(false);
 
-        attackTime = weaponAnimation.clip.length;
+        if (weaponAnimation.clip != null)
+            attackTime = weaponAnimation.clip.length;
+        else
+            attackTime = attackSpeed;
     }
 
     void Update()
@@ -97,11 +100,6 @@ public class EnemyAI : MonoBehaviour
                 attacking = false;
             }
         }
-        
-
-        
-
-        
 
         if(dist <= attackDist)
         {

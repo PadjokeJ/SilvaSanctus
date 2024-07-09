@@ -572,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6211245394786642468, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_AmplitudeGain
-      value: 1.479197
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

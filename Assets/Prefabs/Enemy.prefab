@@ -358,6 +358,8 @@ MonoBehaviour:
   off: 45
   experienceGiven: 0
   warnObject: {fileID: 5488406510569271475, guid: 90c09f3fc33830f4da1bc19caab0accd, type: 3}
+  multipleAttacks: 0
+  maxRepeatedAttacks: 0
 --- !u!114 &1148357061521857519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497ae8bdc879cb940a03bbda62ad9f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 4
+  attackRadius: 1.2
   friendlyFire: 0
   damage: 5
   reloadSpeed: 1

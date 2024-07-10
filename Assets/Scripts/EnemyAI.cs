@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     public int maxRepeatedAttacks;
     public float repeatedAccuracy;
 
-    void Start()
+    void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");

@@ -17,12 +17,15 @@ public class LevelManager : MonoBehaviour
     List<Vector3> corridorsUpPos = new List<Vector3>();
     List<Vector3> corridorsDownPos = new List<Vector3>();
     List<Vector3> deadEnds = new List<Vector3>();
-    List<Vector3Int> doors = new List<Vector3Int>();
+    List<Vector2Int> doors = new List<Vector2Int>();
 
     GameObject tilemapObject;
 
     public int roomsAmmount = 25;
     public float spacingBetweenRooms = 10;
+
+    GameObject startRoom;
+    GameObject endRoom;
 
     void Awake()
     {
@@ -90,14 +93,14 @@ public class LevelManager : MonoBehaviour
                 else
                 {
                     deadEnds.Add(generatedRoom.GetComponent<ListOfDoors>().doors[leftIndex].transform.position);
-                    doors.Add(new Vector3Int(0, -1));
+                    doors.Add(new Vector2Int(-1, 0));
                 }
                 if (row < gridSize - 1)
                     corridorsRightPos.Add(generatedRoom.GetComponent<ListOfDoors>().doors[rightIndex].transform.position);
                 else
                 {
                     deadEnds.Add(generatedRoom.GetComponent<ListOfDoors>().doors[rightIndex].transform.position);
-                    doors.Add(new Vector3Int(0, -1));
+                    doors.Add(new Vector2Int(1, 0));
                 }
 
 
@@ -109,14 +112,14 @@ public class LevelManager : MonoBehaviour
                 else
                 {
                     deadEnds.Add(generatedRoom.GetComponent<ListOfDoors>().doors[downIndex].transform.position);
-                    doors.Add(new Vector3Int(-1, 0));
+                    doors.Add(new Vector2Int(0, -1));
                 }
                 if (height != maxHeight - 1)
                     corridorsUpPos.Add(generatedRoom.GetComponent<ListOfDoors>().doors[upIndex].transform.position);
                 else
                 {
                     deadEnds.Add(generatedRoom.GetComponent<ListOfDoors>().doors[upIndex].transform.position);
-                    doors.Add(new Vector3Int(-1, 0));
+                    doors.Add(new Vector2Int(0, 1));
                 }
 
                 if (roomsGenerated >= roomAmmount) break;
@@ -139,6 +142,30 @@ public class LevelManager : MonoBehaviour
         tilemapObject = GenerateCorridors(generatedRoom);
 
         Debug.Log("Corridors took " + (Time.realtimeSinceStartup - timeToGenerate).ToString() + " seconds to generate");
+
+        Vector3 startRoomPos;
+        Vector2Int startRoomDir;
+
+        if(Random.Range(0, 1) == 3)
+        {
+            startRoomPos = deadEnds[0];
+            startRoomDir = new Vector2Int(-1, 0);
+        }
+        else
+        {
+            startRoomPos = deadEnds[1];
+            startRoomDir = new Vector2Int(0, -1);
+        }
+
+        randomRoom =
+                    allRooms.Levels[Random.Range(0, allRooms.Levels.Length)];
+
+        int index;
+
+        startRoom = Instantiate<GameObject>(randomRoom.roomObject, Vector3.zero, Quaternion.identity);
+        
+        index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-startRoomDir.x, -startRoomDir.y));
+        startRoom.transform.position = startRoomPos - startRoom.GetComponent<ListOfDoors>().doors[index].transform.position;
     }
 
     GameObject GenerateCorridors(GameObject baseTilemapRoom)
@@ -215,7 +242,7 @@ public class LevelManager : MonoBehaviour
         foreach(Vector3 position in deadEnds)
         {
             tilemap.SetTile(Vector3Int.CeilToInt(position), wallTile);
-            tilemap.SetTile(Vector3Int.FloorToInt(position) + doors[iteration], wallTile);
+            tilemap.SetTile(Vector3Int.FloorToInt(position) + new Vector3Int(doors[iteration].x, doors[iteration].y), wallTile);
             iteration++;
         }
 
@@ -295,6 +322,7 @@ public class LevelManager : MonoBehaviour
             tilemapObject.GetComponentInChildren<Tilemap>().ClearAllTiles();
 
         Destroy(tilemapObject);
+        Destroy(startRoom);
     }
 
     [ExecuteInEditMode]

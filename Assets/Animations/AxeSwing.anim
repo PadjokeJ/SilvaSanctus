@@ -27,17 +27,26 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 0.25
-        value: {x: 0, y: 0, z: -45}
-        inSlope: {x: 0, y: 0, z: -769.9057}
+        time: 0.41666666
+        value: {x: 0, y: 0, z: -135}
+        inSlope: {x: 0, y: 0, z: -1372.1357}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.063063085}
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.017937183}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.75
-        value: {x: 0, y: 0, z: -45}
+        value: {x: 0, y: 0, z: -135}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 1.3333334
+        value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -65,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.75
+    m_StopTime: 1.3333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,7 +104,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.25
+        time: 0.41666666
         value: 0
         inSlope: 0
         outSlope: 0
@@ -125,7 +134,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.25
+        time: 0.41666666
         value: 0
         inSlope: 0
         outSlope: 0
@@ -155,17 +164,26 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.25
-        value: -45
-        inSlope: -769.9057
+        time: 0.41666666
+        value: -135
+        inSlope: -1372.1357
         outSlope: 0
         tangentMode: 65
         weightedMode: 0
-        inWeight: 0.063063085
+        inWeight: 0.017937183
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.75
-        value: -45
+        value: -135
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1.3333334
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -220,7 +238,7 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.41666666
     functionName: SendAttackCircle
     data: 
     objectReferenceParameter: {fileID: 0}

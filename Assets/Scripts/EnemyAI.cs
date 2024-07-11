@@ -43,6 +43,7 @@ public class EnemyAI : MonoBehaviour
     public int maxRepeatedAttacks;
     public float repeatedAccuracy;
 
+    public ParticleSystem deathParticles;
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -68,6 +69,8 @@ public class EnemyAI : MonoBehaviour
             attackTime = weaponAnimation.clip.length;
         else*/
             attackTime = gWP.reloadTime;
+
+        deathParticles = GameObject.FindWithTag("DeathParticles").GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -186,6 +189,9 @@ public class EnemyAI : MonoBehaviour
     public void Die()
     {
         FindObjectOfType<PlayerLevelling>().gainExperience(experienceGiven);
+
+        deathParticles.transform.position = transform.position;
+        deathParticles.Emit(10);
 
         Destroy(healthBar);
         Destroy(this.gameObject);

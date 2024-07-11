@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Level
   - Chest
+  - DeathParticles
   layers:
   - Default
   - TransparentFX

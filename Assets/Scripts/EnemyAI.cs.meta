@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - warnObject: {fileID: 8035544290081481237, guid: f89b11f01f506c842a435fdfd4da3946, type: 3}
+  - deathParticles: {fileID: 3121018199315788870, guid: 1aab3ae5a17955e4c977e7a2ece3f07c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

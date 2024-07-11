@@ -34,20 +34,8 @@ public class PlayerAttack : MonoBehaviour
         mainCam = Camera.main;
 
         playerInventory = GetComponent<PlayerInventory>();
-        playerInventory.InstantiateWeapon(0);
 
-        weapon = playerInventory.GetComponentInChildren<GenericWeaponManager>().gameObject;
-
-
-        gWP = GetComponentInChildren<GenericWeaponManager>();
-
-        
-
-        attackAnimation = GetComponentInChildren<Animation>();
-        weaponAnimator = attackAnimation.gameObject;
-
-        sr = weapon.GetComponent<SpriteRenderer>();
-        tr = weapon.GetComponent<TrailRenderer>();
+        ChangeWeapon(0);
     }
 
     // Update is called once per frame
@@ -102,5 +90,23 @@ public class PlayerAttack : MonoBehaviour
         worldMousePos = new Vector3(worldMousePos.x, worldMousePos.y, 0f);
         Vector2 weaponDir = worldMousePos - transform.position;
         return weaponDir.normalized;
+    }
+
+    void ChangeWeapon(int index)
+    {
+        playerInventory.InstantiateWeapon(index);
+
+        weapon = playerInventory.GetComponentInChildren<GenericWeaponManager>().gameObject;
+
+
+        gWP = GetComponentInChildren<GenericWeaponManager>();
+
+
+
+        attackAnimation = GetComponentInChildren<Animation>();
+        weaponAnimator = attackAnimation.gameObject;
+
+        sr = weapon.GetComponent<SpriteRenderer>();
+        tr = weapon.GetComponent<TrailRenderer>();
     }
 }

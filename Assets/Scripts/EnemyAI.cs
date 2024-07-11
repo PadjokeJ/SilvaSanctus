@@ -53,12 +53,14 @@ public class EnemyAI : MonoBehaviour
 
         weaponAnimation = GetComponentInChildren<Animation>();
 
+        healthScript = GetComponent<Health>();
         ehb = FindObjectOfType<EnemyHealthBar>();
+        
         Vector3 po = CalculateDirectionVector();
 
         healthBar = ehb.newHealthBar(this);
+        ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
 
-        healthScript = GetComponent<Health>();
 
         warnObject = Instantiate<GameObject>(warnObject, transform);
         warnAnimator = warnObject.GetComponent<Animator>();

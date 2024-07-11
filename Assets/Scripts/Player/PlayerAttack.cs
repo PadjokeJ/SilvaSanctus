@@ -21,6 +21,8 @@ public class PlayerAttack : MonoBehaviour
     SpriteRenderer sr;
     TrailRenderer tr;
 
+    int weaponIndex = 0;
+
     public float lerpTime;
 
     PlayerInventory playerInventory;
@@ -35,13 +37,13 @@ public class PlayerAttack : MonoBehaviour
 
         playerInventory = GetComponent<PlayerInventory>();
 
-        ChangeWeapon(0);
+        StartCoroutine(ChangeWeapon(0));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!attackAnimation.isPlaying)
+        if(attackAnimation != null && !attackAnimation.isPlaying)
             deltaToReload += Time.deltaTime;
         canAttack = gWP.reloadTime - deltaToReload < 0;
 
@@ -49,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
         playerPos = transform.position;
 
         gWP.isAttacking = attackAnimation.isPlaying;
-        weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.05f);
+        weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.5f);
         weapon.transform.right = weaponDir;
         
         Vector3 weapRot = weapon.transform.rotation.eulerAngles;
@@ -69,20 +71,21 @@ public class PlayerAttack : MonoBehaviour
     {
         isAttacking = context.performed;
     }
-    public void GetWeapon(GameObject weap)
-    {
-        weapon = weap;
-        reloadTime = weapon.GetComponent<WeaponManager>().reloadTime;
-        damage = weapon.GetComponent<WeaponManager>().damage;
-        weaponDistance = weapon.GetComponent<WeaponManager>().distFromPlayer;
-        kb = weapon.GetComponent<WeaponManager>().knockBack;
-        ps = weapon.GetComponent<ParticleSystem>();
-    }
     public void GetMouseCoords(InputAction.CallbackContext context)
     {
         mousePos = context.ReadValue<Vector2>();
     }
-
+    public void WeaponSwitch(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.performed);
+        if (context.performed)
+        {
+            weaponIndex += 1;
+            if (playerInventory.weapons.Count == weaponIndex)
+                weaponIndex = 0;
+            StartCoroutine(ChangeWeapon(weaponIndex));
+        }
+    }
     Vector2 CalculateWeaponDirection()
     {
         Vector3 worldMousePos = mainCam.ScreenToWorldPoint(mousePos);
@@ -91,16 +94,14 @@ public class PlayerAttack : MonoBehaviour
         return weaponDir.normalized;
     }
 
-    void ChangeWeapon(int index)
+    IEnumerator ChangeWeapon(int index)
     {
         playerInventory.InstantiateWeapon(index);
+        yield return new WaitForEndOfFrame();
 
         weapon = playerInventory.GetComponentInChildren<GenericWeaponManager>().gameObject;
 
-
         gWP = GetComponentInChildren<GenericWeaponManager>();
-
-
 
         attackAnimation = GetComponentInChildren<Animation>();
         weaponAnimator = attackAnimation.gameObject;

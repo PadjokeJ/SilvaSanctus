@@ -204,6 +204,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 6b034549-b17f-46ce-aede-c2a44708a472
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: BasePlayer/SwitchWeapon[/Keyboard/1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 197409295}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WeaponSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerAttack, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423621179002403880, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6514524537981665721, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: weapons.Array.size
       value: 4
@@ -233,6 +273,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+--- !u!114 &197409295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6113649621121605403, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
+  m_PrefabInstance: {fileID: 197409294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8951ad860e2565b4ba8abe1f7302422e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &338902282
 GameObject:
   m_ObjectHideFlags: 0

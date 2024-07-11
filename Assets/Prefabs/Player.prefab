@@ -181,6 +181,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d91438d5-e41c-456e-8792-a2c380b40ab3
     m_ActionName: BasePlayer/MousePos[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6113649621121605403}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: WeaponSwitch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b034549-b17f-46ce-aede-c2a44708a472
+    m_ActionName: BasePlayer/SwitchWeapon[/Keyboard/1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BasePlayer
@@ -241,7 +257,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8951ad860e2565b4ba8abe1f7302422e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  canAttack: 0
+  isAttacking: 0
   targets: []
+  gWP: {fileID: 0}
   lerpTime: 0.1
 --- !u!114 &7781752577232314290
 MonoBehaviour:
@@ -327,5 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 1663250982915941183, guid: 7b7a0952d3ad13a49abcd63c22f3ea32, type: 3}
+  - {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
+  - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
+  - {fileID: 5092907722837666214, guid: 1179d555ff088ec46adfdef5d1e10a3d, type: 3}
   selectedWeapon: {fileID: 0}

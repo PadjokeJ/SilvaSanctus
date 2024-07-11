@@ -18,7 +18,7 @@ public class GunWeapon : Weapon
 
     public float shakeAmplitude = 5f, shakeFrequency = 20f, shakeTime = 0.5f;
 
-
+    string weaponOwner;
     
     void Awake()
     {
@@ -40,6 +40,8 @@ public class GunWeapon : Weapon
         particle = GetComponentInChildren<ParticleSystem>();
 
         cm = FindObjectOfType<CameraManager>();
+
+        weaponOwner = transform.parent.tag;
     }
 
     void Update()
@@ -80,8 +82,8 @@ public class GunWeapon : Weapon
         if (hit.collider != null)
         {
             hitDistance = hit.distance;
-
-            targets.Add(hit.collider.gameObject);
+            if(!hit.collider.CompareTag(weaponOwner))
+                targets.Add(hit.collider.gameObject);
         }
         foreach(GameObject target in targets)
         {

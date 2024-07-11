@@ -9,25 +9,11 @@ public class PlayerInventory : MonoBehaviour
 
     // buffs?
 
-    
-    
-    void Awake()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void InstantiateWeapon(int index)
     {
         if (selectedWeapon != null)
             Destroy(selectedWeapon);
 
         selectedWeapon = Instantiate<GameObject>(weapons[index], this.transform);
-
     }    
 }

@@ -9,11 +9,11 @@ public class PlayerInventory : MonoBehaviour
 
     // buffs?
 
-    public void InstantiateWeapon(int index)
+    public void InstantiateWeapon(int index, GameObject parent)
     {
         if (selectedWeapon != null)
             Destroy(selectedWeapon);
 
-        selectedWeapon = Instantiate<GameObject>(weapons[index], this.transform);
+        selectedWeapon = Instantiate<GameObject>(weapons[index], parent.transform);
     }    
 }

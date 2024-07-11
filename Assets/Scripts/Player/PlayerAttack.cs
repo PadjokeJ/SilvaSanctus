@@ -31,11 +31,17 @@ public class PlayerAttack : MonoBehaviour
 
 
     Animation attackAnimation;
+
+
+    GameObject hand;
     void Awake()
     {
         mainCam = Camera.main;
 
         playerInventory = GetComponent<PlayerInventory>();
+
+        hand = new GameObject("Hand");
+        hand.transform.SetParent(this.transform);
 
         StartCoroutine(ChangeWeapon(0));
     }
@@ -51,12 +57,12 @@ public class PlayerAttack : MonoBehaviour
         playerPos = transform.position;
 
         gWP.isAttacking = attackAnimation.isPlaying;
-        weapon.transform.position = Vector3.Lerp(weapon.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.5f);
-        weapon.transform.right = weaponDir;
+        hand.transform.position = Vector3.Lerp(hand.transform.position, playerPos + new Vector2(weaponDir.x, weaponDir.y) * gWP.weaponDistance, 0.5f);
+        hand.transform.right = weaponDir;
         
-        Vector3 weapRot = weapon.transform.rotation.eulerAngles;
-        if (weapRot.z > 90 && weapRot.z < 270) weapon.transform.localScale = new Vector3(1, -1, 1);
-        if (weapRot.z < 90 || weapRot.z > 270) weapon.transform.localScale = new Vector3(1, 1, 1);
+        Vector3 weapRot = hand.transform.rotation.eulerAngles;
+        if (weapRot.z > 90 && weapRot.z < 270) hand.transform.localScale = new Vector3(1, -1, 1);
+        if (weapRot.z < 90 || weapRot.z > 270) hand.transform.localScale = new Vector3(1, 1, 1);
 
         if(canAttack && isAttacking)
         {
@@ -96,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator ChangeWeapon(int index)
     {
-        playerInventory.InstantiateWeapon(index);
+        playerInventory.InstantiateWeapon(index, hand);
         yield return new WaitForEndOfFrame();
 
         weapon = playerInventory.GetComponentInChildren<GenericWeaponManager>().gameObject;

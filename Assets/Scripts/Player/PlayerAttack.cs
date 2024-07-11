@@ -68,7 +68,6 @@ public class PlayerAttack : MonoBehaviour
     public void Attack(InputAction.CallbackContext context)
     {
         isAttacking = context.performed;
-        Debug.Log("Player prepares their sword");
     }
     public void GetWeapon(GameObject weap)
     {

@@ -62,8 +62,6 @@ public class GunWeapon : Weapon
         time += 1f;
         
         float angle = Mathf.Clamp(offsetAngle * multiplierOvertime * Mathf.Max(0f, Mathf.Log10(time) + 1f) * Random.Range(-1f, 1f), 0f, maxAngle);
-        Debug.Log(angle);
-        Debug.Log(time);
         angle += transform.rotation.eulerAngles.z; // in degrees
         
         angle = Mathf.Deg2Rad * angle;

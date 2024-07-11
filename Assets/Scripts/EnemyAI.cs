@@ -130,7 +130,6 @@ public class EnemyAI : MonoBehaviour
         attackEvent.Invoke();
         foreach (GameObject item in gWP.targets)
         {
-            Debug.Log(item);
             if (item.TryGetComponent<Health>(out Health damageTarget))
                 damageTarget.takeDamage(gWP.weaponDamage);
         }
@@ -155,7 +154,6 @@ public class EnemyAI : MonoBehaviour
             attackEvent.Invoke();
             foreach (GameObject item in gWP.targets)
             {
-                Debug.Log(item);
                 if (item.TryGetComponent<Health>(out Health damageTarget))
                     damageTarget.takeDamage(gWP.weaponDamage);
             }
@@ -261,7 +259,6 @@ public class EnemyAI : MonoBehaviour
     void OnDrawGizmos()
     {
         // Draws a blue line from this transform to the target
-        //Debug.Log("Drawing gizmos");
         Gizmos.color = Color.blue;
         foreach (Vector3 dir in desirableDir)
         {

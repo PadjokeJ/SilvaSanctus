@@ -190,6 +190,7 @@ MonoBehaviour:
   multipleAttacks: 1
   maxRepeatedAttacks: 10
   repeatedAccuracy: 0.1
+  deathParticles: {fileID: 0}
 --- !u!114 &1115747660559821709
 MonoBehaviour:
   m_ObjectHideFlags: 0

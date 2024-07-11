@@ -63,7 +63,6 @@ public class EnemyAI : MonoBehaviour
         warnObject = Instantiate<GameObject>(warnObject, transform);
         warnAnimator = warnObject.GetComponent<Animator>();
         warnObject.transform.position = transform.position + new Vector3(0, 1);
-        warnObject.SetActive(false);
 
         /*if (weaponAnimation.clip != null)
             attackTime = weaponAnimation.clip.length;
@@ -75,51 +74,54 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        warnAnimator.SetBool("Attacking", attacking);
-        timeSinceLastAttack += Time.deltaTime;
-
-        if (state == "moving")
+        dist = Vector2.Distance(player.transform.position, transform.position);
+        if (dist < maxDist * 2f)
         {
-            LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
-            dist = Vector2.Distance(player.transform.position, transform.position);
-            if (LOS && dist > minDist && dist < maxDist) //move towards player
+            warnAnimator.SetBool("Attacking", attacking);
+            timeSinceLastAttack += Time.deltaTime;
+
+            if (state == "moving")
             {
-                deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
-                rg.velocity += deltaPos;
+                LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
+                if (LOS && dist > minDist && dist < maxDist) //move towards player
+                {
+                    deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
+                    rg.velocity += deltaPos;
+                }
+                if (LOS && dist < minDist + minRange && fleeIfTooClose) //flee
+                {
+                    deltaPos = CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
+                    rg.velocity -= deltaPos;
+                }
+
+                SetWeaponDirection(1f);
+
+                if (dist <= attackDist)
+                {
+                    attackSpeed = gWP.reloadTime;
+                    attackEvent = gWP.attackEvent;
+
+                    if (timeSinceLastAttack > attackSpeed)
+                    {
+                        state = "attacking";
+                    }
+                }
             }
-            if (LOS && dist < minDist + minRange && fleeIfTooClose) //flee
+            if (state == "attacking")
             {
-                deltaPos = CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
-                rg.velocity -= deltaPos;
+                if (!attacking)
+                {
+                    if (!multipleAttacks)
+                        StartCoroutine(Attack());
+                    else
+                        StartCoroutine(MultipleAttacks());
+                }
             }
 
-            SetWeaponDirection(1f);
+            
+
+            ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
         }
-        if (state == "attacking")
-        {
-
-            timeSinceReached += Time.deltaTime;
-            if (!attacking)
-            {
-                if (!multipleAttacks)
-                    StartCoroutine(Attack());
-                else
-                    StartCoroutine(MultipleAttacks());
-            }
-        }
-
-        if(dist <= attackDist)
-        {
-            attackSpeed = gWP.reloadTime;
-            attackEvent = gWP.attackEvent;
-
-            if (attackSpeed < timeSinceLastAttack)
-            { 
-                state = "attacking";
-            }
-        }
-
-        ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
     }
 
     public IEnumerator Attack()
@@ -131,18 +133,20 @@ public class EnemyAI : MonoBehaviour
         weaponAnimation.Play();
 
         attackEvent.Invoke();
+
         foreach (GameObject item in gWP.targets)
         {
             if (item.TryGetComponent<Health>(out Health damageTarget))
                 damageTarget.takeDamage(gWP.weaponDamage);
         }
 
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(gWP.reloadTime);
         timeSinceLastAttack = 0f;
         timeSinceReached = 0f;
 
         state = "moving";
         attacking = false;
+        yield return new WaitForEndOfFrame();
     }
     public IEnumerator MultipleAttacks()
     {
@@ -160,14 +164,14 @@ public class EnemyAI : MonoBehaviour
                 if (item.TryGetComponent<Health>(out Health damageTarget))
                     damageTarget.takeDamage(gWP.weaponDamage);
             }
-
-            yield return new WaitForSeconds(attackTime);
+            yield return new WaitForSeconds(gWP.reloadTime);
             SetWeaponDirection(repeatedAccuracy);
         }
         state = "moving";
         timeSinceLastAttack = 0f;
         timeSinceReached = 0f;
         attacking = false;
+        yield return new WaitForEndOfFrame();
     }
     void SetWeaponDirection(float lerp)
     {
@@ -183,7 +187,6 @@ public class EnemyAI : MonoBehaviour
     }
     void WarnAnimation()
     {
-        warnObject.SetActive(true);
         warnAnimator.SetTrigger("Warn");
     }
     public void Die()

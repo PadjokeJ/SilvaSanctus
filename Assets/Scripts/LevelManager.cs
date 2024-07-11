@@ -246,7 +246,10 @@ public class LevelManager : MonoBehaviour
         foreach(Vector3 position in deadEnds)
         {
             tilemap.SetTile(Vector3Int.CeilToInt(position), wallTile);
-            tilemap.SetTile(Vector3Int.FloorToInt(position) + new Vector3Int(doors[iteration].x, doors[iteration].y), wallTile);
+            if (doors[iteration].x == 0) // checks if the deadend is horizontal
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
+            if (doors[iteration].y == 0) // checks if the deadend is vertical
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);
             iteration++;
         }
 

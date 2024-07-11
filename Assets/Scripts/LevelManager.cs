@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
-        GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms);
+        StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
 
     }
     // Update is called once per frame
@@ -38,12 +38,14 @@ public class LevelManager : MonoBehaviour
         
 
     }
-    void GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing)
+    IEnumerator GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing)
     {
-        GenerateLevel(roomAmmount, levelSize, spacing, 0f, 0);
+        StartCoroutine(GenerateLevel(roomAmmount, levelSize, spacing, 0f, 0));
+        yield return new WaitForEndOfFrame();
     }
-    void GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing, float loreRoomProbability, int maxloreRoomAmmount)
+    IEnumerator GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing, float loreRoomProbability, int maxloreRoomAmmount)
     {
+        yield return new WaitForEndOfFrame();
         float timeToGenerate = Time.realtimeSinceStartup;
         //place rooms in a grid
         DestroyDungeon();
@@ -166,6 +168,8 @@ public class LevelManager : MonoBehaviour
         
         index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-startRoomDir.x, -startRoomDir.y));
         startRoom.transform.position = startRoomPos - startRoom.GetComponent<ListOfDoors>().doors[index].transform.position;
+
+        yield return new WaitForEndOfFrame();
     }
 
     GameObject GenerateCorridors(GameObject baseTilemapRoom)
@@ -331,7 +335,7 @@ public class LevelManager : MonoBehaviour
     {
         if(generate)
         {
-            GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms);
+            StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
         }
         if (destroy)
         {

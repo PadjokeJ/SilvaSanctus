@@ -7,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
     public List<GameObject> weapons;
     public GameObject selectedWeapon;
 
+    UiInventoryManager uiInventory;
+
     // buffs?
 
     public void InstantiateWeapon(int index, GameObject parent)
@@ -15,5 +17,6 @@ public class PlayerInventory : MonoBehaviour
             Destroy(selectedWeapon);
 
         selectedWeapon = Instantiate<GameObject>(weapons[index], parent.transform);
+        uiInventory.SelectWeapon(index);
     }    
 }

@@ -44,6 +44,8 @@ public class EnemyAI : MonoBehaviour
     public float repeatedAccuracy;
 
     public ParticleSystem deathParticles;
+
+    public ListOfDoors listOfDoors;
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -197,6 +199,8 @@ public class EnemyAI : MonoBehaviour
 
         deathParticles.transform.position = transform.position;
         deathParticles.Emit(10);
+
+        listOfDoors.OnEnemyDeath();
 
         Destroy(healthBar);
         Destroy(this.gameObject);

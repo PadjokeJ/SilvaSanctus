@@ -421,9 +421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSlotPrefab: {fileID: 7224736737358756287, guid: 4d858c8ff865f11458ad708a7a784495, type: 3}
-  selectedHeight: -125
-  normalHeight: -150
-  spacing: 80
+  selectedHeight: -180
+  normalHeight: -190
+  spacing: 60
 --- !u!1 &1686435604
 GameObject:
   m_ObjectHideFlags: 0

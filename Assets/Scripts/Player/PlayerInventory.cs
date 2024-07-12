@@ -11,6 +11,11 @@ public class PlayerInventory : MonoBehaviour
 
     // buffs?
 
+    private void Awake()
+    {
+        uiInventory = FindAnyObjectByType<UiInventoryManager>();
+    }
+
     public void InstantiateWeapon(int index, GameObject parent)
     {
         if (selectedWeapon != null)

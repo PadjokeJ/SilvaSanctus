@@ -5,6 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     BoxCollider2D doorCollider;
+    bool hasPlayerVanquishedEnemies = false;
     private void Awake()
     {
         foreach (BoxCollider2D collider in transform.GetComponents<BoxCollider2D>())
@@ -20,10 +21,12 @@ public class Door : MonoBehaviour
     public void Open()
     {
         doorCollider.enabled = false;
+        hasPlayerVanquishedEnemies = true;
     }
     public void Close()
     {
-        doorCollider.enabled = true;
+        if (!hasPlayerVanquishedEnemies)
+            doorCollider.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -9,6 +9,8 @@ public class PlayerInventory : MonoBehaviour
 
     UiInventoryManager uiInventory;
 
+    public int selectedSlot;
+
     // buffs?
 
     private void Awake()
@@ -21,6 +23,8 @@ public class PlayerInventory : MonoBehaviour
         if (selectedWeapon != null)
             Destroy(selectedWeapon);
 
+        selectedSlot = index;
+
         selectedWeapon = Instantiate<GameObject>(weapons[index], parent.transform);
         uiInventory.SelectWeapon(index);
     }    
@@ -29,5 +33,11 @@ public class PlayerInventory : MonoBehaviour
     {
         weapons.Add(weapon);
         uiInventory.AddWeapon(weapon);
+    }
+
+    public void RemoveWeapon(int index)
+    {
+        uiInventory.RemoveWeapon(index);
+        weapons.RemoveAt(index);
     }
 }

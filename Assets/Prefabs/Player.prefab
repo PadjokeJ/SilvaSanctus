@@ -197,6 +197,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6b034549-b17f-46ce-aede-c2a44708a472
     m_ActionName: BasePlayer/SwitchWeapon[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6113649621121605403}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: DropWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2d5847cb-e68e-42b0-9762-ed18fa0c0e36
+    m_ActionName: BasePlayer/DropWeapon[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BasePlayer
@@ -347,7 +363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
+  - {fileID: 5169237351980348005, guid: 49022356ce1e7fa4098f80281c86c49a, type: 3}
   - {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
   - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
   - {fileID: 5092907722837666214, guid: 1179d555ff088ec46adfdef5d1e10a3d, type: 3}
   selectedWeapon: {fileID: 0}
+  selectedSlot: 0

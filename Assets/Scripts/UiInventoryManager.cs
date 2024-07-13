@@ -63,4 +63,12 @@ public class UiInventoryManager : MonoBehaviour
         transforms[index].anchoredPosition = new Vector2(index * spacing - offset, normalHeight);
         weaponSlots[index].transform.GetChild(0).GetComponent<Image>().sprite = playerInventory.weapons[index].GetComponentInChildren<SpriteRenderer>().sprite;
     }
+
+    public void RemoveWeapon(int index)
+    {
+        transforms.RemoveAt(index);
+        Destroy(weaponSlots[index]);
+
+        offset = 0.5f * spacing * playerInventory.weapons.Count;
+    }
 }

@@ -83,11 +83,20 @@ public class PlayerAttack : MonoBehaviour
     }
     public void WeaponSwitch(InputAction.CallbackContext context)
     {
-        Debug.Log(context.performed);
         if (context.performed)
         {
             weaponIndex += 1;
-            if (playerInventory.weapons.Count == weaponIndex)
+            if (weaponIndex == playerInventory.weapons.Count)
+                weaponIndex = 0;
+            StartCoroutine(ChangeWeapon(weaponIndex));
+        }
+    }
+    public void DropWeapon(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            playerInventory.RemoveWeapon(weaponIndex);
+            if (weaponIndex >= playerInventory.weapons.Count)
                 weaponIndex = 0;
             StartCoroutine(ChangeWeapon(weaponIndex));
         }

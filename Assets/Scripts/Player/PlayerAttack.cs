@@ -34,6 +34,12 @@ public class PlayerAttack : MonoBehaviour
 
 
     GameObject hand;
+
+    PlayerInput playerInput;
+
+    Vector2 centerOfScreen;
+
+    public GameObject crosshair;
     void Awake()
     {
         mainCam = Camera.main;
@@ -44,12 +50,21 @@ public class PlayerAttack : MonoBehaviour
         hand.transform.SetParent(this.transform);
 
         StartCoroutine(ChangeWeapon(0));
+
+        playerInput = GetComponent<PlayerInput>();
+
+        centerOfScreen = new Vector2(Screen.width / 2, Screen.height / 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(attackAnimation != null && !attackAnimation.isPlaying)
+        crosshair.transform.position = mainCam.ScreenToWorldPoint(mousePos);
+        crosshair.transform.position = new Vector2(crosshair.transform.position.x, crosshair.transform.position.y);
+
+
+
+        if (attackAnimation != null && !attackAnimation.isPlaying)
             deltaToReload += Time.deltaTime;
         canAttack = gWP.reloadTime - deltaToReload < 0;
 
@@ -79,7 +94,10 @@ public class PlayerAttack : MonoBehaviour
     }
     public void GetMouseCoords(InputAction.CallbackContext context)
     {
-        mousePos = context.ReadValue<Vector2>();
+        if (playerInput.currentControlScheme == "Keyboard")
+            mousePos = context.ReadValue<Vector2>();
+        else if (context.ReadValue<Vector2>().magnitude > 0.5f)
+            mousePos = context.ReadValue<Vector2>().normalized * 200f + centerOfScreen;
     }
     public void WeaponSwitch(InputAction.CallbackContext context)
     {

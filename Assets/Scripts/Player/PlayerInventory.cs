@@ -24,4 +24,10 @@ public class PlayerInventory : MonoBehaviour
         selectedWeapon = Instantiate<GameObject>(weapons[index], parent.transform);
         uiInventory.SelectWeapon(index);
     }    
+
+    public void AddWeapon(GameObject weapon)
+    {
+        weapons.Add(weapon);
+        uiInventory.AddWeapon(weapon);
+    }
 }

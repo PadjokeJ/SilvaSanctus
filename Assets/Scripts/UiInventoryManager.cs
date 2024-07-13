@@ -26,10 +26,7 @@ public class UiInventoryManager : MonoBehaviour
         int iteration = 0;
         foreach(GameObject weapon in playerInventory.weapons)
         {
-            weaponSlots.Add(Instantiate<GameObject>(weaponSlotPrefab, transform));
-            transforms.Add(weaponSlots[iteration].GetComponent<RectTransform>());
-            transforms[iteration].anchoredPosition = new Vector2(iteration * spacing - offset, normalHeight);
-            weaponSlots[iteration].transform.GetChild(0).GetComponent<Image>().sprite = playerInventory.weapons[iteration].GetComponentInChildren<SpriteRenderer>().sprite;
+            AddWeapon(weapon);
             iteration++;
         }
     }
@@ -51,5 +48,19 @@ public class UiInventoryManager : MonoBehaviour
     public void SelectWeapon(int index)
     {
         selectedSlot = index;
+    }
+
+    public void AddWeapon(GameObject weapon)
+    {
+        int index;
+
+        offset = 0.5f * spacing * playerInventory.weapons.Count;
+        weaponSlots.Add(Instantiate<GameObject>(weaponSlotPrefab, transform));
+
+        index = weaponSlots.Count - 1;
+
+        transforms.Add(weaponSlots[index].GetComponent<RectTransform>());
+        transforms[index].anchoredPosition = new Vector2(index * spacing - offset, normalHeight);
+        weaponSlots[index].transform.GetChild(0).GetComponent<Image>().sprite = playerInventory.weapons[index].GetComponentInChildren<SpriteRenderer>().sprite;
     }
 }

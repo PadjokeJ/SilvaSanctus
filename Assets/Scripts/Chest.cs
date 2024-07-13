@@ -33,7 +33,7 @@ public class Chest : MonoBehaviour
         pL.gainExperience(expReward);
         if (chestType == "weapon")
         {
-            pI.weapons.Add(weaponReward);
+            pI.AddWeapon(weaponReward);
         }
         if (chestType == "coins")
         {

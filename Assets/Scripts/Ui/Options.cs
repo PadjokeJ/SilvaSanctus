@@ -30,9 +30,9 @@ public class Options : MonoBehaviour
         previousTab.SetActive(true);
 
         Pause pause = FindAnyObjectByType<Pause>();
-        pause.WentBackToThis();
+        if (pause != null)
+            pause.WentBackToThis();
         
-
         this.gameObject.SetActive(false);
     }
 }

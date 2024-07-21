@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -8,47 +11,53 @@ public class Pause : MonoBehaviour
     RectTransform panelRect;
     [SerializeField] Vector2 pausedVector, playedVector;
 
-    string selectedTab;
+    public EventSystem eventSystem;
 
-    public List<GameObject> tabs;
-    List<string> tabNames;
-    GameObject selectedTabObject;
+    GameObject options;
+
+    public List<GameObject> buttons;
     void Start()
     {
         panelRect = GameObject.Find("Pause Panel").GetComponent<RectTransform>();
-        tabNames = new List<string>();
-        foreach(GameObject obj in tabs)
-        {
-            tabNames.Add(obj.name);
-        }
+
+        options = GetComponentInChildren<Options>().gameObject;
+        options.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (paused)
-        {
             panelRect.anchoredPosition = Vector2.Lerp(panelRect.anchoredPosition, pausedVector, 0.2f);
-
-        }
         else
             panelRect.anchoredPosition = Vector2.Lerp(panelRect.anchoredPosition, playedVector, 0.2f);
     }
     public void TogglePause()
     {
-        selectedTabObject = tabs[0];
-        ChangeTabs("Graphics");
         paused = !paused;
         if (paused)
+        {
             Time.timeScale = 0f;
+            eventSystem.SetSelectedGameObject(buttons[0].gameObject);
+        }
         else
             Time.timeScale = 1f;
     }
 
-    public void ChangeTabs(string tab)
+    public void Options()
     {
-        selectedTabObject.SetActive(false);
-        selectedTabObject = tabs[tabNames.IndexOf(tab)];
-        selectedTabObject.SetActive(true);
+        options.SetActive(true);
+        eventSystem.SetSelectedGameObject(options.GetComponentsInChildren<Button>()[0].gameObject);
+        panelRect.gameObject.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void WentBackToThis()
+    {
+        eventSystem.SetSelectedGameObject(buttons[0].GetComponent<Button>().gameObject);
     }
 }

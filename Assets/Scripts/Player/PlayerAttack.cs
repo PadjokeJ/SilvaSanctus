@@ -59,6 +59,9 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         crosshair.transform.position = mainCam.ScreenToWorldPoint(mousePos);
         crosshair.transform.position = new Vector2(crosshair.transform.position.x, crosshair.transform.position.y);
 

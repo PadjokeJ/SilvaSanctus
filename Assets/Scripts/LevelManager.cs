@@ -24,15 +24,17 @@ public class LevelManager : MonoBehaviour
     public int roomsAmmount = 25;
     public float spacingBetweenRooms = 10;
 
-    GameObject startRoom;
-    GameObject endRoom;
+    public GameObject startRoom;
+    GameObject spawnedStart;
+    public GameObject endRoom;
+    GameObject spawnedEnd;
 
     void Awake()
     {
         StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
 
     }
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -141,14 +143,16 @@ public class LevelManager : MonoBehaviour
         //time to generate corridors!
         Debug.Log("Rooms took " + (Time.realtimeSinceStartup - timeToGenerate).ToString() + " seconds to generate");
 
-        tilemapObject = GenerateCorridors(generatedRoom);
+        int randomSpawn = Random.Range(0, 2);
+
+        tilemapObject = GenerateCorridors(generatedRoom, randomSpawn);
 
         Debug.Log("Corridors took " + (Time.realtimeSinceStartup - timeToGenerate).ToString() + " seconds to generate");
 
         Vector3 startRoomPos;
         Vector2Int startRoomDir;
 
-        if(Random.Range(0, 1) == 3)
+        if(Random.Range(0, 2) == 1)
         {
             startRoomPos = deadEnds[0];
             startRoomDir = new Vector2Int(-1, 0);
@@ -164,15 +168,17 @@ public class LevelManager : MonoBehaviour
 
         int index;
 
-        startRoom = Instantiate<GameObject>(randomRoom.roomObject, Vector3.zero, Quaternion.identity);
+        spawnedStart = Instantiate<GameObject>(startRoom, Vector3.zero, Quaternion.identity);
         
         index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-startRoomDir.x, -startRoomDir.y));
-        startRoom.transform.position = startRoomPos - startRoom.GetComponent<ListOfDoors>().doors[index].transform.position;
+        spawnedStart.transform.position = startRoomPos - spawnedStart.GetComponent<ListOfDoors>().doors[index].transform.position;
+
+        
 
         yield return new WaitForEndOfFrame();
     }
 
-    GameObject GenerateCorridors(GameObject baseTilemapRoom)
+    GameObject GenerateCorridors(GameObject baseTilemapRoom, int randomSpawn)
     {
         GameObject obj = new GameObject();
         obj.AddComponent<Tilemap>();
@@ -243,12 +249,17 @@ public class LevelManager : MonoBehaviour
         }
 
         int iteration = 0;
+
+        bool canGen = true;
         foreach(Vector3 position in deadEnds)
         {
-            tilemap.SetTile(Vector3Int.CeilToInt(position), wallTile);
-            if (doors[iteration].x == 0) // checks if the deadend is horizontal
+            canGen = iteration != randomSpawn; // checks if the iteration is equal to the door that will get blocked  
+
+            if (canGen) // makes sure the door is free
+                tilemap.SetTile(Vector3Int.CeilToInt(position), wallTile);
+            if (doors[iteration].x == 0 && canGen) // checks if the deadend is horizontal
                 tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
-            if (doors[iteration].y == 0) // checks if the deadend is vertical
+            if (doors[iteration].y == 0 && canGen) // checks if the deadend is vertical
                 tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);
             iteration++;
         }
@@ -329,7 +340,8 @@ public class LevelManager : MonoBehaviour
             tilemapObject.GetComponentInChildren<Tilemap>().ClearAllTiles();
 
         Destroy(tilemapObject);
-        Destroy(startRoom);
+        Destroy(spawnedStart);
+        Destroy(spawnedEnd);
     }
 
     [ExecuteInEditMode]

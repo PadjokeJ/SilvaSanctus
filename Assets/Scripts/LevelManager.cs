@@ -152,7 +152,7 @@ public class LevelManager : MonoBehaviour
         Vector3 startRoomPos;
         Vector2Int startRoomDir;
 
-        if(Random.Range(0, 2) == 1)
+        if(randomSpawn == 0)
         {
             startRoomPos = deadEnds[0];
             startRoomDir = new Vector2Int(-1, 0);
@@ -173,7 +173,29 @@ public class LevelManager : MonoBehaviour
         index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-startRoomDir.x, -startRoomDir.y));
         spawnedStart.transform.position = startRoomPos - spawnedStart.GetComponent<ListOfDoors>().doors[index].transform.position;
 
-        
+        Vector3 endRoomPos;
+        Vector2Int endRoomDir;
+
+        int lastIndex = deadEnds.Count - 1;
+        Debug.Log(lastIndex);
+
+        if (randomSpawn == 1)
+        {
+            endRoomPos = deadEnds[lastIndex - 1];
+            endRoomDir = new Vector2Int(1, 0);
+        }
+        else
+        {
+            endRoomPos = deadEnds[lastIndex];
+            endRoomDir = new Vector2Int(0, 1);
+        }
+
+        spawnedEnd = Instantiate<GameObject>(endRoom, Vector3.zero, Quaternion.identity);
+
+        index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-endRoomDir.x, -endRoomDir.y));
+        spawnedEnd.transform.position = endRoomPos - spawnedEnd.GetComponent<ListOfDoors>().doors[index - 2].transform.position;
+
+
 
         yield return new WaitForEndOfFrame();
     }
@@ -249,11 +271,12 @@ public class LevelManager : MonoBehaviour
         }
 
         int iteration = 0;
+        int maxIteration = deadEnds.Count - 1;
 
         bool canGen = true;
         foreach(Vector3 position in deadEnds)
         {
-            canGen = iteration != randomSpawn; // checks if the iteration is equal to the door that will get blocked  
+            canGen = iteration != randomSpawn && maxIteration - iteration != randomSpawn; // checks if the iteration is equal to the door that will get blocked  
 
             if (canGen) // makes sure the door is free
                 tilemap.SetTile(Vector3Int.CeilToInt(position), wallTile);

@@ -43,7 +43,6 @@ public class Door : MonoBehaviour
 
         foreach(BoxCollider2D collider in colliders)
         {
-            Debug.Log("Drawing");
             if (collider.isTrigger)
             {
                 Gizmos.color = Color.green;

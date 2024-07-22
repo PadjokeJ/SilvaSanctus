@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
     public GameObject endRoom;
     GameObject spawnedEnd;
 
+    Tile wallTile;
+
     void Awake()
     {
         StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
@@ -152,26 +154,41 @@ public class LevelManager : MonoBehaviour
         Vector3 startRoomPos;
         Vector2Int startRoomDir;
 
-        if(randomSpawn == 0)
+        Tilemap tilemap = tilemapObject.GetComponent<Tilemap>();
+
+        int otherIndex;
+        int index;
+
+        if (randomSpawn == 0)
         {
+            index = 1;
+            otherIndex = 0;
             startRoomPos = deadEnds[0];
             startRoomDir = new Vector2Int(-1, 0);
         }
         else
         {
+            index = 0;
+            otherIndex = 1;
             startRoomPos = deadEnds[1];
             startRoomDir = new Vector2Int(0, -1);
         }
-
-        randomRoom =
-                    allRooms.Levels[Random.Range(0, allRooms.Levels.Length)];
-
-        int index;
+        
 
         spawnedStart = Instantiate<GameObject>(startRoom, Vector3.zero, Quaternion.identity);
         
-        index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-startRoomDir.x, -startRoomDir.y));
         spawnedStart.transform.position = startRoomPos - spawnedStart.GetComponent<ListOfDoors>().doors[index].transform.position;
+
+        Vector3 otherStartDoor;
+        otherStartDoor = spawnedStart.GetComponent<ListOfDoors>().doors[otherIndex].transform.position;
+
+        Vector3Int startTileOffset;
+        startTileOffset = new Vector3Int(startRoomDir.x, startRoomDir.y);
+
+        tilemap.SetTile(Vector3Int.CeilToInt(otherStartDoor), wallTile);
+        tilemap.SetTile(Vector3Int.CeilToInt(otherStartDoor) + startTileOffset, wallTile);
+
+
 
         Vector3 endRoomPos;
         Vector2Int endRoomDir;
@@ -181,20 +198,31 @@ public class LevelManager : MonoBehaviour
 
         if (randomSpawn == 1)
         {
+            index = 1;
+            otherIndex = 0;
             endRoomPos = deadEnds[lastIndex - 1];
             endRoomDir = new Vector2Int(1, 0);
         }
         else
         {
+            index = 0;
+            otherIndex = 1;
             endRoomPos = deadEnds[lastIndex];
             endRoomDir = new Vector2Int(0, 1);
         }
 
         spawnedEnd = Instantiate<GameObject>(endRoom, Vector3.zero, Quaternion.identity);
 
-        index = randomRoom.roomDoorsDirection.IndexOf(new Vector2Int(-endRoomDir.x, -endRoomDir.y));
-        spawnedEnd.transform.position = endRoomPos - spawnedEnd.GetComponent<ListOfDoors>().doors[index - 2].transform.position;
+        spawnedEnd.transform.position = endRoomPos - spawnedEnd.GetComponent<ListOfDoors>().doors[index].transform.position;
 
+        Vector3 otherEndDoor;
+        otherEndDoor = spawnedEnd.GetComponent<ListOfDoors>().doors[otherIndex].transform.position;
+
+        Vector3Int endTileOffset;
+        endTileOffset = new Vector3Int(endRoomDir.x, endRoomDir.y);
+
+        tilemap.SetTile(Vector3Int.CeilToInt(otherEndDoor), wallTile);
+        tilemap.SetTile(Vector3Int.CeilToInt(otherEndDoor) - endTileOffset, wallTile);
 
 
         yield return new WaitForEndOfFrame();
@@ -210,7 +238,6 @@ public class LevelManager : MonoBehaviour
 
         obj.name = "Corridor tilemap";
 
-        Tile wallTile = new Tile();
         Tilemap tilemap = baseTilemapRoom.GetComponentInChildren<Tilemap>();
 
 

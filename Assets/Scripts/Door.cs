@@ -37,6 +37,9 @@ public class Door : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, 0.2f);
+
         List<BoxCollider2D> colliders = new List<BoxCollider2D>();
 
         colliders = new List<BoxCollider2D>(transform.GetComponents<BoxCollider2D>());

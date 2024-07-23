@@ -6,13 +6,20 @@ public class EndPoint : MonoBehaviour
 {
     public string endType;
 
+    EndManager endManager;
+
+    void Awake()
+    {
+        endManager = FindAnyObjectByType<EndManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             if (endType == "game")
             {
-                // finish the game
+                endManager.PlayerWins();
             }
             if (endType == "level")
             {

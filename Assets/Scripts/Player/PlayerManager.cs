@@ -7,10 +7,15 @@ public class PlayerManager : MonoBehaviour
 {
     PlayerInventory playerInventory;
     Pause pauseCanvas;
+
+    EndManager endManager;
+
     void Awake()
     {
         playerInventory = FindAnyObjectByType<PlayerInventory>();
         pauseCanvas = FindAnyObjectByType<Pause>();
+
+        endManager = FindAnyObjectByType<EndManager>();
     }
 
     // Update is called once per frame
@@ -20,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void Die()
     {
-        //
+        endManager.PlayerLoses();
     }
 
     public void Pause(InputAction.CallbackContext context)

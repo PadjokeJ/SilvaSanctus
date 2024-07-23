@@ -28,7 +28,7 @@ public class PlayerHurtAnimation : MonoBehaviour
         while (elapsedTime < _duration)
         {
             hurtImage.color = Color.Lerp(startColor, endColor, (elapsedTime / _duration));
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
     }

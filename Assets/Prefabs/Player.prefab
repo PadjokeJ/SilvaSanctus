@@ -213,6 +213,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2d5847cb-e68e-42b0-9762-ed18fa0c0e36
     m_ActionName: BasePlayer/DropWeapon[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7781752577232314290}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c76edb9a-9c77-4eb3-9789-ae9e9b754b82
+    m_ActionName: BasePlayer/Escape[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: BasePlayer
@@ -279,6 +295,7 @@ MonoBehaviour:
   targets: []
   gWP: {fileID: 0}
   lerpTime: 0.1
+  crosshair: {fileID: 0}
 --- !u!114 &7781752577232314290
 MonoBehaviour:
   m_ObjectHideFlags: 0

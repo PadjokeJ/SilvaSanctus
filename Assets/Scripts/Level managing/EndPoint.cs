@@ -23,7 +23,7 @@ public class EndPoint : MonoBehaviour
             }
             if (endType == "level")
             {
-                // finish the level
+                endManager.LevelCleared();
             }
         }
     }

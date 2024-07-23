@@ -13,6 +13,15 @@ public class SpawnPoint : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         StartCoroutine(TeleportPlayer(player));
+
+        GameObject startRoom = GameObject.FindWithTag("Start Room");
+
+        foreach (Transform child in startRoom.transform)
+        {
+            if (child.TryGetComponent<Door>(out Door door))
+                door.Open();
+        }
+
     }
 
     private void OnDrawGizmos()

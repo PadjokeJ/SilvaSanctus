@@ -10,6 +10,8 @@ TagManager:
   - Level
   - Chest
   - DeathParticles
+  - End Room
+  - Start Room
   layers:
   - Default
   - TransparentFX

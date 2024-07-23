@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb574de1e1493345bfd7086d4cf59bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &7436870937033958964
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +102,7 @@ GameObject:
   - component: {fileID: 2838653633122650862}
   m_Layer: 0
   m_Name: Start
-  m_TagString: Untagged
+  m_TagString: Start Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

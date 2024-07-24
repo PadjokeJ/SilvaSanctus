@@ -403,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 1578893084638789190}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.6, y: 0.0051324964, z: -10}
+  m_LocalPosition: {x: -3.1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3382,18 +3382,6 @@ PrefabInstance:
       propertyPath: previousTab
       value: 
       objectReference: {fileID: 8903031041370140373}
-    - target: {fileID: 2290719736975105641, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5080328267702180228}
-    - target: {fileID: 2290719736975105641, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoBack
-      objectReference: {fileID: 0}
-    - target: {fileID: 2290719736975105641, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Options, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3518706983654410537, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3488,17 +3476,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5622016946958346387, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
   m_PrefabInstance: {fileID: 5492257280718101278}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5080328267702180228 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 772535841661829786, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
-  m_PrefabInstance: {fileID: 5492257280718101278}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161285460909159309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ef03ce15746ab46a4862ac4e259644, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &9001745394088612407 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3518706983654410537, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}

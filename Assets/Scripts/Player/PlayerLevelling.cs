@@ -6,8 +6,6 @@ public class PlayerLevelling : MonoBehaviour
 {
     public int playerLevel;
     public float experiencePoints;
-
-    SaveManager saveManager;
     void Awake()
     {
         //dont destroy on load
@@ -15,9 +13,8 @@ public class PlayerLevelling : MonoBehaviour
         if (objs.Length > 1) Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
 
-        saveManager = GetComponent<SaveManager>();
 
-        playerLevel = saveManager.RetrieveInt("level");
+        playerLevel = SaveManager.RetrieveInt("level");
     }
 
     public void gainExperience(float ammountGained)
@@ -27,7 +24,7 @@ public class PlayerLevelling : MonoBehaviour
         int previousLevel = playerLevel;
         playerLevel = UpdateLevel(experiencePoints);
 
-        if (playerLevel > previousLevel) saveManager.SaveInt("level", playerLevel);
+        if (playerLevel > previousLevel) SaveManager.SaveInt("level", playerLevel);
     }
 
     int UpdateLevel(float experience)

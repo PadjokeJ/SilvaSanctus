@@ -471,7 +471,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1944656370}
   - component: {fileID: 1944656372}
-  - component: {fileID: 1944656371}
   m_Layer: 0
   m_Name: LevellingManager
   m_TagString: Untagged
@@ -494,18 +493,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 155976118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1944656371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1944656369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7d07380ecb6664caced2a07296d727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1944656372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +591,10 @@ PrefabInstance:
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
       value: 0.001858736
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.height

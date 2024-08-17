@@ -186,8 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets:
   - {fileID: 0}
-  weaponDamage: 0.4
-  reloadTime: 0.05
+  weaponDamage: 0.8
+  reloadTime: 0.1
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 0}

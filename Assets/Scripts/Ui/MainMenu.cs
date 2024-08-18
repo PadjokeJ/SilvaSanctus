@@ -10,6 +10,13 @@ public class MainMenu : MonoBehaviour
     EventSystem eventSystem;
     GameObject options;
     public GameObject menuButtons;
+
+    bool hasDoneTutorial;
+    void Start()
+    {
+        string filePath = Application.persistentDataPath + "/.tutorial";
+        hasDoneTutorial = System.IO.File.Exists(filePath);
+    }
     void Awake()
     {
         options = GetComponentInChildren<Options>().gameObject;
@@ -25,7 +32,10 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        if (hasDoneTutorial)
+            SceneManager.LoadScene(1);
+        else
+            Debug.Log("Player has not completed the tutorial");
     }
     public void Options()
     {

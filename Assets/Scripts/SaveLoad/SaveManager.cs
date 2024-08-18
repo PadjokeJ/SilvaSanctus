@@ -64,4 +64,14 @@ public static class SaveManager
 
         return keys;
     }
+
+    public static string CompleteTutorial()
+    {
+        string filePath = Application.persistentDataPath;
+        string fileName = ".tutorial";
+
+        System.IO.File.WriteAllText(filePath + "/" + fileName, "");
+
+        return filePath + "/" + fileName;
+    }
 }

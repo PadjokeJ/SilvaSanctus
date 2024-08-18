@@ -16,6 +16,7 @@ public class PlayerInventory : MonoBehaviour
     private void Awake()
     {
         uiInventory = FindAnyObjectByType<UiInventoryManager>();
+        weapons.Add(WeaponTransfer.startingWeapon);
     }
 
     public void InstantiateWeapon(int index, GameObject parent)

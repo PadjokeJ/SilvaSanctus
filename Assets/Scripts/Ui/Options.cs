@@ -77,10 +77,10 @@ public class Options : MonoBehaviour
     {
         Volume volume;
         volume = FindAnyObjectByType<Volume>();
-        Debug.Log(volume);
 
         foreach (VolumeComponent volumeComp in volume.profile.components)
         {
+            Debug.Log(volumeComp);
             if (volumeComp.name.StartsWith(name))
             {
                 volumeComp.active = state;

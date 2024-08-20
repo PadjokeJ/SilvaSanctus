@@ -11,11 +11,18 @@ public class MainMenu : MonoBehaviour
     GameObject options;
     public GameObject menuButtons;
 
+    RectTransform menuButtonsTransform;
+    Vector2 hiddenButtonsPos;
+    public Vector2 currentPos;
+
     bool hasDoneTutorial;
     void Start()
     {
         string filePath = Application.persistentDataPath + "/.tutorial";
         hasDoneTutorial = System.IO.File.Exists(filePath);
+
+        hiddenButtonsPos = new Vector2(-600, 0);
+        menuButtonsTransform = menuButtons.GetComponent<RectTransform>();
     }
     void Awake()
     {
@@ -26,14 +33,17 @@ public class MainMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        menuButtonsTransform.anchoredPosition = Vector2.Lerp(menuButtonsTransform.anchoredPosition, currentPos, 0.5f);
     }
     public void Play()
     {
         if (hasDoneTutorial)
-            SceneManager.LoadScene(1);
+        {
+            currentPos = hiddenButtonsPos;
+            FindAnyObjectByType<WeaponManaging>().hidden = !FindAnyObjectByType<WeaponManaging>().hidden;
+        }
         else
             Debug.Log("Player has not completed the tutorial");
     }

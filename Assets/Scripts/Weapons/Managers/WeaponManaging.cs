@@ -67,6 +67,7 @@ public class WeaponManaging : MonoBehaviour
             GameObject obj = Instantiate<GameObject>(prefab, transform);
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
             obj.transform.GetChild(0).GetComponent<Image>().sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
+            obj.GetComponent<WeaponSelector>().weaponObject = weapon;
 
             if (returner == null)
                 returner = obj;
@@ -75,5 +76,10 @@ public class WeaponManaging : MonoBehaviour
         }
 
         return returner;
+    }
+
+    public void Play()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }

@@ -36,6 +36,11 @@ public class MainMenu : MonoBehaviour
     void FixedUpdate()
     {
         menuButtonsTransform.anchoredPosition = Vector2.Lerp(menuButtonsTransform.anchoredPosition, currentPos, 0.5f);
+
+        if (menuButtonsTransform.anchoredPosition.x < -590)
+            transform.GetChild(0).gameObject.SetActive(false);
+        else
+            transform.GetChild(0).gameObject.SetActive(true);
     }
     public void Play()
     {

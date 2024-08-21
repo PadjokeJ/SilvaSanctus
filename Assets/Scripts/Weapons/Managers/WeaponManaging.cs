@@ -14,6 +14,8 @@ public class WeaponManaging : MonoBehaviour
 
     MainMenu mainMenu;
 
+    public GameObject firstSquare;
+
     private void Awake()
     {
         mainMenu = FindAnyObjectByType<MainMenu>();
@@ -24,14 +26,12 @@ public class WeaponManaging : MonoBehaviour
 
         panelHidePos = new Vector2(800, 0);
 
-        GenerateWeaponSelector(buttonPrefab, weapons.weaponPrefabs, 60, 240, panel.transform);
+        firstSquare = GenerateWeaponSelector(buttonPrefab, weapons.weaponPrefabs, 60, 240, panel.transform);
 
 
         panel.anchoredPosition = panelHidePos;
 
         hidden = true;
-
-
     }
 
     private void FixedUpdate()
@@ -50,22 +50,30 @@ public class WeaponManaging : MonoBehaviour
         mainMenu.currentPos = Vector2.zero;
     }
 
-    void GenerateWeaponSelector(GameObject prefab, GameObject[] listOfWeapons, int spacing, int maxWidth, Transform transform)
+    GameObject GenerateWeaponSelector(GameObject prefab, GameObject[] listOfWeapons, int spacing, int maxWidth, Transform transform)
     {
-        int x = 0, y = 0;
+        int x = spacing / 2, y = -spacing / 2;
+
+        GameObject returner = null;
 
         foreach (GameObject weapon in listOfWeapons)
         {
             if (x > maxWidth)
             {
-                x = 0;
-                y += spacing;
+                x = spacing / 2;
+                y -= spacing;
             }
+
             GameObject obj = Instantiate<GameObject>(prefab, transform);
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
-            obj.GetComponent<Image>().sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
+            obj.transform.GetChild(0).GetComponent<Image>().sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
+
+            if (returner == null)
+                returner = obj;
 
             x += spacing;
         }
+
+        return returner;
     }
 }

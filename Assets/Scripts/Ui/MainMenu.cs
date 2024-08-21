@@ -41,8 +41,10 @@ public class MainMenu : MonoBehaviour
     {
         if (hasDoneTutorial)
         {
+            WeaponManaging wpmgr = FindAnyObjectByType<WeaponManaging>();
             currentPos = hiddenButtonsPos;
-            FindAnyObjectByType<WeaponManaging>().hidden = !FindAnyObjectByType<WeaponManaging>().hidden;
+            wpmgr.hidden = !wpmgr.hidden;
+            eventSystem.SetSelectedGameObject(wpmgr.firstSquare);
         }
         else
             Debug.Log("Player has not completed the tutorial");

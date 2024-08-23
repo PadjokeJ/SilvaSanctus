@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "45e82804-691d-41ce-9752-0447c16e5b70",
                     "expectedControlType": "Button",
@@ -139,11 +139,11 @@
                 {
                     "name": "",
                     "id": "fb34d43e-eb05-4f36-8878-7d0b521c20db",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Sprint",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -154,7 +154,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Sprint",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -205,7 +205,7 @@
                 {
                     "name": "",
                     "id": "5ca9d6fa-b174-4c5f-b55f-ef2ebf926fe3",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",

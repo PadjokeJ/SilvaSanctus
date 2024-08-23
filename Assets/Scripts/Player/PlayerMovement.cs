@@ -9,7 +9,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed, sprintSpeed;
     [SerializeField] float maxSpeed;
     Vector2 moveV2, normalizedMagnitude, clampedSpeed;
-    bool sprinting;
+
+    [SerializeField]
+    float dashForce;
+    Vector2 currentForce = new Vector2();
+    public float dashMaxTime, dashReload;
+    float dashTime;
+
+    bool toDash;
     //needs
     Rigidbody2D rb;
     //settings
@@ -30,31 +37,30 @@ public class PlayerMovement : MonoBehaviour
         normalizedMagnitude = new Vector2(Mathf.Abs(rb.velocity.normalized.x), Mathf.Abs(rb.velocity.normalized.y));
         clampedSpeed = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));
         rb.velocity = new Vector2(clampedSpeed.x * normalizedMagnitude.x, clampedSpeed.y * normalizedMagnitude.y);
-        if(sprinting)
+        rb.velocity += currentForce;
+        if(toDash)
         {
-            rb.velocity += moveV2 * sprintSpeed;
+            currentForce = dashForce * moveV2;
+            toDash = false;
         }
-        /*if (rb.velocity.normalized.x > 0.1f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        if (rb.velocity.normalized.x < -0.1f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);*/
-
-        //mainCam.transform.position = transform.position + new Vector3(0, 0, -10f);
+        dashTime += Time.deltaTime;
+        if (dashTime > dashMaxTime)
+        {
+            currentForce = Vector2.zero;
+        }
     }
     public void onMoveUpdate(InputAction.CallbackContext context)
     {
         moveV2 = context.ReadValue<Vector2>();
     }
-    public void Sprint(InputAction.CallbackContext context)
+    public void Dash(InputAction.CallbackContext context)
     {
-        if(toggleSprint)
+        Debug.Log(context.performed);
+        if (context.performed && dashTime > dashMaxTime + dashReload)
         {
-            if(context.performed)
-            {
-                sprinting = !sprinting;
-            }
-        }else
-        {
-            sprinting = context.performed;
+            toDash = true;
+            dashTime = 0f;
         }
-        
+
     }
 }

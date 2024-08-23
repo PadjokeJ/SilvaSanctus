@@ -137,7 +137,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2532456907796651027}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Sprint
+        m_MethodName: Dash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -276,6 +276,9 @@ MonoBehaviour:
   speed: 5
   sprintSpeed: 2
   maxSpeed: 9
+  dashForce: 10
+  dashMaxTime: 0.2
+  dashReload: 1.5
   toggleSprint: 0
 --- !u!114 &6113649621121605403
 MonoBehaviour:
@@ -379,10 +382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc75b7ac0baaf74499aa121b84f249f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 5169237351980348005, guid: 49022356ce1e7fa4098f80281c86c49a, type: 3}
-  - {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
-  - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
-  - {fileID: 5092907722837666214, guid: 1179d555ff088ec46adfdef5d1e10a3d, type: 3}
+  weapons: []
   selectedWeapon: {fileID: 0}
   selectedSlot: 0

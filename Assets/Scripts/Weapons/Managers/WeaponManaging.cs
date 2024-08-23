@@ -16,13 +16,16 @@ public class WeaponManaging : MonoBehaviour
 
     public GameObject firstSquare;
 
+    public Sprite disabledSprite, enabledSprite, selectedSprite;
+
+    List<Image> listOfButtons = new List<Image>();
+
     private void Awake()
     {
         mainMenu = FindAnyObjectByType<MainMenu>();
 
         WeaponTransfer.weaponsList = weapons;
 
-        WeaponTransfer.startingWeapon = weapons.weaponPrefabs[0];
 
         panelHidePos = new Vector2(800, 0);
 
@@ -56,6 +59,10 @@ public class WeaponManaging : MonoBehaviour
 
         GameObject returner = null;
 
+        int index = 0;
+
+        List<int> listOfUnlockedWeapons = new List<int>(weapons.unlockedWeapons);
+
         foreach (GameObject weapon in listOfWeapons)
         {
             if (x > maxWidth)
@@ -64,15 +71,34 @@ public class WeaponManaging : MonoBehaviour
                 y -= spacing;
             }
 
+            
+
             GameObject obj = Instantiate<GameObject>(prefab, transform);
+
+            WeaponSelector selector = obj.GetComponent<WeaponSelector>();
+
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
             obj.transform.GetChild(0).GetComponent<Image>().sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
-            obj.GetComponent<WeaponSelector>().weaponObject = weapon;
+            selector.weaponObject = weapon;
+
+
+
+            if (listOfUnlockedWeapons.Contains(index))
+            {
+                obj.GetComponent<Image>().sprite = selector.enabledSprite;
+                listOfButtons.Add(obj.GetComponent<Image>());
+            }
+            else
+            {
+                obj.GetComponent<Image>().sprite = selector.disabledSprite;
+                obj.GetComponent<Button>().interactable = false;
+            }
 
             if (returner == null)
                 returner = obj;
 
             x += spacing;
+            index++;
         }
 
         return returner;
@@ -80,6 +106,17 @@ public class WeaponManaging : MonoBehaviour
 
     public void Play()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        if (WeaponTransfer.startingWeapon != null)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        hidden = true;
+    }
+
+    public void ResetButtons(Sprite unselectedSprite)
+    {
+
+        foreach (Image image in listOfButtons)
+        {
+            image.sprite = unselectedSprite;
+        }
     }
 }

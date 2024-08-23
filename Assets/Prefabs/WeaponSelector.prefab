@@ -147,6 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponObject: {fileID: 0}
+  disabledSprite: {fileID: -1790252757, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
+  enabledSprite: {fileID: -460277239, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
+  selectedSprite: {fileID: 216391993, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
 --- !u!1 &3121125796779210895
 GameObject:
   m_ObjectHideFlags: 0

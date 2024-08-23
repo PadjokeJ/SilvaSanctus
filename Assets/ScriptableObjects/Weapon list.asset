@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 5169237351980348005, guid: 49022356ce1e7fa4098f80281c86c49a, type: 3}
   - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
   - {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
-  unlockedWeapons: 00000000
+  unlockedWeapons: 0000000001000000

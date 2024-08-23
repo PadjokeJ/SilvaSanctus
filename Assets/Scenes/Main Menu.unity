@@ -1392,6 +1392,9 @@ MonoBehaviour:
   panel: {fileID: 248476661}
   hidden: 0
   firstSquare: {fileID: 0}
+  disabledSprite: {fileID: -1790252757, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
+  enabledSprite: {fileID: -460277239, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
+  selectedSprite: {fileID: 216391993, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
 --- !u!1 &1246387556
 GameObject:
   m_ObjectHideFlags: 0

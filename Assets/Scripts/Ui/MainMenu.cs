@@ -58,7 +58,7 @@ public class MainMenu : MonoBehaviour
     {
         options.SetActive(true);
         eventSystem.SetSelectedGameObject(options.GetComponentsInChildren<Button>()[0].gameObject);
-        menuButtons.SetActive(false);
+        currentPos = hiddenButtonsPos;
     }
     public void Quit()
     {
@@ -67,5 +67,6 @@ public class MainMenu : MonoBehaviour
     public void WentBackToThis()
     {
         eventSystem.SetSelectedGameObject(menuButtons.GetComponentInChildren<Button>().gameObject);
+        currentPos = Vector2.zero;
     }
 }

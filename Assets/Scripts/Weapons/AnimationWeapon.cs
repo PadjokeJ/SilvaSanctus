@@ -11,6 +11,8 @@ public class AnimationWeapon : Weapon
     public ParticleSystem dustParticles;
 
     public GameObject pointOfContact;
+
+    bool hitOpponent = false;
     void Start()
     {
         gWP = GetComponent<GenericWeaponManager>();
@@ -34,13 +36,12 @@ public class AnimationWeapon : Weapon
     }
     public void SendAttackCircle()
     {
-        SmashParticles();
         targets.Clear();
-        cm.CameraShake(shakeAmplitude, shakeFrequency, shakeTime);
         Collider2D[] hit;
         hit = Physics2D.OverlapCircleAll(pointOfContact.transform.position, attackRadius);
         foreach (Collider2D item in hit)
         {
+            if (item.gameObject.CompareTag("Enemy")) hitOpponent = true;
             if(item.gameObject.CompareTag("Enemy") || item.gameObject.CompareTag("Chest"))
                 targets.Add(item.gameObject);
         }
@@ -52,9 +53,24 @@ public class AnimationWeapon : Weapon
             }    
         }
     }
+    public void Shake()
+    {
+        cm.CameraShake(shakeAmplitude, shakeFrequency, shakeTime);
+    }
     public void SmashParticles()
     {
         dustParticles.Play();
+    }
+    public void hitParticles()
+    {
+        if(hitOpponent)
+        {
+            dustParticles.Play();
+        }
+    }
+    public void ResetWeapon()
+    {
+        hitOpponent = false;
     }
 
     private void OnDrawGizmos()

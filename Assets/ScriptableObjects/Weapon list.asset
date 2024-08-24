@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Weapon list
   m_EditorClassIdentifier: 
   weaponPrefabs:
-  - {fileID: 5169237351980348005, guid: 49022356ce1e7fa4098f80281c86c49a, type: 3}
-  - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
+  - {fileID: 4944176742120918882, guid: 4878a400c65386b4ca792a4d582126f8, type: 3}
   - {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
-  unlockedWeapons: 0000000001000000
+  - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}
+  - {fileID: 219219403249303278, guid: 57c84fa5325c1cd48bb1841c427faf27, type: 3}
+  - {fileID: 5169237351980348005, guid: 49022356ce1e7fa4098f80281c86c49a, type: 3}
+  unlockedWeapons: 0000000001000000020000000300000004000000

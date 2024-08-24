@@ -278,7 +278,7 @@ MonoBehaviour:
   maxSpeed: 9
   dashForce: 10
   dashMaxTime: 0.2
-  dashReload: 1.5
+  dashReload: 1
   toggleSprint: 0
 --- !u!114 &6113649621121605403
 MonoBehaviour:

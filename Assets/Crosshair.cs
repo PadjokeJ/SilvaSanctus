@@ -6,8 +6,10 @@ public class Crosshair : MonoBehaviour
 {
     private void Update()
     {
-        Cursor.visible = false;
-        if (Time.timeScale == 0f)
+        
+        if (Time.timeScale == 1f)
+            Cursor.visible = false;
+        else
             Cursor.visible = true;
     }
 }

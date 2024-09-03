@@ -291,7 +291,7 @@ public class LevelManager : MonoBehaviour
             SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
             SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 1), endPos, 4);
 
-            SetSquareTiles(null, tilemap, startPos, midPos1, 2);
+            SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(0, 2), 2);
             SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
             SetSquareTiles(null, tilemap, midPos2, endPos, 2);
 

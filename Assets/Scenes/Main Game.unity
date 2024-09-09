@@ -455,7 +455,7 @@ MonoBehaviour:
   allRooms: {fileID: 11400000, guid: 42474c36bdc34894fa785063b04be02a, type: 2}
   generate: 0
   destroy: 0
-  roomsAmmount: 25
+  roomsAmmount: 9
   spacingBetweenRooms: 10
   startRoom: {fileID: 7436870937033958964, guid: c3e114f08c287024b95e0f492bf2b1bc, type: 3}
   endRoom: {fileID: 3049957179547929183, guid: ca72605cc3ab2524a9f5d19b0db04638, type: 3}
@@ -603,11 +603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: orthographic size
-      value: 7.5
+      value: 7.9375
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.0011074197
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -615,11 +615,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.70874864
+      value: 0.99667776
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.9448819
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5691138737778831221, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_LocalPosition.x

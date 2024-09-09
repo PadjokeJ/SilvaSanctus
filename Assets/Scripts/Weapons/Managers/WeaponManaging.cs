@@ -107,8 +107,10 @@ public class WeaponManaging : MonoBehaviour
     public void Play()
     {
         if (WeaponTransfer.startingWeapon != null)
+        {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-        hidden = true;
+            hidden = true;
+        }
     }
 
     public void ResetButtons(Sprite unselectedSprite)

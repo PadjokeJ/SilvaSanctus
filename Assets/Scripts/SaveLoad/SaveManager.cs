@@ -7,6 +7,7 @@ public static class SaveManager
     public static void SaveFloat(string name, float value)
     {
         PlayerPrefs.SetFloat(name, value);
+        PlayerPrefs.Save();
     }
     public static float RetrieveFloat(string name)
     {
@@ -16,6 +17,7 @@ public static class SaveManager
     public static void SaveInt(string name, int value)
     {
         PlayerPrefs.SetInt(name, value);
+        PlayerPrefs.Save();
     }
     public static int RetrieveInt(string name)
     {
@@ -29,6 +31,7 @@ public static class SaveManager
         if (value)
             intvalue = 1;
         PlayerPrefs.SetInt(name, intvalue);
+        PlayerPrefs.Save();
     }
     public static bool RetrieveBool(string name)
     {
@@ -53,6 +56,7 @@ public static class SaveManager
             previousKeys += "_" + name + "-" + type;
             PlayerPrefs.SetString("keys", previousKeys);
         }
+        PlayerPrefs.Save();
     }
 
     public static string[] RetrieveAllKeys()

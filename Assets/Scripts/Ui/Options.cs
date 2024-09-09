@@ -13,6 +13,15 @@ public class Options : MonoBehaviour
     void Awake()
     {
         selectedTabObject = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
+        for (int i = 0; i < selectedTabObject.transform.childCount; i++)
+        {
+            Transform child = selectedTabObject.transform.GetChild(i);
+            if (child.TryGetComponent<Toggle>(out Toggle toggle))
+            {
+                toggle.isOn = SaveManager.RetrieveBool(toggle.name);
+                print(SaveManager.RetrieveBool(toggle.name));
+            }
+        }
     }
 
     public void ChangeTabs(GameObject tab)
@@ -53,8 +62,6 @@ public class Options : MonoBehaviour
     {
         /*if (type == "Graphics")
         {*/
-
-            GraphicsChange(name, state);
         //}
     }
     public void OptionChange(string type, string name, float value)
@@ -73,8 +80,10 @@ public class Options : MonoBehaviour
     {
 
     }
-    void GraphicsChange(string name, bool state)
+    public void PPToggle(Toggle toggle)
     {
+        string name = toggle.name;
+        bool state = toggle.isOn;
         Volume volume;
         volume = FindAnyObjectByType<Volume>();
 

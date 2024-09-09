@@ -1199,7 +1199,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 772535841661829786}
         m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: Toggle
+        m_MethodName: PPToggle
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 3801410990556231175}
@@ -2247,7 +2247,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 772535841661829786}
         m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: Toggle
+        m_MethodName: PPToggle
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8063081270535738004}
@@ -2615,7 +2615,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 772535841661829786}
         m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: Toggle
+        m_MethodName: PPToggle
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7672756963565434301}

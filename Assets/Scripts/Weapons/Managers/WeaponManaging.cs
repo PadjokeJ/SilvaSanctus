@@ -20,6 +20,8 @@ public class WeaponManaging : MonoBehaviour
 
     List<Image> listOfButtons = new List<Image>();
 
+    Transition transition;
+
     private void Awake()
     {
         mainMenu = FindAnyObjectByType<MainMenu>();
@@ -35,6 +37,8 @@ public class WeaponManaging : MonoBehaviour
         panel.anchoredPosition = panelHidePos;
 
         hidden = true;
+
+        transition = FindAnyObjectByType<Transition>();
     }
 
     private void FixedUpdate()
@@ -108,9 +112,18 @@ public class WeaponManaging : MonoBehaviour
     {
         if (WeaponTransfer.startingWeapon != null)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             hidden = true;
+            StartCoroutine(PlayEnum());
         }
+    }
+
+    IEnumerator PlayEnum()
+    {
+        transition.FadeToBlack();
+
+        yield return new WaitForSeconds(1.05f);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void ResetButtons(Sprite unselectedSprite)

@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour
     public Vector2 currentPos;
 
     bool hasDoneTutorial;
+
+    Transition transition;
     void Start()
     {
         string filePath = Application.persistentDataPath + "/.tutorial";
@@ -26,6 +28,9 @@ public class MainMenu : MonoBehaviour
     }
     void Awake()
     {
+        transition = FindAnyObjectByType<Transition>();
+        transition.FadeToWhite();
+
         options = GetComponentInChildren<Options>().gameObject;
         options.SetActive(false);
 

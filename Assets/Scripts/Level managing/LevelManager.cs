@@ -299,9 +299,9 @@ public class LevelManager : MonoBehaviour
             SetSquareTiles(wallTile, tilemap, hor1 + new Vector3(1, -1), hor2 - new Vector3(3, 1), 4);
             SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 2), endPos, 4);
 
-            SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(0, 1), 2);
+            SetSquareTiles(null, tilemap, startPos - new Vector3(0, 1), midPos1 + new Vector3(0, 1), 2);
             SetSquareTiles(null, tilemap, hor1 - new Vector3(0, 1), hor2 - new Vector3(2, 1), 2);
-            SetSquareTiles(null, tilemap, midPos2 - new Vector3(0, 1), endPos, 2);
+            SetSquareTiles(null, tilemap, midPos2 - new Vector3(0, 1), endPos + new Vector3(0, 1), 2);
 
         }
 

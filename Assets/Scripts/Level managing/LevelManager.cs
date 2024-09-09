@@ -287,13 +287,21 @@ public class LevelManager : MonoBehaviour
             midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
             midPos2 = new Vector3(endPos.x, midPos2.y);
 
-            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(0, 3), 4);
-            SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
-            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 1), endPos, 4);
+            Vector3 hor1 = midPos1;
+            Vector3 hor2 = midPos2;
+            if (endPos.x > startPos.x)
+            {
+                hor1 = midPos2;
+                hor2 = midPos1;
+            }
 
-            SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(0, 2), 2);
-            SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
-            SetSquareTiles(null, tilemap, midPos2, endPos, 2);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(0, 2), 4);
+            SetSquareTiles(wallTile, tilemap, hor1 + new Vector3(1, -1), hor2 - new Vector3(3, 1), 4);
+            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 2), endPos, 4);
+
+            SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(0, 1), 2);
+            SetSquareTiles(null, tilemap, hor1 - new Vector3(0, 1), hor2 - new Vector3(2, 1), 2);
+            SetSquareTiles(null, tilemap, midPos2 - new Vector3(0, 1), endPos, 2);
 
         }
 

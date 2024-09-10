@@ -231,7 +231,7 @@ public class LevelManager : MonoBehaviour
         tilemap.SetTile(Vector3Int.CeilToInt(otherEndDoor) - endTileOffset, wallTile);
 
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSecondsRealtime(0.5f);
 
         transition.FadeToWhite();
     }

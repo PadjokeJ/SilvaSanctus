@@ -25,9 +25,9 @@ public class Transition : MonoBehaviour
 
     IEnumerator ColorLerp(Color original, Color target)
     {
-        for (int i = 0; i <= 20; i++)
+        for (int i = 0; i <= 10; i++)
         {
-            image.color = Color.Lerp(original, target, Mathf.Clamp(i/20f, 0f, 1f));
+            image.color = Color.Lerp(original, target, Mathf.Clamp(i/10f, 0f, 1f));
             yield return new WaitForSecondsRealtime(0.05f);
         }
     }

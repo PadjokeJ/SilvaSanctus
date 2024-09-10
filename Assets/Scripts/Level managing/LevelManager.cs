@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour
@@ -31,8 +32,13 @@ public class LevelManager : MonoBehaviour
 
     Tile wallTile;
 
+    Transition transition;
+
     void Awake()
     {
+        transition = FindAnyObjectByType<Transition>();
+        transition.GetComponent<Image>().color = Color.black;
+
         StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
 
     }
@@ -226,6 +232,8 @@ public class LevelManager : MonoBehaviour
 
 
         yield return new WaitForEndOfFrame();
+
+        transition.FadeToWhite();
     }
 
     GameObject GenerateCorridors(GameObject baseTilemapRoom, int randomSpawn)

@@ -121,7 +121,7 @@ public class WeaponManaging : MonoBehaviour
     {
         transition.FadeToBlack();
 
-        yield return new WaitForSeconds(1.05f);
+        yield return new WaitForSeconds(0.6f);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }

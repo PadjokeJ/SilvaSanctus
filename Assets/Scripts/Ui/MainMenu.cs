@@ -29,6 +29,7 @@ public class MainMenu : MonoBehaviour
     void Awake()
     {
         transition = FindAnyObjectByType<Transition>();
+        //transition.GetComponent<Image>().color = Color.black;
         transition.FadeToWhite();
 
         options = GetComponentInChildren<Options>().gameObject;

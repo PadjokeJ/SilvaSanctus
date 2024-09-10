@@ -16,12 +16,16 @@ public class Pause : MonoBehaviour
     GameObject options;
 
     public List<GameObject> buttons;
-    void Start()
+
+    Transition transition;
+    void Awake()
     {
         panelRect = GameObject.Find("Pause Panel").GetComponent<RectTransform>();
 
         options = GetComponentInChildren<Options>().gameObject;
         options.SetActive(false);
+
+        transition = FindAnyObjectByType<Transition>();
     }
 
     // Update is called once per frame
@@ -53,8 +57,16 @@ public class Pause : MonoBehaviour
 
     public void Exit()
     {
-        SceneManager.LoadScene(0);
+
+        StartCoroutine(ExitCoroutine());
+    }
+
+    IEnumerator ExitCoroutine()
+    {
+        transition.FadeToBlack();
+        yield return new WaitForSecondsRealtime(0.6f);
         Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
     public void WentBackToThis()

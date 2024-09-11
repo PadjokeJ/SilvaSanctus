@@ -321,14 +321,7 @@ public class LevelManager : MonoBehaviour
         {
             canGen = iteration != randomSpawn && maxIteration - iteration != randomSpawn; // checks if the iteration is equal to the door that will get blocked  
 
-            if (doors[iteration].x == 0 && canGen) // checks if the deadend is horizontal
-            {
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, 0), wallTile);
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, -1), wallTile);
-            }
-            if (doors[iteration].y == 0 && canGen) // checks if the deadend is vertical
+            if (canGen) // checks if the deadend is horizontal
             {
                 tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, 0), wallTile);
                 tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);

@@ -191,9 +191,7 @@ public class LevelManager : MonoBehaviour
         Vector3Int startTileOffset;
         startTileOffset = new Vector3Int(startRoomDir.x, startRoomDir.y);
 
-        tilemap.SetTile(Vector3Int.CeilToInt(otherStartDoor), wallTile);
-        tilemap.SetTile(Vector3Int.CeilToInt(otherStartDoor) + startTileOffset, wallTile);
-
+        BlockEntrance(otherStartDoor, wallTile, tilemap);
 
 
         Vector3 endRoomPos;
@@ -227,9 +225,7 @@ public class LevelManager : MonoBehaviour
         Vector3Int endTileOffset;
         endTileOffset = new Vector3Int(endRoomDir.x, endRoomDir.y);
 
-        tilemap.SetTile(Vector3Int.CeilToInt(otherEndDoor), wallTile);
-        tilemap.SetTile(Vector3Int.CeilToInt(otherEndDoor) - endTileOffset, wallTile);
-
+        BlockEntrance(otherEndDoor, wallTile, tilemap);
 
         yield return new WaitForSecondsRealtime(0.5f);
 
@@ -323,10 +319,7 @@ public class LevelManager : MonoBehaviour
 
             if (canGen) // checks if the deadend is horizontal
             {
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, 0), wallTile);
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, -1), wallTile);
+                BlockEntrance(position, wallTile, tilemap);
             }
             iteration++;
         }
@@ -334,6 +327,14 @@ public class LevelManager : MonoBehaviour
         return obj;
 
     }
+
+    void BlockEntrance(Vector3 position, RuleTile tile, Tilemap tilemap)
+    {
+        tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, 0), tile);
+        tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), tile);
+        tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), tile);
+        tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, -1), tile);
+    }    
 
     void SetSquareTiles(RuleTile wallTile, Tilemap tm, Vector3 startPos, Vector3 endpos, int thickness)
     {

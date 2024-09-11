@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     public bool generate;
     public bool destroy;
 
+    public RuleTile wallTile;
+
     List<GameObject> rooms = new List<GameObject>();
 
     List<Vector3> corridorsRightPos = new List<Vector3>();
@@ -29,8 +31,6 @@ public class LevelManager : MonoBehaviour
     GameObject spawnedStart;
     public GameObject endRoom;
     GameObject spawnedEnd;
-
-    Tile wallTile;
 
     Transition transition;
 
@@ -249,7 +249,7 @@ public class LevelManager : MonoBehaviour
         Tilemap tilemap = baseTilemapRoom.GetComponentInChildren<Tilemap>();
 
 
-        // get the type of tile to use for walls
+        /*// get the type of tile to use for walls
         foreach (var position in tilemap.cellBounds.allPositionsWithin)
         {
             if (tilemap.HasTile(position))
@@ -257,7 +257,7 @@ public class LevelManager : MonoBehaviour
                 wallTile = tilemap.GetTile<Tile>(position);
                 break;
             }
-        }
+        }*/
 
         tilemap = obj.GetComponent<Tilemap>();
 
@@ -275,9 +275,9 @@ public class LevelManager : MonoBehaviour
             midPos2 = Vector3Int.FloorToInt((startPos - endPos) / 2) + endPos;
             midPos2 = new Vector3(midPos2.x, endPos.y);
 
-            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(2, 0), 4);
-            SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 4);
-            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(2, 0), endPos, 4);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(3, 0), 6);
+            SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 6);
+            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(3, 0), endPos, 6);
 
             SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(1, 0), 2);
             SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
@@ -303,9 +303,9 @@ public class LevelManager : MonoBehaviour
                 hor2 = midPos1;
             }
 
-            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(0, 2), 4);
-            SetSquareTiles(wallTile, tilemap, hor1 + new Vector3(1, -1), hor2 - new Vector3(3, 1), 4);
-            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 2), endPos, 4);
+            SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(0, 3), 6);
+            SetSquareTiles(wallTile, tilemap, hor1 + new Vector3(1, -1), hor2 - new Vector3(3, 1), 6);
+            SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 3), endPos, 6);
 
             SetSquareTiles(null, tilemap, startPos - new Vector3(0, 1), midPos1 + new Vector3(0, 1), 2);
             SetSquareTiles(null, tilemap, hor1 - new Vector3(0, 1), hor2 - new Vector3(2, 1), 2);
@@ -321,12 +321,20 @@ public class LevelManager : MonoBehaviour
         {
             canGen = iteration != randomSpawn && maxIteration - iteration != randomSpawn; // checks if the iteration is equal to the door that will get blocked  
 
-            if (canGen) // makes sure the door is free
-                tilemap.SetTile(Vector3Int.CeilToInt(position), wallTile);
             if (doors[iteration].x == 0 && canGen) // checks if the deadend is horizontal
-                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
-            if (doors[iteration].y == 0 && canGen) // checks if the deadend is vertical
+            {
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, 0), wallTile);
                 tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, -1), wallTile);
+            }
+            if (doors[iteration].y == 0 && canGen) // checks if the deadend is vertical
+            {
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, 0), wallTile);
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(0, -1), wallTile);
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, 0), wallTile);
+                tilemap.SetTile(Vector3Int.CeilToInt(position) + new Vector3Int(-1, -1), wallTile);
+            }
             iteration++;
         }
 
@@ -334,12 +342,12 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    void SetSquareTiles(Tile wallTile, Tilemap tm, Vector3 startPos, Vector3 endpos, int thickness)
+    void SetSquareTiles(RuleTile wallTile, Tilemap tm, Vector3 startPos, Vector3 endpos, int thickness)
     {
         for(int i = 0; i < thickness; i++)
             SetTiles(wallTile, tm, startPos, endpos, i - Mathf.FloorToInt(thickness/2));
     }
-    void SetTiles(Tile wallTile, Tilemap tilemap, Vector3 startPos, Vector3 endPos, int displaceMult)
+    void SetTiles(RuleTile wallTile, Tilemap tilemap, Vector3 startPos, Vector3 endPos, int displaceMult)
     {
         Vector3 segment;
         segment = endPos - startPos;

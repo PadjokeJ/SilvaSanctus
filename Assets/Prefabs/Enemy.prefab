@@ -356,10 +356,13 @@ MonoBehaviour:
   LOS: 0
   attacking: 0
   off: 45
-  experienceGiven: 0
+  experienceGiven: 3
   warnObject: {fileID: 5488406510569271475, guid: 90c09f3fc33830f4da1bc19caab0accd, type: 3}
   multipleAttacks: 0
   maxRepeatedAttacks: 0
+  repeatedAccuracy: 0
+  deathParticles: {fileID: 0}
+  listOfDoors: {fileID: 0}
 --- !u!114 &1148357061521857519
 MonoBehaviour:
   m_ObjectHideFlags: 0

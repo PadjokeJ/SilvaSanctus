@@ -14,9 +14,13 @@ public static class PlayerLevelling
 
     public static void GainExperience(float ammountGained)
     {
-        experiencePoints += ammountGained;
-
         int previousLevel = playerLevel;
+
+        experiencePoints = SaveManager.RetrieveFloat("experience");
+        experiencePoints += ammountGained;
+        SaveManager.SaveFloat("experience", experiencePoints);
+        Debug.Log(experiencePoints);
+
         playerLevel = UpdateLevel(experiencePoints);
 
         if (playerLevel > previousLevel) SaveManager.SaveInt("level", playerLevel);

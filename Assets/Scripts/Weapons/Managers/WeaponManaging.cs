@@ -57,7 +57,7 @@ public class WeaponManaging : MonoBehaviour
         mainMenu.currentPos = Vector2.zero;
     }
 
-    GameObject GenerateWeaponSelector(GameObject prefab, GameObject[] listOfWeapons, int spacing, int maxWidth, Transform transform)
+    GameObject GenerateWeaponSelector(GameObject prefab, GameObject[] arrayOfWeapons, int spacing, int maxWidth, Transform transform)
     {
         int x = spacing / 2, y = -spacing / 2;
 
@@ -65,9 +65,11 @@ public class WeaponManaging : MonoBehaviour
 
         int index = 0;
 
-        List<int> listOfUnlockedWeapons = new List<int>(weapons.unlockedWeapons);
+        List<GameObject> listOfWeapons = new List<GameObject>(arrayOfWeapons);
+        int level = PlayerLevelling.GetLevel();
+        Debug.Log((level));
 
-        foreach (GameObject weapon in listOfWeapons)
+        foreach (GameObject weapon in arrayOfWeapons)
         {
             if (x > maxWidth)
             {
@@ -87,7 +89,7 @@ public class WeaponManaging : MonoBehaviour
 
 
 
-            if (listOfUnlockedWeapons.Contains(index))
+            if (listOfWeapons.IndexOf(weapon) < level)
             {
                 obj.GetComponent<Image>().sprite = selector.enabledSprite;
                 listOfButtons.Add(obj.GetComponent<Image>());

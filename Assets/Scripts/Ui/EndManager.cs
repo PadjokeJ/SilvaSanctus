@@ -15,43 +15,59 @@ public class EndManager : MonoBehaviour
         panel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PlayerWins()
     {
-        panel.SetActive(true);
+        ActivateEndScreen();
         Time.timeScale = 0f;
         gameOverReason.text = "You Win!";
     }
 
     public void LevelCleared()
     {
-        panel.SetActive(true);
+        ActivateEndScreen();
         Time.timeScale = 0f;
         gameOverReason.text = "Level Cleared!";
     }
 
     public void PlayerLoses()
     {
-        panel.SetActive(true);
+        ActivateEndScreen();
         Time.timeScale = 0f;
         gameOverReason.text = "Game Over!";
     }
 
     public void Restart()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(SwitchScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void MainMenu()
     {
+        StartCoroutine(SwitchScene(0));
+    }
+
+    void ActivateEndScreen()
+    {
+        panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 1000);
+        panel.SetActive(true);
+        StartCoroutine(Glide(panel.GetComponent<RectTransform>(), new Vector2(0, 0)));
+    }
+
+    IEnumerator Glide(RectTransform panelTransform, Vector2 desiredPosition)
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            panelTransform.anchoredPosition = Vector2.Lerp(panelTransform.anchoredPosition, desiredPosition, 0.5f);
+            yield return new WaitForSecondsRealtime(0.025f);
+        }
+    }
+
+    IEnumerator SwitchScene(int index)
+    {
+        FindAnyObjectByType<Transition>().FadeToBlack();
+        yield return new WaitForSecondsRealtime(0.6f);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(index);
     }
 
 }

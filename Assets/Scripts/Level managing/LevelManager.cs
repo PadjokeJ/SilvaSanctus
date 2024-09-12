@@ -230,6 +230,7 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
 
         transition.FadeToWhite();
+        PlayerLevelling.InitDeltaLevel();
     }
 
     GameObject GenerateCorridors(GameObject baseTilemapRoom, int randomSpawn)

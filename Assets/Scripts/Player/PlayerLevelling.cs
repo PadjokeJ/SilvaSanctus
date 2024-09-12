@@ -6,10 +6,15 @@ public static class PlayerLevelling
 {
     public static int playerLevel;
     public static float experiencePoints;
+    public static int levelAtStartOfRun;
     public static int GetLevel()
     {
         playerLevel = SaveManager.RetrieveInt("level");
         return playerLevel;
+    }
+    public static void InitDeltaLevel()
+    {
+        levelAtStartOfRun = playerLevel;
     }
 
     public static void GainExperience(float ammountGained)
@@ -37,5 +42,17 @@ public static class PlayerLevelling
         level = Mathf.RoundToInt(levelCalc) + 1;
 
         return level;
+    }
+
+    static float MaxExp()
+    {
+        float reverseCalc;
+        float level;
+        level = SaveManager.RetrieveInt("level");
+        //level -= 1;
+        reverseCalc = level * 2.8f;
+        reverseCalc = Mathf.Pow(reverseCalc, 1 / 0.58f);
+
+        return reverseCalc;
     }
 }

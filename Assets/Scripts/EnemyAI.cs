@@ -195,7 +195,7 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
-        FindObjectOfType<PlayerLevelling>().gainExperience(experienceGiven);
+       PlayerLevelling.GainExperience(experienceGiven);
 
         deathParticles.transform.position = transform.position;
         deathParticles.Emit(10);

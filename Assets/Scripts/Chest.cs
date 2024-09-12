@@ -10,7 +10,6 @@ using UnityEditor;
 public class Chest : MonoBehaviour
 {
     PlayerInventory pI;
-    PlayerLevelling pL;
 
     [HideInInspector]
     public string chestType;
@@ -25,12 +24,11 @@ public class Chest : MonoBehaviour
     private void Awake()
     {
         pI = FindObjectOfType<PlayerInventory>();
-        pL = FindObjectOfType<PlayerLevelling>();
     }
 
     public void GiveRewards()
     {
-        pL.gainExperience(expReward);
+        PlayerLevelling.GainExperience(expReward);
         if (chestType == "weapon")
         {
             pI.AddWeapon(weaponReward);
@@ -58,7 +56,6 @@ public class ChestEditor : Editor
         ChestScript.chestType = options[ChestScript.chestTypeId];
 
         base.OnInspectorGUI();
-
     }
 }
 #endif

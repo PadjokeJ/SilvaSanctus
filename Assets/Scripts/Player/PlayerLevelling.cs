@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLevelling : MonoBehaviour
+public static class PlayerLevelling
 {
-    public int playerLevel;
-    public float experiencePoints;
-    void Awake()
+    public static int playerLevel;
+    public static float experiencePoints;
+    public static int GetLevel()
     {
-        //dont destroy on load
-        PlayerLevelling[] objs = FindObjectsOfType<PlayerLevelling>();
-        if (objs.Length > 1) Destroy(this.gameObject);
-        DontDestroyOnLoad(this.gameObject);
-
-
         playerLevel = SaveManager.RetrieveInt("level");
+        return playerLevel;
     }
 
-    public void gainExperience(float ammountGained)
+    public static void GainExperience(float ammountGained)
     {
         experiencePoints += ammountGained;
 
@@ -27,7 +22,7 @@ public class PlayerLevelling : MonoBehaviour
         if (playerLevel > previousLevel) SaveManager.SaveInt("level", playerLevel);
     }
 
-    int UpdateLevel(float experience)
+    static int UpdateLevel(float experience)
     {
         int level = 0;
 

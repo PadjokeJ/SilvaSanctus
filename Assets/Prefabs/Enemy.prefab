@@ -347,7 +347,7 @@ MonoBehaviour:
   losesInterestIfNoLOS: 0
   fleeIfTooClose: 0
   speed: 50
-  maxDist: 20
+  maxDist: 15
   minDist: 1.5
   minRange: 2
   fleeSpeedMultiplier: 0.5

@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndManager : MonoBehaviour
 {
     public TextMeshProUGUI gameOverReason;
     GameObject panel;
+
+    public Slider slider;
+    public TextMeshProUGUI leftText;
+    public TextMeshProUGUI rightText;
 
     void Awake()
     {
@@ -51,6 +56,8 @@ public class EndManager : MonoBehaviour
         panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 1000);
         panel.SetActive(true);
         StartCoroutine(Glide(panel.GetComponent<RectTransform>(), new Vector2(0, 0)));
+
+        StartCoroutine(GainLevel(PlayerLevelling.levelAtStartOfRun, PlayerLevelling.GetLevel()));
     }
 
     IEnumerator Glide(RectTransform panelTransform, Vector2 desiredPosition)
@@ -70,4 +77,44 @@ public class EndManager : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
+    IEnumerator GainLevel(int startLevel, int endLevel)
+    {
+        float startExp = PlayerLevelling.expAtStartOfRun;
+        float endExp = startExp;
+        int level = 0;
+        if (startLevel == endLevel)
+            level = endLevel;
+        else
+            level = startLevel;
+        while (level <= endLevel)
+        {
+            if (level != startLevel)
+                startExp = PlayerLevelling.MaxExp(level - 1);
+            endExp = PlayerLevelling.MaxExp(level);
+            if (level == endLevel)
+                endExp = PlayerLevelling.experiencePoints;
+            leftText.text = level.ToString();
+            rightText.text = (level + 1).ToString();
+            StartCoroutine(LerpLevel(startExp, endExp, PlayerLevelling.MaxExp(level - 1), PlayerLevelling.MaxExp(level)));
+            yield return new WaitForSecondsRealtime(0.51f);
+            level += 1;
+        }
+    }
+    IEnumerator LerpLevel(float startExp, float endExp, float minExp, float maxExp)
+    {
+        slider.maxValue = maxExp;
+        slider.minValue = minExp;
+        float value = startExp;
+        float minValue = value;
+        float maxValue = endExp;
+        for (int i = 0; i < 50; i++)
+        {
+            yield return new WaitForSecondsRealtime(0.01f);
+            value = Mathf.Lerp(minValue, maxValue, i / 50f);
+            slider.value = value;
+            Debug.Log(value);
+        }
+    }
+
+    
 }

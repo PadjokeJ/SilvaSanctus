@@ -24,6 +24,8 @@ public class WeaponManaging : MonoBehaviour
 
     private void Awake()
     {
+        PlayerLevelling.GainExperience(0f);
+
         mainMenu = FindAnyObjectByType<MainMenu>();
 
         WeaponTransfer.weaponsList = weapons;

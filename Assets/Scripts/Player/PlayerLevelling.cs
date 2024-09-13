@@ -5,6 +5,7 @@ using UnityEngine;
 public static class PlayerLevelling
 {
     public static int playerLevel;
+    public static float expAtStartOfRun;
     public static float experiencePoints;
     public static int levelAtStartOfRun;
     public static int GetLevel()
@@ -14,7 +15,8 @@ public static class PlayerLevelling
     }
     public static void InitDeltaLevel()
     {
-        levelAtStartOfRun = playerLevel;
+        levelAtStartOfRun = SaveManager.RetrieveInt("level");
+        expAtStartOfRun = SaveManager.RetrieveFloat("experiece");
     }
 
     public static void GainExperience(float ammountGained)
@@ -27,6 +29,8 @@ public static class PlayerLevelling
         Debug.Log(experiencePoints);
 
         playerLevel = UpdateLevel(experiencePoints);
+
+        Debug.Log(playerLevel);
 
         if (playerLevel > previousLevel) SaveManager.SaveInt("level", playerLevel);
     }
@@ -44,11 +48,9 @@ public static class PlayerLevelling
         return level;
     }
 
-    static float MaxExp()
+    public static float MaxExp(int level)
     {
         float reverseCalc;
-        float level;
-        level = SaveManager.RetrieveInt("level");
         //level -= 1;
         reverseCalc = level * 2.8f;
         reverseCalc = Mathf.Pow(reverseCalc, 1 / 0.58f);

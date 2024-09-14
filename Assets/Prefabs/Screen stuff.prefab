@@ -698,15 +698,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0011074197
     y: 0
-    width: 1
+    width: 0.99667776
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 7.9375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2180,34 +2180,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8903031041370140373}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 3331523020100139709}
         m_TargetAssemblyTypeName: Pause, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 161285460909159309}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2998,7 +2974,8 @@ MonoBehaviour:
   - {fileID: 8808935635703210270}
   - {fileID: 2297438298497984379}
   - {fileID: 3147713137314580547}
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: a3521c16f701aae44bf4eb0ca19a546a, type: 3}
+  isOptionsActive: 0
 --- !u!1 &6719994368176461501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3864,7 +3841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
+  m_AmplitudeGain: 0.337139
   m_FrequencyGain: 20
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &9211973972959306635
@@ -4047,11 +4024,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
---- !u!1 &161285460909159309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5622016946958346387, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
-  m_PrefabInstance: {fileID: 5492257280718101278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9001745394088612407 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3518706983654410537, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}

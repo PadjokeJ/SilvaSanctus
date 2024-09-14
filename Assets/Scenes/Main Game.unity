@@ -684,6 +684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screen stuff
       objectReference: {fileID: 0}
+    - target: {fileID: 3331523020100139709, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a3521c16f701aae44bf4eb0ca19a546a, type: 3}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: orthographic size
       value: 7.9375

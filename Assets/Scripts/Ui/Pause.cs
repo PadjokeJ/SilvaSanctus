@@ -20,6 +20,8 @@ public class Pause : MonoBehaviour
     Transition transition;
 
     public AudioClip clip;
+
+    bool isOptionsActive = false;
     void Awake()
     {
         panelRect = GameObject.Find("Pause Panel").GetComponent<RectTransform>();
@@ -33,29 +35,35 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (paused)
+        if (paused && !isOptionsActive)
             panelRect.anchoredPosition = Vector2.Lerp(panelRect.anchoredPosition, pausedVector, 0.2f);
         else
             panelRect.anchoredPosition = Vector2.Lerp(panelRect.anchoredPosition, playedVector, 0.2f);
     }
     public void TogglePause()
     {
-        paused = !paused;
-        if (paused)
+        if (!isOptionsActive)
         {
-            Time.timeScale = 0f;
-            eventSystem.SetSelectedGameObject(buttons[0].gameObject);
+            paused = !paused;
+            if (paused)
+            {
+                Time.timeScale = 0f;
+                eventSystem.SetSelectedGameObject(buttons[0].gameObject);
+            }
+            else
+                Time.timeScale = 1f;
         }
-        else
-            Time.timeScale = 1f;
     }
 
     public void Options()
     {
         options.SetActive(true);
-        AudioManager.instance.PlayAudio(clip, Vector3.zero, 1f, 0.1f);
+        isOptionsActive = true;
+        
         eventSystem.SetSelectedGameObject(options.GetComponentsInChildren<Button>()[0].gameObject);
-        panelRect.gameObject.SetActive(false);
+        //panelRect.gameObject.SetActive(false);
+
+        AudioManager.instance.PlayAudio(clip, Vector3.zero, 1f, 0.1f);
     }
 
     public void Exit()
@@ -73,6 +81,7 @@ public class Pause : MonoBehaviour
 
     public void WentBackToThis()
     {
+        isOptionsActive = false;
         eventSystem.SetSelectedGameObject(buttons[0].GetComponent<Button>().gameObject);
     }
 }

@@ -698,15 +698,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0011074197
+    x: 0
     y: 0
-    width: 0.99667776
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.9375
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2907,8 +2907,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7841528279937082457}
-  - {fileID: 9001745394088612407}
   - {fileID: 7826062145331160613}
+  - {fileID: 9001745394088612407}
   m_Father: {fileID: 5691138737778831221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2998,6 +2998,7 @@ MonoBehaviour:
   - {fileID: 8808935635703210270}
   - {fileID: 2297438298497984379}
   - {fileID: 3147713137314580547}
+  clip: {fileID: 0}
 --- !u!1 &6719994368176461501
 GameObject:
   m_ObjectHideFlags: 0

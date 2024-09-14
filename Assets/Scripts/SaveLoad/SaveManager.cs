@@ -78,4 +78,10 @@ public static class SaveManager
 
         return filePath + "/" + fileName;
     }
+
+    public static bool HasKey(string key)
+    {
+        bool has = PlayerPrefs.HasKey(key);
+        return has;
+    }
 }

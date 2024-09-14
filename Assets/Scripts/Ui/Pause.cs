@@ -18,6 +18,8 @@ public class Pause : MonoBehaviour
     public List<GameObject> buttons;
 
     Transition transition;
+
+    public AudioClip clip;
     void Awake()
     {
         panelRect = GameObject.Find("Pause Panel").GetComponent<RectTransform>();
@@ -51,13 +53,13 @@ public class Pause : MonoBehaviour
     public void Options()
     {
         options.SetActive(true);
+        AudioManager.instance.PlayAudio(clip, Vector3.zero, 1f, 0.1f);
         eventSystem.SetSelectedGameObject(options.GetComponentsInChildren<Button>()[0].gameObject);
         panelRect.gameObject.SetActive(false);
     }
 
     public void Exit()
     {
-
         StartCoroutine(ExitCoroutine());
     }
 

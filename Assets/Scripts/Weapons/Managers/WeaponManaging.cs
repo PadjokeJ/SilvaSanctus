@@ -22,6 +22,8 @@ public class WeaponManaging : MonoBehaviour
 
     Transition transition;
 
+    public AudioClip clickClip;
+
     private void Awake()
     {
         PlayerLevelling.GainExperience(0f);
@@ -53,6 +55,7 @@ public class WeaponManaging : MonoBehaviour
 
     public void GoBack()
     {
+        PlayClickAudio();
         hidden = true;
 
         mainMenu.WentBackToThis();
@@ -84,6 +87,8 @@ public class WeaponManaging : MonoBehaviour
             GameObject obj = Instantiate<GameObject>(prefab, transform);
 
             WeaponSelector selector = obj.GetComponent<WeaponSelector>();
+
+            selector.clickClip = clickClip;
 
             obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, y);
             obj.transform.GetChild(0).GetComponent<Image>().sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
@@ -118,6 +123,7 @@ public class WeaponManaging : MonoBehaviour
         {
             hidden = true;
             StartCoroutine(PlayEnum());
+            PlayClickAudio();
         }
     }
 
@@ -137,5 +143,10 @@ public class WeaponManaging : MonoBehaviour
         {
             image.sprite = unselectedSprite;
         }
+    }
+
+    void PlayClickAudio()
+    {
+        AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
     }
 }

@@ -1720,6 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previousTab: {fileID: 0}
+  clickClip: {fileID: 8300000, guid: a3521c16f701aae44bf4eb0ca19a546a, type: 3}
 --- !u!1 &6631910139886663951
 GameObject:
   m_ObjectHideFlags: 0

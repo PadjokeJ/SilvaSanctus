@@ -18,6 +18,8 @@ public class MainMenu : MonoBehaviour
     bool hasDoneTutorial;
 
     Transition transition;
+
+    public AudioClip clickClip;
     void Start()
     {
         string filePath = Application.persistentDataPath + "/.tutorial";
@@ -50,6 +52,8 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
+        PlayClickAudio();
+
         if (hasDoneTutorial)
         {
             WeaponManaging wpmgr = FindAnyObjectByType<WeaponManaging>();
@@ -62,17 +66,24 @@ public class MainMenu : MonoBehaviour
     }
     public void Options()
     {
+        PlayClickAudio();
         options.SetActive(true);
         eventSystem.SetSelectedGameObject(options.GetComponentsInChildren<Button>()[0].gameObject);
         currentPos = hiddenButtonsPos;
     }
     public void Quit()
     {
+        PlayClickAudio();
         Application.Quit();
     }
     public void WentBackToThis()
     {
         eventSystem.SetSelectedGameObject(menuButtons.GetComponentInChildren<Button>().gameObject);
         currentPos = Vector2.zero;
+    }
+
+    void PlayClickAudio()
+    {
+        AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
     }
 }

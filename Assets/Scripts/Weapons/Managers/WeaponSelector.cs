@@ -13,6 +13,8 @@ public class WeaponSelector : MonoBehaviour
 
     WeaponManaging managing;
 
+    public AudioClip clickClip;
+
     void Awake()
     {
         image = GetComponent<Image>();
@@ -26,5 +28,13 @@ public class WeaponSelector : MonoBehaviour
         managing.ResetButtons(enabledSprite);
 
         image.sprite = selectedSprite;
+
+        PlayClickAudio();
+
+    }
+
+    void PlayClickAudio()
+    {
+        AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
     }
 }

@@ -10,6 +10,8 @@ public class Options : MonoBehaviour
     GameObject selectedTabObject;
 
     public GameObject previousTab;
+
+    public AudioClip clickClip;
     void Awake()
     {
         selectedTabObject = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
@@ -29,15 +31,20 @@ public class Options : MonoBehaviour
         selectedTabObject.SetActive(false);
         selectedTabObject = tab;
         selectedTabObject.SetActive(true);
+
+        PlayClickAudio();
     }
 
     void OnEnable()
     {
-        ChangeTabs(transform.GetChild(0).GetChild(0).GetChild(1).gameObject);
+        selectedTabObject.SetActive(false);
+        selectedTabObject = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
+        selectedTabObject.SetActive(true);
     }
 
     public void GoBack()
     {
+        PlayClickAudio();
         
         previousTab.SetActive(true);
 
@@ -50,38 +57,10 @@ public class Options : MonoBehaviour
         
         this.gameObject.SetActive(false);
     }
-
-    public void OptionChange(string type, string name, int value)
-    {
-        if (type == "Graphics")
-        {
-            GraphicsChange(name, value);
-        }
-    }
-    public void OptionChange(string type, string name, bool state)
-    {
-        /*if (type == "Graphics")
-        {*/
-        //}
-    }
-    public void OptionChange(string type, string name, float value)
-    {
-        if (type == "Graphics")
-        {
-            GraphicsChange(name, value);
-        }
-    }
-
-    void GraphicsChange(string name, float value)
-    {
-
-    }
-    void GraphicsChange(string name, int value)
-    {
-
-    }
     public void PPToggle(Toggle toggle)
     {
+        PlayClickAudio();
+
         string name = toggle.name;
         bool state = toggle.isOn;
         Volume volume;
@@ -100,14 +79,9 @@ public class Options : MonoBehaviour
         }
     }
 
-    public void Toggle(Toggle toggle)
+
+    void PlayClickAudio()
     {
-        OptionChange(toggle.transform.parent.name, toggle.name, toggle.isOn);
-    }
-
-
-    void RetrieveAllOptions()
-    {
-
+        AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
     }
 }

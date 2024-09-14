@@ -215,6 +215,7 @@ MonoBehaviour:
   shakeAmplitude: 2
   shakeFrequency: 20
   shakeTime: 0.5
+  gunshotAudio: {fileID: 8300000, guid: 880066be161221b4cbb5d54b410c2551, type: 3}
 --- !u!114 &2395088606309379722
 MonoBehaviour:
   m_ObjectHideFlags: 0

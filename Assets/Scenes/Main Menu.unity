@@ -610,9 +610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c767fe4bac9ea74e9c471d8c24418bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixer: {fileID: 0}
-  sfxMixer: {fileID: 0}
-  musicMixer: {fileID: 0}
+  masterMixer: {fileID: 24300002, guid: 8aca96dc6438e00499da5dd8ef1ef633, type: 2}
+  sfxMixer: {fileID: 5354423101693311156, guid: 8aca96dc6438e00499da5dd8ef1ef633, type: 2}
+  musicMixer: {fileID: 9062459402918160918, guid: 8aca96dc6438e00499da5dd8ef1ef633, type: 2}
 --- !u!4 &464359647
 Transform:
   m_ObjectHideFlags: 0

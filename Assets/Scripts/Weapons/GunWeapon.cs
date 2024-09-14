@@ -19,6 +19,8 @@ public class GunWeapon : Weapon
     public float shakeAmplitude = 5f, shakeFrequency = 20f, shakeTime = 0.5f;
 
     string weaponOwner;
+
+    public AudioClip gunshotAudio;
     
     void Awake()
     {
@@ -58,6 +60,8 @@ public class GunWeapon : Weapon
 
     public void Attack()
     {
+        if(gunshotAudio != null)
+            AudioManager.instance.PlayAudio(gunshotAudio, transform.position, 1f, 0.1f);
         targets.Clear();
         hitDistance = 20f; // in case we dont get a hit, so we dont mess up the graphics
 

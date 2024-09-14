@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        else
+            Destroy(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void PlayAudio(AudioClip clip, Vector3 position, float volume)

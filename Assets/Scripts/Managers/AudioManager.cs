@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+
+    public AudioMixerGroup masterMixer;
+    public AudioMixerGroup sfxMixer;
+    public AudioMixerGroup musicMixer;
 
     void Awake()
     {
@@ -26,6 +31,7 @@ public class AudioManager : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.volume = volume;
         audioSource.clip = clip;
+        audioSource.outputAudioMixerGroup = sfxMixer;
 
         audioSource.pitch = 1f + Random.Range(-pitchVar, pitchVar);
 

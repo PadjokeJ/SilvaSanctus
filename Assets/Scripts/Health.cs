@@ -9,12 +9,16 @@ public class Health : MonoBehaviour
     string entityType;
 
     PlayerHurtAnimation pHA;
+
+    public static Health playerInstance;
     void Awake()
     {
-        if (GameObject.FindGameObjectWithTag("Player") == this.gameObject)
+        if (this.gameObject.CompareTag("Player"))
         {
             entityType = "Player";
+            Health.playerInstance = this;
             pHA = FindObjectOfType<PlayerHurtAnimation>();
+            
         }
         else if(this.gameObject.CompareTag("Enemy"))
         {
@@ -28,9 +32,13 @@ public class Health : MonoBehaviour
     }
     public void takeDamage(float val)
     {
-        health -= val;
+        if (entityType == "Enemy")
+            health -= val * (1 + Buffs.damageBuff);
         if (entityType == "Player")
+        {
             pHA.HurtScreen();
+            health -= val * (1 - Buffs.defense);
+        }
         if (health <= 0)
         {
             if(entityType == "Player") GetComponent<PlayerManager>().Die();
@@ -41,5 +49,7 @@ public class Health : MonoBehaviour
     public void heal(float val)
     {
         health += val;
+        if (health > maxHealth)
+            health = maxHealth;
     }
 }

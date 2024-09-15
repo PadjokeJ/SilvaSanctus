@@ -40,13 +40,7 @@ public class LevelManager : MonoBehaviour
         transition.GetComponent<Image>().color = Color.black;
 
         StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
-
-    }
-    
-    void Update()
-    {
-        
-
+        Buffs.ResetBuffs();
     }
     IEnumerator GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing)
     {

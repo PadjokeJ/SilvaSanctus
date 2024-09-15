@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba61c223ab3fa7b4581d6839ae6c415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonDoor: 0
   doors:
   - {fileID: 8561034309010911485}
   - {fileID: 8377233938008996103}

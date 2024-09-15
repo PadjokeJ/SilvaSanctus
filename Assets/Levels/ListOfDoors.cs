@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class ListOfDoors : MonoBehaviour
 {
+    public bool dungeonDoor = true;
+
     public List<GameObject> doors;
     List<GameObject> listOfEnemies;
 
@@ -28,7 +30,11 @@ public class ListOfDoors : MonoBehaviour
     {
         enemyCount--;
         if (enemyCount <= 0)
+        {
             OpenDoors();
+            if (dungeonDoor)
+                BuffCards.instance.EnableCards();
+        }
     }
 
     void OpenDoors()

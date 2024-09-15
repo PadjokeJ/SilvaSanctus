@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4bf6355876cf9a64880622157c815f5e
+guid: 423008f0a69e3054fad0ac460704f852
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttons_0
+      name: buffIcons_0
       rect:
         serializedVersion: 2
         x: 0
@@ -132,19 +132,19 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 326e6157726fd1b43b483dd9593b4f0a
-      internalID: -1524334302
+      spriteID: 3dfd3fc5cf628a74fbe49b8aa683aee4
+      internalID: 1986538970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_1
+      name: buffIcons_1
       rect:
         serializedVersion: 2
         x: 16
@@ -153,19 +153,19 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7063851025ef2b34a91a99c805c8aafb
-      internalID: 429524467
+      spriteID: 14a986a310a52324c832e7af4023f8c9
+      internalID: 202609556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buttons_2
+      name: buffIcons_2
       rect:
         serializedVersion: 2
         x: 32
@@ -174,13 +174,34 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a63edfd6bc952284aa10096edf91406d
-      internalID: 1503517902
+      spriteID: 4cd927a3ff25ed94f9c620768eca735e
+      internalID: 1330310840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buffIcons_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a76eb795587f944a6d4711e4303c2e
+      internalID: 1845535047
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      buttons_0: -1524334302
-      buttons_1: 429524467
-      buttons_2: 1503517902
+      buffIcons_0: 1986538970
+      buffIcons_1: 202609556
+      buffIcons_2: 1330310840
+      buffIcons_3: 1845535047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

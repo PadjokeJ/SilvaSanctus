@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: paths_tilemap_5
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1975075388, guid: 83a809e860dfca24887d47d3c8f76d65, type: 3}
+  m_Sprite: {fileID: -1142509445, guid: 83a809e860dfca24887d47d3c8f76d65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

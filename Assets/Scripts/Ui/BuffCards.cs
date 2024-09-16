@@ -13,6 +13,8 @@ public class BuffCards : MonoBehaviour
 
     bool active = false;
 
+    public AudioClip selectAudio;
+
     void Awake()
     {
         instance = this;
@@ -41,6 +43,8 @@ public class BuffCards : MonoBehaviour
         {
             cards.gameObject.SetActive(false);
         }
+
+        AudioManager.instance.PlayAudio(selectAudio, transform.position, 2f, 0.1f);
     }
     public void EnableCards()
     {

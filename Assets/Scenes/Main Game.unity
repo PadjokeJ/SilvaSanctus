@@ -729,6 +729,7 @@ MonoBehaviour:
   - {fileID: 1890812933}
   - {fileID: 1406542929}
   - {fileID: 1354347949}
+  selectAudio: {fileID: 8300000, guid: 03196a030de71a047bfab4061ef75ada, type: 3}
 --- !u!1 &974677272
 GameObject:
   m_ObjectHideFlags: 0

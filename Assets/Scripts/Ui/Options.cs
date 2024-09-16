@@ -12,6 +12,8 @@ public class Options : MonoBehaviour
     public GameObject previousTab;
 
     public AudioClip clickClip;
+
+    public Sprite highlightedSprite, clickedSprite, selectedSprite, normalSprite;
     void Awake()
     {
         selectedTabObject = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
@@ -28,8 +30,10 @@ public class Options : MonoBehaviour
 
     public void ChangeTabs(GameObject tab)
     {
+        selectedTabObject.transform.parent.GetComponent<Image>().sprite = normalSprite;
         selectedTabObject.SetActive(false);
         selectedTabObject = tab;
+        selectedTabObject.transform.parent.GetComponent<Image>().sprite = selectedSprite;
         selectedTabObject.SetActive(true);
 
         PlayClickAudio();
@@ -40,6 +44,7 @@ public class Options : MonoBehaviour
         selectedTabObject.SetActive(false);
         selectedTabObject = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
         selectedTabObject.SetActive(true);
+        selectedTabObject.transform.parent.GetComponent<Image>().sprite = selectedSprite;
     }
 
     public void GoBack()

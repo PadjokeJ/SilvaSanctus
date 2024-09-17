@@ -195,12 +195,13 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
-       PlayerLevelling.GainExperience(experienceGiven);
+        PlayerLevelling.GainExperience(experienceGiven);
 
         deathParticles.transform.position = transform.position;
         deathParticles.Emit(10);
 
-        listOfDoors.OnEnemyDeath();
+        if(listOfDoors != null)
+            listOfDoors.OnEnemyDeath();
 
         Destroy(healthBar);
         Destroy(this.gameObject);

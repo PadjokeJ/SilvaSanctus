@@ -62,7 +62,10 @@ public class MainMenu : MonoBehaviour
             eventSystem.SetSelectedGameObject(wpmgr.firstSquare);
         }
         else
-            Debug.Log("Player has not completed the tutorial");
+        {
+            transition.FadeToBlack();
+            StartCoroutine(DelayedSceneChange(0.6f, 1));
+        }
     }
     public void Options()
     {
@@ -85,5 +88,13 @@ public class MainMenu : MonoBehaviour
     void PlayClickAudio()
     {
         AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
+    }
+
+    IEnumerator DelayedSceneChange(float timeDelay, int sceneIndex)
+    {
+        Debug.Log("started waiting");
+        yield return new WaitForSecondsRealtime(timeDelay);
+        Debug.Log("finished waiting");
+        SceneManager.LoadScene(sceneIndex);
     }
 }

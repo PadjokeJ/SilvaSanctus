@@ -133,7 +133,7 @@ public class WeaponManaging : MonoBehaviour
 
         yield return new WaitForSeconds(0.6f);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     public void ResetButtons(Sprite unselectedSprite)

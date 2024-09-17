@@ -21,6 +21,8 @@ public class GunWeapon : Weapon
     string weaponOwner;
 
     public AudioClip gunshotAudio;
+
+    Vector3 shootPos;
     
     void Awake()
     {
@@ -44,12 +46,18 @@ public class GunWeapon : Weapon
         cm = FindObjectOfType<CameraManager>();
 
         weaponOwner = transform.parent.tag;
+
+        shootPos = lr.GetPosition(1);
     }
 
-    void Update()
+    IEnumerator LerpShotTracer(Vector3 startPos, Vector3 endPos, float hitDistance)
     {
-        lr.SetPosition(0, Vector3.Lerp(lr.GetPosition(0), lr.GetPosition(1), 0.1f / hitDistance));
-        
+        for (int i = 0; i < 4 * Mathf.CeilToInt(hitDistance); i++)
+        {
+            lr.SetPosition(0, Vector3.Lerp(startPos, lr.GetPosition(1), i / 4f / hitDistance));
+            yield return new WaitForSeconds(0.01f);
+        }
+        lr.SetPosition(0, lr.GetPosition(1));
     }
 
     private void FixedUpdate()
@@ -81,7 +89,7 @@ public class GunWeapon : Weapon
         else
             shootDir = transform.right;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.5f, shootDir);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.6f, shootDir);
 
         if (hit.collider != null)
         {
@@ -98,8 +106,10 @@ public class GunWeapon : Weapon
         // graphics:
         attackAnimation.Play();
         timeSinceShot = 0f;
-        lr.SetPosition(0, transform.position + transform.right * 0.5f);
-        lr.SetPosition(1, lr.GetPosition(0) + shootDir * hitDistance * 1.1f);
+        lr.SetPosition(0, transform.position);
+        StopAllCoroutines();
+        StartCoroutine(LerpShotTracer(transform.position, transform.position + shootDir * hitDistance + transform.right * 0.5f, hitDistance));
+        lr.SetPosition(1, lr.GetPosition(0) + shootDir * hitDistance + transform.right * 0.5f);
         particle.Play();
 
         cm.CameraShake(shakeAmplitude, shakeFrequency, shakeTime);

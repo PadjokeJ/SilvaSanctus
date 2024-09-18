@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Dash(InputAction.CallbackContext context)
     {
-        Debug.Log(context.performed);
         if (context.performed && dashTime > dashMaxTime + dashReload)
         {
             toDash = true;

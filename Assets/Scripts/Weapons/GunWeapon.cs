@@ -89,7 +89,8 @@ public class GunWeapon : Weapon
         else
             shootDir = transform.right;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.6f, shootDir);
+        LayerMask mask = ~LayerMask.GetMask("Ignore Raycast");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right * 0.6f, shootDir, 80, mask);
 
         if (hit.collider != null)
         {

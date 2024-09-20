@@ -15,6 +15,8 @@ public class BossR : MonoBehaviour
     public float speed;
 
     string[] states = { "Chase", "LongRange", "ShortRange" };
+
+    public GameObject smokePrefab;
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -39,12 +41,14 @@ public class BossR : MonoBehaviour
         {
             if (state == "None")
             {
-                if (Random.Range(0, 100) > 30)
+                if (Random.Range(0, 100) > 50)
                 {
-                    if (Vector3.Distance(player.transform.position, transform.position) > 10f)
+                    if (Vector3.Distance(player.transform.position, transform.position) > 4f)
                     {
+                        StartCoroutine(LongRange());
 
-                    }else
+                    }
+                    else
                     {
 
                     }
@@ -74,6 +78,26 @@ public class BossR : MonoBehaviour
 
             transform.position += playerDirection * speed;
         }
+
+        yield return new WaitForSeconds(2f);
+        state = "None";
+    }
+
+    IEnumerator LongRange()
+    {
+        state = "Attacking";
+
+        GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
+        smokeObject.transform.position = transform.position;
+
+
+        yield return new WaitForSeconds(0.5f);
+
+        Vector3 playerDirection = player.transform.position - transform.position;
+        playerDirection = playerDirection.normalized;
+
+        
+        smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
 
         yield return new WaitForSeconds(2f);
         state = "None";

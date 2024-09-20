@@ -22,9 +22,14 @@ public class BossR : MonoBehaviour
         health = GetComponent<BossHealth>();
         player = Health.playerInstance.gameObject;
 
-        isSpawned = true;
+        Spawn();
     }
     public void Spawn()
+    {
+        isSpawned = true;
+    }
+
+    public void Die()
     {
 
     }

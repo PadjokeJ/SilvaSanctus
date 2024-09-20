@@ -67,7 +67,7 @@ public class BossR : MonoBehaviour
         while (timeSpentChasing < 3f)
         {
             yield return new WaitForSeconds(1 / 60f);
-            timeSpentChasing = (1 / 60f);
+            timeSpentChasing += (1 / 60f);
 
             playerDirection = player.transform.position - transform.position;
             playerDirection = playerDirection.normalized;

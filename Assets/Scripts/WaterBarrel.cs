@@ -6,6 +6,8 @@ public class WaterBarrel : MonoBehaviour
 {
     public ParticleSystem explosion;
 
+    public float radius;
+
     public void Die()
     {
         explosion.Play();
@@ -20,7 +22,7 @@ public class WaterBarrel : MonoBehaviour
     void AttackBoss()
     {
         LayerMask mask = LayerMask.GetMask("Ignore Raycast");
-        Collider2D[] collision = Physics2D.OverlapCircleAll(transform.position, 5f, mask);
+        Collider2D[] collision = Physics2D.OverlapCircleAll(transform.position, radius, mask);
 
         foreach (Collider2D collider in collision)
         {
@@ -29,5 +31,12 @@ public class WaterBarrel : MonoBehaviour
                 collider.GetComponent<BossR>().TakeDamage();
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

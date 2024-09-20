@@ -12,6 +12,8 @@ TagManager:
   - DeathParticles
   - End Room
   - Start Room
+  - Barrel
+  - R
   layers:
   - Default
   - TransparentFX

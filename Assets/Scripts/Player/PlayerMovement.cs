@@ -23,9 +23,13 @@ public class PlayerMovement : MonoBehaviour
     public bool toggleSprint;
 
     GameObject mainCam;
+
+    Animator animator;
     
     void Awake()
     {
+        animator = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody2D>();
         mainCam = Camera.main.gameObject;
     }
@@ -33,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("XVel", moveV2.normalized.x);
+        animator.SetFloat("YVel", moveV2.normalized.y);
+
         rb.velocity += moveV2.normalized * speed;
         normalizedMagnitude = new Vector2(Mathf.Abs(rb.velocity.normalized.x), Mathf.Abs(rb.velocity.normalized.y));
         clampedSpeed = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));

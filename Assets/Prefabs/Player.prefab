@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 9022682974344042162}
   - component: {fileID: 6186771929776705322}
   - component: {fileID: 6514524537981665721}
+  - component: {fileID: 2122351309116700856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -197,22 +198,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6b034549-b17f-46ce-aede-c2a44708a472
     m_ActionName: BasePlayer/SwitchWeapon[/Keyboard/1]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6113649621121605403}
-        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
-        m_MethodName: DropWeapon
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2d5847cb-e68e-42b0-9762-ed18fa0c0e36
-    m_ActionName: BasePlayer/DropWeapon[/Keyboard/q]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7781752577232314290}
@@ -385,3 +370,24 @@ MonoBehaviour:
   weapons: []
   selectedWeapon: {fileID: 0}
   selectedSlot: 0
+--- !u!95 &2122351309116700856
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959253977817736391}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a389f1cae7f3957409b7dd174d5caf8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

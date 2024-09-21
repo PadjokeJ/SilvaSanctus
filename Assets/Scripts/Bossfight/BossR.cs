@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.Rendering;
 
 public class BossR : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class BossR : MonoBehaviour
     string[] states = { "Chase", "LongRange", "ShortRange" };
 
     public GameObject smokePrefab;
+
+    int phase = 1;
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -37,6 +41,8 @@ public class BossR : MonoBehaviour
     public void TakeDamage()
     {
         health.health -= 1;
+        if (health.health <= 5)
+            phase = 2;
         health.ChangeHealthBar();
     }
 
@@ -92,17 +98,20 @@ public class BossR : MonoBehaviour
     {
         state = "Attacking";
 
-        GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
-        smokeObject.transform.position = transform.position;
+        for (int i = 0; i < (phase - 1) * 2 + 1; i++)
+        {
+            GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
+            smokeObject.transform.position = transform.position;
 
 
-        yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
 
-        Vector3 playerDirection = player.transform.position - transform.position;
-        playerDirection = playerDirection.normalized;
+            Vector3 playerDirection = player.transform.position - transform.position;
+            playerDirection = playerDirection.normalized;
 
-        
-        smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
+
+            smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
+        }
 
         yield return new WaitForSeconds(2f);
         state = "None";

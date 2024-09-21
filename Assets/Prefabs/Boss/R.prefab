@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506f49d15b14e3d4aac4d6f1b120285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 10
   maxHealth: 0
   canvasPrefab: {fileID: 2290597563056709164, guid: 87d659f5406725b458e9bdd7389191cd, type: 3}
   healthBarPrefab: {fileID: 7633754158159961981, guid: e7ce947228bc6324eb45a615b04e8d1c, type: 3}
@@ -127,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 7096409184682296454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

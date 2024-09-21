@@ -727,10 +727,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0010718113
     y: 0
-    width: 0.9989281
-    height: 0.9980952
+    width: 1.573419
+    height: 0.70857143
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -25443,14 +25443,6 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 67694288}
-    - target: {fileID: 6186771929776705322, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6186771929776705322, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 6959253977817736391, guid: 128a20eb7a255904ca2691095a906af1, type: 3}
       propertyPath: m_Name
       value: Player

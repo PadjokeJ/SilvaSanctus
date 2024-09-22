@@ -20,17 +20,36 @@ public class BossR : MonoBehaviour
 
     public GameObject smokePrefab;
 
+    public GameObject spriteObject;
+    public GameObject particleObject;
+
     int phase = 1;
     private void Awake()
     {
         health = GetComponent<BossHealth>();
         player = Health.playerInstance.gameObject;
 
-        Spawn();
+        particleObject.SetActive(false);
     }
     public void Spawn()
     {
+        StartCoroutine(SpawnSequence());
+    }
+
+    IEnumerator SpawnSequence()
+    {
+        yield return new WaitForSeconds(2f);
+        particleObject.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        
+        spriteObject.SetActive(false);
+
+        health.SpawnHealthCanvas();
+
+        yield return new WaitForSeconds(1f);
+
         isSpawned = true;
+
     }
 
     public void Die()

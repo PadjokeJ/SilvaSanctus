@@ -9,6 +9,8 @@ public class SmokeProjectile : MonoBehaviour
 
     bool hasHitPlayer = false;
 
+    public ParticleSystem trail;
+
     private void Awake()
     {
         Destroy(this.gameObject, 10f);
@@ -21,10 +23,18 @@ public class SmokeProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if(collision.CompareTag("Player") && !hasHitPlayer)
         {
             collision.GetComponent<Health>().takeDamage(2f);
             hasHitPlayer = true;
         }
+
+        trail.Stop();
+
+        var emissionModule = trail.emission;
+        emissionModule.enabled = false;
+
+        Destroy(this.gameObject, 1.5f);
     }
 }

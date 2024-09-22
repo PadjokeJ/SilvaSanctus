@@ -17,23 +17,35 @@ public class BossHealth : MonoBehaviour
     {
         maxHealth = health;
 
+        
+    }
+
+    public void SpawnHealthCanvas()
+    {
         GameObject healthBarCanvas = Instantiate<GameObject>(canvasPrefab);
         GameObject healthBarObject = Instantiate<GameObject>(healthBarPrefab, healthBarCanvas.transform);
 
         healthBar = healthBarObject.transform.GetChild(0).GetComponent<Image>();
+
+        healthBar.fillAmount = 0f;
+
+        Debug.Log(healthBar.fillAmount);
+
+        StartCoroutine(LerpHealthValue());
     }
 
     public void ChangeHealthBar()
     {
-        //StopAllCoroutines();
+        StopAllCoroutines();
         StartCoroutine(LerpHealthValue());
     }
     IEnumerator LerpHealthValue()
     {
-        for (int i = 0; i <= 20f; i++)
+        for (int i = 0; i <= 50f; i++)
         {
-            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHealth, 0.9f);
-            yield return new WaitForSeconds(0.01f);
+            Debug.Log(healthBar.fillAmount);
+            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHealth, 0.1f);
+            yield return new WaitForSeconds(0.02f);
         }
         healthBar.fillAmount = health / maxHealth;
     }

@@ -13,11 +13,13 @@ public class BossHealth : MonoBehaviour
 
     Image healthBar;
 
+    BossR bossR;
+
     private void Awake()
     {
         maxHealth = health;
 
-        
+        bossR = GetComponent<BossR>();
     }
 
     public void SpawnHealthCanvas()
@@ -37,6 +39,12 @@ public class BossHealth : MonoBehaviour
     public void ChangeHealthBar()
     {
         StopAllCoroutines();
+
+        if (health <= 0)
+        {
+            bossR.Die();
+        }
+
         StartCoroutine(LerpHealthValue());
     }
     IEnumerator LerpHealthValue()

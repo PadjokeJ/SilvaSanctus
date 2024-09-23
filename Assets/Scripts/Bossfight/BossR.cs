@@ -24,6 +24,10 @@ public class BossR : MonoBehaviour
     public GameObject particleObject;
 
     int phase = 1;
+
+    bool touchingPlayer;
+
+    IEnumerator damageTaker;
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -54,7 +58,7 @@ public class BossR : MonoBehaviour
 
     public void Die()
     {
-
+        touchingPlayer = false;
     }
 
     public void TakeDamage()
@@ -134,5 +138,40 @@ public class BossR : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         state = "None";
+    }
+
+    IEnumerator DOT(Health playerHealth)
+    {
+        while (touchingPlayer)
+        {
+            playerHealth.takeDamage(1f);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            touchingPlayer = true;
+            if(damageTaker == null)
+            {
+                damageTaker = DOT(collision.gameObject.GetComponent<Health>());
+                StartCoroutine(damageTaker);
+            }
+
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            touchingPlayer = false;
+            if (damageTaker != null)
+            {
+                StopCoroutine(damageTaker);
+            }
+        }
     }
 }

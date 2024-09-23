@@ -15,6 +15,7 @@ public class BlockRespawner : MonoBehaviour
 
     IEnumerator SpawnObject()
     {
+        yield return new WaitForSecondsRealtime(0.1f);
         spawnedObject = Instantiate<GameObject>(objectPrefab);
         spawnedObject.transform.position = transform.position;
 

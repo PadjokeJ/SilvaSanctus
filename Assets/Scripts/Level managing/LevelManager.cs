@@ -34,6 +34,10 @@ public class LevelManager : MonoBehaviour
 
     Transition transition;
 
+    public GameObject bossFightRoomPrefab;
+
+    public Vector3 BossRoomoffset;
+
     void Awake()
     {
         transition = FindAnyObjectByType<Transition>();
@@ -194,22 +198,27 @@ public class LevelManager : MonoBehaviour
         int lastIndex = deadEnds.Count - 1;
         Debug.Log(lastIndex);
 
-        if (randomSpawn == 1)
-        {
-            index = 1;
-            otherIndex = 0;
-            endRoomPos = deadEnds[lastIndex - 1];
-            endRoomDir = new Vector2Int(1, 0);
-        }
-        else
+        
+        index = 1;
+        otherIndex = 0;
+        endRoomPos = deadEnds[lastIndex];
+        endRoomDir = new Vector2Int(1, 0);
+
+        GameObject bossRoom;
+
+        bossRoom = Instantiate<GameObject>(bossFightRoomPrefab, Vector3.zero, Quaternion.identity);
+
+        bossRoom.transform.position = endRoomPos - BossRoomoffset;
+
+        /*else
         {
             index = 0;
             otherIndex = 1;
             endRoomPos = deadEnds[lastIndex];
             endRoomDir = new Vector2Int(0, 1);
-        }
+        }*/
 
-        spawnedEnd = Instantiate<GameObject>(endRoom, Vector3.zero, Quaternion.identity);
+        /*spawnedEnd = Instantiate<GameObject>(endRoom, Vector3.zero, Quaternion.identity);
 
         spawnedEnd.transform.position = endRoomPos - spawnedEnd.GetComponent<ListOfDoors>().doors[index].transform.position;
 
@@ -219,7 +228,7 @@ public class LevelManager : MonoBehaviour
         Vector3Int endTileOffset;
         endTileOffset = new Vector3Int(endRoomDir.x, endRoomDir.y);
 
-        BlockEntrance(otherEndDoor, wallTile, tilemap);
+        BlockEntrance(otherEndDoor, wallTile, tilemap);*/
 
         yield return new WaitForSecondsRealtime(0.5f);
 
@@ -238,17 +247,6 @@ public class LevelManager : MonoBehaviour
         obj.name = "Corridor tilemap";
 
         Tilemap tilemap = baseTilemapRoom.GetComponentInChildren<Tilemap>();
-
-
-        /*// get the type of tile to use for walls
-        foreach (var position in tilemap.cellBounds.allPositionsWithin)
-        {
-            if (tilemap.HasTile(position))
-            {
-                wallTile = tilemap.GetTile<Tile>(position);
-                break;
-            }
-        }*/
 
         tilemap = obj.GetComponent<Tilemap>();
 
@@ -310,7 +308,7 @@ public class LevelManager : MonoBehaviour
         bool canGen = true;
         foreach(Vector3 position in deadEnds)
         {
-            canGen = iteration != randomSpawn && maxIteration - iteration != randomSpawn; // checks if the iteration is equal to the door that will get blocked  
+            canGen = iteration != randomSpawn && maxIteration - iteration != 0; // checks if the iteration is equal to the door that will get blocked  
 
             if (canGen) // checks if the deadend is horizontal
             {

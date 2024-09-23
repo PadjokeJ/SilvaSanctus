@@ -1680,6 +1680,8 @@ MonoBehaviour:
   spacingBetweenRooms: 10
   startRoom: {fileID: 7436870937033958964, guid: c3e114f08c287024b95e0f492bf2b1bc, type: 3}
   endRoom: {fileID: 3049957179547929183, guid: ca72605cc3ab2524a9f5d19b0db04638, type: 3}
+  bossFightRoomPrefab: {fileID: 7582819802668919590, guid: f5010eabe2e6444468d3c9f4079b7e90, type: 3}
+  BossRoomoffset: {x: 0, y: -24, z: 0}
 --- !u!4 &1735482022
 Transform:
   m_ObjectHideFlags: 0
@@ -2619,12 +2621,20 @@ PrefabInstance:
       value: Screen stuff
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: orthographic size
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.0011074197
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99667776
+      value: 0.6859592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.9142857
       objectReference: {fileID: 0}
     - target: {fileID: 5216576726256369060, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_IsActive

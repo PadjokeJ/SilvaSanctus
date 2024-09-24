@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -0.000061035156, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 48, y: 48}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3856270555638707360
 CanvasRenderer:
@@ -150,6 +150,7 @@ MonoBehaviour:
   disabledSprite: {fileID: -1790252757, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
   enabledSprite: {fileID: -460277239, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
   selectedSprite: {fileID: 216391993, guid: 7e0cf70d790e12546a207be6f832d3df, type: 3}
+  clickClip: {fileID: 0}
 --- !u!1 &3121125796779210895
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1937499842958570308

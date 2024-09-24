@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 1
+  weaponDamage: 0
   reloadTime: 0
   weaponDistance: 1
   knockback: 0

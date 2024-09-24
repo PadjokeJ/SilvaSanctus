@@ -78,23 +78,14 @@ public class BossR : MonoBehaviour
         {
             if (state == "None")
             {
-                if (Random.Range(0, 100) > 50)
+                if (Vector3.Distance(player.transform.position, transform.position) > 10f)
                 {
-                    if (Vector3.Distance(player.transform.position, transform.position) > 4f)
-                    {
-                        StartCoroutine(LongRange());
-
-                    }
-                    else
-                    {
-
-                    }
+                    StartCoroutine(LongRange());
                 }
                 else
                 {
                     StartCoroutine(ChasePlayer());
                 }
-
             }
         }
     }
@@ -113,10 +104,10 @@ public class BossR : MonoBehaviour
             playerDirection = player.transform.position - transform.position;
             playerDirection = playerDirection.normalized;
 
-            transform.position += playerDirection * speed;
+            transform.position += playerDirection * speed * phase;
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         state = "None";
     }
 

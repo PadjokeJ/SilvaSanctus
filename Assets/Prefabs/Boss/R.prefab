@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519b7ea02d23bdb42ba748545eab05fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.02
+  speed: 0.06
   smokePrefab: {fileID: 4201928851734650451, guid: 79ab541b3e402e74f8727c4f74286f2d, type: 3}
   spriteObject: {fileID: 8659268725191419244}
   particleObject: {fileID: 7096409184682296454}

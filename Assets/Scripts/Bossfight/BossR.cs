@@ -59,6 +59,9 @@ public class BossR : MonoBehaviour
     public void Die()
     {
         touchingPlayer = false;
+
+        EndManager endManager = FindAnyObjectByType<EndManager>();
+        endManager.PlayerWins();
     }
 
     public void TakeDamage()

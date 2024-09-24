@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public bool generate;
     public bool destroy;
 
-    public RuleTile wallTile;
+    public RuleTile wallTile, floorTile;
 
     List<GameObject> rooms = new List<GameObject>();
 
@@ -151,6 +151,8 @@ public class LevelManager : MonoBehaviour
 
         int randomSpawn = Random.Range(0, 2);
 
+        timeToGenerate = Time.realtimeSinceStartup;
+
         tilemapObject = GenerateCorridors(generatedRoom, randomSpawn);
 
         Debug.Log("Corridors took " + (Time.realtimeSinceStartup - timeToGenerate).ToString() + " seconds to generate");
@@ -239,16 +241,24 @@ public class LevelManager : MonoBehaviour
     GameObject GenerateCorridors(GameObject baseTilemapRoom, int randomSpawn)
     {
         GameObject obj = new GameObject();
-        obj.AddComponent<Tilemap>();
+        Tilemap tilemap = obj.AddComponent<Tilemap>();
         obj.AddComponent<TilemapRenderer>();
         obj.AddComponent<Grid>();
-        obj.AddComponent<TilemapCollider2D>();
+        
 
         obj.name = "Corridor tilemap";
 
-        Tilemap tilemap = baseTilemapRoom.GetComponentInChildren<Tilemap>();
+        GameObject floorObj = new GameObject();
+        Tilemap floorTilemap = floorObj.AddComponent<Tilemap>();
 
-        tilemap = obj.GetComponent<Tilemap>();
+        TilemapRenderer ftmRenderer = floorObj.AddComponent<TilemapRenderer>();
+        ftmRenderer.sortingOrder = -2;
+
+        floorObj.AddComponent<Grid>();
+
+        floorObj.name = "Corridor Floor tilemap";
+
+        
 
         // break up corridors
         Vector3 startPos, endPos, midPos1, midPos2;
@@ -267,6 +277,10 @@ public class LevelManager : MonoBehaviour
             SetSquareTiles(wallTile, tilemap, startPos, midPos1 + new Vector3(3, 0), 6);
             SetSquareTiles(wallTile, tilemap, midPos1, midPos2, 6);
             SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(3, 0), endPos, 6);
+
+            SetSquareTiles(floorTile, floorTilemap, startPos, midPos1 + new Vector3(3, 0), 6);
+            SetSquareTiles(floorTile, floorTilemap, midPos1, midPos2, 6);
+            SetSquareTiles(floorTile, floorTilemap, midPos2 - new Vector3(3, 0), endPos, 6);
 
             SetSquareTiles(null, tilemap, startPos, midPos1 + new Vector3(1, 0), 2);
             SetSquareTiles(null, tilemap, midPos1, midPos2, 2);
@@ -296,6 +310,10 @@ public class LevelManager : MonoBehaviour
             SetSquareTiles(wallTile, tilemap, hor1 + new Vector3(1, -1), hor2 - new Vector3(3, 1), 6);
             SetSquareTiles(wallTile, tilemap, midPos2 - new Vector3(0, 3), endPos, 6);
 
+            SetSquareTiles(floorTile, floorTilemap, startPos, midPos1 + new Vector3(0, 3), 6);
+            SetSquareTiles(floorTile, floorTilemap, hor1 + new Vector3(1, -1), hor2 - new Vector3(3, 1), 6);
+            SetSquareTiles(floorTile, floorTilemap, midPos2 - new Vector3(0, 3), endPos, 6);
+
             SetSquareTiles(null, tilemap, startPos - new Vector3(0, 1), midPos1 + new Vector3(0, 1), 2);
             SetSquareTiles(null, tilemap, hor1 - new Vector3(0, 1), hor2 - new Vector3(2, 1), 2);
             SetSquareTiles(null, tilemap, midPos2 - new Vector3(0, 1), endPos + new Vector3(0, 1), 2);
@@ -316,6 +334,8 @@ public class LevelManager : MonoBehaviour
             }
             iteration++;
         }
+
+        obj.AddComponent<TilemapCollider2D>();
 
         return obj;
 

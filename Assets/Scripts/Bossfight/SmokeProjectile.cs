@@ -35,6 +35,7 @@ public class SmokeProjectile : MonoBehaviour
         var emissionModule = trail.emission;
         emissionModule.enabled = false;
 
+        Destroy(transform.GetChild(0).gameObject);
         Destroy(this.gameObject, 1.5f);
     }
 }

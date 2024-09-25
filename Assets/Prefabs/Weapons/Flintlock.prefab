@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: []
   weaponDamage: 1
-  reloadTime: 0.5
+  reloadTime: 0.6
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 0}
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 0
-  reloadTime: 0
+  weaponDamage: 1
+  reloadTime: 0.6
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 5894850917559626536}
@@ -238,7 +238,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   weaponName: Basic pistol
-  weaponDescription: Long range weapon with very low damage
+  weaponDescription: On the verge of breaking. Smells of old gunpowder and sawdust
 --- !u!1 &5480940057312467393
 GameObject:
   m_ObjectHideFlags: 0

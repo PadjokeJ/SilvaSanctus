@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 0
+  weaponDamage: 1
   reloadTime: 0
   weaponDistance: 1
   knockback: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   attackEvent:
     m_PersistentCalls:
       m_Calls: []
-  weaponName: 
-  weaponDescription: 
+  weaponName: A kitchen knife
+  weaponDescription: Not very sharp, not very deadly
 --- !u!111 &8365892747820087062
 Animation:
   m_ObjectHideFlags: 0

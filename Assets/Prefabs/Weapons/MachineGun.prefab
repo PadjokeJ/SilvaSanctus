@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 2
-  reloadTime: 0
+  weaponDamage: 0.8
+  reloadTime: 0.1
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 7953071988654730734}
@@ -238,8 +238,8 @@ MonoBehaviour:
   attackEvent:
     m_PersistentCalls:
       m_Calls: []
-  weaponName: Pistol
-  weaponDescription: Long range weapon with low damage
+  weaponName: Machine Gun
+  weaponDescription: Shoots faster than its own shadow
 --- !u!1 &1439420220356255900
 GameObject:
   m_ObjectHideFlags: 0

@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 0
-  reloadTime: 0
+  weaponDamage: 4
+  reloadTime: 0.5
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 5062270574474366563}
@@ -337,8 +337,8 @@ MonoBehaviour:
   attackEvent:
     m_PersistentCalls:
       m_Calls: []
-  weaponName: Pistol
-  weaponDescription: Long range weapon with low damage
+  weaponName: High tech pistol
+  weaponDescription: Shiny new toy for the military
 --- !u!1 &7412536611816961404
 GameObject:
   m_ObjectHideFlags: 0

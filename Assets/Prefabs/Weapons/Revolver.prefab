@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 0
-  reloadTime: 0
+  weaponDamage: 2
+  reloadTime: 0.5
   weaponDistance: 1
   knockback: 0
   particle: {fileID: 5894850917559626536}
@@ -237,8 +237,8 @@ MonoBehaviour:
   attackEvent:
     m_PersistentCalls:
       m_Calls: []
-  weaponName: Pistol
-  weaponDescription: Long range weapon with low damage
+  weaponName: Basic pistol
+  weaponDescription: Made of shiny metal, but is it deadly?
 --- !u!1 &5480940057312467393
 GameObject:
   m_ObjectHideFlags: 0

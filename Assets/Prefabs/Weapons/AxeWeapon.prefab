@@ -5095,7 +5095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 0
+  weaponDamage: 10
   reloadTime: 0
   weaponDistance: 1
   knockback: 0
@@ -5104,8 +5104,9 @@ MonoBehaviour:
   attackEvent:
     m_PersistentCalls:
       m_Calls: []
-  weaponName: 
-  weaponDescription: 
+  weaponName: Axe
+  weaponDescription: A sharp axe made for cutting trees. Maybe it can be used to
+    cut something else...
 --- !u!111 &1869948437527334891
 Animation:
   m_ObjectHideFlags: 0

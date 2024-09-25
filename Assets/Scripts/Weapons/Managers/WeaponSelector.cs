@@ -2,35 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class WeaponSelector : MonoBehaviour
+public class WeaponSelector : Selectable
 {
     public GameObject weaponObject;
 
-    Image image;
+    Image selectImage;
 
     public Sprite disabledSprite, enabledSprite, selectedSprite;
 
-    WeaponManaging managing;
+    public WeaponManaging managing;
 
     public AudioClip clickClip;
 
+    bool isHighlighted = false;
+
+    public Sprite weaponSprite;
+
+    public TextMeshProUGUI damage;
+    public TextMeshProUGUI reloadTime;
+    public TextMeshProUGUI weaponName;
+    public TextMeshProUGUI description;
+    public Image weaponImage;
+
     void Awake()
     {
-        image = GetComponent<Image>();
+        selectImage = GetComponent<Image>();
 
         managing = FindAnyObjectByType<WeaponManaging>();
+
+        
     }
+
+    private void Update()
+    {
+        if (IsHighlighted() && isHighlighted != IsHighlighted())
+            OnHighlight();
+        isHighlighted = IsHighlighted();
+    }
+
     public void SetPlayerWeapon()
     {
         WeaponTransfer.startingWeapon = weaponObject;
 
         managing.ResetButtons(enabledSprite);
 
-        image.sprite = selectedSprite;
+        selectImage.sprite = selectedSprite;
 
         PlayClickAudio();
 
+    }
+
+    void OnHighlight()
+    {
+        GenericWeaponManager gwp = weaponObject.GetComponent<GenericWeaponManager>();
+
+        damage.text = "Damage : " + gwp.weaponDamage.ToString();
+        reloadTime.text = "Reload time : " + gwp.reloadTime.ToString();
+        weaponName.text = gwp.weaponName;
+        description.text = gwp.weaponDescription;
+
+        weaponImage.sprite = weaponSprite;
     }
 
     void PlayClickAudio()

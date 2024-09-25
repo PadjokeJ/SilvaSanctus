@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using TMPro;
+
 public class WeaponManaging : MonoBehaviour
 {
     public Weapons weapons;
@@ -24,6 +26,14 @@ public class WeaponManaging : MonoBehaviour
 
     public AudioClip clickClip;
 
+    public TextMeshProUGUI damage;
+    public TextMeshProUGUI reloadTime;
+    public TextMeshProUGUI weaponName;
+    public TextMeshProUGUI description;
+    public Image weaponImage;
+
+    public Sprite weaponSprite;
+
     private void Awake()
     {
         PlayerLevelling.GainExperience(0f);
@@ -36,7 +46,7 @@ public class WeaponManaging : MonoBehaviour
         panelHidePos = new Vector2(800, 0);
 
         firstSquare = GenerateWeaponSelector(buttonPrefab, weapons.weaponPrefabs, 60, 240, panel.transform);
-
+        firstSquare = transform.GetChild(0).GetChild(0).gameObject;
 
         panel.anchoredPosition = panelHidePos;
 
@@ -94,6 +104,14 @@ public class WeaponManaging : MonoBehaviour
             obj.transform.GetChild(0).GetComponent<Image>().sprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
             selector.weaponObject = weapon;
 
+            selector.weaponSprite = weapon.GetComponentInChildren<SpriteRenderer>().sprite;
+
+            selector.damage = damage;
+            selector.weaponName = weaponName;
+            selector.description = description;
+            selector.reloadTime = reloadTime;
+
+            selector.weaponImage = weaponImage;
 
 
             if (listOfWeapons.IndexOf(weapon) < level)

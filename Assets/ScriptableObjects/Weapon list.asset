@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Weapon list
   m_EditorClassIdentifier: 
   weaponPrefabs:
-  - {fileID: 4944176742120918882, guid: 4878a400c65386b4ca792a4d582126f8, type: 3}
   - {fileID: 4944176742120918882, guid: 73c84614641a1464abc15cf8c06b06b2, type: 3}
+  - {fileID: 4944176742120918882, guid: 4878a400c65386b4ca792a4d582126f8, type: 3}
   - {fileID: 219219403249303278, guid: 57c84fa5325c1cd48bb1841c427faf27, type: 3}
   - {fileID: 5699735860319498135, guid: 5102f61e86518af4397c80d70a092d6c, type: 3}
   - {fileID: 740098100581024860, guid: ff55d54735e3d2e429d5d4941d3de7d8, type: 3}

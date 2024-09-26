@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -25,7 +26,14 @@ public class PlayerManager : MonoBehaviour
     }
     public void Die()
     {
-        endManager.PlayerLoses();
+        if (endManager != null)
+        {
+            endManager.PlayerLoses();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void Pause(InputAction.CallbackContext context)

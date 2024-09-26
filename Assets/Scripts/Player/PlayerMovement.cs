@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     GameObject mainCam;
 
     Animator animator;
+    SpriteRenderer spriteRenderer;
+
+    public GameObject shadowPrefab;
     
     void Awake()
     {
@@ -32,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         mainCam = Camera.main.gameObject;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -48,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         if(toDash)
         {
             currentForce = dashForce * moveV2;
+            StartCoroutine(DashTrail());
             toDash = false;
         }
         dashTime += Time.deltaTime;
@@ -68,5 +74,16 @@ public class PlayerMovement : MonoBehaviour
             dashTime = 0f;
         }
 
+    }
+
+    IEnumerator DashTrail()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject obj = Instantiate<GameObject>(shadowPrefab, transform.position, Quaternion.identity);
+            obj.GetComponent<SpriteRenderer>().sprite = spriteRenderer.sprite;
+            yield return new WaitForSeconds(0.05f);
+            
+        }
     }
 }

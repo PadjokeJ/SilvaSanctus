@@ -264,8 +264,9 @@ MonoBehaviour:
   maxSpeed: 9
   dashForce: 10
   dashMaxTime: 0.2
-  dashReload: 1
+  dashReload: 0.5
   toggleSprint: 0
+  shadowPrefab: {fileID: 9109771024324834845, guid: cffc10163bb6dbb448554c3475ed2d33, type: 3}
 --- !u!114 &6113649621121605403
 MonoBehaviour:
   m_ObjectHideFlags: 0

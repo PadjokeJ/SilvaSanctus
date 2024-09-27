@@ -46,6 +46,8 @@ public class EnemyAI : MonoBehaviour
     public ParticleSystem deathParticles;
 
     public ListOfDoors listOfDoors;
+
+    Animator animator;
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -74,6 +76,10 @@ public class EnemyAI : MonoBehaviour
             attackTime = gWP.reloadTime;
 
         deathParticles = GameObject.FindWithTag("DeathParticles").GetComponent<ParticleSystem>();
+
+        animator = GetComponent<Animator>();
+
+        
     }
 
     void Update()
@@ -86,6 +92,9 @@ public class EnemyAI : MonoBehaviour
 
             if (state == "moving")
             {
+                animator.speed = 1;
+                
+
                 LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
                 if (LOS && dist > minDist && dist < maxDist) //move towards player
                 {
@@ -110,9 +119,14 @@ public class EnemyAI : MonoBehaviour
                         state = "attacking";
                     }
                 }
+
+                animator.SetFloat("SpeedX", deltaPos.x);
+                animator.SetFloat("SpeedY", deltaPos.y);
+
             }
             if (state == "attacking")
             {
+                animator.speed = 0;
                 if (!attacking)
                 {
                     if (!multipleAttacks)

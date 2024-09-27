@@ -78,6 +78,7 @@ public class EnemyAI : MonoBehaviour
         deathParticles = GameObject.FindWithTag("DeathParticles").GetComponent<ParticleSystem>();
 
         animator = GetComponent<Animator>();
+        animator.speed = 0;
 
         
     }
@@ -120,8 +121,7 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
 
-                animator.SetFloat("SpeedX", deltaPos.x);
-                animator.SetFloat("SpeedY", deltaPos.y);
+                
 
             }
             if (state == "attacking")
@@ -136,7 +136,8 @@ public class EnemyAI : MonoBehaviour
                 }
             }
 
-            
+            animator.SetFloat("SpeedX", deltaPos.x);
+            animator.SetFloat("SpeedY", deltaPos.y);
 
             ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
         }

@@ -108,6 +108,9 @@ public class EnemyAI : MonoBehaviour
                     rg.velocity -= deltaPos;
                 }
 
+                animator.SetFloat("SpeedX", deltaPos.normalized.x);
+                animator.SetFloat("SpeedY", deltaPos.normalized.y);
+
                 SetWeaponDirection(1f);
 
                 if (dist <= attackDist)
@@ -136,8 +139,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
 
-            animator.SetFloat("SpeedX", deltaPos.x);
-            animator.SetFloat("SpeedY", deltaPos.y);
+            
 
             ehb.updateHealthBar(healthBar, transform.position, healthScript.health, healthScript.maxHealth);
         }

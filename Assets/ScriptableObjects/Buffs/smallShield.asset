@@ -19,4 +19,4 @@ MonoBehaviour:
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: 0
-  rarity: common
+  rarity: rare

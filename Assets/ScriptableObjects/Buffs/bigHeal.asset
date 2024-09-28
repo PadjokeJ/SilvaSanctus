@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 202609556, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Healing spirit
-  buffDescription: Heals you for 3 health
+  buffDescription: Heals you for 5 health
   defenseAwarded: 0
   attackAwarded: 0
-  healAmmount: 3
+  healAmmount: 5
   healthAwarded: 0
-  rarity: epic
+  rarity: legendary

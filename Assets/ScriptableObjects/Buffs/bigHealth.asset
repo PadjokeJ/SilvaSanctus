@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Heart of gold
-  buffDescription: Grants you +1 max health
+  buffDescription: Grants you +4 max health, and heals you that ammount
   defenseAwarded: 0
   attackAwarded: 0
-  healAmmount: 0
+  healAmmount: 4
   healthAwarded: 4
-  rarity: epic
+  rarity: legendary

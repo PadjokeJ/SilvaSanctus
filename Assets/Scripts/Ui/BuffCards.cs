@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class BuffCards : MonoBehaviour
 {
-    public List<BuffScriptableObject> buffsList;
+    public List<BuffScriptableObject> rareBuffs;
+    public List<BuffScriptableObject> epicBuffs;
+    public List<BuffScriptableObject> legendaryBuffs;
+
+    List<BuffScriptableObject> buffsList = new List<BuffScriptableObject>();
 
     public Cards[] cards;
 
@@ -21,7 +25,6 @@ public class BuffCards : MonoBehaviour
 
         foreach (Cards cards in cards)
         {
-            Debug.Log(cards.gameObject.name);
             cards.gameObject.SetActive(false);
         }
         
@@ -56,11 +59,16 @@ public class BuffCards : MonoBehaviour
             foreach (Cards card in cards)
             {
                 card.gameObject.SetActive(true);
-                SetCard(card, buffsList[Random.Range(0, buffsList.Count)]);
+                if (Random.Range(0f, 1f) < 0.1f)
+                    SetCard(card, legendaryBuffs[Random.Range(0, legendaryBuffs.Count)], "legendary");
+                else if (Random.Range(0f, 1f) < 0.3f)
+                    SetCard(card, epicBuffs[Random.Range(0, epicBuffs.Count)], "epic");
+                else
+                    SetCard(card, rareBuffs[Random.Range(0, rareBuffs.Count)], "rare");
             }
         }
     }
-    void SetCard(Cards card, BuffScriptableObject buff)
+    void SetCard(Cards card, BuffScriptableObject buff, string rarity)
     {
         card.buffSprite.sprite = buff.buffSprite;
 
@@ -68,5 +76,7 @@ public class BuffCards : MonoBehaviour
         card.buffDescription.text = buff.buffDescription;
 
         card.buff = buff;
+
+        card.SetRarity(rarity);
     }
 }

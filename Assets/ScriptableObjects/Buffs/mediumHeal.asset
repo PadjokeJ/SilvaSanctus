@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: mediumHeal
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 202609556, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
-  buffName: Healing juive
+  buffName: Healing Juice
   buffDescription: Heals you for 3 health
   defenseAwarded: 0
   attackAwarded: 0

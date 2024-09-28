@@ -716,15 +716,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bd5d3bcdd41754eb24bbd6eec08b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffsList:
-  - {fileID: 11400000, guid: 27edb36e5eca8cd4d9e50310a4a3fdbb, type: 2}
-  - {fileID: 11400000, guid: 7ed926cdee036e245af2c2015a84bbb9, type: 2}
-  - {fileID: 11400000, guid: 50365a586f093094594aee052cf178b6, type: 2}
-  - {fileID: 11400000, guid: 25959aa047ebba142b8f9940a6e15c50, type: 2}
+  rareBuffs:
   - {fileID: 11400000, guid: 4b68a92afcff7fb44a628d23bf8e3084, type: 2}
   - {fileID: 11400000, guid: 22f95fe9dd7026c4298d9957ac5531cd, type: 2}
   - {fileID: 11400000, guid: eca7fd2d09ff06a4cb88e76ab9bce005, type: 2}
   - {fileID: 11400000, guid: da1933d4bd3238141bd9ab07a3006139, type: 2}
+  epicBuffs:
+  - {fileID: 11400000, guid: 66a4ad7be9f279a4db6c87d702869818, type: 2}
+  - {fileID: 11400000, guid: ce57e60706f2c3f4ca1146d72b54f528, type: 2}
+  - {fileID: 11400000, guid: 1644957afd935314fb3d0e5ed2379398, type: 2}
+  - {fileID: 11400000, guid: d91985393f4bd44448c29461da447627, type: 2}
+  legendaryBuffs:
+  - {fileID: 11400000, guid: 27edb36e5eca8cd4d9e50310a4a3fdbb, type: 2}
+  - {fileID: 11400000, guid: 7ed926cdee036e245af2c2015a84bbb9, type: 2}
+  - {fileID: 11400000, guid: 50365a586f093094594aee052cf178b6, type: 2}
+  - {fileID: 11400000, guid: 25959aa047ebba142b8f9940a6e15c50, type: 2}
   cards:
   - {fileID: 1890812933}
   - {fileID: 1406542929}
@@ -1256,9 +1262,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    m_PressedColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1275,11 +1281,16 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1354347951}
+  rareBackground: {fileID: -2128423412, guid: ad94900aa639788478ea3b280827b86f, type: 3}
+  epicBackground: {fileID: 576254215, guid: ad94900aa639788478ea3b280827b86f, type: 3}
+  legendaryBackground: {fileID: 1337629587, guid: ad94900aa639788478ea3b280827b86f, type: 3}
   buffSprite: {fileID: 996374849}
   buffHeadline: {fileID: 2054253444}
   buffDescription: {fileID: 1039603334}
+  buffRarity: {fileID: 0}
   buff: {fileID: 0}
   cardReveal: {fileID: 8300000, guid: b35cedc1bbd55cb468c4e44f9674ef0a, type: 3}
+  rarity: 
 --- !u!114 &1354347950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,12 +1310,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    m_PressedColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1356,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1524334302, guid: 4bf6355876cf9a64880622157c815f5e, type: 3}
+  m_Sprite: {fileID: -2128423412, guid: ad94900aa639788478ea3b280827b86f, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1435,12 +1446,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    m_PressedColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1492,7 +1503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1524334302, guid: 4bf6355876cf9a64880622157c815f5e, type: 3}
+  m_Sprite: {fileID: -2128423412, guid: ad94900aa639788478ea3b280827b86f, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1532,9 +1543,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    m_PressedColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1551,11 +1562,16 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1406542927}
+  rareBackground: {fileID: -2128423412, guid: ad94900aa639788478ea3b280827b86f, type: 3}
+  epicBackground: {fileID: 576254215, guid: ad94900aa639788478ea3b280827b86f, type: 3}
+  legendaryBackground: {fileID: 1337629587, guid: ad94900aa639788478ea3b280827b86f, type: 3}
   buffSprite: {fileID: 2121333205}
   buffHeadline: {fileID: 1808741340}
   buffDescription: {fileID: 1001222854}
+  buffRarity: {fileID: 0}
   buff: {fileID: 0}
   cardReveal: {fileID: 8300000, guid: b35cedc1bbd55cb468c4e44f9674ef0a, type: 3}
+  rarity: 
 --- !u!1 &1686435604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,12 +1963,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    m_PressedColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2004,7 +2020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1524334302, guid: 4bf6355876cf9a64880622157c815f5e, type: 3}
+  m_Sprite: {fileID: -2128423412, guid: ad94900aa639788478ea3b280827b86f, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2036,9 +2052,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    m_PressedColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    m_SelectedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2055,11 +2071,16 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1890812932}
+  rareBackground: {fileID: -2128423412, guid: ad94900aa639788478ea3b280827b86f, type: 3}
+  epicBackground: {fileID: 576254215, guid: ad94900aa639788478ea3b280827b86f, type: 3}
+  legendaryBackground: {fileID: 1337629587, guid: ad94900aa639788478ea3b280827b86f, type: 3}
   buffSprite: {fileID: 65989198}
   buffHeadline: {fileID: 1924313827}
   buffDescription: {fileID: 358256177}
+  buffRarity: {fileID: 0}
   buff: {fileID: 0}
   cardReveal: {fileID: 8300000, guid: b35cedc1bbd55cb468c4e44f9674ef0a, type: 3}
+  rarity: 
 --- !u!222 &1890812934
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2613,9 +2634,37 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1697425871}
+    - target: {fileID: 2329626150755042428, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2763066373831613851, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_Name
       value: Screen stuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: orthographic size
+      value: 5.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.0035906644
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.99102336
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216576726256369060, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5691138737778831221, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_LocalPosition.x

@@ -84,4 +84,10 @@ public static class SaveManager
         bool has = PlayerPrefs.HasKey(key);
         return has;
     }
+
+    public static void ClearPlayerData()
+    {
+        PlayerPrefs.DeleteKey("level");
+        PlayerPrefs.DeleteKey("experience");
+    }
 }

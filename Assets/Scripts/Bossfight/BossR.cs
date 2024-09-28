@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.Rendering;
 
+
 public class BossR : MonoBehaviour
 {
     BossHealth health;
@@ -27,13 +28,19 @@ public class BossR : MonoBehaviour
 
     bool touchingPlayer;
 
+    CameraManager cm;
+
     IEnumerator damageTaker;
+
+    bool dead = false;
     private void Awake()
     {
         health = GetComponent<BossHealth>();
         player = Health.playerInstance.gameObject;
 
         particleObject.SetActive(false);
+
+        cm = FindObjectOfType<CameraManager>();
     }
     public void Spawn()
     {
@@ -56,25 +63,78 @@ public class BossR : MonoBehaviour
 
     }
 
-    public void Die()
+    IEnumerator PhaseUp()
     {
-        touchingPlayer = false;
+        state = "phasing";
+
+        yield return new WaitForSeconds(1f);
+
+        ParticleSystem rParticles = particleObject.GetComponent<ParticleSystem>();
+        var emissionModule = rParticles.emission;
+
+        bool toActivate = false;
+
+        for (int i = 0; i < 8; i++)
+        {
+            toActivate = !toActivate;
+            emissionModule.enabled = !toActivate;
+            spriteObject.SetActive(toActivate);
+            cm.CameraShake(10, 30, 0.5f);
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        spriteObject.SetActive(true);
+        cm.CameraShake(40, 30, 2f);
+        yield return new WaitForSeconds(1f);
+        spriteObject.SetActive(false);
+        state = "None";
+    }
+
+    IEnumerator DeathSequence()
+    {
+        dead = true;
+
+        ParticleSystem rParticles = particleObject.GetComponent<ParticleSystem>();
+        var emissionModule = rParticles.emission;
+        
+
+        for (int time = 0; time < 25; time++)
+        {
+            emissionModule.rateOverTime = 50f - time/2f;
+            yield return new WaitForSeconds(0.1f);
+            cm.CameraShake(20, 30, 2f);
+        }
+
+        emissionModule.rateOverTime = 0f;
+        yield return new WaitForSeconds(2f);
 
         EndManager endManager = FindAnyObjectByType<EndManager>();
         endManager.PlayerWins();
     }
 
+    public void Die()
+    {
+        touchingPlayer = false;
+
+        StopAllCoroutines();
+        StartCoroutine(DeathSequence());
+    }
+
     public void TakeDamage()
     {
-        health.health -= 1;
-        if (health.health <= 5)
+        health.health -= 2f * (1f / phase);
+        if (health.health <= 5 && phase == 1)
+        {
+            StopAllCoroutines();
             phase = 2;
+            StartCoroutine(PhaseUp());
+        }
         health.ChangeHealthBar();
     }
 
     private void Update()
     {
-        if(isSpawned)
+        if(isSpawned & !dead)
         {
             if (state == "None")
             {
@@ -96,6 +156,14 @@ public class BossR : MonoBehaviour
         float timeSpentChasing = 0f;
         Vector3 playerDirection;
 
+        int dir = 1;
+        if (phase == 2)
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < 6f && Random.Range(0f, 1f) < 0.3f)
+                dir = -1;
+
+        }
+
         while (timeSpentChasing < 3f)
         {
             yield return new WaitForSeconds(1 / 60f);
@@ -104,7 +172,7 @@ public class BossR : MonoBehaviour
             playerDirection = player.transform.position - transform.position;
             playerDirection = playerDirection.normalized;
 
-            transform.position += playerDirection * speed * phase;
+            transform.position += playerDirection * speed * phase * dir;
         }
 
         yield return new WaitForSeconds(1f);
@@ -122,6 +190,8 @@ public class BossR : MonoBehaviour
 
 
             yield return new WaitForSeconds(0.5f);
+            cm.CameraShake(4, 30, 0.5f);
+
 
             Vector3 playerDirection = player.transform.position - transform.position;
             playerDirection = playerDirection.normalized;
@@ -148,7 +218,7 @@ public class BossR : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             touchingPlayer = true;
-            if(damageTaker == null)
+            if(damageTaker == null && !dead)
             {
                 damageTaker = DOT(collision.gameObject.GetComponent<Health>());
                 StartCoroutine(damageTaker);

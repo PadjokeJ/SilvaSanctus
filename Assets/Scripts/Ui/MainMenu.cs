@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class MainMenu : MonoBehaviour
     Transition transition;
 
     public AudioClip clickClip;
+
+    public Slider levelSlider;
+    public TextMeshProUGUI levelTMP;
     void Start()
     {
         string filePath = Application.persistentDataPath + "/.tutorial";
@@ -38,6 +42,8 @@ public class MainMenu : MonoBehaviour
         options.SetActive(false);
 
         eventSystem = FindAnyObjectByType<EventSystem>();
+
+        SetLevelSlider();
     }
 
     // Update is called once per frame
@@ -96,5 +102,15 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSecondsRealtime(timeDelay);
         Debug.Log("finished waiting");
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    void SetLevelSlider()
+    {
+        int level = PlayerLevelling.GetLevel();
+        levelTMP.text = "Level : " + level.ToString();
+
+        levelSlider.minValue = PlayerLevelling.MaxExp(level - 1);
+        levelSlider.maxValue = PlayerLevelling.MaxExp(level);
+        levelSlider.value = SaveManager.RetrieveFloat("experience");
     }
 }

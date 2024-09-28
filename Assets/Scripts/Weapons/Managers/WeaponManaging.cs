@@ -35,8 +35,8 @@ public class WeaponManaging : MonoBehaviour
     public Sprite weaponSprite;
 
     private void Awake()
-    {
-        PlayerLevelling.GainExperience(0f);
+    {   
+        int level = PlayerLevelling.GetLevel();
 
         mainMenu = FindAnyObjectByType<MainMenu>();
 
@@ -112,9 +112,9 @@ public class WeaponManaging : MonoBehaviour
             selector.reloadTime = reloadTime;
 
             selector.weaponImage = weaponImage;
+            List<int> listOfUnlockedWeapons = new List<int>(weapons.unlockedWeapons);
 
-
-            if (listOfWeapons.IndexOf(weapon) < level)
+            if (listOfUnlockedWeapons[index] < level)
             {
                 obj.GetComponent<Image>().sprite = selector.enabledSprite;
                 listOfButtons.Add(obj.GetComponent<Image>());
@@ -130,6 +130,8 @@ public class WeaponManaging : MonoBehaviour
 
             x += spacing;
             index++;
+
+            
         }
 
         return returner;

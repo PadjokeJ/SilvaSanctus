@@ -11,6 +11,8 @@ public static class PlayerLevelling
     public static int GetLevel()
     {
         playerLevel = SaveManager.RetrieveInt("level");
+        if (playerLevel == 0)
+            playerLevel = 1;
         return playerLevel;
     }
     public static void InitDeltaLevel()
@@ -35,7 +37,7 @@ public static class PlayerLevelling
         if (playerLevel > previousLevel) SaveManager.SaveInt("level", playerLevel);
     }
 
-    static int UpdateLevel(float experience)
+    public static int UpdateLevel(float experience)
     {
         int level = 0;
 

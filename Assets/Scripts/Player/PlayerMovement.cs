@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     public GameObject shadowPrefab;
+
+    Health health;
     
     void Awake()
     {
@@ -37,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         mainCam = Camera.main.gameObject;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -55,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
             currentForce = dashForce * moveV2;
             StartCoroutine(DashTrail());
             toDash = false;
+            health.canTakeDamage = false;
         }
         dashTime += Time.deltaTime;
         if (dashTime > dashMaxTime)
         {
             currentForce = Vector2.zero;
+            
         }
     }
     public void onMoveUpdate(InputAction.CallbackContext context)
@@ -85,5 +91,7 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
             
         }
+        yield return new WaitForSeconds(0.25f);
+        health.canTakeDamage = true;
     }
 }

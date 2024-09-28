@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     PlayerHurtAnimation pHA;
 
     public static Health playerInstance;
+
+    public bool canTakeDamage = true;
     void Awake()
     {
         if (this.gameObject.CompareTag("Player"))
@@ -46,7 +48,7 @@ public class Health : MonoBehaviour
 
         if (entityType == "Enemy")
             health -= val * (1 + Buffs.damageBuff);
-        if (entityType == "Player")
+        if (entityType == "Player" && canTakeDamage)
         {
             pHA.HurtScreen();
             health -= val * (1 - Buffs.defense);

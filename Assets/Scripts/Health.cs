@@ -31,13 +31,19 @@ public class Health : MonoBehaviour
         else if (this.gameObject.TryGetComponent<WaterBarrel>(out WaterBarrel waterBarrel))
         {
             entityType = "WaterBarrel";
-            Debug.Log(entityType);
         }
+        else if (this.gameObject.TryGetComponent<Dummy>(out Dummy dummy))
+        {
+            entityType = "Dummy";
+        }
+
+        
         maxHealth = health;
     }
     public void takeDamage(float val)
     {
         
+
         if (entityType == "Enemy")
             health -= val * (1 + Buffs.damageBuff);
         if (entityType == "Player")
@@ -50,6 +56,7 @@ public class Health : MonoBehaviour
             health -= val;
         }
 
+        if (entityType == "Dummy") GetComponent<Dummy>().Hurt();
 
         if (health <= 0)
         {
@@ -57,6 +64,7 @@ public class Health : MonoBehaviour
             if(entityType == "Enemy") GetComponent<EnemyAI>().Die();
             if (entityType == "Chest") GetComponent<Chest>().GiveRewards();
             if (entityType == "WaterBarrel") GetComponent<WaterBarrel>().Die();
+            
         }
     }
     public void heal(float val)

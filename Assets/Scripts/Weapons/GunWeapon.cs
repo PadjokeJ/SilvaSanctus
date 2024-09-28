@@ -45,7 +45,7 @@ public class GunWeapon : Weapon
 
         cm = FindObjectOfType<CameraManager>();
 
-        weaponOwner = transform.parent.tag;
+        weaponOwner = transform.parent.parent.tag;
 
         shootPos = lr.GetPosition(1);
     }

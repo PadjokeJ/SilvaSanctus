@@ -198,6 +198,8 @@ public class BossR : MonoBehaviour
 
 
             smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
+            if (Random.Range(0f, 1f) < 0.25f * phase)
+                smokeObject.GetComponent<SmokeProjectile>().isSine = true;
         }
 
         yield return new WaitForSeconds(2f);

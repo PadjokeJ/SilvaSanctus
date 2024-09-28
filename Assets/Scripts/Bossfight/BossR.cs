@@ -218,7 +218,7 @@ public class BossR : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             touchingPlayer = true;
-            if(damageTaker == null && !dead)
+            if(!dead)
             {
                 damageTaker = DOT(collision.gameObject.GetComponent<Health>());
                 StartCoroutine(damageTaker);

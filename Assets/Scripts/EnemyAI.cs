@@ -48,6 +48,8 @@ public class EnemyAI : MonoBehaviour
     public ListOfDoors listOfDoors;
 
     Animator animator;
+
+    bool dead = false;
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -212,16 +214,20 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
-        PlayerLevelling.GainExperience(experienceGiven);
+        if (dead == false)
+        {
+            dead = true;
+            PlayerLevelling.GainExperience(experienceGiven);
 
-        deathParticles.transform.position = transform.position;
-        deathParticles.Emit(10);
+            deathParticles.transform.position = transform.position;
+            deathParticles.Emit(10);
 
-        if(listOfDoors != null)
-            listOfDoors.OnEnemyDeath();
+            if (listOfDoors != null)
+                listOfDoors.OnEnemyDeath();
 
-        Destroy(healthBar);
-        Destroy(this.gameObject);
+            Destroy(healthBar);
+            Destroy(this.gameObject);
+        }
     }
     public void takeKB(Vector3 damageOrigin, float KnockBackStrength)
     {

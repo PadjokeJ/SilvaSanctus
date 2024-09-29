@@ -10,7 +10,7 @@ public class ListOfDoors : MonoBehaviour
     public List<GameObject> doors;
     List<GameObject> listOfEnemies;
 
-    int enemyCount;
+    public int enemyCount;
 
     private void Awake()
     {

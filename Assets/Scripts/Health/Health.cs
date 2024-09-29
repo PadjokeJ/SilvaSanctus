@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     public bool canTakeDamage = true;
     void Awake()
     {
+        canTakeDamage = true;
         if (this.gameObject.CompareTag("Player"))
         {
             entityType = "Player";
@@ -48,7 +49,7 @@ public class Health : MonoBehaviour
 
         if (entityType == "Enemy")
             health -= val * (1 + Buffs.damageBuff);
-        if (entityType == "Player" && canTakeDamage)
+        else if (entityType == "Player" && canTakeDamage)
         {
             pHA.HurtScreen();
             health -= val * (1 - Buffs.defense);

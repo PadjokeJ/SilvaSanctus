@@ -16,8 +16,6 @@ public class Projectile : MonoBehaviour
         circleCollider2D.isTrigger = true;
 
         this.gameObject.layer = 2;
-
-        damage = 0.5f;
     }
 
     private void Update()
@@ -27,8 +25,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("hit");
         if (collision.gameObject.TryGetComponent<Health>(out Health health) && !collision.CompareTag("Player"))
         {
+            Debug.Log("taking damage");
             health.takeDamage(damage);
         }
     }

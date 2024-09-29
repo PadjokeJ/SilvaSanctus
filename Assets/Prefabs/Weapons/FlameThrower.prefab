@@ -4949,7 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
-  weaponDamage: 10
+  weaponDamage: 0.4
   reloadTime: 0
   weaponDistance: 1
   knockback: 0

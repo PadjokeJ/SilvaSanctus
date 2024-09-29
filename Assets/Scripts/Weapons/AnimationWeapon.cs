@@ -86,8 +86,9 @@ public class AnimationWeapon : Weapon
 
         projectile.direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * rotation), Mathf.Sin(Mathf.Deg2Rad * rotation));
         projectile.speed = 5f;
+        projectile.damage = weaponDamage;
 
-        Destroy(gO, 0.75f);
+        Destroy(gO, 1f);
     }
 
     public void EnableEmission()

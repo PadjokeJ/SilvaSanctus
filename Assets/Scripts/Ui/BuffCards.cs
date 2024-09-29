@@ -36,7 +36,7 @@ public class BuffCards : MonoBehaviour
         active = false;
 
         Health.playerInstance.heal(card.buff.healAmmount);
-        Health.playerInstance.health += card.buff.healthAwarded;
+        Health.playerInstance.maxHealth += card.buff.healthAwarded;
 
         Buffs.damageBuff += card.buff.attackAwarded;
         Buffs.defense += card.buff.defenseAwarded;

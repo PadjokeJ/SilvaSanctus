@@ -31,12 +31,23 @@ public class Cards : Selectable
 
     Image background;
 
+    Button button;
+
+    protected override void Awake()
+    {
+        button = GetComponent<Button>();
+    }
 
     void Update()
     {
         if (IsHighlighted() && isHighlighted != IsHighlighted())
             OnHighlight();
         isHighlighted = IsHighlighted();
+    }
+
+    protected override void OnEnable()
+    {
+        StartCoroutine(Appear());
     }
 
     void OnHighlight()
@@ -56,5 +67,12 @@ public class Cards : Selectable
             background.sprite = epicBackground;
         if (rarity == "legendary")
             background.sprite = legendaryBackground;
+    }
+
+    IEnumerator Appear()
+    {
+        button.interactable = false;
+        yield return new WaitForSecondsRealtime(0.5f);
+        button.interactable = true;
     }
 }

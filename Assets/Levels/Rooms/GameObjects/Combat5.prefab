@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cfa3d83e591414b808511c69f94f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horDoor: {fileID: 1504550066, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
+  verDoor: {fileID: -320978438, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
 --- !u!61 &3946789683781933255
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6393,6 +6395,7 @@ GameObject:
   - component: {fileID: 3486610981937747511}
   - component: {fileID: 5594999464149467938}
   - component: {fileID: 1485749334624815963}
+  - component: {fileID: 7982097876331895695}
   m_Layer: 0
   m_Name: jar
   m_TagString: Chest
@@ -6544,6 +6547,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5411644, y: 0.68773746}
   m_EdgeRadius: 0
+--- !u!50 &7982097876331895695
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2274125642329970878}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2457647111477193707
 GameObject:
   m_ObjectHideFlags: 0
@@ -6590,6 +6620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cfa3d83e591414b808511c69f94f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horDoor: {fileID: 1504550066, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
+  verDoor: {fileID: -320978438, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
 --- !u!61 &8395032289847924114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9816,6 +9848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cfa3d83e591414b808511c69f94f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horDoor: {fileID: 1504550066, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
+  verDoor: {fileID: -320978438, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
 --- !u!61 &5804172588171867573
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9952,6 +9986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cfa3d83e591414b808511c69f94f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horDoor: {fileID: 1504550066, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
+  verDoor: {fileID: -320978438, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
 --- !u!61 &9116037261832187291
 BoxCollider2D:
   m_ObjectHideFlags: 0

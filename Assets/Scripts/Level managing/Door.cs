@@ -6,6 +6,11 @@ public class Door : MonoBehaviour
 {
     BoxCollider2D doorCollider;
     bool hasPlayerVanquishedEnemies = false;
+
+    SpriteRenderer sr;
+
+    [SerializeField] Sprite horDoor, verDoor; 
+
     private void Awake()
     {
         foreach (BoxCollider2D collider in transform.GetComponents<BoxCollider2D>())
@@ -17,16 +22,29 @@ public class Door : MonoBehaviour
             }
         }
         doorCollider.enabled = false;
+
+        sr = this.gameObject.AddComponent<SpriteRenderer>();
+
+        if (doorCollider.size.x > 1.5f)
+            sr.sprite = horDoor;
+        if (doorCollider.size.y > 1.5f)
+            sr.sprite = verDoor;
+        sr.sortingOrder = -1;
+        sr.enabled = false;
     }
     public void Open()
     {
         doorCollider.enabled = false;
         hasPlayerVanquishedEnemies = true;
+        sr.enabled = false;
     }
     public void Close()
     {
         if (!hasPlayerVanquishedEnemies)
+        {
             doorCollider.enabled = true;
+            sr.enabled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

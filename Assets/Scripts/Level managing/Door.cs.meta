@@ -3,7 +3,9 @@ guid: 24cfa3d83e591414b808511c69f94f9e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - horDoor: {fileID: 1504550066, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
+  - verDoor: {fileID: -320978438, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

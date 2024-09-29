@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 1986538970, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Sharpening stone
-  buffDescription: You deal 2% more damage
+  buffDescription: You deal 15% more damage
   defenseAwarded: 0
-  attackAwarded: 0.02
+  attackAwarded: 0.15
   healAmmount: 0
   healthAwarded: 0
   rarity: rare

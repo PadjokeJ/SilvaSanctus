@@ -14,6 +14,7 @@ public class BuffScriptableObject : ScriptableObject
     public float attackAwarded;
     public float healAmmount;
     public float healthAwarded;
+    public float healthPercent;
 
     public string rarity;
 }

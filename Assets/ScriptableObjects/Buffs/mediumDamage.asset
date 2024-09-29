@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 1986538970, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Thorns
-  buffDescription: You deal 2.5% more damage
+  buffDescription: You deal 25% more damage
   defenseAwarded: 0
-  attackAwarded: 0.025
+  attackAwarded: 0.25
   healAmmount: 0
   healthAwarded: 0
   rarity: epic

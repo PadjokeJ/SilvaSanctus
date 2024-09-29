@@ -13,6 +13,8 @@ public class AnimationWeapon : Weapon
     public GameObject pointOfContact;
 
     bool hitOpponent = false;
+
+    GameObject projPrefab;
     void Start()
     {
         gWP = GetComponent<GenericWeaponManager>();
@@ -71,6 +73,34 @@ public class AnimationWeapon : Weapon
     public void ResetWeapon()
     {
         hitOpponent = false;
+    }
+    
+    public void InstantiateProjectile()
+    {
+        GameObject gO = new GameObject();
+        gO.transform.position = pointOfContact.transform.position;
+        gO.name = "Projectile";
+
+        Projectile projectile = gO.AddComponent<Projectile>();
+        float rotation = transform.rotation.eulerAngles.z;
+
+        projectile.direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * rotation), Mathf.Sin(Mathf.Deg2Rad * rotation));
+        projectile.speed = 5f;
+
+        Destroy(gO, 0.75f);
+    }
+
+    public void EnableEmission()
+    {
+        var emissionModule = dustParticles.emission;
+        emissionModule.enabled = true;
+        dustParticles.Play();
+    }
+
+    public void DisableEmission()
+    {
+        var emissionModule = dustParticles.emission;
+        emissionModule.enabled = false;
     }
 
     private void OnDrawGizmos()

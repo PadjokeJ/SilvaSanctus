@@ -32,6 +32,7 @@ public class Chest : MonoBehaviour
         if (chestType == "weapon")
         {
             pI.AddWeapon(weaponReward);
+            PlayerLevelling.GainExperience(expReward);
         }
         if (chestType == "coins")
         {

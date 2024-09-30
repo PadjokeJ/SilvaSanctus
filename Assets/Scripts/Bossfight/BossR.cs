@@ -140,7 +140,7 @@ public class BossR : MonoBehaviour
         {
             if (state == "None")
             {
-                if (Vector3.Distance(player.transform.position, transform.position) > 10f)
+                if (Vector3.Distance(player.transform.position, transform.position) > 10f && Random.Range(0f, 1f) > 0.5f / phase)
                 {
                     StartCoroutine(LongRange());
                 }

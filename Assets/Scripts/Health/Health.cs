@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public static Health playerInstance;
 
     public bool canTakeDamage = true;
+
+    bool alive = true;
     void Awake()
     {
         canTakeDamage = true;
@@ -61,8 +63,9 @@ public class Health : MonoBehaviour
 
         if (entityType == "Dummy") GetComponent<Dummy>().Hurt();
 
-        if (health <= 0)
+        if (health <= 0 && alive)
         {
+            alive = false;
             if(entityType == "Player") GetComponent<PlayerManager>().Die();
             if(entityType == "Enemy") GetComponent<EnemyAI>().Die();
             if (entityType == "Chest") GetComponent<Chest>().GiveRewards();

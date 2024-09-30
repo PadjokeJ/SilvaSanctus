@@ -52,12 +52,18 @@ public class GunWeapon : Weapon
 
     IEnumerator LerpShotTracer(Vector3 startPos, Vector3 endPos, float hitDistance)
     {
-        for (int i = 0; i < 4 * Mathf.CeilToInt(hitDistance); i++)
+        Color start = Color.white;
+        Color end = start;
+        end.a = 0f;
+
+        for (int i = 0; i < 20; i++)
         {
-            lr.SetPosition(0, Vector3.Lerp(startPos, lr.GetPosition(1), i / 4f / hitDistance));
+            lr.endColor = Color.Lerp(start, end, i / 20f);
+            lr.startColor = Color.Lerp(start, end, i / 20f);
             yield return new WaitForSeconds(0.01f);
         }
-        lr.SetPosition(0, lr.GetPosition(1));
+        lr.endColor = end;
+        lr.startColor = end;
     }
 
     private void FixedUpdate()

@@ -38,6 +38,8 @@ public class LevelManager : MonoBehaviour
 
     public Vector3 BossRoomoffset;
 
+    public Material lightMaterial;
+
     void Awake()
     {
         transition = FindAnyObjectByType<Transition>();
@@ -242,7 +244,8 @@ public class LevelManager : MonoBehaviour
     {
         GameObject obj = new GameObject();
         Tilemap tilemap = obj.AddComponent<Tilemap>();
-        obj.AddComponent<TilemapRenderer>();
+        TilemapRenderer tmRenderer = obj.AddComponent<TilemapRenderer>();
+        tmRenderer.material = lightMaterial;
         obj.AddComponent<Grid>();
         
 
@@ -253,6 +256,7 @@ public class LevelManager : MonoBehaviour
 
         TilemapRenderer ftmRenderer = floorObj.AddComponent<TilemapRenderer>();
         ftmRenderer.sortingOrder = -2;
+        ftmRenderer.material = lightMaterial;
 
         floorObj.AddComponent<Grid>();
 

@@ -1709,6 +1709,7 @@ MonoBehaviour:
   endRoom: {fileID: 3049957179547929183, guid: ca72605cc3ab2524a9f5d19b0db04638, type: 3}
   bossFightRoomPrefab: {fileID: 7582819802668919590, guid: f5010eabe2e6444468d3c9f4079b7e90, type: 3}
   BossRoomoffset: {x: 0, y: -24, z: 0}
+  lightMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!4 &1735482022
 Transform:
   m_ObjectHideFlags: 0

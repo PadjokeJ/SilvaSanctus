@@ -44,7 +44,7 @@ public class AnimationWeapon : Weapon
         foreach (Collider2D item in hit)
         {
             if (item.gameObject.CompareTag("Enemy")) hitOpponent = true;
-            if(item.gameObject.CompareTag("Enemy") || item.gameObject.CompareTag("Chest"))
+            if(item.gameObject.CompareTag("Enemy") || item.gameObject.CompareTag("Chest") || item.gameObject.CompareTag("Barrel"))
                 targets.Add(item.gameObject);
         }
         foreach(GameObject target in targets)

@@ -19,6 +19,8 @@ public class BlockRespawner : MonoBehaviour
         spawnedObject = Instantiate<GameObject>(objectPrefab);
         spawnedObject.transform.position = transform.position;
 
+        spawnedObject.GetComponent<WaterBarrel>().blockRespawner = this;
+
         while (spawnedObject != null)
         {
             yield return new WaitForSeconds(0.1f);
@@ -27,6 +29,12 @@ public class BlockRespawner : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenRespawns);
 
         StartCoroutine(SpawnObject());
+    }
+
+    public void StopSpawning()
+    {
+        StopAllCoroutines();
+        Destroy(this.gameObject);
     }
 
     private void OnDrawGizmos()

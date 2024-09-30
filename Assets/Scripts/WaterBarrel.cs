@@ -8,6 +8,8 @@ public class WaterBarrel : MonoBehaviour
 
     public float radius;
 
+    public BlockRespawner blockRespawner;
+
     public void Die()
     {
         explosion.Play();
@@ -28,6 +30,7 @@ public class WaterBarrel : MonoBehaviour
         {
             if (collider.CompareTag("R"))
             {
+                blockRespawner.StopSpawning();
                 collider.GetComponent<BossR>().TakeDamage();
             }
         }

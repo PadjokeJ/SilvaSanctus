@@ -45,6 +45,7 @@ public class BossR : MonoBehaviour
     public void Spawn()
     {
         StartCoroutine(SpawnSequence());
+        StartCoroutine(Hint());
     }
 
     IEnumerator SpawnSequence()
@@ -147,6 +148,17 @@ public class BossR : MonoBehaviour
                     StartCoroutine(ChasePlayer());
                 }
             }
+        }
+    }
+
+    IEnumerator Hint()
+    {
+        float startHealth = health.health;
+        yield return new WaitForSeconds(10f);
+
+        if (startHealth == health.health)
+        {
+            TutorialText.instance.PlayText("R hates water explosions. Get him close to one and explode it to damage him");
         }
     }
 

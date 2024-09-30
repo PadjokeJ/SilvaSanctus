@@ -169,11 +169,11 @@ public class BossR : MonoBehaviour
         float timeSpentChasing = 0f;
         Vector3 playerDirection;
 
-        int dir = 1;
+        float dir = 1;
         if (phase == 2)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < 6f && Random.Range(0f, 1f) < 0.3f)
-                dir = -1;
+            if (Vector3.Distance(player.transform.position, transform.position) < 6f && Random.Range(0f, 1f) < 0.1f)
+                dir = -0.2f;
 
         }
 

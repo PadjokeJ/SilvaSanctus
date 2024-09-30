@@ -141,8 +141,8 @@ public class LevelManager : MonoBehaviour
 
             
 
-            roomY += roomsHeight
-                + spacing; //gives space between rooms
+            roomY += roomsHeight * 1.2f + spacing; //gives space between rooms
+            roomY = Mathf.CeilToInt(roomY);
 
             
         }

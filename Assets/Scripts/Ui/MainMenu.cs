@@ -96,6 +96,11 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
     }
 
+    public void BugReport()
+    {
+        Application.OpenURL("https://forms.gle/psR7gtS6dSXzMqAGA");
+    }
+
     IEnumerator DelayedSceneChange(float timeDelay, int sceneIndex)
     {
         Debug.Log("started waiting");

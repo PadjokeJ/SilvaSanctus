@@ -25,6 +25,6 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = Mathf.CeilToInt(((0.64f * playerHealth.health / playerHealth.maxHealth) + .18f) * 16f) / 16f;
-        healthText.text = $"{playerHealth.health}/{playerHealth.maxHealth}";
+        healthText.text = $"{Mathf.Round(playerHealth.health * 100f) / 100f}/{Mathf.Round(playerHealth.maxHealth * 100f) / 100f}";
     }
 }

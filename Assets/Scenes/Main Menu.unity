@@ -1111,7 +1111,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.0625
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1333,6 +1333,22 @@ PrefabInstance:
     - target: {fileID: 3518706983654410537, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591651989130015733, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591651989130015733, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591651989130015733, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591651989130015733, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5622016946958346387, guid: 91f88e241ff08024bbd0c25c20c4de3a, type: 3}
       propertyPath: m_Name
@@ -7260,7 +7276,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

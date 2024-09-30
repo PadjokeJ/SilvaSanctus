@@ -46,6 +46,7 @@ public class BossR : MonoBehaviour
     {
         StartCoroutine(SpawnSequence());
         StartCoroutine(Hint());
+        StartCoroutine(DOT());
     }
 
     IEnumerator SpawnSequence()
@@ -154,7 +155,7 @@ public class BossR : MonoBehaviour
     IEnumerator Hint()
     {
         float startHealth = health.health;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(30f);
 
         if (startHealth == health.health)
         {
@@ -218,11 +219,14 @@ public class BossR : MonoBehaviour
         state = "None";
     }
 
-    IEnumerator DOT(Health playerHealth)
+    IEnumerator DOT()
     {
-        while (touchingPlayer)
+        Health playerHealth = Health.playerInstance;
+
+        while (true)
         {
-            playerHealth.takeDamage(1f);
+            if (touchingPlayer && !dead)
+                playerHealth.takeDamage(1f);
             yield return new WaitForSeconds(1f);
         }
     }
@@ -232,12 +236,6 @@ public class BossR : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             touchingPlayer = true;
-            if(!dead)
-            {
-                damageTaker = DOT(collision.gameObject.GetComponent<Health>());
-                StartCoroutine(damageTaker);
-            }
-
         }
     }
 
@@ -246,10 +244,7 @@ public class BossR : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             touchingPlayer = false;
-            if (damageTaker != null)
-            {
-                StopCoroutine(damageTaker);
-            }
         }
+
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.Rendering;
+using UnityEngine.Experimental.Rendering.Universal;
 
 
 public class BossR : MonoBehaviour
@@ -63,6 +63,8 @@ public class BossR : MonoBehaviour
 
         isSpawned = true;
 
+        FindAnyObjectByType<PixelPerfectCamera>().refResolutionX = 480;
+
     }
 
     IEnumerator PhaseUp()
@@ -110,7 +112,11 @@ public class BossR : MonoBehaviour
         emissionModule.rateOverTime = 0f;
         yield return new WaitForSeconds(2f);
 
+        PlayerLevelling.GainExperience(20f);
+
         EndManager endManager = FindAnyObjectByType<EndManager>();
+
+
         endManager.PlayerWins();
     }
 

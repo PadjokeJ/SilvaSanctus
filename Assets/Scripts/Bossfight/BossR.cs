@@ -117,9 +117,11 @@ public class BossR : MonoBehaviour
     public void Die()
     {
         touchingPlayer = false;
-
-        StopAllCoroutines();
-        StartCoroutine(DeathSequence());
+        if (!dead)
+        {
+            StopAllCoroutines();
+            StartCoroutine(DeathSequence());
+        }
     }
 
     public void TakeDamage()

@@ -130,6 +130,7 @@ public class BossR : MonoBehaviour
             StopAllCoroutines();
             phase = 2;
             StartCoroutine(PhaseUp());
+            StartCoroutine(DOT());
         }
         health.ChangeHealthBar();
     }

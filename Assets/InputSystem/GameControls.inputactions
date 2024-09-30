@@ -130,7 +130,7 @@
                 {
                     "name": "",
                     "id": "fb34d43e-eb05-4f36-8878-7d0b521c20db",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -196,7 +196,7 @@
                 {
                     "name": "",
                     "id": "5ca9d6fa-b174-4c5f-b55f-ef2ebf926fe3",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -207,7 +207,7 @@
                 {
                     "name": "",
                     "id": "de2b776a-47b8-48a4-a439-8470d0d16b92",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",

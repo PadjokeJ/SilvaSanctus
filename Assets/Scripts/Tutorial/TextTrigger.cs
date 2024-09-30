@@ -8,5 +8,6 @@ public class TextTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D colldier)
     {
         TutorialText.instance.PlayText(textToShow);
+        Destroy(this.gameObject);
     }
 }

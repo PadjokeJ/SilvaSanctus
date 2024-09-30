@@ -477,6 +477,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8693397941134222721, guid: e0ca7a1c4ee8d0141ab9af94e851a7ea, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693397941134222721, guid: e0ca7a1c4ee8d0141ab9af94e851a7ea, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693397941134222721, guid: e0ca7a1c4ee8d0141ab9af94e851a7ea, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693397941134222721, guid: e0ca7a1c4ee8d0141ab9af94e851a7ea, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8926577803284229676, guid: e0ca7a1c4ee8d0141ab9af94e851a7ea, type: 3}
       propertyPath: m_Name
       value: Switcher
@@ -27035,15 +27051,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0010131713
+    y: 0.0018018018
+    width: 0.9969605
+    height: 0.99459463
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.1875
+  orthographic size: 5.75
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

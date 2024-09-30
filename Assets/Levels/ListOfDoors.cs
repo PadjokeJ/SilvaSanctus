@@ -24,6 +24,8 @@ public class ListOfDoors : MonoBehaviour
             }
         }
         enemyCount = listOfEnemies.Count;
+
+        InitDoors();
     }
 
     public void OnEnemyDeath()
@@ -34,6 +36,22 @@ public class ListOfDoors : MonoBehaviour
             OpenDoors();
             if (dungeonDoor)
                 BuffCards.instance.EnableCards();
+        }
+    }
+
+    void InitDoors()
+    {
+        foreach (GameObject door in doors)
+        {
+            door.GetComponent<Door>().lOD = this;
+        }
+    }
+
+    public void CloseDoors()
+    {
+        foreach (GameObject door in doors)
+        {
+            door.GetComponent<Door>().Close();
         }
     }
 

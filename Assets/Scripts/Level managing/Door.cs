@@ -9,7 +9,9 @@ public class Door : MonoBehaviour
 
     SpriteRenderer sr;
 
-    [SerializeField] Sprite horDoor, verDoor; 
+    [SerializeField] Sprite horDoor, verDoor;
+
+    public ListOfDoors lOD;
 
     private void Awake()
     {
@@ -38,6 +40,11 @@ public class Door : MonoBehaviour
         hasPlayerVanquishedEnemies = true;
         sr.enabled = false;
     }
+
+    void CloseAllDoors()
+    {
+        lOD.CloseDoors();
+    }
     public void Close()
     {
         if (!hasPlayerVanquishedEnemies)
@@ -50,7 +57,7 @@ public class Door : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            Close();
+            CloseAllDoors();
     }
 
     private void OnDrawGizmos()

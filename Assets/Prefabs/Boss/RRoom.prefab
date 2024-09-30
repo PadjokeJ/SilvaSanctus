@@ -22520,6 +22520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 8560181104904844001}
+  sprite: {fileID: 1504550066, guid: 9315bad171f04194ebc1ee064162bfb9, type: 3}
 --- !u!1 &8560181104904844001
 GameObject:
   m_ObjectHideFlags: 0

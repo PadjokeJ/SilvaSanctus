@@ -6,6 +6,8 @@ public class BossSpawner : MonoBehaviour
 {
     public GameObject door;
     BossR bossR;
+
+    [SerializeField] Sprite sprite;
     void Awake()
     {
         door.SetActive(false);
@@ -28,11 +30,15 @@ public class BossSpawner : MonoBehaviour
         GameObject player = Health.playerInstance.gameObject;
         Vector3 bossPosition = bossR.transform.position;
 
-        while(Vector3.Distance(bossPosition, player.transform.position) > 10f)
+        while(Vector3.Distance(bossPosition, player.transform.position) > 6f)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.10f);
         }
 
+        yield return new WaitForSeconds(0.5f);
+
         bossR.Spawn();
+        SpriteRenderer sr = door.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
     }
 }

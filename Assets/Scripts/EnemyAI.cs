@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
 
     bool dead = false;
 
-    LayerMask wallsMask = LayerMask.GetMask("Walls");
+    LayerMask wallsMask;
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.speed = 0;
 
-        
+        wallsMask = LayerMask.GetMask("Walls");
     }
 
     void Update()

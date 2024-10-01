@@ -151,6 +151,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1e535254-ff76-41f6-a314-85876d9da418",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c55a6ce5-b9c0-4ac9-b3b3-47d45c17a88d",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",

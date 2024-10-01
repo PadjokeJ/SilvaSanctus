@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   losesInterestIfNoLOS: 0
   fleeIfTooClose: 0
-  speed: 50
+  speed: 100
   maxDist: 15
   minDist: 1.5
   minRange: 2

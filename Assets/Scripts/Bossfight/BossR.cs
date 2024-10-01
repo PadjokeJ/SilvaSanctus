@@ -33,6 +33,8 @@ public class BossR : MonoBehaviour
     IEnumerator damageTaker;
 
     bool dead = false;
+
+    bool down = false;
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -41,6 +43,24 @@ public class BossR : MonoBehaviour
         particleObject.SetActive(false);
 
         cm = FindObjectOfType<CameraManager>();
+    }
+
+    private void Update()
+    {
+        if (isSpawned && !dead && !down)
+        {
+            if (state == "None")
+            {
+                if (Random.Range(0f, 1f) > 0.5f)
+                {
+                    StartCoroutine(LongRange());
+                }
+                else
+                {
+                    StartCoroutine(ChasePlayer());
+                }
+            }
+        }
     }
     public void Spawn()
     {
@@ -130,36 +150,42 @@ public class BossR : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void MakeDowned()
     {
-        health.health -= 2f * (1f / phase);
-        if (health.health <= 5 && phase == 1)
-        {
-            StopAllCoroutines();
-            phase = 2;
-            StartCoroutine(PhaseUp());
-            StartCoroutine(DOT());
-        }
+        down = true;
+        StopAllCoroutines();
+        StartCoroutine(DOT());
+
+        spriteObject.SetActive(true);
+    }
+
+    public void TakeDamage(float value)
+    {
+        health.health -= value;
         health.ChangeHealthBar();
     }
 
-    private void Update()
+    void ToNextPhase()
     {
-        if(isSpawned & !dead)
+        StopAllCoroutines();
+        phase++;
+        StartCoroutine(PhaseUp());
+        StartCoroutine(DOT());
+        down = false;
+    }
+
+    public void TryTakeDamage(float damage)
+    {
+        if (down)
         {
-            if (state == "None")
-            {
-                if (Vector3.Distance(player.transform.position, transform.position) > 10f && Random.Range(0f, 1f) > 0.5f / phase)
-                {
-                    StartCoroutine(LongRange());
-                }
-                else
-                {
-                    StartCoroutine(ChasePlayer());
-                }
-            }
+            if (((5f - phase)) * 2f < health.health)
+                TakeDamage(damage / 10f);
+            else
+                ToNextPhase();
         }
     }
+
+    
 
     IEnumerator Hint()
     {
@@ -179,12 +205,6 @@ public class BossR : MonoBehaviour
         Vector3 playerDirection;
 
         float dir = 1;
-        if (phase == 2)
-        {
-            if (Vector3.Distance(player.transform.position, transform.position) < 6f && Random.Range(0f, 1f) < 0.1f)
-                dir = -0.2f;
-
-        }
 
         while (timeSpentChasing < 3f)
         {
@@ -205,7 +225,7 @@ public class BossR : MonoBehaviour
     {
         state = "Attacking";
 
-        for (int i = 0; i < (phase - 1) * 2 + 1; i++)
+        for (int i = 0; i < phase; i++)
         {
             GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
             smokeObject.transform.position = transform.position;

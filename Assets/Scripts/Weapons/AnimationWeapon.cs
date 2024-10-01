@@ -46,6 +46,10 @@ public class AnimationWeapon : Weapon
             if (item.gameObject.CompareTag("Enemy")) hitOpponent = true;
             if(item.gameObject.CompareTag("Enemy") || item.gameObject.CompareTag("Chest") || item.gameObject.CompareTag("Barrel"))
                 targets.Add(item.gameObject);
+            if(item.gameObject.TryGetComponent<BossR>(out BossR bossR))
+            {
+                bossR.TryTakeDamage(weaponDamage);
+            }
         }
         foreach(GameObject target in targets)
         {

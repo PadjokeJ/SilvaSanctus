@@ -108,6 +108,10 @@ public class GunWeapon : Weapon
         {
             if(target.TryGetComponent<Health>(out Health healthScript))
                 healthScript.takeDamage(weaponDamage);
+            else if (target.TryGetComponent<BossR>(out BossR R))
+            {
+                R.TryTakeDamage(weaponDamage);
+            }
         }
 
         // graphics:

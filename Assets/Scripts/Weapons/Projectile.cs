@@ -31,6 +31,10 @@ public class Projectile : MonoBehaviour
             Debug.Log("taking damage");
             health.takeDamage(damage);
         }
+        else if (collision.TryGetComponent<BossR>(out BossR bossR))
+        {
+            bossR.TryTakeDamage(damage);
+        }
     }
 
     private void OnDrawGizmos()

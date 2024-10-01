@@ -19,7 +19,7 @@ public class SmokeProjectile : MonoBehaviour
     private void Awake()
     {
         Destroy(this.gameObject, 10f);
-        
+        transform.rotation = Quaternion.identity;
     }
 
     private void Update()
@@ -42,12 +42,15 @@ public class SmokeProjectile : MonoBehaviour
             hasHitPlayer = true;
         }
 
-        trail.Stop();
 
-        var emissionModule = trail.emission;
-        emissionModule.enabled = false;
+        if (!collision.CompareTag("R"))
+        {
+            trail.Stop();
 
-        Destroy(transform.GetChild(0).gameObject);
-        Destroy(this.gameObject, 1.5f);
+            var emissionModule = trail.emission;
+            emissionModule.enabled = false;
+
+            Destroy(this.gameObject, 1.5f);
+        }
     }
 }

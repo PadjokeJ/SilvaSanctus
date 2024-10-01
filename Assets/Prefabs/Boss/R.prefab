@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2935440653311133383}
   - component: {fileID: 1097778806182183580}
   - component: {fileID: 5097658257609628867}
-  - component: {fileID: 5817365581944250949}
-  m_Layer: 2
+  - component: {fileID: 6267210302515482622}
+  - component: {fileID: 5659912458691247155}
+  m_Layer: 0
   m_Name: R
   m_TagString: R
   m_Icon: {fileID: 0}
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519b7ea02d23bdb42ba748545eab05fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.06
+  speed: 0.03
   smokePrefab: {fileID: 4201928851734650451, guid: 79ab541b3e402e74f8727c4f74286f2d, type: 3}
   spriteObject: {fileID: 8659268725191419244}
   particleObject: {fileID: 7096409184682296454}
@@ -69,8 +70,8 @@ MonoBehaviour:
   maxHealth: 0
   canvasPrefab: {fileID: 2290597563056709164, guid: 87d659f5406725b458e9bdd7389191cd, type: 3}
   healthBarPrefab: {fileID: 7633754158159961981, guid: e7ce947228bc6324eb45a615b04e8d1c, type: 3}
---- !u!58 &5817365581944250949
-CircleCollider2D:
+--- !u!70 &6267210302515482622
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,12 +99,39 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 1}
+  m_Size: {x: 1.5, y: 3.5}
+  m_Direction: 0
+--- !u!50 &5659912458691247155
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924247791090467256}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2202896538165038429
 GameObject:
   m_ObjectHideFlags: 0

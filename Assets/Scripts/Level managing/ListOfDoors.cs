@@ -12,6 +12,8 @@ public class ListOfDoors : MonoBehaviour
 
     public int enemyCount;
 
+    List<EnemyAI> enemyList = new List<EnemyAI>();
+
     private void Awake()
     {
         listOfEnemies = new List<GameObject>();
@@ -21,11 +23,13 @@ public class ListOfDoors : MonoBehaviour
             {
                 listOfEnemies.Add(child.gameObject);
                 child.gameObject.GetComponent<EnemyAI>().listOfDoors = this;
+                enemyList.Add(child.gameObject.GetComponent<EnemyAI>());
             }
         }
         enemyCount = listOfEnemies.Count;
 
         InitDoors();
+        DisableAllEnemies();
     }
 
     public void OnEnemyDeath()
@@ -38,6 +42,23 @@ public class ListOfDoors : MonoBehaviour
                 BuffCards.instance.EnableCards();
         }
     }
+
+    void DisableAllEnemies()
+    {
+        foreach (EnemyAI enemy in enemyList)
+        {
+            enemy.enabled = false;
+        }
+    }
+
+    void EnableAllEnemies()
+    {
+        foreach (EnemyAI enemy in enemyList)
+        {
+            enemy.enabled = true;
+        }
+    }
+
 
     void InitDoors()
     {
@@ -53,6 +74,8 @@ public class ListOfDoors : MonoBehaviour
         {
             door.GetComponent<Door>().Close();
         }
+
+        EnableAllEnemies();
     }
 
     void OpenDoors()

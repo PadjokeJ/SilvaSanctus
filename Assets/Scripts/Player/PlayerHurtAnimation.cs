@@ -31,5 +31,6 @@ public class PlayerHurtAnimation : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;
             yield return new WaitForEndOfFrame();
         }
+        hurtImage.color = endColor;
     }
 }

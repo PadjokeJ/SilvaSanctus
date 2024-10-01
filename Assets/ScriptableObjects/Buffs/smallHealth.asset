@@ -17,6 +17,7 @@ MonoBehaviour:
   buffDescription: Gives you +1 max health
   defenseAwarded: 0
   attackAwarded: 0
-  healAmmount: 0
+  healAmmount: 1
   healthAwarded: 1
+  healthPercent: 0
   rarity: rare

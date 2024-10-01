@@ -732,6 +732,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d91985393f4bd44448c29461da447627, type: 2}
   - {fileID: 11400000, guid: 335e488f689492e4db57064140d64816, type: 2}
   - {fileID: 11400000, guid: 42d46dd351852c442827d7d97c07f213, type: 2}
+  - {fileID: 11400000, guid: 7b3b50df31496334cba8b08183fa6118, type: 2}
   legendaryBuffs:
   - {fileID: 11400000, guid: 27edb36e5eca8cd4d9e50310a4a3fdbb, type: 2}
   - {fileID: 11400000, guid: 7ed926cdee036e245af2c2015a84bbb9, type: 2}
@@ -741,6 +742,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31a7b14d3880d9749859fcd90881695b, type: 2}
   - {fileID: 11400000, guid: fa08bacd05381794288981668f0c8fdc, type: 2}
   - {fileID: 11400000, guid: 4e1adff5c27339240bea72d425f3c942, type: 2}
+  - {fileID: 11400000, guid: 5e489049a3de2a043bd1a9d0220dc846, type: 2}
   cards:
   - {fileID: 1890812933}
   - {fileID: 1406542929}

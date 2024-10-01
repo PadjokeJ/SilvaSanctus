@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: smallTradeOff2
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 174209130, guid: a8e1b687ca848154788535b7af58d8e9, type: 3}
-  buffName: Berserker
+  buffName: A Small Sacrifice
   buffDescription: Makes you take 5% less damage, but you lose 4 max health
   defenseAwarded: 0.05
   attackAwarded: 0

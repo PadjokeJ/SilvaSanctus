@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0144832ea07fb44a82b81646a1d16c0, type: 3}
-  m_Name: bigGC
+  m_Name: mediumHealthTrade
   m_EditorClassIdentifier: 
-  buffSprite: {fileID: -1997991961, guid: a8e1b687ca848154788535b7af58d8e9, type: 3}
-  buffName: Glass Cannon
-  buffDescription: You deal 10x more damage, but die the next time you get hit
-  defenseAwarded: -9999
-  attackAwarded: 10
+  buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
+  buffName: Blood for Blood
+  buffDescription: Grants you +5 max health, but you lose 5 health
+  defenseAwarded: 0
+  attackAwarded: 0
   healAmmount: 0
-  healthAwarded: 0
-  healthPercent: -0.99
-  rarity: legendary
+  healthAwarded: 5
+  healthPercent: 0
+  rarity: epic

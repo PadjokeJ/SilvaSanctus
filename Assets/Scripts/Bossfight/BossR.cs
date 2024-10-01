@@ -60,6 +60,9 @@ public class BossR : MonoBehaviour
                     StartCoroutine(ChasePlayer());
                 }
             }
+
+            if (health.health <= 0)
+                Die();
         }
     }
     public void Spawn()
@@ -163,6 +166,7 @@ public class BossR : MonoBehaviour
     {
         health.health -= value;
         health.ChangeHealthBar();
+
     }
 
     void ToNextPhase()
@@ -178,7 +182,7 @@ public class BossR : MonoBehaviour
     {
         if (down)
         {
-            if (((5f - phase)) * 2f < health.health)
+            if (((5f - phase)) * 2f <= health.health)
                 TakeDamage(damage / 10f);
             else
                 ToNextPhase();

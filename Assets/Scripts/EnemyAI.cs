@@ -85,6 +85,8 @@ public class EnemyAI : MonoBehaviour
         animator.speed = 0;
 
         wallsMask = LayerMask.GetMask("Walls");
+
+        LOS = true;
     }
 
     void Update()
@@ -100,7 +102,7 @@ public class EnemyAI : MonoBehaviour
                 animator.speed = 1;
                 
 
-                LOS = !Physics2D.Linecast(transform.position, player.transform.position, wallsMask);
+                //LOS = !Physics2D.Linecast(transform.position, player.transform.position, wallsMask);
                 if (LOS && dist > minDist && dist < maxDist) //move towards player
                 {
                     deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;

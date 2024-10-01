@@ -50,6 +50,8 @@ public class EnemyAI : MonoBehaviour
     Animator animator;
 
     bool dead = false;
+
+    LayerMask wallsMask = LayerMask.GetMask("Walls");
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -98,7 +100,7 @@ public class EnemyAI : MonoBehaviour
                 animator.speed = 1;
                 
 
-                LOS = !Physics2D.Linecast(transform.position, player.transform.position, 6);
+                LOS = !Physics2D.Linecast(transform.position, player.transform.position, wallsMask);
                 if (LOS && dist > minDist && dist < maxDist) //move towards player
                 {
                     deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
@@ -263,6 +265,8 @@ public class EnemyAI : MonoBehaviour
             j++;
         }
 
+        LayerMask mask = ~LayerMask.GetMask("Ignore Raycast");
+
         foreach (Vector3 direction in tempDir)
         {
             Vector3 offsetDirection;
@@ -270,7 +274,7 @@ public class EnemyAI : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 offsetDirection = Quaternion.Euler(0, 0, angleOffset) * desirableDir[iteration];
-                RaycastHit2D[] tempResults = Physics2D.LinecastAll(transform.position, transform.position + offsetDirection * 1.5f);
+                RaycastHit2D[] tempResults = Physics2D.LinecastAll(transform.position, transform.position + offsetDirection * 1.5f, mask);
                 List<RaycastHit2D> results = new List<RaycastHit2D>();
                 foreach (RaycastHit2D result in tempResults)
                 {

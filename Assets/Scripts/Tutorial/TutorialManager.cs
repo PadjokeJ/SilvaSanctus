@@ -16,9 +16,6 @@ public class TutorialManager : MonoBehaviour
         instance = this;
         PickUpWeapon();
 
-
-        
-
         transition = FindAnyObjectByType<Transition>();
         transition.FadeToWhite();
     }
@@ -43,6 +40,9 @@ public class TutorialManager : MonoBehaviour
     {
         transition.FadeToBlack();
         yield return new WaitForSecondsRealtime(0.6f);
-        SceneManager.LoadScene(2);
+
+        PlayerLevelling.GainExperience(PlayerLevelling.MaxExp(1));
+
+        SceneManager.LoadScene(0);
     }
 }

@@ -18,6 +18,6 @@ MonoBehaviour:
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 10
-  healthAwarded: 100
+  healthAwarded: 10
   healthPercent: 0
   rarity: legendary

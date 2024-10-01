@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour
 
         warnObject = Instantiate<GameObject>(warnObject, transform);
         warnAnimator = warnObject.GetComponent<Animator>();
-        warnObject.transform.position = transform.position + new Vector3(0, 1);
+        warnObject.transform.position = transform.position + new Vector3(0, 2);
 
         /*if (weaponAnimation.clip != null)
             attackTime = weaponAnimation.clip.length;

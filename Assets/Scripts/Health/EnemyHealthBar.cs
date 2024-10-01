@@ -45,7 +45,7 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void updateHealthBar (GameObject healthBar, Vector3 enemyPos, float enemyHealth, float enemyMaxHealth)
     {
-        healthBar.GetComponent<RectTransform>().position = enemyPos + new Vector3 (0, 1.5f, 0);
+        healthBar.GetComponent<RectTransform>().position = enemyPos + new Vector3 (0, 1.4f, 0);
         
         healthBar.transform.GetChild(0).GetComponent<Image>().fillAmount = enemyHealth / enemyMaxHealth;
 

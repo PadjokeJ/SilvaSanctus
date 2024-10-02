@@ -100,18 +100,18 @@ public class EnemyAI : MonoBehaviour
             if (state == "moving")
             {
                 animator.speed = 1;
-                
+
 
                 //LOS = !Physics2D.Linecast(transform.position, player.transform.position, wallsMask);
-                if (LOS && dist > minDist && dist < maxDist) //move towards player
-                {
-                    deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
-                    rg.velocity += deltaPos;
-                }
-                if (LOS && dist < minDist + minRange && fleeIfTooClose) //flee
+                if (fleeIfTooClose && LOS && dist < minRange) //flee
                 {
                     deltaPos = CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
                     rg.velocity -= deltaPos;
+                }
+                else if (LOS && dist > minDist && dist < maxDist) //move towards player
+                {
+                    deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
+                    rg.velocity += deltaPos;
                 }
 
                 animator.SetFloat("SpeedX", deltaPos.normalized.x);

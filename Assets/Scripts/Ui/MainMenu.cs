@@ -44,6 +44,8 @@ public class MainMenu : MonoBehaviour
         eventSystem = FindAnyObjectByType<EventSystem>();
 
         SetLevelSlider();
+
+        Cursor.visible = true;
     }
 
     // Update is called once per frame

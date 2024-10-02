@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   losesInterestIfNoLOS: 0
-  fleeIfTooClose: 0
+  fleeIfTooClose: 1
   speed: 50
   maxDist: 15
-  minDist: 5
+  minDist: 7
   minRange: 2
-  fleeSpeedMultiplier: 0.5
+  fleeSpeedMultiplier: 1
   attackDist: 5
   reactionTime: 0.5
   LOS: 0

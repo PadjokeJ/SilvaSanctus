@@ -107,12 +107,11 @@ public class EndManager : MonoBehaviour
         float value = startExp;
         float minValue = value;
         float maxValue = endExp;
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i <= 50; i++)
         {
             yield return new WaitForSecondsRealtime(0.01f);
             value = Mathf.Lerp(minValue, maxValue, i / 50f);
             slider.value = value;
-            Debug.Log(value);
         }
     }
 

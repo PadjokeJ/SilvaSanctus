@@ -51,10 +51,13 @@ public class Health : MonoBehaviour
 
         if (entityType == "Enemy")
             health -= val * (1 + Buffs.damageBuff);
-        else if (entityType == "Player" && canTakeDamage)
+        else if (entityType == "Player")
         {
-            pHA.HurtScreen();
-            health -= val * (1 - Buffs.defense);
+            if (canTakeDamage)
+            {
+                pHA.HurtScreen();
+                health -= val * (1 - Buffs.defense);
+            }
         }
         else
         {

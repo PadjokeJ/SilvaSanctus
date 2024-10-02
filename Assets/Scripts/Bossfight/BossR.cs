@@ -61,9 +61,11 @@ public class BossR : MonoBehaviour
                 }
             }
 
-            if (health.health <= 0)
-                Die();
+            
         }
+
+        if (health.health <= 0 && !dead && isSpawned)
+            Die();
     }
     public void Spawn()
     {

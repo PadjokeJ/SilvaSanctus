@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausedVector: {x: 0, y: 0}
-  playedVector: {x: 0, y: 500}
+  playedVector: {x: 0, y: 600}
   eventSystem: {fileID: 685680334}
   buttons:
   - {fileID: 1610456699}
@@ -27180,8 +27180,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 0.5609115
+    height: 0.7729469
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

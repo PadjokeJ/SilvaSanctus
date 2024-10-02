@@ -20,6 +20,8 @@ public class BossSpawner : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             door.SetActive(true);
+            SpriteRenderer sr = door.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
 
             StartCoroutine(waitForPlayerToBeNearBoss());
         }
@@ -38,7 +40,6 @@ public class BossSpawner : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         bossR.Spawn();
-        SpriteRenderer sr = door.AddComponent<SpriteRenderer>();
-        sr.sprite = sprite;
+        
     }
 }

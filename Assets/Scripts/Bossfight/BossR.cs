@@ -76,6 +76,7 @@ public class BossR : MonoBehaviour
 
     IEnumerator SpawnSequence()
     {
+        StartCoroutine(SlowlyZoomOut());
         yield return new WaitForSeconds(2f);
         particleObject.SetActive(true);
         yield return new WaitForSeconds(0.4f);
@@ -87,9 +88,22 @@ public class BossR : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         isSpawned = true;
+    }
 
-        FindAnyObjectByType<PixelPerfectCamera>().refResolutionX = 480;
+    IEnumerator SlowlyZoomOut()
+    {
+        PixelPerfectCamera ppc = FindAnyObjectByType<PixelPerfectCamera>();
 
+        int startingRes = ppc.refResolutionX;
+        int endingRes = 480;
+
+        for (int i = 0; i <= 25; i++)
+        {
+            ppc.refResolutionX = Mathf.RoundToInt(Mathf.Lerp(startingRes, endingRes, i / 50f));
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        ppc.refResolutionX = endingRes;
     }
 
     IEnumerator PhaseUp()

@@ -51,6 +51,10 @@ public class SmokeProjectile : MonoBehaviour
             emissionModule.enabled = false;
 
             Destroy(this.gameObject, 1.5f);
+
+            speed = 0;
+
+            hasHitPlayer = true;
         }
     }
 }

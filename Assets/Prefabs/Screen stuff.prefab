@@ -3129,7 +3129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausedVector: {x: 0, y: 0}
-  playedVector: {x: 0, y: 500}
+  playedVector: {x: 0, y: 600}
   eventSystem: {fileID: 2959235399010036200}
   buttons:
   - {fileID: 8808935635703210270}

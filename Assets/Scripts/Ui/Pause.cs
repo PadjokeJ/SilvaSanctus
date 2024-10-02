@@ -39,6 +39,10 @@ public class Pause : MonoBehaviour
             panelRect.anchoredPosition = Vector2.Lerp(panelRect.anchoredPosition, pausedVector, 0.2f);
         else
             panelRect.anchoredPosition = Vector2.Lerp(panelRect.anchoredPosition, playedVector, 0.2f);
+
+        if (panelRect.anchoredPosition.y > playedVector.y - 1f)
+            panelRect.gameObject.SetActive(false);
+
     }
     public void TogglePause()
     {
@@ -50,6 +54,7 @@ public class Pause : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 eventSystem.SetSelectedGameObject(buttons[0].gameObject);
+                panelRect.gameObject.SetActive(true);
             }
             else
                 Time.timeScale = 1f;

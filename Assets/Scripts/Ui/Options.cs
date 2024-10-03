@@ -62,6 +62,7 @@ public class Options : MonoBehaviour
         
         this.gameObject.SetActive(false);
     }
+    
     public void PPToggle(Toggle toggle)
     {
         PlayClickAudio();
@@ -73,7 +74,7 @@ public class Options : MonoBehaviour
 
         foreach (VolumeComponent volumeComp in volume.profile.components)
         {
-            Debug.Log(volumeComp);
+            Debug.Log($"{volumeComp} | {name}");
             if (volumeComp.name.StartsWith(name))
             {
                 volumeComp.active = state;
@@ -83,7 +84,6 @@ public class Options : MonoBehaviour
             }
         }
     }
-
 
     void PlayClickAudio()
     {

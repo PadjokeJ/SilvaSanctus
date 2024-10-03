@@ -200,7 +200,7 @@ public class BossR : MonoBehaviour
         {
             if (((5f - phase)) * 2f <= health.health)
                 TakeDamage(damage / 10f);
-            else
+            else if(health.health > 0.1f)
                 ToNextPhase();
         }
     }

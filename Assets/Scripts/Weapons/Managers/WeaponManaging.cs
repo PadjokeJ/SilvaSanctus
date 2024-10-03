@@ -82,7 +82,7 @@ public class WeaponManaging : MonoBehaviour
 
         List<GameObject> listOfWeapons = new List<GameObject>(arrayOfWeapons);
         int level = PlayerLevelling.GetLevel();
-        Debug.Log((level));
+        Debug.Log($"Player is level {level}");
 
         foreach (GameObject weapon in arrayOfWeapons)
         {
@@ -114,6 +114,7 @@ public class WeaponManaging : MonoBehaviour
             selector.weaponImage = weaponImage;
             List<int> listOfUnlockedWeapons = new List<int>(weapons.unlockedWeapons);
 
+            Debug.Log($"Weapon {selector.weaponName} requires level {listOfUnlockedWeapons[index]}. Player is level {level}");
             if (listOfUnlockedWeapons[index] < level)
             {
                 obj.GetComponent<Image>().sprite = selector.enabledSprite;

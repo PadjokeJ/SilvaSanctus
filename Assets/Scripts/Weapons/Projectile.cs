@@ -25,10 +25,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit");
         if (collision.gameObject.TryGetComponent<Health>(out Health health) && !collision.CompareTag("Player"))
         {
-            Debug.Log("taking damage");
+            Debug.Log($"{collision.gameObject.name} has been hit by {this.gameObject.name} for {damage}");
             health.takeDamage(damage);
         }
         else if (collision.TryGetComponent<BossR>(out BossR bossR))

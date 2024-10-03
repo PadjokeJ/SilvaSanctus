@@ -53,12 +53,17 @@ public class ListOfDoors : MonoBehaviour
 
     void EnableAllEnemies()
     {
-        int index = 0;
         foreach (EnemyAI enemy in enemyList)
         {
-            enemy.enabled = true;
-            enemyList.RemoveAt(index);
-            index++;
+            if (enemy != null)
+                enemy.enabled = true;
+        }
+
+        List<EnemyAI> eAICopy = new List<EnemyAI>(enemyList);
+
+        foreach (EnemyAI enemy in eAICopy)
+        {
+            enemyList.Remove(enemy);
         }
     }
 

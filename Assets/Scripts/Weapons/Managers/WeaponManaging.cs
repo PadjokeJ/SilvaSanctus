@@ -114,7 +114,7 @@ public class WeaponManaging : MonoBehaviour
             selector.weaponImage = weaponImage;
             List<int> listOfUnlockedWeapons = new List<int>(weapons.unlockedWeapons);
 
-            Debug.Log($"Weapon {listOfWeapons[index]} requires level {listOfUnlockedWeapons[index]}. Player is level {level}");
+            Debug.Log($"Weapon {listOfWeapons[index].name} requires level {listOfUnlockedWeapons[index]}. Player is level {level}");
             if (listOfUnlockedWeapons[index] < level)
             {
                 obj.GetComponent<Image>().sprite = selector.enabledSprite;

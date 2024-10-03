@@ -25,13 +25,6 @@ public class EnemyHealthBar : MonoBehaviour
         healthBars = new List<Slider>();
         healthBarsObjects = new List<GameObject>();
 
-        //SpawnHealthBars();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //
     }
 
     public GameObject newHealthBar(EnemyAI enemy)

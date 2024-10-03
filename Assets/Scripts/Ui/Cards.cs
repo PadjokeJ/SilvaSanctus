@@ -52,7 +52,7 @@ public class Cards : Selectable
 
     void OnHighlight()
     {
-        Debug.Log("highlited this!!!");
+        Debug.Log($"Card {this.gameObject.name} was highlighted");
         AudioManager.instance.PlayAudio(cardReveal, transform.position, 2f, 0.2f);
     }
 

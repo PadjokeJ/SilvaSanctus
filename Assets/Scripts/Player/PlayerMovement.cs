@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("YVel", moveV2.normalized.y);
 
         rb.velocity += moveV2.normalized * speed;
-        normalizedMagnitude = new Vector2(Mathf.Abs(rb.velocity.normalized.x), Mathf.Abs(rb.velocity.normalized.y));
+        normalizedMagnitude = new Vector2(Mathf.Abs(moveV2.normalized.x), Mathf.Abs(moveV2.normalized.y));
         clampedSpeed = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rb.velocity.y, -maxSpeed, maxSpeed));
         rb.velocity = new Vector2(clampedSpeed.x * normalizedMagnitude.x, clampedSpeed.y * normalizedMagnitude.y);
         rb.velocity += currentForce;

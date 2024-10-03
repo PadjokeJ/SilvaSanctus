@@ -214,7 +214,7 @@ public class BossR : MonoBehaviour
 
         if (startHealth == health.health)
         {
-            TutorialText.instance.PlayText("R hates water explosions. Get him close to one and explode it to damage him");
+            TutorialText.instance.PlayText("Try exploding a water barrel nearby to deal damage");
         }
     }
 

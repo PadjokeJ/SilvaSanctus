@@ -40,6 +40,8 @@ public class BossR : MonoBehaviour
     float waitPercent = 1f;
     float expReward = 20f;
 
+    List<Vector3> positionOfBarrels = new List<Vector3>();
+
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -51,11 +53,13 @@ public class BossR : MonoBehaviour
 
         if (WeaponManaging.hardMode)
         {
-            speed *= 1.5f;
+            speed *= 1.2f;
             damageOverTime *= 1.5f;
             waitPercent = 0.75f;
             expReward = 40f;
         }
+
+        StartCoroutine(GetBarrels());
     }
 
     private void Update()
@@ -122,6 +126,7 @@ public class BossR : MonoBehaviour
     IEnumerator PhaseUp()
     {
         state = "phasing";
+        phase++;
 
         yield return new WaitForSeconds(1f);
 
@@ -143,8 +148,56 @@ public class BossR : MonoBehaviour
         cm.CameraShake(40, 30, 2f);
         yield return new WaitForSeconds(1f);
         spriteObject.SetActive(false);
+
+        if (phase == 4)
+        {
+            StartCoroutine(RadialAttack());
+            yield return new WaitForSeconds(13f);
+        }
+
+        if (phase == 5)
+        {
+            StartCoroutine(TeleportAround());
+            yield return new WaitForSeconds(7 * 2.5f);
+        }
+
         state = "None";
     }
+
+    IEnumerator RadialAttack()
+    {
+        transform.position = transform.parent.position;
+
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i <= 12; i++)
+        {
+            GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
+            smokeObject.transform.position = transform.position;
+
+
+            yield return new WaitForSeconds(0.5f * waitPercent);
+            cm.CameraShake(4, 30, 0.5f);
+
+            Vector3 direction;
+            direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * 30 * i), Mathf.Sin(Mathf.Deg2Rad * 30 * i));
+
+            smokeObject.GetComponent<SmokeProjectile>().direction = direction;
+        }
+    }
+
+    IEnumerator TeleportAround()
+    {
+        for (int i = 0; i <= 7; i++)
+        {
+            transform.position = positionOfBarrels[Random.Range(0, positionOfBarrels.Count - 1)];
+            yield return new WaitForSeconds(1.5f);
+            StartCoroutine(FireProjectile());
+            yield return new WaitForSeconds(1f * waitPercent);
+        }
+    }
+
+
 
     IEnumerator DeathSequence()
     {
@@ -201,7 +254,6 @@ public class BossR : MonoBehaviour
     void ToNextPhase()
     {
         StopAllCoroutines();
-        phase++;
         StartCoroutine(PhaseUp());
         StartCoroutine(DOT());
         down = false;
@@ -260,25 +312,31 @@ public class BossR : MonoBehaviour
 
         for (int i = 0; i < phase; i++)
         {
-            GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
-            smokeObject.transform.position = transform.position;
-
-
-            yield return new WaitForSeconds(0.5f * waitPercent);
-            cm.CameraShake(4, 30, 0.5f);
-
-
-            Vector3 playerDirection = player.transform.position - transform.position;
-            playerDirection = playerDirection.normalized;
-
-
-            smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
-            if (Random.Range(0f, 1f) < 0.1f)
-                smokeObject.GetComponent<SmokeProjectile>().isSine = true;
+            StartCoroutine(FireProjectile());
+            yield return new WaitForSeconds(1f * waitPercent);
         }
 
         yield return new WaitForSeconds(2f * waitPercent);
         state = "None";
+    }
+
+    IEnumerator FireProjectile()
+    {
+        GameObject smokeObject = Instantiate<GameObject>(smokePrefab);
+        smokeObject.transform.position = transform.position;
+
+
+        yield return new WaitForSeconds(0.5f * waitPercent);
+        cm.CameraShake(4, 30, 0.5f);
+
+
+        Vector3 playerDirection = player.transform.position - transform.position;
+        playerDirection = playerDirection.normalized;
+
+
+        smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
+        if (Random.Range(0f, 1f) < 0.1f)
+            smokeObject.GetComponent<SmokeProjectile>().isSine = true;
     }
 
     IEnumerator DOT()
@@ -308,5 +366,15 @@ public class BossR : MonoBehaviour
             touchingPlayer = false;
         }
 
+    }
+
+    IEnumerator GetBarrels()
+    {
+        yield return new WaitForSeconds(5f);
+        var foundBarrelObjects = FindObjectsOfType<BlockRespawner>();
+        foreach (BlockRespawner barrel in foundBarrelObjects)
+        {
+            positionOfBarrels.Add(barrel.transform.position);
+        }
     }
 }

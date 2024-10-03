@@ -2978,6 +2978,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screen stuff
       objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.0032102729
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.9990148
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689045516754535028, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.9919743
+      objectReference: {fileID: 0}
     - target: {fileID: 5691138737778831221, guid: 0fdb269daf12ed940b2c771b81a5ba4f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

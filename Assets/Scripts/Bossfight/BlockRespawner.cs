@@ -34,7 +34,7 @@ public class BlockRespawner : MonoBehaviour
     public void StopSpawning()
     {
         StopAllCoroutines();
-        Destroy(this.gameObject);
+        Destroy(this);
     }
 
     private void OnDrawGizmos()

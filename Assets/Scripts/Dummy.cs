@@ -12,6 +12,5 @@ public class Dummy : MonoBehaviour
     public void Hurt()
     {
         animator.SetTrigger("Hurt");
-        Debug.Log("hurt triggered");
     }
 }

@@ -31,8 +31,6 @@ public class BossHealth : MonoBehaviour
 
         healthBar.fillAmount = 0f;
 
-        Debug.Log(healthBar.fillAmount);
-
         StartCoroutine(LerpHealthValue());
     }
 
@@ -51,7 +49,6 @@ public class BossHealth : MonoBehaviour
     {
         for (int i = 0; i <= 50f; i++)
         {
-            Debug.Log(healthBar.fillAmount);
             healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHealth, 0.1f);
             yield return new WaitForSeconds(0.02f);
         }

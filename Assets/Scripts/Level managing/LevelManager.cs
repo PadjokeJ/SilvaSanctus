@@ -200,8 +200,6 @@ public class LevelManager : MonoBehaviour
         Vector2Int endRoomDir;
 
         int lastIndex = deadEnds.Count - 1;
-        Debug.Log(lastIndex);
-
         
         index = 1;
         otherIndex = 0;

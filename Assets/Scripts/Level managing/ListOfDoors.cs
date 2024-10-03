@@ -53,9 +53,12 @@ public class ListOfDoors : MonoBehaviour
 
     void EnableAllEnemies()
     {
+        int index = 0;
         foreach (EnemyAI enemy in enemyList)
         {
             enemy.enabled = true;
+            enemyList.RemoveAt(index);
+            index++;
         }
     }
 

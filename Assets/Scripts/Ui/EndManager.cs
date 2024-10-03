@@ -96,7 +96,7 @@ public class EndManager : MonoBehaviour
             leftText.text = level.ToString();
             rightText.text = (level + 1).ToString();
             StartCoroutine(LerpLevel(startExp, endExp, PlayerLevelling.MaxExp(level - 1), PlayerLevelling.MaxExp(level)));
-            yield return new WaitForSecondsRealtime(0.51f);
+            yield return new WaitForSecondsRealtime(0.55f);
             level += 1;
         }
     }
@@ -109,8 +109,8 @@ public class EndManager : MonoBehaviour
         float maxValue = endExp;
         for (int i = 0; i <= 50; i++)
         {
-            yield return new WaitForSecondsRealtime(0.01f);
             value = Mathf.Lerp(minValue, maxValue, i / 50f);
+            yield return new WaitForSecondsRealtime(0.01f);
             slider.value = value;
         }
     }

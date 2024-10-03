@@ -24,6 +24,8 @@ public class MainMenu : MonoBehaviour
 
     public Slider levelSlider;
     public TextMeshProUGUI levelTMP;
+
+    public TextMeshProUGUI verTMP;
     void Start()
     {
         string filePath = Application.persistentDataPath + "/.tutorial";
@@ -46,6 +48,8 @@ public class MainMenu : MonoBehaviour
         SetLevelSlider();
 
         Cursor.visible = true;
+
+        UpdateVersion();
     }
 
     // Update is called once per frame
@@ -119,5 +123,10 @@ public class MainMenu : MonoBehaviour
         levelSlider.minValue = PlayerLevelling.MaxExp(level - 1);
         levelSlider.maxValue = PlayerLevelling.MaxExp(level);
         levelSlider.value = SaveManager.RetrieveFloat("experience");
+    }
+
+    public void UpdateVersion()
+    {
+        verTMP.text = $"Game Version: {Application.version}";
     }
 }

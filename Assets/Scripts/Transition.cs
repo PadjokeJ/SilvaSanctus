@@ -9,18 +9,17 @@ public class Transition : MonoBehaviour
     void Awake()
     {
         image = GetComponent<Image>();
-        //image.color = Color.black;
     }
 
     public void FadeToWhite()
     {
         StartCoroutine(ColorLerp(new Color(0, 0, 0, 1f), new Color(0, 0, 0, 0f)));
-        Debug.Log("white screen");
+        Debug.Log("Screen fades in");
     }
     public void FadeToBlack()
     {
         StartCoroutine(ColorLerp(new Color(0, 0, 0, 0f), new Color(0, 0, 0, 1f)));
-        Debug.Log("black screen");
+        Debug.Log("Screen fades out");
     }
 
     IEnumerator ColorLerp(Color original, Color target)

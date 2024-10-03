@@ -53,6 +53,7 @@ public class SmokeProjectile : MonoBehaviour
             Destroy(this.gameObject, 1.5f);
 
             speed = 0;
+            isSine = false;
 
             hasHitPlayer = true;
         }

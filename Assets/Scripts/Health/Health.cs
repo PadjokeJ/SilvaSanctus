@@ -23,6 +23,9 @@ public class Health : MonoBehaviour
             entityType = "Player";
             Health.playerInstance = this;
             pHA = FindObjectOfType<PlayerHurtAnimation>();
+
+            if (WeaponManaging.hardMode)
+                health *= 0.5f;
             
         }
         else if(this.gameObject.CompareTag("Enemy"))

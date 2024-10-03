@@ -7,6 +7,8 @@ using TMPro;
 
 public class WeaponManaging : MonoBehaviour
 {
+    public static bool hardMode = false;
+
     public Weapons weapons;
     public GameObject buttonPrefab;
     public RectTransform panel;
@@ -53,6 +55,8 @@ public class WeaponManaging : MonoBehaviour
         hidden = true;
 
         transition = FindAnyObjectByType<Transition>();
+
+        hardMode = false;
     }
 
     private void FixedUpdate()
@@ -169,5 +173,12 @@ public class WeaponManaging : MonoBehaviour
     void PlayClickAudio()
     {
         AudioManager.instance.PlayAudio(clickClip, Vector3.zero, 1f, 0.1f);
+    }
+
+    public void SetHardMode(Toggle toggle)
+    {
+        hardMode = toggle.isOn;
+
+        Debug.Log($">Hard mode is set to {hardMode}");
     }
 }

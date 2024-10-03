@@ -49,6 +49,22 @@ public class ListOfDoors : MonoBehaviour
         {
             enemy.enabled = false;
         }
+
+        if (WeaponManaging.hardMode)
+        {
+            foreach (EnemyAI enemy in enemyList)
+            {
+                Health eHlth = enemy.GetComponent<Health>();
+                eHlth.health *= 2f;
+                eHlth.maxHealth *= 2f;
+
+                enemy.reactionTime *= 0.5f;
+                enemy.experienceGiven *= 2f;
+                enemy.maxDist = 20f;
+
+
+            }
+        }
     }
 
     void EnableAllEnemies()
@@ -58,6 +74,7 @@ public class ListOfDoors : MonoBehaviour
             if (enemy != null)
                 enemy.enabled = true;
         }
+
 
         List<EnemyAI> eAICopy = new List<EnemyAI>(enemyList);
 

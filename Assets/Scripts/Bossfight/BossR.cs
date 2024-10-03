@@ -35,6 +35,11 @@ public class BossR : MonoBehaviour
     bool dead = false;
 
     bool down = false;
+
+    float damageOverTime = 1f;
+    float waitPercent = 1f;
+    float expReward = 20f;
+
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -43,6 +48,14 @@ public class BossR : MonoBehaviour
         particleObject.SetActive(false);
 
         cm = FindObjectOfType<CameraManager>();
+
+        if (WeaponManaging.hardMode)
+        {
+            speed *= 1.5f;
+            damageOverTime *= 1.5f;
+            waitPercent = 0.75f;
+            expReward = 40f;
+        }
     }
 
     private void Update()
@@ -151,7 +164,7 @@ public class BossR : MonoBehaviour
         emissionModule.rateOverTime = 0f;
         yield return new WaitForSeconds(2f);
 
-        PlayerLevelling.GainExperience(20f);
+        PlayerLevelling.GainExperience(expReward);
 
         EndManager endManager = FindAnyObjectByType<EndManager>();
 
@@ -237,7 +250,7 @@ public class BossR : MonoBehaviour
             transform.position += playerDirection * speed * phase * dir;
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f * waitPercent);
         state = "None";
     }
 
@@ -251,7 +264,7 @@ public class BossR : MonoBehaviour
             smokeObject.transform.position = transform.position;
 
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f * waitPercent);
             cm.CameraShake(4, 30, 0.5f);
 
 
@@ -260,11 +273,11 @@ public class BossR : MonoBehaviour
 
 
             smokeObject.GetComponent<SmokeProjectile>().direction = playerDirection;
-            if (Random.Range(0f, 1f) < 0.25f * phase)
+            if (Random.Range(0f, 1f) < 0.1f)
                 smokeObject.GetComponent<SmokeProjectile>().isSine = true;
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f * waitPercent);
         state = "None";
     }
 
@@ -275,7 +288,7 @@ public class BossR : MonoBehaviour
         while (true)
         {
             if (touchingPlayer && !dead)
-                playerHealth.takeDamage(1f);
+                playerHealth.takeDamage(damageOverTime);
             yield return new WaitForSeconds(1f);
         }
     }

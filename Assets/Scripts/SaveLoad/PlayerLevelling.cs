@@ -28,11 +28,11 @@ public static class PlayerLevelling
         experiencePoints = SaveManager.RetrieveFloat("experience");
         experiencePoints += ammountGained;
         SaveManager.SaveFloat("experience", experiencePoints);
-        Debug.Log(experiencePoints);
+        
 
         playerLevel = UpdateLevel(experiencePoints);
 
-        Debug.Log(playerLevel);
+        Debug.Log($"Player has {experiencePoints} EXP : -> {playerLevel}");
 
         if (playerLevel > previousLevel) SaveManager.SaveInt("level", playerLevel);
     }

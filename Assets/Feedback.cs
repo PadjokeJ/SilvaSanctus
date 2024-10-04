@@ -12,7 +12,7 @@ public class Feedback : MonoBehaviour
     }
     void FrenchForm()
     {
-        Application.OpenURL("https://forms.gle/yLwj9xbHuwKD77Lm7");
+        Application.OpenURL("https://forms.gle/6mJHgQfyqBtEMpgHA");
     }
 
     public void SendFeedback()

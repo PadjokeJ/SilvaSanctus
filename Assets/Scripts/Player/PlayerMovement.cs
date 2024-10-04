@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject shadowPrefab;
 
     Health health;
-    
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -56,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity += currentForce;
         if(toDash)
         {
-            currentForce = dashForce * moveV2;
+            currentForce = dashForce * moveV2.normalized;
             StartCoroutine(DashTrail());
             toDash = false;
             health.canTakeDamage = false;
@@ -65,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
         if (dashTime > dashMaxTime)
         {
             currentForce = Vector2.zero;
-            
         }
     }
     public void onMoveUpdate(InputAction.CallbackContext context)

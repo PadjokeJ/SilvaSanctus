@@ -42,6 +42,8 @@ public class BossR : MonoBehaviour
 
     List<Vector3> positionOfBarrels = new List<Vector3>();
 
+    public List<GameObject> enemies;
+
     private void Awake()
     {
         health = GetComponent<BossHealth>();
@@ -149,10 +151,16 @@ public class BossR : MonoBehaviour
         yield return new WaitForSeconds(1f);
         spriteObject.SetActive(false);
 
+        if (phase == 3)
+        {
+            StartCoroutine(SpawnEnemies());
+            yield return new WaitForSeconds(18f * waitPercent);
+        }
+
         if (phase == 4)
         {
             StartCoroutine(RadialAttack());
-            yield return new WaitForSeconds(13f);
+            yield return new WaitForSeconds(10f);
         }
 
         if (phase == 5)
@@ -193,6 +201,20 @@ public class BossR : MonoBehaviour
             transform.position = positionOfBarrels[Random.Range(0, positionOfBarrels.Count - 1)];
             yield return new WaitForSeconds(1.5f);
             StartCoroutine(FireProjectile());
+            yield return new WaitForSeconds(1f * waitPercent);
+        }
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+
+        for (int i = 0; i <= 10; i++)
+        {
+            transform.position = positionOfBarrels[Random.Range(0, positionOfBarrels.Count - 1)];
+            yield return new WaitForSeconds(0.8f * waitPercent);
+
+            Instantiate<GameObject>(enemies[Random.Range(0, enemies.Count - 1)], transform.position, Quaternion.identity);
+
             yield return new WaitForSeconds(1f * waitPercent);
         }
     }

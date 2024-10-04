@@ -54,6 +54,8 @@ MonoBehaviour:
   smokePrefab: {fileID: 4201928851734650451, guid: 79ab541b3e402e74f8727c4f74286f2d, type: 3}
   spriteObject: {fileID: 8659268725191419244}
   particleObject: {fileID: 7096409184682296454}
+  enemies:
+  - {fileID: 1989758858887937333, guid: 9bd07e46ccc123a419e5c7948aea276b, type: 3}
 --- !u!114 &5097658257609628867
 MonoBehaviour:
   m_ObjectHideFlags: 0

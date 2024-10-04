@@ -35,15 +35,21 @@ public class SmokeProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        bool toRemove = false;
+
         if(collision.CompareTag("Player") && !hasHitPlayer)
         {
-            collision.GetComponent<Health>().takeDamage(2f);
+            Health health = collision.GetComponent<Health>();
+            health.takeDamage(2f);
             hasHitPlayer = true;
+            toRemove = health.canTakeDamage;
+        }
+        if (!collision.CompareTag("R") && !collision.CompareTag("Player"))
+        {
+            toRemove = true;
         }
 
-
-        if (!collision.CompareTag("R"))
+        if (toRemove)
         {
             trail.Stop();
 

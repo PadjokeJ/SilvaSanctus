@@ -222,6 +222,8 @@ public class EnemyAI : MonoBehaviour
         {
             dead = true;
             PlayerLevelling.GainExperience(experienceGiven);
+            if (!WeaponManaging.hardMode)
+                Health.playerInstance.heal(0.5f);
 
             deathParticles.transform.position = transform.position;
             deathParticles.Emit(10);

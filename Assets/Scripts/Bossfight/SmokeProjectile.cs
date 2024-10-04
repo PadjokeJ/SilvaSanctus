@@ -44,7 +44,7 @@ public class SmokeProjectile : MonoBehaviour
             hasHitPlayer = true;
             toRemove = health.canTakeDamage;
         }
-        if (!collision.CompareTag("R") && !collision.CompareTag("Player"))
+        if (!collision.CompareTag("R") && !collision.CompareTag("Player") && !collision.CompareTag("Barrel"))
         {
             toRemove = true;
         }

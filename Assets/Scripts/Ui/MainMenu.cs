@@ -120,9 +120,11 @@ public class MainMenu : MonoBehaviour
         int level = PlayerLevelling.GetLevel();
         levelTMP.text = "Level : " + level.ToString();
 
-        levelSlider.minValue = PlayerLevelling.MaxExp(level - 1);
-        levelSlider.maxValue = PlayerLevelling.MaxExp(level);
+        levelSlider.minValue = PlayerLevelling.MaxExp(level - 2);
+        levelSlider.maxValue = PlayerLevelling.MaxExp(level - 1);
         levelSlider.value = SaveManager.RetrieveFloat("experience");
+
+        Debug.Log($"{levelSlider.minValue} -- [{levelSlider.value}] -- {levelSlider.maxValue}");
     }
 
     public void UpdateVersion()

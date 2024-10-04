@@ -79,44 +79,56 @@ public class EndManager : MonoBehaviour
 
     IEnumerator GainLevel(int startLevel, int endLevel)
     {
-        float startExp = PlayerLevelling.expAtStartOfRun;
-        float endExp = startExp;
-        int level = 0;
-        if (startLevel == endLevel)
-            level = endLevel;
-        else
-            level = startLevel;
-        while (level <= endLevel)
-        {
-            if (level != startLevel)
-                startExp = PlayerLevelling.MaxExp(level - 1);
-            endExp = PlayerLevelling.MaxExp(level);
-            if (level == endLevel)
-                endExp = PlayerLevelling.experiencePoints;
-            leftText.text = level.ToString();
-            rightText.text = (level + 1).ToString();
-            StartCoroutine(LerpLevel(startExp, endExp, PlayerLevelling.MaxExp(level - 1), PlayerLevelling.MaxExp(level)));
-            yield return new WaitForSecondsRealtime(0.55f);
-            level += 1;
-        }
-    }
-    IEnumerator LerpLevel(float startExp, float endExp, float minExp, float maxExp)
-    {
-        slider.maxValue = maxExp;
-        slider.minValue = minExp;
-        float value = startExp;
-        float minValue = value;
-        float maxValue = endExp;
-        for (int i = 0; i <= 50; i++)
-        {
-            value = Mathf.Lerp(minValue, maxValue, i / 50f);
-            slider.value = value;
-            Debug.Log($"{minExp} II <--I{value}I--> II {maxExp}");
-            yield return new WaitForSecondsRealtime(0.01f);
-            
-        }
-        slider.value = endExp;
-    }
 
-    
+        float startExp = PlayerLevelling.expAtStartOfRun;
+        int level = startLevel;
+        leftText.text = level.ToString();
+        rightText.text = (level + 1).ToString();
+        slider.minValue = PlayerLevelling.MaxExp(level - 2);
+        slider.maxValue = PlayerLevelling.MaxExp(level - 1);
+        slider.value = startExp;
+
+        int leftLevel = startLevel;
+        int rightLevel = startLevel + 1;
+        float exp = startExp, maxExp = PlayerLevelling.experiencePoints;
+
+        while (exp < maxExp)
+        {
+            slider.value = exp;
+            exp = Mathf.Lerp(exp, maxExp + 1f, 0.025f);
+            exp = Mathf.Min(exp, maxExp);
+
+            yield return new WaitForSecondsRealtime(0.01f);
+
+            if (exp > slider.maxValue)
+            {
+                leftLevel++;
+                rightLevel++;
+                leftText.text = leftLevel.ToString();
+                rightText.text = rightLevel.ToString();
+
+                slider.minValue = slider.maxValue;
+
+                slider.maxValue = PlayerLevelling.MaxExp(rightLevel - 2);
+            }
+
+            Debug.Log($"{slider.minValue} -- [{slider.value}] -- {slider.maxValue}");
+        }
+        exp = maxExp;
+
+        if (exp < slider.minValue)
+        {
+            leftLevel++;
+            rightLevel++;
+            leftText.text = leftLevel.ToString();
+            rightText.text = rightLevel.ToString();
+
+            slider.minValue = slider.maxValue;
+
+            slider.maxValue = PlayerLevelling.MaxExp(rightLevel - 2);
+        }
+
+        slider.value = exp;
+        
+    }
 }

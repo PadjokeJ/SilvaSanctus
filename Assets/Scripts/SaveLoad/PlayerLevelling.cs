@@ -10,6 +10,7 @@ public static class PlayerLevelling
     public static int levelAtStartOfRun;
     public static int GetLevel()
     {
+        experiencePoints = SaveManager.RetrieveFloat("experience");
         playerLevel = SaveManager.RetrieveInt("level");
         if (playerLevel == 0)
             playerLevel = 1;
@@ -18,7 +19,10 @@ public static class PlayerLevelling
     public static void InitDeltaLevel()
     {
         levelAtStartOfRun = SaveManager.RetrieveInt("level");
-        expAtStartOfRun = SaveManager.RetrieveFloat("experiece");
+        expAtStartOfRun = SaveManager.RetrieveFloat("experience");
+
+        Debug.Log($"Level at start of the run is {levelAtStartOfRun}");
+        Debug.Log($"Exp at start of the run is {expAtStartOfRun}");
     }
 
     public static void GainExperience(float ammountGained)

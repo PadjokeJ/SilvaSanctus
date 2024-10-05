@@ -133,10 +133,10 @@ MonoBehaviour:
   fleeIfTooClose: 1
   speed: 50
   maxDist: 15
-  minDist: 7
+  minDist: 5
   minRange: 2
   fleeSpeedMultiplier: 1
-  attackDist: 5
+  attackDist: 7
   reactionTime: 0.5
   LOS: 0
   attacking: 0

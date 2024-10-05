@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class BuffCards : MonoBehaviour
 {
@@ -35,9 +36,12 @@ public class BuffCards : MonoBehaviour
         Time.timeScale = 1f;
         active = false;
 
-        Health.playerInstance.maxHealth += card.buff.healthAwarded;
-        Health.playerInstance.health *= (card.buff.healthPercent + 1);
-        Health.playerInstance.heal(card.buff.healAmmount);
+        Health playerHealth = Health.playerInstance;
+
+        playerHealth.maxHealth += card.buff.healthAwarded;
+        playerHealth.health *= (card.buff.healthPercent + 1);
+        playerHealth.health += playerHealth.maxHealth * card.buff.maxHealthPercent;
+        playerHealth.heal(card.buff.healAmmount);
 
         Buffs.damageBuff += card.buff.attackAwarded;
         Buffs.defense += card.buff.defenseAwarded;
@@ -71,11 +75,20 @@ public class BuffCards : MonoBehaviour
     }
     void SetCard(Cards card, BuffScriptableObject buff, string rarity)
     {
+        Debug.Log($"Current Language : {LocalizationSettings.SelectedLocale.name}");
+        if (LocalizationSettings.SelectedLocale.name.StartsWith("English"))
+        {
+            card.buffHeadline.text = buff.buffName;
+            card.buffDescription.text = buff.buffDescription;
+        }
+        if (LocalizationSettings.SelectedLocale.name.StartsWith("French"))
+        {
+            card.buffHeadline.text = buff.buffNameFr;
+            card.buffDescription.text = buff.buffDescriptionFr;
+        }
+
+
         card.buffSprite.sprite = buff.buffSprite;
-
-        card.buffHeadline.text = buff.buffName;
-        card.buffDescription.text = buff.buffDescription;
-
         card.buff = buff;
 
         card.SetRarity(rarity);

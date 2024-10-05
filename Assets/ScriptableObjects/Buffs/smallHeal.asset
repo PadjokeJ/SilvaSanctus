@@ -15,8 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 202609556, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Healing pocket
   buffDescription: Heals you for 1 health
+  buffNameFr: Poche de vie
+  buffDescriptionFr: Vous fait regagner 1 PdV
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 1
   healthAwarded: 0
+  healthPercent: 0
+  maxHealthPercent: 0
   rarity: rare

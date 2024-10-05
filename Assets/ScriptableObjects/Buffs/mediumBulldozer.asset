@@ -15,9 +15,13 @@ MonoBehaviour:
   buffSprite: {fileID: -441058121, guid: a8e1b687ca848154788535b7af58d8e9, type: 3}
   buffName: Raging Bulldozer
   buffDescription: You deal 10% more damage, and you heal 10% of your health
+  buffNameFr: Bulldozer rageux
+  buffDescriptionFr: "Vous faites 10% de d\xE9g\xE2ts en plus, et reg\xE9nerez 10%
+    de vos PdV"
   defenseAwarded: 0
   attackAwarded: 0.1
   healAmmount: 0
   healthAwarded: 0
-  healthPercent: 0.1
+  healthPercent: 0
+  maxHealthPercent: 0.1
   rarity: epic

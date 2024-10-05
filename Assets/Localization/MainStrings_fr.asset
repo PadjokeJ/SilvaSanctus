@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainStrings_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 5360abafa35167e478d7882b75f3841e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4811527208960
+    m_Localized: "Effacer les donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4621705592832
+    m_Localized: Outils de developpeur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4498934120448
+    m_Localized: Bruitages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4462619836416
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4432299212800
+    m_Localized: Volume principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3535397634048
+    m_Localized: FLOU DE MOUVEMENT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3502841446400
+    m_Localized: VIGNETTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3445517893632
+    m_Localized: "Contr\xF4les"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3387485503488
+    m_Localized: Graphiques
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4894406656000
+    m_Localized: Rejouer le tutoriel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4980117258240
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2795543379968
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2867144343552
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2907820703744
+    m_Localized: Feedback
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3015337492480
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3090243567616
+    m_Localized: Rapporter un Bug/Suggerer un ajout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5002472898560
+    m_Localized: "(Le gain d'exp est doubl\xE9 en mode difficile)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5219226140672
+    m_Localized: Mode difficile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595639758848
+    m_Localized: CLIC GAUCHE pour tirer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5745774870528
+    m_Localized: Essayez sur cet ennemi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5951195103232
+    m_Localized: "Tuer tous les ennemis d'un pi\xE8ce vous permet de choisir une
+      am\xE9lioration"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6023102251008
+    m_Localized: Appuyez sur MAJ pour vous propulser en avant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6331610087424
+    m_Localized: ECHAP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6454515777536
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6486979690496
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainStrings Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainStrings
+  m_TableCollectionNameGuidString: 5360abafa35167e478d7882b75f3841e
+  m_Entries:
+  - m_Id: 2795543379968
+    m_Key: Main Menu/Main Menu Canvas/MenuButtons/Play/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2867144343552
+    m_Key: Main Menu/Main Menu Canvas/MenuButtons/Options/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2907820703744
+    m_Key: Main Menu/Main Menu Canvas/MenuButtons/Feedback/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3015337492480
+    m_Key: Main Menu/Main Menu Canvas/MenuButtons/Quit/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3090243567616
+    m_Key: Main Menu/Main Menu Canvas/BugReport/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3387485503488
+    m_Key: Options/Canvas (Environment)/Options/TABS/Graphics Tab/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3445517893632
+    m_Key: Options/Canvas (Environment)/Options/TABS/Controls Tab/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3502841446400
+    m_Key: Options/Canvas (Environment)/Options/TABS/Graphics Tab/Graphics/Vignette/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3535397634048
+    m_Key: Options/Canvas (Environment)/Options/TABS/Graphics Tab/Graphics/MotionBlur/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4432299212800
+    m_Key: Options/Canvas (Environment)/Options/TABS/Audio Tab/Audio/Main/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4462619836416
+    m_Key: Options/Canvas (Environment)/Options/TABS/Audio Tab/Audio/Music/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4498934120448
+    m_Key: Options/Canvas (Environment)/Options/TABS/Audio Tab/Audio/SoundEffects/Text
+      (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4621705592832
+    m_Key: Main Menu/BetaCanvas/Activate/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4811527208960
+    m_Key: Main Menu/BetaCanvas/Tools/ClearData/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4894406656000
+    m_Key: Main Menu/BetaCanvas/Tools/Tutorial/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4980117258240
+    m_Key: Main Menu/WeaponSelect/WeaponsSelectPanel/Play/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5002472898560
+    m_Key: Main Menu/WeaponSelect/WeaponsSelectPanel/Play/HardModeToggle/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5219226140672
+    m_Key: Main Menu/WeaponSelect/WeaponsSelectPanel/Play/HardModeToggle/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5595639758848
+    m_Key: Tutorial/TextTriggerShoot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5745774870528
+    m_Key: Tutorial/TextTriggerEnemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5951195103232
+    m_Key: Tutorial/TextTriggerCards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6023102251008
+    m_Key: Tutorial/TextTriggerDash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6331610087424
+    m_Key: Tutorial/Pause Canvas/Pause Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6454515777536
+    m_Key: Tutorial/Pause Canvas/Pause Panel/Exit Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6486979690496
+    m_Key: Tutorial/Pause Canvas/Pause Panel/Resume Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7530042888239448088
+  references:
+    version: 2
+    RefIds:
+    - rid: 7530042888239448088
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1728120514386

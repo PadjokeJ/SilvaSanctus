@@ -15,9 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Blood for Blood
   buffDescription: Grants you +5 max health, but you lose 5 health
+  buffNameFr: Du sang pour du sang
+  buffDescriptionFr: Vous gagnez 5 PdV maximum, sans gagner 5 PdV
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: 5
   healthPercent: 0
+  maxHealthPercent: 0
   rarity: epic

@@ -15,9 +15,13 @@ MonoBehaviour:
   buffSprite: {fileID: 174209130, guid: a8e1b687ca848154788535b7af58d8e9, type: 3}
   buffName: A Small Sacrifice
   buffDescription: Makes you take 5% less damage, but you lose 4 max health
+  buffNameFr: Un petit sacrifice
+  buffDescriptionFr: "Vous prenez 5% de d\xE9g\xE2ts en moins, mais vous perdez 4
+    PdV maximum"
   defenseAwarded: 0.05
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: -4
   healthPercent: 0
+  maxHealthPercent: 0
   rarity: rare

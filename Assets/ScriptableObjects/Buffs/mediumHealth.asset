@@ -15,9 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Heart of Stone
   buffDescription: Grants you +2 max health
+  buffNameFr: Coeur de pierre
+  buffDescriptionFr: Vous avez 2 PdV maximum en plus
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 2
   healthAwarded: 2
   healthPercent: 0
+  maxHealthPercent: 0
   rarity: epic

@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: bigHealth
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
-  buffName: Heart of gold
+  buffName: Lovesick
   buffDescription: Grants you +4 max health, and heals you for 10% of your health
+  buffNameFr: Amoureux sans espoir
+  buffDescriptionFr: "Vous avez 4 PdV maximum de plus, et vous reg\xE9n\xE8re 10%
+    de vos PdV"
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 4
   healthAwarded: 4
-  healthPercent: 0.1
+  healthPercent: 0
+  maxHealthPercent: 0.1
   rarity: legendary

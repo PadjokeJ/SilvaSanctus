@@ -16,9 +16,13 @@ MonoBehaviour:
   buffName: Berserk
   buffDescription: Makes you take 5% less damage, but you lose 10% of your current
     health
+  buffNameFr: Fou furieux
+  buffDescriptionFr: "Vous prenez 5% de d\xE9gats en moins, mais vous perdez 10%
+    de vos PdV"
   defenseAwarded: 0.05
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: 0
   healthPercent: -0.1
+  maxHealthPercent: 0
   rarity: rare

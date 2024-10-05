@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffSprite: {fileID: 1330310840, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Protection of the forest
-  buffDescription: Grants you a 10% damage shield
+  buffDescription: Grants you a 10% damage reduction
+  buffNameFr: "Protection de la for\xEAt"
+  buffDescriptionFr: "Vous prenez 10% de d\xE9g\xE2ts en moins"
   defenseAwarded: 0.1
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: 0
+  healthPercent: 0
+  maxHealthPercent: 0
   rarity: legendary

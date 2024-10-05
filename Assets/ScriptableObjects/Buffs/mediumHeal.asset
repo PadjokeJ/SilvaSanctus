@@ -15,8 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 202609556, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Healing Juice
   buffDescription: Heals you for 3 health
+  buffNameFr: Eau de vie
+  buffDescriptionFr: "Vous reg\xE9n\xE8re 3 PdV"
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 3
   healthAwarded: 0
+  healthPercent: 0
+  maxHealthPercent: 0
   rarity: epic

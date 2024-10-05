@@ -16,9 +16,13 @@ MonoBehaviour:
   buffName: Berserk Master
   buffDescription: Makes you take 10% less damage, but you lose 25% of your current
     health
+  buffNameFr: "Fou furieux ma\xEEtre"
+  buffDescriptionFr: "Vous prenez 10% de d\xE9g\xE2ts en moins, mais vous perdez
+    20% de vos PdV"
   defenseAwarded: 0.1
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: 0
   healthPercent: -0.2
+  maxHealthPercent: 0
   rarity: epic

@@ -15,8 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 1986538970, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Thorns
   buffDescription: You deal 25% more damage
+  buffNameFr: "\xC9pines"
+  buffDescriptionFr: "Vous faites 25% de d\xE9gats en plus"
   defenseAwarded: 0
   attackAwarded: 0.25
   healAmmount: 0
   healthAwarded: 0
+  healthPercent: 0
+  maxHealthPercent: 0
   rarity: epic

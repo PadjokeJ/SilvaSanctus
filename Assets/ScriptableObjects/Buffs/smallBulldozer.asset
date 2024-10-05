@@ -15,9 +15,13 @@ MonoBehaviour:
   buffSprite: {fileID: -441058121, guid: a8e1b687ca848154788535b7af58d8e9, type: 3}
   buffName: Bulldozer
   buffDescription: You deal 5% more damage, and you heal 5% of your health
+  buffNameFr: Bulldozer
+  buffDescriptionFr: "Vous faites 5% de d\xE9g\xE2ts en plus, et regagnez 5% de vos
+    PdV"
   defenseAwarded: 0
   attackAwarded: 0.05
   healAmmount: 0
   healthAwarded: 0
-  healthPercent: 0.05
+  healthPercent: 0
+  maxHealthPercent: 0.05
   rarity: rare

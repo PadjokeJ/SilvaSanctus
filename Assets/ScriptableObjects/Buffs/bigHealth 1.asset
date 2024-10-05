@@ -15,9 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Heart of gold
   buffDescription: Grants you +10 max health
+  buffNameFr: Coeur d'or
+  buffDescriptionFr: Vous avez 10 PdV maximum de plus
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 10
   healthAwarded: 10
   healthPercent: 0
+  maxHealthPercent: 0
   rarity: legendary

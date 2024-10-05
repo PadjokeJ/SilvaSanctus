@@ -15,9 +15,13 @@ MonoBehaviour:
   buffSprite: {fileID: -1997991961, guid: a8e1b687ca848154788535b7af58d8e9, type: 3}
   buffName: Glass Cannon
   buffDescription: You deal 10x more damage, but die the next time you get hit
+  buffNameFr: Verre-cannon
+  buffDescriptionFr: "Vous faites 10x plus de d\xE9gats, mais le prochain coup que
+    vous recevez vous tue"
   defenseAwarded: -9999
   attackAwarded: 10
   healAmmount: 0
   healthAwarded: 0
   healthPercent: -0.99
+  maxHealthPercent: 0
   rarity: legendary

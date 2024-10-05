@@ -16,9 +16,13 @@ MonoBehaviour:
   buffName: Turtle Shelled Berserker
   buffDescription: Makes you take 25% less damage, but you lose 50% of your current
     health
+  buffNameFr: "Fou furieux carapac\xE9"
+  buffDescriptionFr: "Vous prenez 25% de d\xE9g\xE2ts en moins, mais vous perdez
+    50% de vos PdV"
   defenseAwarded: 0.25
   attackAwarded: 0
   healAmmount: 0
   healthAwarded: 0
   healthPercent: -0.5
+  maxHealthPercent: 0
   rarity: legendary

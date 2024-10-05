@@ -15,8 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 202609556, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: A New Heart
   buffDescription: Heals you all your health
+  buffNameFr: Un coeur nouveau
+  buffDescriptionFr: Vous regagnez tous vos PdV
   defenseAwarded: 0
   attackAwarded: 0
-  healAmmount: 9999
+  healAmmount: 0
   healthAwarded: 0
+  healthPercent: 0
+  maxHealthPercent: 100
   rarity: legendary

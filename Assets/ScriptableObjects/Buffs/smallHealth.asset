@@ -15,9 +15,12 @@ MonoBehaviour:
   buffSprite: {fileID: 1845535047, guid: 423008f0a69e3054fad0ac460704f852, type: 3}
   buffName: Heart of Mud
   buffDescription: Gives you +1 max health
+  buffNameFr: Coeur boueux
+  buffDescriptionFr: Vous donne 1 PdV maximum en plus
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 1
   healthAwarded: 1
   healthPercent: 0
+  maxHealthPercent: 0
   rarity: rare

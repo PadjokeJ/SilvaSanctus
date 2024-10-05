@@ -10,6 +10,8 @@ public class LanguageManager : MonoBehaviour
     public int langId;
     private void Awake()
     {
+        if (Application.systemLanguage.ToString().StartsWith("French"))
+            langId = 1;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[langId];
     }
 }

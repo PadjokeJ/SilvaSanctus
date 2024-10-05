@@ -198,22 +198,30 @@ public class BossR : MonoBehaviour
     {
         for (int i = 0; i <= 7; i++)
         {
-            transform.position = positionOfBarrels[Random.Range(0, positionOfBarrels.Count - 1)];
-            yield return new WaitForSeconds(1.5f);
+            transform.position = Vector3.Lerp(positionOfBarrels[Random.Range(0, positionOfBarrels.Count - 1)], player.transform.position, 0.5f);
+            yield return new WaitForSeconds(1f);
             StartCoroutine(FireProjectile());
-            yield return new WaitForSeconds(1f * waitPercent);
+            yield return new WaitForSeconds(0.5f * waitPercent);
         }
     }
 
     IEnumerator SpawnEnemies()
     {
-
+        int prevIndex = 0;
+        int random = 0;
         for (int i = 0; i <= 10; i++)
         {
-            transform.position = positionOfBarrels[Random.Range(0, positionOfBarrels.Count - 1)];
+            while (prevIndex == random)
+                random = Random.Range(0, positionOfBarrels.Count - 1);
+            prevIndex = random;
+            transform.position = positionOfBarrels[random];
             yield return new WaitForSeconds(0.8f * waitPercent);
 
-            Instantiate<GameObject>(enemies[Random.Range(0, enemies.Count - 1)], transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate<GameObject>(enemies[Random.Range(0, enemies.Count - 1)], transform.position, Quaternion.identity);
+            enemy.GetComponent<Health>().health *= 2f;
+            enemy.GetComponent<Health>().maxHealth *= 2f;
+            enemy.GetComponent<EnemyAI>().maxDist *= 5f;
+            
 
             yield return new WaitForSeconds(1f * waitPercent);
         }

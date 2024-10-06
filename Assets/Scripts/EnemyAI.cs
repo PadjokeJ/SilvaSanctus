@@ -85,8 +85,6 @@ public class EnemyAI : MonoBehaviour
         animator.speed = 0;
 
         wallsMask = LayerMask.GetMask("Walls");
-
-        LOS = true;
     }
 
     void Update()
@@ -102,13 +100,13 @@ public class EnemyAI : MonoBehaviour
                 animator.speed = 1;
 
 
-                //LOS = !Physics2D.Linecast(transform.position, player.transform.position, wallsMask);
-                if (fleeIfTooClose && LOS && dist < minRange) //flee
+                LOS = !Physics2D.Linecast(transform.position, player.transform.position, wallsMask);
+                if (fleeIfTooClose && dist < minRange) //flee
                 {
                     deltaPos = CalculateDirectionVector().normalized * speed * fleeSpeedMultiplier * Time.deltaTime;
                     rg.velocity -= deltaPos;
                 }
-                else if (LOS && dist > minDist && dist < maxDist) //move towards player
+                else if (dist > minDist && dist < maxDist) //move towards player
                 {
                     deltaPos = CalculateDirectionVector().normalized * speed * Time.deltaTime;
                     rg.velocity += deltaPos;
@@ -124,7 +122,7 @@ public class EnemyAI : MonoBehaviour
                     attackSpeed = gWP.reloadTime;
                     attackEvent = gWP.attackEvent;
 
-                    if (timeSinceLastAttack > attackSpeed)
+                    if (timeSinceLastAttack > attackSpeed && LOS)
                     {
                         state = "attacking";
                     }
@@ -316,8 +314,18 @@ public class EnemyAI : MonoBehaviour
         if (dist < maxDist) Gizmos.color = Color.green;
         else Gizmos.color = Color.red;
 
-        if (dist < 2 * maxDist)
+        if (Vector3.Distance(transform.position, player.transform.position) < 2 * maxDist)
+        {
             Gizmos.DrawWireSphere(transform.position, maxDist);
+
+            if (LOS)
+                Gizmos.color = Color.green;
+            else
+                Gizmos.color = Color.red;
+
+
+            Gizmos.DrawLine(transform.position, player.transform.position);
+        }
     }
     private void OnDestroy()
     {

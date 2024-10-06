@@ -43,6 +43,9 @@ public class BossR : MonoBehaviour
     List<Vector3> positionOfBarrels = new List<Vector3>();
 
     public List<GameObject> enemies;
+    public GameObject miniBoss;
+
+    GameObject miniBossObject;
 
     private void Awake()
     {
@@ -128,7 +131,15 @@ public class BossR : MonoBehaviour
     IEnumerator PhaseUp()
     {
         state = "phasing";
+
+        if (phase == 1)
+        {
+            StartCoroutine(MiniBoss());
+            phase++;
+            yield break;
+        }
         phase++;
+
 
         yield return new WaitForSeconds(1f);
 
@@ -170,6 +181,55 @@ public class BossR : MonoBehaviour
         }
 
         state = "None";
+    }
+
+    IEnumerator MiniBoss()
+    {
+        state = "Miniboss";
+
+        for (float i = 0; i < 1f; i += Time.deltaTime / 2f)
+        {
+            transform.position = Vector3.Lerp(transform.position, transform.parent.position, i);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        transform.position = transform.parent.position;
+        yield return new WaitForSeconds(1f);
+
+        miniBossObject = Instantiate<GameObject>(miniBoss, transform.position, Quaternion.identity);
+        Health minibossHealth = miniBossObject.GetComponent<Health>();
+
+        if (WeaponManaging.hardMode)
+        {
+            minibossHealth.maxHealth *= 2f;
+            minibossHealth.health *= 2f;
+
+            EnemyAI miniBossAI = miniBossObject.GetComponent<EnemyAI>();
+            miniBossAI.reactionTime *= 0.5f;
+            miniBossAI.repeatedAccuracy = 0.3f;
+        }
+
+        for (float i = 0; i < 1f; i += Time.deltaTime / 2f)
+        {
+            transform.position = Vector3.Lerp(transform.parent.position, transform.parent.position + new Vector3(0, 20), i);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        Vector3 deathPos = transform.position;
+        while (minibossHealth.health > 0f)
+        {
+            deathPos = miniBossObject.transform.position;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        for (float i = 0; i < 1f; i += Time.deltaTime / 2f)
+        {
+            transform.position = Vector3.Lerp(transform.position, deathPos, i);
+            yield return new WaitForSeconds(0.01f);
+        }
+        transform.position = deathPos;
+
+        StartCoroutine(PhaseUp());
     }
 
     IEnumerator RadialAttack()

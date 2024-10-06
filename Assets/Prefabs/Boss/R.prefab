@@ -56,6 +56,7 @@ MonoBehaviour:
   particleObject: {fileID: 7096409184682296454}
   enemies:
   - {fileID: 1989758858887937333, guid: 9bd07e46ccc123a419e5c7948aea276b, type: 3}
+  miniBoss: {fileID: 1989758858887937333, guid: c62b97af139f3b041a34539d76c8d018, type: 3}
 --- !u!114 &5097658257609628867
 MonoBehaviour:
   m_ObjectHideFlags: 0

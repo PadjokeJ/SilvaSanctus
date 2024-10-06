@@ -54,7 +54,7 @@ public class WeaponSelector : Selectable
 
     }
 
-    void OnHighlight()
+    public void OnHighlight()
     {
         GenericWeaponManager gwp = weaponObject.GetComponent<GenericWeaponManager>();
 

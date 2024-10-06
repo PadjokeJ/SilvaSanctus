@@ -131,7 +131,10 @@ public class WeaponManaging : MonoBehaviour
             }
 
             if (returner == null)
+            {
                 returner = obj;
+                returner.GetComponent<WeaponSelector>().OnHighlight();
+            }
 
             x += spacing;
             index++;

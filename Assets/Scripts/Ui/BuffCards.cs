@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,16 +61,25 @@ public class BuffCards : MonoBehaviour
         {
             Time.timeScale = 0f;
             active = true;
+            int index = 0;
+            List<BuffScriptableObject> legBuffs = new List<BuffScriptableObject>();
+            List<BuffScriptableObject> epBuffs = new List<BuffScriptableObject>();
+            List<BuffScriptableObject> raBuffs = new List<BuffScriptableObject>();
+            legBuffs = legendaryBuffs.OrderBy(x => Random.value).ToList();
+            epBuffs = epicBuffs.OrderBy(x => Random.value).ToList();
+            raBuffs = rareBuffs.OrderBy(x => Random.value).ToList();
+
 
             foreach (Cards card in cards)
             {
                 card.gameObject.SetActive(true);
                 if (Random.Range(0f, 1f) < 0.1f)
-                    SetCard(card, legendaryBuffs[Random.Range(0, legendaryBuffs.Count)], "legendary");
+                    SetCard(card, legBuffs[index], "legendary");
                 else if (Random.Range(0f, 1f) < 0.3f)
-                    SetCard(card, epicBuffs[Random.Range(0, epicBuffs.Count)], "epic");
+                    SetCard(card, epBuffs[index], "epic");
                 else
-                    SetCard(card, rareBuffs[Random.Range(0, rareBuffs.Count)], "rare");
+                    SetCard(card, raBuffs[index], "rare");
+                index++;
             }
         }
     }

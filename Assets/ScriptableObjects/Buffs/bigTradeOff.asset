@@ -18,7 +18,7 @@ MonoBehaviour:
     health
   buffNameFr: "Fou furieux carapac\xE9"
   buffDescriptionFr: "Vous prenez 25% de d\xE9g\xE2ts en moins, mais vous perdez
-    50% de vos PdV"
+    50% de vos PV actuels"
   defenseAwarded: 0.25
   attackAwarded: 0
   healAmmount: 0

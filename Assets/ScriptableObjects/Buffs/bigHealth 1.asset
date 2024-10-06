@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Heart of gold
   buffDescription: Grants you +10 max health
   buffNameFr: Coeur d'or
-  buffDescriptionFr: Vous avez 10 PdV maximum de plus
+  buffDescriptionFr: Vous avez 10 PV maximum de plus
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 10

@@ -16,8 +16,8 @@ MonoBehaviour:
   buffName: Lovesick
   buffDescription: Grants you +4 max health, and heals you for 10% of your health
   buffNameFr: Amoureux sans espoir
-  buffDescriptionFr: "Vous avez 4 PdV maximum de plus, et vous reg\xE9n\xE8re 10%
-    de vos PdV"
+  buffDescriptionFr: "Vous avez 4 PV maximum de plus, et vous reg\xE9n\xE8re 10%
+    de vos PV"
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 4

@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: A New Heart
   buffDescription: Heals you all your health
   buffNameFr: Un coeur nouveau
-  buffDescriptionFr: Vous regagnez tous vos PdV
+  buffDescriptionFr: Vous regagnez tous vos PV
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 0

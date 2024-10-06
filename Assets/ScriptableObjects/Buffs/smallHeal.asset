@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Healing pocket
   buffDescription: Heals you for 1 health
   buffNameFr: Poche de vie
-  buffDescriptionFr: Vous fait regagner 1 PdV
+  buffDescriptionFr: Vous fait regagner 1 PV
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Brittle Heart
   buffDescription: You are 10% more vulnerable damage, but you gain 3 max health
   buffNameFr: Coeur fragile
-  buffDescriptionFr: "Vous prenez 10% de d\xE9gats en plus, mais vous gagnez 3 PdV
+  buffDescriptionFr: "Vous prenez 10% de d\xE9gats en plus, mais vous gagnez 3 PV
     maximum en plus"
   defenseAwarded: -0.1
   attackAwarded: 0

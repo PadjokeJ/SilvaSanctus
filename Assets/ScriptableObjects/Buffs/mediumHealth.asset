@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Heart of Stone
   buffDescription: Grants you +2 max health
   buffNameFr: Coeur de pierre
-  buffDescriptionFr: Vous avez 2 PdV maximum en plus
+  buffDescriptionFr: Vous avez 2 PV maximum en plus
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 2

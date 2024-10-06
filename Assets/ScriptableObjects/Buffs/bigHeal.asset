@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Healing spirit
   buffDescription: Heals you for 5 health
   buffNameFr: "Esprit r\xE9g\xE9nateur"
-  buffDescriptionFr: "Vous reg\xE9n\xE8re 5 PdV"
+  buffDescriptionFr: "Vous reg\xE9n\xE8re 5 PV"
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 5

@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Healing Juice
   buffDescription: Heals you for 3 health
   buffNameFr: Eau de vie
-  buffDescriptionFr: "Vous reg\xE9n\xE8re 3 PdV"
+  buffDescriptionFr: "Vous reg\xE9n\xE8re 3 PV"
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 3

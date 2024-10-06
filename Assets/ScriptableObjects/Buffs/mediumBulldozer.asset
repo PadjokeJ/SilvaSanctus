@@ -17,7 +17,7 @@ MonoBehaviour:
   buffDescription: You deal 10% more damage, and you heal 10% of your health
   buffNameFr: Bulldozer rageux
   buffDescriptionFr: "Vous faites 10% de d\xE9g\xE2ts en plus, et reg\xE9nerez 10%
-    de vos PdV"
+    de vos PV"
   defenseAwarded: 0
   attackAwarded: 0.1
   healAmmount: 0

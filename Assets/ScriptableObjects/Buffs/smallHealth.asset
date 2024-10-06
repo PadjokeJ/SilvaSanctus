@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Heart of Mud
   buffDescription: Gives you +1 max health
   buffNameFr: Coeur boueux
-  buffDescriptionFr: Vous donne 1 PdV maximum en plus
+  buffDescriptionFr: Vous donne 1 PV maximum en plus
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 1

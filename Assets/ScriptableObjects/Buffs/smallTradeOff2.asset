@@ -17,7 +17,7 @@ MonoBehaviour:
   buffDescription: Makes you take 5% less damage, but you lose 4 max health
   buffNameFr: Un petit sacrifice
   buffDescriptionFr: "Vous prenez 5% de d\xE9g\xE2ts en moins, mais vous perdez 4
-    PdV maximum"
+    PV maximum"
   defenseAwarded: 0.05
   attackAwarded: 0
   healAmmount: 0

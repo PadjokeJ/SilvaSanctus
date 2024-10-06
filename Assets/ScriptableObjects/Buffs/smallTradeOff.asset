@@ -18,7 +18,7 @@ MonoBehaviour:
     health
   buffNameFr: Fou furieux
   buffDescriptionFr: "Vous prenez 5% de d\xE9gats en moins, mais vous perdez 10%
-    de vos PdV"
+    de vos PV actuels"
   defenseAwarded: 0.05
   attackAwarded: 0
   healAmmount: 0

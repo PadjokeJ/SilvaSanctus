@@ -17,7 +17,7 @@ MonoBehaviour:
   buffDescription: You deal 20% more damage, and you heal 20% of your health
   buffNameFr: Bulldozer Pro Max
   buffDescriptionFr: "Vous faites 20% plus de d\xE9gats, et regen\xE9rez 20% de vos
-    PdV"
+    PV"
   defenseAwarded: 0
   attackAwarded: 0.2
   healAmmount: 0

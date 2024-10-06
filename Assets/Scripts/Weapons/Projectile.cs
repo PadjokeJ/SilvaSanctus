@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public float speed;
     public float damage;
 
+    public string owner;
+
     private void Awake()
     {
         CircleCollider2D circleCollider2D = this.gameObject.AddComponent<CircleCollider2D>();
@@ -25,7 +27,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<Health>(out Health health) && !collision.CompareTag("Player"))
+        if (collision.gameObject.TryGetComponent<Health>(out Health health) && !collision.CompareTag(owner))
         {
             Debug.Log($"{collision.gameObject.name} has been hit by {this.gameObject.name} for {damage}");
             health.takeDamage(damage);

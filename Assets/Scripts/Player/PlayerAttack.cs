@@ -48,6 +48,7 @@ public class PlayerAttack : MonoBehaviour
 
         hand = new GameObject("Hand");
         hand.transform.SetParent(this.transform);
+        hand.tag = "Player";
 
         StartCoroutine(ChangeWeapon(0));
 

@@ -15,6 +15,9 @@ public class AnimationWeapon : Weapon
     bool hitOpponent = false;
 
     GameObject projPrefab;
+
+    string owner;
+
     void Start()
     {
         gWP = GetComponent<GenericWeaponManager>();
@@ -30,6 +33,7 @@ public class AnimationWeapon : Weapon
         //attackAnimation = GetComponent<Animation>();
 
         cm = FindObjectOfType<CameraManager>();
+        owner = transform.parent.tag;
     }
     public void Attack()
     {
@@ -91,6 +95,7 @@ public class AnimationWeapon : Weapon
         projectile.direction = new Vector3(Mathf.Cos(Mathf.Deg2Rad * rotation), Mathf.Sin(Mathf.Deg2Rad * rotation));
         projectile.speed = 5f;
         projectile.damage = weaponDamage;
+        projectile.owner = owner;
 
         Destroy(gO, 1f);
     }

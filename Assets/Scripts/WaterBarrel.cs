@@ -23,8 +23,8 @@ public class WaterBarrel : MonoBehaviour
 
     void AttackBoss()
     {
-        //LayerMask mask = LayerMask.GetMask("Ignore Raycast");
-        Collider2D[] collision = Physics2D.OverlapCircleAll(transform.position, radius);
+        LayerMask mask = LayerMask.GetMask("Ignore Raycast");
+        Collider2D[] collision = Physics2D.OverlapCircleAll(transform.position, radius, mask);
 
         foreach (Collider2D collider in collision)
         {

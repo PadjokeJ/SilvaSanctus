@@ -275,6 +275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlameThrower
       objectReference: {fileID: 0}
+    - target: {fileID: 4608639099254477518, guid: e287ec88dbc0b754481bcb1ed9b4c0e7, type: 3}
+      propertyPath: weaponDamage
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

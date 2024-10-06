@@ -47,8 +47,14 @@ public class BossR : MonoBehaviour
 
     GameObject miniBossObject;
 
+    LayerMask ignoreRaycastMask, defaultMask;
+
     private void Awake()
     {
+        defaultMask = this.gameObject.layer;
+        ignoreRaycastMask = LayerMask.NameToLayer("Ignore Raycast");
+        this.gameObject.layer = ignoreRaycastMask;
+
         health = GetComponent<BossHealth>();
         player = Health.playerInstance.gameObject;
 
@@ -131,6 +137,7 @@ public class BossR : MonoBehaviour
     IEnumerator PhaseUp()
     {
         state = "phasing";
+        this.gameObject.layer = ignoreRaycastMask;
 
         if (phase == 1)
         {
@@ -180,6 +187,7 @@ public class BossR : MonoBehaviour
             yield return new WaitForSeconds(7 * 2.5f);
         }
 
+        
         state = "None";
     }
 
@@ -309,6 +317,8 @@ public class BossR : MonoBehaviour
 
         PlayerLevelling.GainExperience(expReward);
 
+        yield return new WaitForSecondsRealtime(0.2f);
+
         EndManager endManager = FindAnyObjectByType<EndManager>();
 
 
@@ -328,6 +338,7 @@ public class BossR : MonoBehaviour
     public void MakeDowned()
     {
         down = true;
+        this.gameObject.layer = defaultMask;
         StopAllCoroutines();
         StartCoroutine(DOT());
 

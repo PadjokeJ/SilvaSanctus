@@ -384,7 +384,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 0.1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1.5
+  m_AmplitudeGain: 0
   m_FrequencyGain: 30
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &168303949
@@ -27463,10 +27463,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0017482517
-    y: 0.0032102729
-    width: 0.9965035
-    height: 0.9919743
+    x: 0
+    y: 0.0033112583
+    width: 1
+    height: 0.9933775
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

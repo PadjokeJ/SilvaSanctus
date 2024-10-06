@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class Feedback : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Feedback : MonoBehaviour
 
     public void SendFeedback()
     {
-        if (isEN)
+        if (LocalizationSettings.SelectedLocale.name.StartsWith("En"))
             EnglishForm();
         else
             FrenchForm();

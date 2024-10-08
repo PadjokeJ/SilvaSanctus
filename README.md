@@ -21,7 +21,7 @@ Once you have extracted, you should have a folder named like so
 
 Inside this folder, there is another folder named after the game version
 
-![Game Version Folder](Imagessecond-folder.png)
+![Game Version Folder](Images/second-folder.png)
 
 Inside this folder, find SilvaSanctus.exe or SilvaSanctus, and open it by double-clicking it
 

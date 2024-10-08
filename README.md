@@ -71,7 +71,7 @@ All of the code in the repository is free for you to download, fork, sample and 
 ### How to
 
 You will need to 
-[download](https://github.com/PadjokeJ/SilvaSanctus/archive/refs/tags/Beta1.10.zip)
+[download](https://github.com/PadjokeJ/SilvaSanctus/archive/refs/heads/main.zip)
 a copy of this code on your personal machine.
 To edit this project and export it, you will need the 
 [Unity Engine](https://unity.com/).

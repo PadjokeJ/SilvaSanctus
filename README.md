@@ -1,6 +1,6 @@
 # Silva Sanctus
 
-*A roguelite game made as a school project*
+*A roguelite game made as a school project*  
 
 |Download|Use|Edit|
 |:---:|:---:|:---:|
@@ -15,7 +15,7 @@ Silva Sanctus is a replayable roguelite dungeon-crawler game set in a forest, ma
 
 The download can be found on either on the [dedicated itch.io page](https://padjokej.itch.io/silva-sanctus), or in the [releases tab](https://github.com/PadjokeJ/SilvaSanctus/releases/tag/Beta1.10)
 
-Quick download : 
+Quick download :
 [Windows](https://github.com/PadjokeJ/SilvaSanctus/releases/download/Beta1.10/SilvaSanctusBeta1.10.zip) |
 [Mac](https://github.com/PadjokeJ/SilvaSanctus/releases/download/Beta1.10/SilvaSanctusBeta1.10Mac.zip)
 
@@ -51,10 +51,22 @@ I have sadly not had any luck running this game on a MacOS powered machine. The 
 
 ## Controls
 
-The game supports standard <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> controls  
-You can dash using either the <kbd>SPACEBAR</kbd> or <kbd>SHIFT</kbd>  
-You can attack using <kbd>LEFT CLICK</kbd>  
-You can switch weapons using <kbd>RIGHT CLICK</kbd>
+The game supports standard
+<kbd>W</kbd>
+<kbd>A</kbd>
+<kbd>S</kbd>
+<kbd>D</kbd> controls
+
+You can dash using either the
+<kbd>SPACEBAR</kbd>
+or
+<kbd>SHIFT</kbd>
+
+You can attack using
+<kbd>LEFT CLICK</kbd>
+  
+You can switch weapons using
+<kbd>RIGHT CLICK</kbd>
 
 The game also has controller support
 
@@ -62,24 +74,24 @@ The game also has controller support
 
 ## Editing the code
 
-All of the code in the repository is free for you to download, fork, sample and edit for personal use. 
+All of the code in the repository is free for you to download, fork, sample and edit for personal use.  
 
-### Disclaimer 
+### Disclaimer  
 
 >None of the code is commented or documented, and nearly all of it is poorly optimised due to my lack of knowledge and to the fact that this project was a learning experience for me.
 
 ### How to
 
-You will need to 
+You will need to
 [download](https://github.com/PadjokeJ/SilvaSanctus/archive/refs/heads/main.zip)
 a copy of this code on your personal machine.
-To edit this project and export it, you will need the 
+To edit this project and export it, you will need the
 [Unity Engine](https://unity.com/).
-Version `2022.3.18f1` is recommended, as it was the version I used to code this, and it is a relatively stable version. You can upgrade the editor, just know that it is recommended you backup this project before doing so. I recommend you use 
+Version `2022.3.18f1` is recommended, as it was the version I used to code this, and it is a relatively stable version. You can upgrade the editor, just know that it is recommended you backup this project before doing so. I recommend you use
 [Visual Studio](https://visualstudio.com/)
 for code editing.
 
-To add the code into Unity, launch Unity Hub and click on add. You can select either "Add project from disk", and select the code folder. You will need to have extracted the zip file containing the source code. 
+To add the code into Unity, launch Unity Hub and click on add. You can select either "Add project from disk", and select the code folder. You will need to have extracted the zip file containing the source code.  
 
 ![Add project from disk](Images/unity-add-from-disk.png)
 
@@ -87,4 +99,4 @@ Make sure you have the correct Unity version installed. You can then open the pr
 
 ### Requests
 
-I ask that you keep all the code you have done only for personnal use. **Please do not sell any copies of this game.** 
+I ask that you keep all the code you have done only for personnal use. **Please do not sell any copies of this game.**

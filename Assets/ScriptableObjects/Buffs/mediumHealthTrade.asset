@@ -16,7 +16,7 @@ MonoBehaviour:
   buffName: Blood for Blood
   buffDescription: Grants you +5 max health, but you lose 5 health
   buffNameFr: Du sang pour du sang
-  buffDescriptionFr: Vous gagnez 5 PV maximum, sans gagner 5 PdV
+  buffDescriptionFr: Vous gagnez 5 PV maximum, sans gagner 5 PV
   defenseAwarded: 0
   attackAwarded: 0
   healAmmount: 0

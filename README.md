@@ -47,7 +47,7 @@ The game should then launch
 
 ### On Mac
 
-I have sadly not had any luck running this game on a MacOS powered machine. The download is still there and you are free to try it out. If you have a solution to make it runnable on M-based Macs and/or Intel based Macs, reach out to me either on discord, or open an issue.
+I have tried to fix the file for macOS. If you get a warning while trying to run the game, go to System Settings -> Privacy and Security -> scroll until you see "SilvaSanctusBeta1.10" is blocked" -> click on "Open Anyway"  
 
 ## Controls
 

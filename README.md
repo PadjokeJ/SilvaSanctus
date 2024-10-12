@@ -25,7 +25,11 @@ Once you have downloaded the version, please refer to the [*how to run*](#how-to
 
 ### On windows
 
-Extract the zip file you have downloaded.  
+<details>
+<summary><b>:mag: Step-by-step guide (Click to reveal)</b></summary>
+
+Extract the zip file you have downloaded.
+
 ![Extract](Images/extract.png)
 
 Once you have extracted, you should have a folder named like so  
@@ -45,9 +49,24 @@ Click on More Info, and then Run anyway
 
 The game should then launch
 
+</details>
+
 ### On Mac
 
-I have tried to fix the file for macOS. If you get a warning while trying to run the game, go to System Settings -> Privacy and Security -> scroll until you see "SilvaSanctusBeta1.10" is blocked" -> click on "Open Anyway"  
+<details>
+<summary><b>:mag: Step-by-step guide (Click to reveal)</b></summary>
+
+I have tried to fix the file for macOS.  
+If you get a warning while trying to run the game, go to
+`System Settings`
+:arrow_right:
+`Privacy and Security`
+:arrow_right:
+scroll until you see `"SilvaSanctusBeta1.10" is blocked`
+:arrow_right:
+click on `Open Anyway`  
+
+</details>
 
 ## Controls
 

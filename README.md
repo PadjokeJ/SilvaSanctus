@@ -1,6 +1,8 @@
 # Silva Sanctus
 
 *A roguelite game made as a school project*  
+![Github All Releases](https://img.shields.io/github/downloads/PadjokeJ/SilvaSanctus/total)
+![tag](https://img.shields.io/github/v/release/PadjokeJ/SilvaSanctus)
 
 |Download|Use|Edit|
 |:---:|:---:|:---:|

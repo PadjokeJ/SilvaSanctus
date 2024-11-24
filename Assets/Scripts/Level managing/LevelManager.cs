@@ -40,13 +40,26 @@ public class LevelManager : MonoBehaviour
 
     public Material lightMaterial;
 
+    Tilemap floorTilemap;
+    GameObject bossRoom;
+
     void Awake()
     {
         transition = FindAnyObjectByType<Transition>();
-        transition.GetComponent<Image>().color = Color.black;
+        if (transition != null)
+            transition.GetComponent<Image>().color = Color.black;
 
         StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
         Buffs.ResetBuffs();
+    }
+
+    private void FixedUpdate()
+    {
+        if (generate)
+        {
+            StartCoroutine(GenerateLevel(roomsAmmount, new Vector2(100f, 100f), spacingBetweenRooms));
+            generate = false;
+        }
     }
     IEnumerator GenerateLevel(int roomAmmount, Vector2 levelSize, float spacing)
     {
@@ -206,7 +219,6 @@ public class LevelManager : MonoBehaviour
         endRoomPos = deadEnds[lastIndex];
         endRoomDir = new Vector2Int(1, 0);
 
-        GameObject bossRoom;
 
         bossRoom = Instantiate<GameObject>(bossFightRoomPrefab, Vector3.zero, Quaternion.identity);
 
@@ -233,8 +245,8 @@ public class LevelManager : MonoBehaviour
         BlockEntrance(otherEndDoor, wallTile, tilemap);*/
 
         yield return new WaitForSecondsRealtime(0.5f);
-
-        transition.FadeToWhite();
+        if (transition != null)
+            transition.FadeToWhite();
         PlayerLevelling.InitDeltaLevel();
     }
 
@@ -250,7 +262,7 @@ public class LevelManager : MonoBehaviour
         obj.name = "Corridor tilemap";
 
         GameObject floorObj = new GameObject();
-        Tilemap floorTilemap = floorObj.AddComponent<Tilemap>();
+        floorTilemap = floorObj.AddComponent<Tilemap>();
 
         TilemapRenderer ftmRenderer = floorObj.AddComponent<TilemapRenderer>();
         ftmRenderer.sortingOrder = -2;
@@ -374,7 +386,22 @@ public class LevelManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-
+        foreach(GameObject room in rooms)
+        {
+            Gizmos.DrawWireSphere(room.transform.position, 5);
+        }
+        Gizmos.color = Color.green;
+        foreach (GameObject room in rooms)
+        {
+            Tilemap mainTilemap = room.GetComponentInChildren<Tilemap>();
+            List<Vector3> v3s = new List<Vector3>();            
+            
+            Gizmos.DrawWireSphere(room.transform.position + mainTilemap.origin, 1);
+            Gizmos.DrawWireSphere(room.transform.position + mainTilemap.origin + mainTilemap.size, 1);
+            Gizmos.DrawWireSphere(room.transform.position + mainTilemap.origin + new Vector3(mainTilemap.size.x, 0), 1);
+            Gizmos.DrawWireSphere(room.transform.position + mainTilemap.origin + new Vector3(0, mainTilemap.size.y), 1);
+        }
+        Gizmos.color = Color.white;
         for (int i = 0; i < corridorsRightPos.Count; i++)
         {
             Vector3 inBetweenRight;
@@ -421,6 +448,14 @@ public class LevelManager : MonoBehaviour
 
         if(tilemapObject != null)
             tilemapObject.GetComponentInChildren<Tilemap>().ClearAllTiles();
+        if (floorTilemap != null)
+        {
+            floorTilemap.ClearAllTiles();
+            Destroy(floorTilemap);
+        }
+
+        if (bossRoom != null)
+            Destroy(bossRoom);
 
         Destroy(tilemapObject);
         Destroy(spawnedStart);
